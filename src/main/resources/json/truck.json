@@ -1,0 +1,26 @@
+{
+  "type": "truck",
+  "color": "white",
+  "wheels": 4,
+  "speed": {
+    "city": 60.0,
+    "offroad": null,
+    "motorway": 90.0
+  },
+  "fuel": {
+    "diesel": true,
+    "gas": false,
+    "LPG": true
+  },
+  "company": "最好的 @ \"когда-либо\"",
+  "drivers": [
+    {
+      "firstName": "John Mark",
+      "lastName": "Cruse"
+    },
+    {
+      "firstName": "Anna",
+      "lastName": "Wells"
+    }
+  ]
+}
