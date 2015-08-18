@@ -11,6 +11,9 @@ public final class DefaultFactory {
 
     private final static GeneratorFactoryImpl factory = new GeneratorFactoryImpl();
 
+    private DefaultFactory() {
+    }
+
     /**
      * Returns instance of default factory.
      */

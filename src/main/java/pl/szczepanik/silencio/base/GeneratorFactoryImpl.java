@@ -8,6 +8,11 @@ import pl.szczepanik.silencio.api.Generator;
 import pl.szczepanik.silencio.api.GeneratorFactory;
 import pl.szczepanik.silencio.api.SupportedTypes;
 
+/**
+ * Default factory implementation that holds generators.
+ * 
+ * @author Damian Szczepanik <damianszczepanik@github>
+ */
 public class GeneratorFactoryImpl implements GeneratorFactory {
 
     private final Set<Generator> supportedGenerators = new HashSet<>();
