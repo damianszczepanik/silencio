@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Set;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import pl.szczepanik.silencio.StubGenerator;
@@ -14,10 +15,25 @@ public class GeneratorFactoryTest {
     // unchanged generator used for most methods
     private static final Generator uniqueType = new StubGenerator("thisIsUniqueGeneratorType");
 
-    private static final GeneratorFactory factory = DefaultFactory.getInstance();
+    private static GeneratorFactory factory;
 
     @Test
-    public void shouldFilterOutEmptySetForUknownType() {
+    public void shouldFilterGeneratorByType() {
+
+        // when
+        Generator xmlType = new StubGenerator(SupportedTypes.XML.name());
+
+        // when
+        factory.register(xmlType);
+
+        // then
+        Set<Generator> generators = factory.findBy(SupportedTypes.XML);
+        assertThat(generators).hasSize(1);
+        assertThat(generators).contains(xmlType);
+    }
+
+    @Test
+    public void shouldFilterOutGeneratorByName() {
 
         // when
         factory.register(uniqueType);
@@ -61,9 +77,14 @@ public class GeneratorFactoryTest {
         assertThat(generators).contains(g1, g2, g3);
     }
 
+    @BeforeClass
+    public static void beforeClass() {
+        factory = DefaultFactory.getInstance();
+    }
+
     @Before
     public void before() {
-        // keep factory cleared before each test
+        // unregister supported generators before each test
         factory.unregister(uniqueType);
     }
 }
