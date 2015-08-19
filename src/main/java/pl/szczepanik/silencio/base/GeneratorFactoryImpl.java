@@ -1,8 +1,11 @@
 package pl.szczepanik.silencio.base;
 
-import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+
+import org.apache.commons.lang3.StringUtils;
 
 import pl.szczepanik.silencio.api.Generator;
 import pl.szczepanik.silencio.api.GeneratorFactory;
@@ -15,22 +18,28 @@ import pl.szczepanik.silencio.api.SupportedTypes;
  */
 public class GeneratorFactoryImpl implements GeneratorFactory {
 
-    private final Set<Generator> supportedGenerators = new HashSet<>();
+    private final Map<String, Generator> supportedGenerators = new HashMap<>();
 
     @Override
-    public boolean register(Generator generator) {
-        return supportedGenerators.add(generator);
+    public void register(Generator generator) {
+        validateGenerator(generator);
+        supportedGenerators.put(generator.getName(), generator);
     }
 
     @Override
-    public boolean unregister(Generator generator) {
-        return supportedGenerators.remove(generator);
+    public void unregister(Generator generator) {
+        supportedGenerators.remove(generator.getName());
     }
 
     @Override
-    public Set<Generator> findBy(String type) {
+    public void unregisterAll() {
+        supportedGenerators.clear();
+    }
+
+    @Override
+    public Set<Generator> findByType(SupportedTypes type) {
         Set<Generator> matched = new HashSet<>();
-        for (Generator generator : supportedGenerators) {
+        for (Generator generator : supportedGenerators.values()) {
             if (generator.getType().equals(type)) {
                 matched.add(generator);
             }
@@ -39,13 +48,22 @@ public class GeneratorFactoryImpl implements GeneratorFactory {
     }
 
     @Override
-    public Set<Generator> findBy(SupportedTypes type) {
-        return findBy(type.name());
+    public Generator findByName(String name) {
+        return supportedGenerators.get(name);
     }
 
-    @Override
-    public Set<Generator> findAll() {
-        return Collections.unmodifiableSet(supportedGenerators);
-    }
+    private void validateGenerator(Generator generator) {
+        if (StringUtils.isEmpty(generator.getName())) {
+            throw new IllegalArgumentException("Name of the generator must not be empty!");
+        }
+        if (generator.getType() == null) {
+            throw new IllegalArgumentException("Type of the generator must not be empty!");
+        }
 
+        Generator registeredGenerator = findByName(generator.getName());
+        if (registeredGenerator != null) {
+            throw new IllegalArgumentException(
+                    String.format("Generator with name '%s' has been already registered!", generator.getName()));
+        }
+    }
 }
