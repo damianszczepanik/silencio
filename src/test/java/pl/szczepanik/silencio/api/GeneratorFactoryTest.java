@@ -11,10 +11,19 @@ import org.junit.Test;
 
 import pl.szczepanik.silencio.StubGenerator;
 
+/**
+ * Default factory implementation that holds generators.
+ * 
+ * @author Damian Szczepanik <damianszczepanik@github>
+ */
 public class GeneratorFactoryTest {
 
     // unchanged generator used for most methods
-    private static final Generator uniqueType = new StubGenerator(SupportedTypes.XML, "thisIsUniqueGeneratorType");
+    private static final Generator uniqueType = new StubGenerator(Format.XML, "thisIsUniqueGeneratorType");
+
+    private static final Generator XML_1 = new StubGenerator(Format.XML, "uno");
+    private static final Generator JSON_1 = new StubGenerator(Format.JSON, "one");
+    private static final Generator XML_2 = new StubGenerator(Format.XML, "ein");
 
     private static GeneratorFactory factory;
 
@@ -22,13 +31,13 @@ public class GeneratorFactoryTest {
     public void shouldFilterGeneratorByType() {
 
         // when
-        Generator xmlType = new StubGenerator(SupportedTypes.XML, "test");
+        Generator xmlType = new StubGenerator(Format.XML, "test");
 
         // when
         factory.register(xmlType);
 
         // then
-        Set<Generator> generators = factory.findByType(SupportedTypes.XML);
+        Set<Generator> generators = factory.findByFormat(Format.XML);
         assertThat(generators).hasSize(1);
         assertThat(generators).contains(xmlType);
     }
@@ -78,7 +87,7 @@ public class GeneratorFactoryTest {
     public void shouldNotAllowToRegisterGeneratorWithoutName() {
 
         // when
-        Generator xmlType = new StubGenerator(SupportedTypes.JSON, null);
+        Generator xmlType = new StubGenerator(Format.JSON, null);
 
         // then
         try {
@@ -99,27 +108,37 @@ public class GeneratorFactoryTest {
         factory.unregister(uniqueType);
 
         // then
-        Set<Generator> generators = factory.findByType(uniqueType.getType());
+        Set<Generator> generators = factory.findByFormat(uniqueType.getFormat());
         assertThat(generators).isEmpty();
     }
 
     @Test
     public void shouldReturnAllRegisteredGenerators() {
 
-        // given
-        Generator g1 = new StubGenerator(SupportedTypes.XML, "uno");
-        Generator g2 = new StubGenerator(SupportedTypes.JSON, "one");
-        Generator g3 = new StubGenerator(SupportedTypes.XML, "ein");
-
         // when
-        factory.register(g1);
-        factory.register(g2);
-        factory.register(g3);
+        factory.register(XML_1);
+        factory.register(JSON_1);
+        factory.register(XML_2);
 
         // then
-        Set<Generator> generators = factory.findByType(SupportedTypes.XML);
+        Set<Generator> generators = factory.findByFormat(Format.XML);
         assertThat(generators).hasSize(2);
-        assertThat(generators).contains(g1, g3);
+        assertThat(generators).contains(XML_1, XML_2);
+    }
+
+    @Test
+    public void shouldReturnAllRegisteredFormats() {
+
+
+        // when
+        factory.register(XML_1);
+        factory.register(JSON_1);
+        factory.register(XML_2);
+
+        // then
+        Set<Format> generators = factory.getRegisteredFormats();
+        assertThat(generators).hasSize(2);
+        assertThat(generators).contains(Format.JSON, Format.XML);
     }
 
     @BeforeClass

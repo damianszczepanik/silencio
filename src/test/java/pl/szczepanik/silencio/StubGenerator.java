@@ -2,7 +2,7 @@ package pl.szczepanik.silencio;
 
 import pl.szczepanik.silencio.api.Generator;
 import pl.szczepanik.silencio.api.Result;
-import pl.szczepanik.silencio.api.SupportedTypes;
+import pl.szczepanik.silencio.api.Format;
 
 /**
  * Stub generator that does only returns passed name.
@@ -11,16 +11,16 @@ import pl.szczepanik.silencio.api.SupportedTypes;
  */
 public class StubGenerator implements Generator {
 
-    private final SupportedTypes type;
+    private final Format type;
     private final String name;
 
-    public StubGenerator(SupportedTypes type, String name) {
+    public StubGenerator(Format type, String name) {
         this.type = type;
         this.name = name;
     }
 
     @Override
-    public SupportedTypes getType() {
+    public Format getFormat() {
         return type;
     }
 

@@ -8,9 +8,9 @@ package pl.szczepanik.silencio.api;
 public interface Generator {
 
 	/**
-	 * Gets name of the generator.
+	 * Gets format of the generator.
 	 */
-	public SupportedTypes getType();
+	public Format getFormat();
 
 	/**
 	 * Name of the generator.
