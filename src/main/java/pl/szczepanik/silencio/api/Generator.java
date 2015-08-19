@@ -10,9 +10,15 @@ public interface Generator {
 	/**
 	 * Gets name of the generator.
 	 */
-	public String getType();
+	public SupportedTypes getType();
 
 	/**
+	 * Name of the generator.
+	 * @return name of the generator.
+	 */
+	public String getName();
+
+    /**
 	 * Takes another generator that will be processed before current one is processed.
 	 * @param generator generator to wrap
 	 * @return current generator

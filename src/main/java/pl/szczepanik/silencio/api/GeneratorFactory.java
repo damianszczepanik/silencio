@@ -14,27 +14,22 @@ public interface GeneratorFactory {
      * 
      * @param generator
      *            generator that should be register.
-     * @return true if generator was registered, false if generator was already registered
+     * @throws IllegalArgumentException when generator has empty name or type or given name has been already registered
      */
-    public boolean register(Generator generator);
+    public void register(Generator generator);
 
     /**
      * Unregister generator from factory.
      * 
      * @param generator
      *            generator that should be unregister.
-     * @return true if generator was unregistered, false if generator was not found
      */
-    public boolean unregister(Generator generator);
+    public void unregister(Generator generator);
 
     /**
-     * Returns set of available generators filtered out by name.
-     * 
-     * @param type
-     *            type used for filtering
-     * @return set of matched generators or empty set when none generator matched
+     * Unregisters all generators from factory.
      */
-    public Set<Generator> findBy(String type);
+    public void unregisterAll();
 
     /**
      * Returns set of available generators filtered out by {@link SupportedTypes}.
@@ -43,14 +38,13 @@ public interface GeneratorFactory {
      *            type used for filtering
      * @return set of matched generators or empty set when none generator matched
      */
-    public Set<Generator> findBy(SupportedTypes type);
+    public Set<Generator> findByType(SupportedTypes type);
 
     /**
-     * Returns set of all registered generators.
+     * Returns generator with given name.
      * 
      * @param type
-     *            type used for filtering
-     * @return set of all registered generators or empty set when none generator found
+     *            name used for filtering
      */
-    public Set<Generator> findAll();
+    public Generator findByName(String name);
 }

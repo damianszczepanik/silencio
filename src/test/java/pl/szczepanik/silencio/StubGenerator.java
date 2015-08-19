@@ -2,6 +2,7 @@ package pl.szczepanik.silencio;
 
 import pl.szczepanik.silencio.api.Generator;
 import pl.szczepanik.silencio.api.Result;
+import pl.szczepanik.silencio.api.SupportedTypes;
 
 /**
  * Stub generator that does only returns passed name.
@@ -10,15 +11,22 @@ import pl.szczepanik.silencio.api.Result;
  */
 public class StubGenerator implements Generator {
 
-    private final String type;
+    private final SupportedTypes type;
+    private final String name;
 
-    public StubGenerator(String type) {
+    public StubGenerator(SupportedTypes type, String name) {
         this.type = type;
+        this.name = name;
     }
 
     @Override
-    public String getType() {
+    public SupportedTypes getType() {
         return type;
+    }
+
+    @Override
+    public String getName() {
+        return name;
     }
 
     @Override
