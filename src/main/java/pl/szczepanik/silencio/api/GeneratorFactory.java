@@ -32,13 +32,13 @@ public interface GeneratorFactory {
     public void unregisterAll();
 
     /**
-     * Returns set of available generators filtered out by {@link SupportedTypes}.
+     * Returns set of available generators filtered out by {@link Format}.
      * 
      * @param type
      *            type used for filtering
      * @return set of matched generators or empty set when none generator matched
      */
-    public Set<Generator> findByType(SupportedTypes type);
+    public Set<Generator> findByFormat(Format type);
 
     /**
      * Returns generator with given name.
@@ -47,4 +47,9 @@ public interface GeneratorFactory {
      *            name used for filtering
      */
     public Generator findByName(String name);
+
+    /**
+     * Returns all formats that were registered in factory.
+     */
+    public Set<Format> getRegisteredFormats();
 }
