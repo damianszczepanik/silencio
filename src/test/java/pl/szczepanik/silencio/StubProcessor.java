@@ -1,20 +1,20 @@
 package pl.szczepanik.silencio;
 
-import pl.szczepanik.silencio.api.Generator;
-import pl.szczepanik.silencio.api.Result;
 import pl.szczepanik.silencio.api.Format;
+import pl.szczepanik.silencio.api.Processor;
+import pl.szczepanik.silencio.api.Product;
 
 /**
- * Stub generator that does only returns passed name.
+ * Stub processor that does only returns passed name.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class StubGenerator implements Generator {
+public class StubProcessor implements Processor {
 
     private final Format type;
     private final String name;
 
-    public StubGenerator(Format type, String name) {
+    public StubProcessor(Format type, String name) {
         this.type = type;
         this.name = name;
     }
@@ -30,12 +30,12 @@ public class StubGenerator implements Generator {
     }
 
     @Override
-    public Generator decorate(Generator generator) {
-        return generator;
+    public Processor decorate(Processor processor) {
+        return processor;
     }
 
     @Override
-    public Result process() {
+    public Product process() {
         return null;
     }
 

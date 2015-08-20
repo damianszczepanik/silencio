@@ -7,7 +7,7 @@ import org.junit.Test;
 import pl.szczepanik.silencio.api.Format;
 
 /**
- * Default factory implementation that holds generators.
+ * Default factory implementation that holds processors.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */

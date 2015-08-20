@@ -1,15 +1,15 @@
 package pl.szczepanik.silencio.api;
 
-import pl.szczepanik.silencio.base.GeneratorFactoryImpl;
+import pl.szczepanik.silencio.base.ProcessorHolderImpl;
 
 /**
- * Delivers default instance of {@link GeneratorFactory}.
+ * Delivers default instance of {@link ProcessorHolder}.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public final class DefaultFactory {
 
-    private final static GeneratorFactoryImpl factory = new GeneratorFactoryImpl();
+    private final static ProcessorHolderImpl factory = new ProcessorHolderImpl();
 
     private DefaultFactory() {
     }
@@ -17,7 +17,7 @@ public final class DefaultFactory {
     /**
      * Returns instance of default factory.
      */
-    public static GeneratorFactory getInstance() {
+    public static ProcessorHolder getInstance() {
         return factory;
     }
 }
