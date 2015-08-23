@@ -1,0 +1,24 @@
+{
+  "model":"SUV",
+  "wheels":4,
+  "size":{
+    "length":4.45,
+    "height":2.05,
+    "width":2.200
+  },
+  "accessories":[
+    "sunroof",
+    "radio"
+  ],
+  "fuel":[
+    {
+      "diesel":true,
+      "LPG":true
+    }
+  ],
+  "notes":null,
+  "alarms":{
+  },
+  "assistance":[
+  ]
+}
