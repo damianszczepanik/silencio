@@ -1,24 +1,28 @@
 package pl.szczepanik.silencio.api;
 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
+import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
- * Type of the content that are supported by default.
+ * Type of the content.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class Format {
+public abstract class Format {
 
     /** Predefined format for XML files. */
-    public static final Format XML = new Format("XML");
+    public static final Format XML = new Format("XML") {};
 
     /** Predefined format for JSON files. */
-    public static final Format JSON = new Format("JSON");
+    public static final Format JSON = new Format("JSON"){};
 
     private final String name;
 
     public Format(String name) {
         validateName(name);
+
         this.name = name;
     }
 
@@ -28,10 +32,38 @@ public class Format {
     public String getName() {
         return name;
     }
+    
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
+    /**
+     * Two formats are equal if they have the same name.
+     * 
+     * @see java.lang.Object#equals(java.lang.Object)
+     */
+    @Override
+    public final boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+
+        Format ref = (Format) obj;
+        return new EqualsBuilder()
+                .append(name, ref.name)
+                .isEquals();
+    }
 
     private void validateName(String name) {
         if (StringUtils.isEmpty(name)) {
-            throw new IllegalArgumentException("Name of the format must not be empty!");
+            throw new IntegrityException("Name of the format must not be empty!");
         }
     }
 }

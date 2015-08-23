@@ -1,5 +1,8 @@
 package pl.szczepanik.silencio.api;
 
+import java.io.Reader;
+import java.io.Writer;
+
 /**
  * Contract for processor that converts content.
  * 
@@ -7,27 +10,25 @@ package pl.szczepanik.silencio.api;
  */
 public interface Processor {
 
-	/**
-	 * Gets format of the processor.
-	 */
-	public Format getFormat();
-
-	/**
-	 * Name of the processor.
-	 * @return name of the processor.
-	 */
-	public String getName();
+    /**
+     * Gets format of the processor.
+     * @return format supported by this processor
+     */
+    Format getFormat();
 
     /**
-	 * Takes another processor that will be processed before current one is processed.
-	 * @param processor processor to wrap
-	 * @return current processor
-	 */
-	public Processor decorate(Processor processor);
-	
-	/**
-	 * Executes current processor.
-	 * @return result of the processor
-	 */
-	public Product process();
+     * Reads content that will be processed.
+     * @param reader content to process
+     */
+    void load(Reader reader);
+
+    /**
+     * Executes current processor.
+     */
+    void process();
+
+    /**
+     * Writes results into passed writer.
+     */
+    void write(Writer writer);
 }
