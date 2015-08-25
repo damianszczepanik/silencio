@@ -1,5 +1,7 @@
 package pl.szczepanik.silencio.core;
 
+import java.io.Reader;
+import java.io.Writer;
 import java.util.Arrays;
 
 import pl.szczepanik.silencio.api.Format;
@@ -10,6 +12,8 @@ public abstract class AbstractProcessor implements Processor {
 
     protected final Format format;
     protected final Strategy[] strategies;
+
+    private final ProcessorState state = new ProcessorState();
 
     public AbstractProcessor(Format format, Strategy[] strategies) {
         validateFormat(format);
@@ -33,6 +37,31 @@ public abstract class AbstractProcessor implements Processor {
             strategy.reset();
         }
     }
+
+    @Override
+    public final void load(Reader reader) {
+        realLoad(reader);
+        state.markAsLoaded();
+    }
+
+    protected abstract void realLoad(Reader reader);
+
+    @Override
+    public final void process() {
+        state.canProcess();
+        realProcess();
+        state.markAsProcessed();
+    }
+
+    protected abstract void realProcess();
+
+    @Override
+    public final void write(Writer writer) {
+        state.canWrite();
+        realWrite(writer);
+    }
+
+    protected abstract void realWrite(Writer writer);
 
     private void validateFormat(Format format) {
         if (format == null) {

@@ -39,7 +39,7 @@ public class JSONProcessor extends AbstractProcessor {
 
     @SuppressWarnings("unchecked")
     @Override
-    public void load(Reader reader) {
+    public void realLoad(Reader reader) {
         try {
             jsonStructure = mapper.readValue(reader, new TypeReference<Map<String, Object>>() { });
         } catch (IOException e) {
@@ -48,7 +48,7 @@ public class JSONProcessor extends AbstractProcessor {
     }
 
     @Override
-    public void process() {
+    public void realProcess() {
         // TODO: don't allow to process if content was not properly loaded - add state machine
         resetStrategies();
         processMap(jsonStructure);
@@ -117,7 +117,7 @@ public class JSONProcessor extends AbstractProcessor {
     }
 
     @Override
-    public void write(Writer writer) {
+    public void realWrite(Writer writer) {
         try {
             mapper.writeValue(writer, jsonStructure);
         } catch (IOException e) {
