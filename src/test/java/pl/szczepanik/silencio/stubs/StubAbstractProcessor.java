@@ -19,16 +19,16 @@ public class StubAbstractProcessor extends AbstractProcessor {
     }
 
     @Override
-    public void load(Reader reader) {
+    public void realLoad(Reader reader) {
     }
 
     @Override
-    public void process() {
+    public void realProcess() {
 
     }
 
     @Override
-    public void write(Writer writer) {
+    public void realWrite(Writer writer) {
     }
 
 }
