@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.stubs.StubAbstractProcessor;
-import pl.szczepanik.silencio.stubs.StubStrategy;
+import pl.szczepanik.silencio.stubs.StubConverter;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -20,7 +20,7 @@ public class AbstractProcessorTest {
     public void shouldReturnValidFormat() {
 
         // given
-        Strategy[] strategies = { new StubStrategy(Format.XML) };
+        Strategy[] strategies = { new StubConverter() };
         Format format = Format.XML;
 
         // when
@@ -34,7 +34,7 @@ public class AbstractProcessorTest {
     public void shouldFailWhenBuildFromEmptyFormat() {
 
         // given
-        Strategy[] strategies = { new StubStrategy(Format.XML) };
+        Strategy[] strategies = { new StubConverter() };
 
         // when
         Format format = null;
@@ -91,7 +91,7 @@ public class AbstractProcessorTest {
         Format format = Format.JSON;
 
         // when
-        Strategy[] strategies = { new StubStrategy(Format.JSON), null };
+        Strategy[] strategies = { new StubConverter(), null };
 
         // then
         try {
@@ -102,21 +102,4 @@ public class AbstractProcessorTest {
         }
     }
 
-    @Test
-    public void shouldFailWhenPassingDifferentFormats() {
-
-        // given
-        Format format = Format.XML;
-
-        // when
-        Strategy[] strategies = { new StubStrategy(Format.XML), new StubStrategy(Format.JSON) };
-
-        // then
-        try {
-            new StubAbstractProcessor(format, strategies);
-            fail("Expected exceeption");
-        } catch (IntegrityException e) {
-            assertThat(e).hasMessage("Strategy passed on index 1 supports format 'JSON' while expecting 'XML'!");
-        }
-    }
 }

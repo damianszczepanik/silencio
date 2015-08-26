@@ -17,7 +17,7 @@ public abstract class AbstractProcessor implements Processor {
 
     public AbstractProcessor(Format format, Strategy[] strategies) {
         validateFormat(format);
-        validateStrategies(strategies, format);
+        validateStrategies(strategies);
 
         this.format = format;
         // deep copy to prevent manipulating on private list
@@ -32,9 +32,9 @@ public abstract class AbstractProcessor implements Processor {
     /**
      * Calls {@link Strategy#reset()} method on each strategies.
      */
-    protected void resetStrategies() {
+    protected void initStrategies() {
         for (Strategy strategy : strategies) {
-            strategy.reset();
+            strategy.init();
         }
     }
 
@@ -69,18 +69,13 @@ public abstract class AbstractProcessor implements Processor {
         }
     }
 
-    private void validateStrategies(Strategy[] strategies, Format format) {
+    private void validateStrategies(Strategy[] strategies) {
         if (strategies == null || strategies.length == 0) {
             throw new IntegrityException("Array with strategies must not be empty!");
         }
         for (int i = 0; i < strategies.length; i++) {
             if (strategies[i] == null) {
                 throw new IntegrityException(String.format("Strategy passed on index %d is null!", i));
-            }
-            if (!strategies[i].getFormat().equals(format)) {
-                throw new IntegrityException(
-                        String.format("Strategy passed on index %d supports format '%s' while expecting '%s'!", i,
-                                strategies[i].getFormat().getName(), format.getName()));
             }
         }
     }

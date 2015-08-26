@@ -16,7 +16,7 @@ import pl.szczepanik.silencio.TestUtils;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.core.StrategyBuilder;
+import pl.szczepanik.silencio.core.ConverterBuilder;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -31,7 +31,7 @@ public class JSONProcessorTest {
         Writer output = new StringWriter();
 
         // when
-        Processor processor = StrategyBuilder.build(Format.JSON, StrategyBuilder.JSON.EMPTY);
+        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.MAKE_EMPTY);
         processor.load(input);
         processor.process();
         processor.write(output);
@@ -52,7 +52,7 @@ public class JSONProcessorTest {
         Reader input = TestUtils.loadJson("corrupted.json");
 
         // when
-        Processor processor = StrategyBuilder.build(Format.JSON, StrategyBuilder.JSON.EMPTY);
+        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.MAKE_EMPTY);
 
         // then
         try {
