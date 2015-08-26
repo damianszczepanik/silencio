@@ -5,7 +5,7 @@ package pl.szczepanik.silencio.core;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class ProcessorState {
+public class ProcessorStateMachine {
 
     private enum States {
         /** Represent state where processor has been created. */
@@ -25,7 +25,7 @@ public class ProcessorState {
      * @throws {@link
      *             ProcessorException} when operation is not allowed for this processor state
      */
-    public void canProcess() {
+    public void validateProcess() {
         if (state == States.CREATED) {
             reportViolation();
         }
@@ -37,8 +37,8 @@ public class ProcessorState {
      * @throws {@link
      *             ProcessorException} when operation is not allowed for this processor state
      */
-    public void canWrite() {
-        if (state == States.LOADED) {
+    public void validateWrite() {
+        if (state != States.PROCESSED) {
             reportViolation();
         }
     }
@@ -53,14 +53,14 @@ public class ProcessorState {
     /**
      * Changes state into new one.
      */
-    public void markAsLoaded() {
+    public void moveToLoaded() {
         state = States.LOADED;
     }
 
     /**
      * Changes state into new one.
      */
-    public void markAsProcessed() {
+    public void moveToProcessed() {
         state = States.PROCESSED;
     }
 

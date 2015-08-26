@@ -13,7 +13,7 @@ public abstract class AbstractProcessor implements Processor {
     protected final Format format;
     protected final Strategy[] strategies;
 
-    private final ProcessorState state = new ProcessorState();
+    private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 
     public AbstractProcessor(Format format, Strategy[] strategies) {
         validateFormat(format);
@@ -41,23 +41,23 @@ public abstract class AbstractProcessor implements Processor {
     @Override
     public final void load(Reader reader) {
         realLoad(reader);
-        state.markAsLoaded();
+        stateMachine.moveToLoaded();
     }
 
     protected abstract void realLoad(Reader reader);
 
     @Override
     public final void process() {
-        state.canProcess();
+        stateMachine.validateProcess();
         realProcess();
-        state.markAsProcessed();
+        stateMachine.moveToProcessed();
     }
 
     protected abstract void realProcess();
 
     @Override
     public final void write(Writer writer) {
-        state.canWrite();
+        stateMachine.validateWrite();
         realWrite(writer);
     }
 
