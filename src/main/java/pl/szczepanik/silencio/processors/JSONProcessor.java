@@ -49,7 +49,7 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
-        resetStrategies();
+        initStrategies();
         processMap(jsonStructure);
     }
 

@@ -1,7 +1,6 @@
 package pl.szczepanik.silencio.stubs;
 
-import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.core.AbstractStrategy;
+import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.core.Element;
 
 /**
@@ -9,11 +8,7 @@ import pl.szczepanik.silencio.core.Element;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class StubStrategy extends AbstractStrategy {
-
-    public StubStrategy(Format type) {
-        super(type);
-    }
+public class StubConverter implements Strategy {
 
     @Override
     public Element convert(Element value) {
@@ -21,7 +16,7 @@ public class StubStrategy extends AbstractStrategy {
     }
 
     @Override
-    public void reset() {
+    public void init() {
     }
 
 }

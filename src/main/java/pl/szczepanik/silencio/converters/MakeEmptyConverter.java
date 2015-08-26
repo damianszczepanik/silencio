@@ -1,7 +1,6 @@
-package pl.szczepanik.silencio.strategies;
+package pl.szczepanik.silencio.converters;
 
-import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.core.AbstractStrategy;
+import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.core.Element;
 
 /**
@@ -9,11 +8,7 @@ import pl.szczepanik.silencio.core.Element;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class JSONEmptyStrategy extends AbstractStrategy {
-
-    public JSONEmptyStrategy(Format format) {
-        super(format);
-    }
+public class MakeEmptyConverter implements Strategy {
 
     @Override
     public Element convert(Element value) {
@@ -21,7 +16,7 @@ public class JSONEmptyStrategy extends AbstractStrategy {
     }
 
     @Override
-    public void reset() {
+    public void init() {
     }
 
 }
