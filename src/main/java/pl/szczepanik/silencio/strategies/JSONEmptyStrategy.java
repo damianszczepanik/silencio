@@ -1,8 +1,8 @@
 package pl.szczepanik.silencio.strategies;
 
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.api.Value;
 import pl.szczepanik.silencio.core.AbstractStrategy;
+import pl.szczepanik.silencio.core.Element;
 
 /**
  * Provides strategy for the JSON format that converts each passed value into empty string ("").
@@ -16,8 +16,8 @@ public class JSONEmptyStrategy extends AbstractStrategy {
     }
 
     @Override
-    public Value convert(Value value) {
-        return new Value("");
+    public Element convert(Element value) {
+        return new Element("", "");
     }
 
     @Override

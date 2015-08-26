@@ -1,8 +1,8 @@
 package pl.szczepanik.silencio.stubs;
 
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.api.Value;
 import pl.szczepanik.silencio.core.AbstractStrategy;
+import pl.szczepanik.silencio.core.Element;
 
 /**
  * Stub strategy that has only stub methods.
@@ -16,7 +16,7 @@ public class StubStrategy extends AbstractStrategy {
     }
 
     @Override
-    public Value convert(Value value) {
+    public Element convert(Element value) {
         return value;
     }
 
