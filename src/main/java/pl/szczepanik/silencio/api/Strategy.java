@@ -1,5 +1,7 @@
 package pl.szczepanik.silencio.api;
 
+import pl.szczepanik.silencio.core.Element;
+
 /**
  * Contract for all strategies.
  * 
@@ -17,7 +19,7 @@ public interface Strategy {
      * @param value value that shall be converted
      * @return new value
      */
-     Value convert(Value value);
+     Element convert(Element value);
 
     /**
      * Called by the processor each time new content is loaded.

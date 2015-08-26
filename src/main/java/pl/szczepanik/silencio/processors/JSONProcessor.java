@@ -14,9 +14,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Strategy;
-import pl.szczepanik.silencio.api.Value;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
+import pl.szczepanik.silencio.core.Element;
 
 /**
  * Provides processor that supports JSON format.
@@ -49,17 +49,16 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
-        // TODO: don't allow to process if content was not properly loaded - add state machine
         resetStrategies();
         processMap(jsonStructure);
     }
 
     @SuppressWarnings("unchecked")
-    private void processComplex(Object value) {
+    private void processComplex(String key, Object value) {
         if (isMap(value)) {
             processMap((Map) value);
         } else if (isArray(value)) {
-            processArray((List) value);
+            processArray(key, (List) value);
         } else {
             throw new ProcessorException("Unknown type of the key: " + value.getClass().getName());
         }
@@ -69,26 +68,26 @@ public class JSONProcessor extends AbstractProcessor {
         for (String key : map.keySet()) {
             Object value = map.get(key);
             if (isBasicType(value)) {
-                map.put(key, processBasicType(value).getObject());
+                map.put(key, processBasicType(key, value).getValue());
             } else {
-                processComplex(value);
+                processComplex(key, value);
             }
         }
     }
 
-    private void processArray(List<Object> list) {
+    private void processArray(String key, List<Object> list) {
         for (int i = 0; i < list.size(); i++) {
             Object value = list.get(i);
             if (isBasicType(value)) {
-                list.set(i, processBasicType(value).getObject());
+                list.set(i, processBasicType(key, value).getValue());
             } else {
-                processComplex(value);
+                processComplex(key, value);
             }
         }
     }
 
-    private Value processBasicType(Object value) {
-        Value converted = new Value(value);
+    private Element processBasicType(String key, Object value) {
+        Element converted = new Element(key, value);
         for (Strategy strategy : strategies) {
             converted = strategy.convert(converted);
         }
