@@ -7,19 +7,19 @@ import org.junit.Test;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class ElementTest {
+public class KeyTest {
 
     @Test
-    public void shouldReturnValue() {
+    public void shouldReturnKey() {
 
         // given
-        String value = "twoValue";
+        String keyString = "oneKey";
 
         // when
-        Value element = new Value(value);
+        Key key = new Key(keyString);
 
         // then
-        assertThat(element.getValue()).isEqualTo(value);
+        assertThat(key.getKey()).isEqualTo(keyString);
     }
 
 }

@@ -15,8 +15,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.core.AbstractProcessor;
+import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.core.Element;
+import pl.szczepanik.silencio.core.Value;
 
 /**
  * Provides processor that supports JSON format.
@@ -37,7 +38,6 @@ public class JSONProcessor extends AbstractProcessor {
         mapper.enable(DeserializationFeature.USE_BIG_DECIMAL_FOR_FLOATS);
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public void realLoad(Reader reader) {
         try {
@@ -56,17 +56,19 @@ public class JSONProcessor extends AbstractProcessor {
     @SuppressWarnings("unchecked")
     private void processComplex(String key, Object value) {
         if (isMap(value)) {
-            processMap((Map) value);
+            processMap((Map<String, Object>) value);
         } else if (isArray(value)) {
-            processArray(key, (List) value);
+            processArray(key, (List<Object>) value);
         } else {
             throw new ProcessorException("Unknown type of the key: " + value.getClass().getName());
         }
     }
 
     private void processMap(Map<String, Object> map) {
-        for (String key : map.keySet()) {
-            Object value = map.get(key);
+        for (Map.Entry<String, Object> keyMap : map.entrySet()) {
+            String key = keyMap.getKey();
+            Object value = keyMap.getValue();
+
             if (isBasicType(value)) {
                 map.put(key, processBasicType(key, value).getValue());
             } else {
@@ -86,13 +88,13 @@ public class JSONProcessor extends AbstractProcessor {
         }
     }
 
-    private Element processBasicType(String key, Object value) {
-        Element converted = new Element(key, value);
+    private Value processBasicType(String key, Object value) {
+        Value newValue = new Value(value);
         for (Strategy strategy : strategies) {
-            converted = strategy.convert(converted);
+            newValue = strategy.convert(new Key(key), newValue);
         }
 
-        return converted;
+        return newValue;
     }
 
     private boolean isMap(Object value) {
