@@ -1,6 +1,7 @@
 package pl.szczepanik.silencio.api;
 
-import pl.szczepanik.silencio.core.Element;
+import pl.szczepanik.silencio.core.Key;
+import pl.szczepanik.silencio.core.Value;
 
 /**
  * Contract for all strategies.
@@ -11,10 +12,11 @@ public interface Strategy {
 
     /**
      * Converts value passed to this strategy into new value.
+     * @param key key mapped with passed value
      * @param value value that shall be converted
-     * @return new value
+     * @return changed value
      */
-     Element convert(Element value);
+     Value convert(Key key, Value value);
 
     /**
      * Called by the processor each time new content is loaded.

@@ -1,19 +1,19 @@
-package pl.szczepanik.silencio.stubs;
+package pl.szczepanik.silencio.converters;
 
 import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
 /**
- * Stub strategy that has only stub methods.
+ * Provides converter that converts each passed value into empty string ("").
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class StubConverter implements Strategy {
+public class Empty implements Strategy {
 
     @Override
     public Value convert(Key key, Value value) {
-        return value;
+        return new Value("");
     }
 
     @Override
