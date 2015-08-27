@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.core.Value;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class Empty implements Strategy {
+public class Blank implements Strategy {
 
     @Override
     public Value convert(Key key, Value value) {

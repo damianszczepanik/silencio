@@ -1,8 +1,11 @@
 package pl.szczepanik.silencio;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+
+import org.apache.commons.io.IOUtils;
 
 import pl.szczepanik.silencio.core.ProcessorException;
 
@@ -11,12 +14,23 @@ import pl.szczepanik.silencio.core.ProcessorException;
  */
 public class TestUtils {
 
-    public static Reader loadJson(String fileName) {
+    public static Reader loadJsonAsReader(String fileName) {
+        return new InputStreamReader(loadJsonAsStream(fileName));
+    }
+
+    public static String loadJSonAsString(String fileName) {
         try {
-            return new InputStreamReader(TestUtils.class.getClassLoader().getResource("json/" + fileName).openStream());
+            return IOUtils.toString(loadJsonAsStream(fileName), "UTF-8");
         } catch (IOException e) {
             throw new ProcessorException(e);
         }
+    }
 
+    private static InputStream loadJsonAsStream(String fileName) {
+        try {
+            return TestUtils.class.getClassLoader().getResource("json/" + fileName).openStream();
+        } catch (IOException e) {
+            throw new ProcessorException(e);
+        }
     }
 }
