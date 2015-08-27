@@ -3,7 +3,7 @@ package pl.szczepanik.silencio.core;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.api.Strategy;
-import pl.szczepanik.silencio.converters.Empty;
+import pl.szczepanik.silencio.converters.Blank;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 
 /**
@@ -26,5 +26,5 @@ public final class ConverterBuilder {
     /**
      * Provides list of strategies that are supported by default
      */
-    public static final Strategy MAKE_EMPTY = new Empty();
+    public static final Strategy BLANK = new Blank();
 }
