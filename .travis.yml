@@ -1,3 +1,9 @@
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "rumJzPX8ade8PN3svS4HcVNNFRh0/wbAFHaaZuFARiS0FKDnWQ5xUl7I+xeE6+PI4r5hZJWH6C74wgvbTwS2OsSrruBYR4l7YjGneu8YRQwYuCxsS66X1Pslss1ykqEuuX6+pk5dovhve8oAO3jR3Jkm4pdC0kSAVsnpYjbC7mU4s916h5i2reYt2VamZ+2HCfNlOp8yKLZSNWxubp7FaV0O1qx9g9SIHnvO/m/aoH+NHu0lZh9Sdw7YrjV22ESyrd7cyI93TshVHiswNDwIZcahfgH0I81SNHeuIeARiBVr/2495obMbR2WC/3BrdfeMekpoipFIoWf18s/Bp5KmfZJaxeObRiT+LL3dgqIKVyz2bT7wQIwIVNShODO0zjoLK7hO+7WSEMLMvpoUEuprO9037Mbn20TkCbsTlax0qQeh0Oe+sgLLjxyuTTIf5m+ObwgsEAe05+yaY60A51w20iva8A+qAKbbf08gBBZEf7PKY4XZF4/T44BaXWabbVPBI8XOT8UWLFxc1jIb5T6feVIcR6y30b8N0145BJbW1AXJjpg/BS05+AmqYJXkNUwSGMj/SaS5KMXsSPCsnfVtCZaYmUlT8QbGYVXuauCpDvQpESWHEkPmm6tXCt41d+jYMDMxaPokzRI90s/CbfhDYRiUMeXaT11/3v6ZTo4458="
+
 language: java
 
 jdk:
@@ -7,3 +13,17 @@ jdk:
 
 after_success:
   bash <(curl -s https://codecov.io/bash)
+
+addons:
+  coverity_scan:
+    project:
+      name: "damianszczepanik/silencio"
+      description: "Build submitted via Travis CI"
+    # Where email notification of build analysis results will be sent
+    notification_email: damian.publicemail@gmail.com
+    # Commands to prepare for build_command
+    build_command_prepend: "mvn clean"
+    # The command that will be added as an argument to "cov-build" to compile your project for analysis,
+    build_command:   "mvn -DskipTests=true compile"
+    # Pattern to match selecting branches that will run analysis.
+    branch_pattern: coverity_scan
