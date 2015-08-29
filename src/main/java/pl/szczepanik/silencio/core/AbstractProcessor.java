@@ -4,24 +4,29 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Arrays;
 
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.api.Strategy;
 
+/**
+ * Provides helper methods for processors.
+ * 
+ * @author Damian Szczepanik <damianszczepanik@github>
+ */
 public abstract class AbstractProcessor implements Processor {
 
     protected final Format format;
-    protected final Strategy[] strategies;
+    protected final Converter[] converters;
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 
-    public AbstractProcessor(Format format, Strategy[] strategies) {
+    public AbstractProcessor(Format format, Converter[] converties) {
         validateFormat(format);
-        validateStrategies(strategies);
+        validateConverters(converties);
 
         this.format = format;
         // deep copy to prevent manipulating on private list
-        this.strategies = Arrays.copyOf(strategies, strategies.length);
+        this.converters = Arrays.copyOf(converties, converties.length);
     }
 
     @Override
@@ -30,11 +35,11 @@ public abstract class AbstractProcessor implements Processor {
     }
 
     /**
-     * Calls {@link Strategy#reset()} method on each strategies.
+     * Calls {@link Converter#reset()} method on each converter.
      */
-    protected void initStrategies() {
-        for (Strategy strategy : strategies) {
-            strategy.init();
+    protected void initConverties() {
+        for (Converter converter : converters) {
+            converter.init();
         }
     }
 
@@ -69,13 +74,13 @@ public abstract class AbstractProcessor implements Processor {
         }
     }
 
-    private void validateStrategies(Strategy[] strategies) {
-        if (strategies == null || strategies.length == 0) {
-            throw new IntegrityException("Array with strategies must not be empty!");
+    private void validateConverters(Converter[] converters) {
+        if (converters == null || converters.length == 0) {
+            throw new IntegrityException("Array with converters must not be empty!");
         }
-        for (int i = 0; i < strategies.length; i++) {
-            if (strategies[i] == null) {
-                throw new IntegrityException(String.format("Strategy passed on index %d is null!", i));
+        for (int i = 0; i < converters.length; i++) {
+            if (converters[i] == null) {
+                throw new IntegrityException(String.format("Converter passed on index %d is null!", i));
             }
         }
     }

@@ -4,7 +4,7 @@ import java.io.Reader;
 import java.io.Writer;
 
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.api.Strategy;
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 
 /**
@@ -14,8 +14,8 @@ import pl.szczepanik.silencio.core.AbstractProcessor;
  */
 public class StubAbstractProcessor extends AbstractProcessor {
 
-    public StubAbstractProcessor(Format format, Strategy[] strategies) {
-        super(format, strategies);
+    public StubAbstractProcessor(Format format, Converter[] converters) {
+        super(format, converters);
     }
 
     @Override

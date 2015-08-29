@@ -4,14 +4,14 @@ import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
 /**
- * Contract for all strategies.
+ * Contract for all converters.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public interface Strategy {
+public interface Converter {
 
     /**
-     * Converts value passed to this strategy into new value.
+     * Converts value passed to this converter into new value.
      * @param key key mapped with passed value
      * @param value value that shall be converted
      * @return changed value

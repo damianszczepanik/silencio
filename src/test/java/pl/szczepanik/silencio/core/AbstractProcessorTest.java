@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.fail;
 
 import org.junit.Test;
 
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.stubs.StubAbstractProcessor;
 import pl.szczepanik.silencio.stubs.StubConverter;
 
@@ -20,11 +20,11 @@ public class AbstractProcessorTest {
     public void shouldReturnValidFormat() {
 
         // given
-        Strategy[] strategies = { new StubConverter() };
+        Converter[] converters = { new StubConverter() };
         Format format = Format.XML;
 
         // when
-        Processor processor = new StubAbstractProcessor(format, strategies);
+        Processor processor = new StubAbstractProcessor(format, converters);
 
         // then
         assertThat(processor.getFormat()).isEqualTo(format);
@@ -34,14 +34,14 @@ public class AbstractProcessorTest {
     public void shouldFailWhenBuildFromEmptyFormat() {
 
         // given
-        Strategy[] strategies = { new StubConverter() };
+        Converter[] converters = { new StubConverter() };
 
         // when
         Format format = null;
 
         // then
         try {
-            new StubAbstractProcessor(format, strategies);
+            new StubAbstractProcessor(format, converters);
             fail("Expected exceeption");
         } catch (IntegrityException e) {
             assertThat(e).hasMessage("Format must not be null!");
@@ -49,56 +49,56 @@ public class AbstractProcessorTest {
     }
 
     @Test
-    public void shouldFailWhenBuildFromNullStrategy() {
+    public void shouldFailWhenBuildFromNullConverter() {
 
         // given
         Format format = Format.XML;
 
         // when
-        Strategy[] strategy = null;
+        Converter[] converter = null;
 
         // then
         try {
-            new StubAbstractProcessor(format, strategy);
+            new StubAbstractProcessor(format, converter);
             fail("Expected exceeption");
         } catch (IntegrityException e) {
-            assertThat(e).hasMessage("Array with strategies must not be empty!");
+            assertThat(e).hasMessage("Array with converters must not be empty!");
         }
     }
 
     @Test
-    public void shouldFailWhenBuildFromEmptyStrategy() {
+    public void shouldFailWhenBuildFromEmptyConverter() {
 
         // given
         Format format = Format.XML;
 
         // when
-        Strategy[] strategy = {};
+        Converter[] converter = {};
 
         // then
         try {
-            new StubAbstractProcessor(format, strategy);
+            new StubAbstractProcessor(format, converter);
             fail("Expected exceeption");
         } catch (IntegrityException e) {
-            assertThat(e).hasMessage("Array with strategies must not be empty!");
+            assertThat(e).hasMessage("Array with converters must not be empty!");
         }
     }
 
     @Test
-    public void shouldFailWhenBuildFromOneOfEmptyStrategy() {
+    public void shouldFailWhenBuildFromOneOfEmptyConverter() {
 
         // given
         Format format = Format.JSON;
 
         // when
-        Strategy[] strategies = { new StubConverter(), null };
+        Converter[] converters = { new StubConverter(), null };
 
         // then
         try {
-            new StubAbstractProcessor(format, strategies);
+            new StubAbstractProcessor(format, converters);
             fail("Expected exceeption");
         } catch (IntegrityException e) {
-            assertThat(e).hasMessage("Strategy passed on index 1 is null!");
+            assertThat(e).hasMessage("Converter passed on index 1 is null!");
         }
     }
 
