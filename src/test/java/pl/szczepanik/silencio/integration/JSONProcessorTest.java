@@ -13,10 +13,14 @@ import org.junit.Test;
 import com.fasterxml.jackson.core.JsonParseException;
 
 import pl.szczepanik.silencio.TestUtils;
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
+import pl.szczepanik.silencio.processors.JSONProcessor;
+import pl.szczepanik.silencio.stubs.StubConverter;
+import pl.szczepanik.silencio.utils.ReflectionUtil;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -64,4 +68,21 @@ public class JSONProcessorTest {
         }
     }
 
+    @Test
+    public void shouldReportExceptionOnUnsupportedModel() {
+
+        // when
+        String key = "myKey";
+        Object value = new Object();
+        JSONProcessor tested = new JSONProcessor(new Converter[] { new StubConverter() });
+
+        // then
+        try {
+            ReflectionUtil.invokeMethod(tested, "processComplex", Void.class, key, value);
+            fail("expected exception");
+        } catch (Exception e) {
+            assertThat(e).isInstanceOf(ProcessorException.class);
+            assertThat(e.getMessage()).isEqualTo("Unknown type of the key: " + value.getClass().getName());
+        }
+    }
 }
