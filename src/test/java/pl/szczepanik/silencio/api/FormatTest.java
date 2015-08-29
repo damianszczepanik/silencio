@@ -8,8 +8,6 @@ import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.stubs.StubFormat;
 
 /**
- * Default factory implementation that holds processors.
- * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public class FormatTest {

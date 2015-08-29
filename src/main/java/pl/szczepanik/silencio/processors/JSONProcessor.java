@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.api.Strategy;
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.ProcessorException;
@@ -30,8 +30,8 @@ public class JSONProcessor extends AbstractProcessor {
 
     private Map<String, Object> jsonStructure;
 
-    public JSONProcessor(Strategy[] strategies) {
-        super(Format.JSON, strategies);
+    public JSONProcessor(Converter[] converters) {
+        super(Format.JSON, converters);
 
         mapper = new ObjectMapper();
         // this prevents printing eg. 2.20 as 2.2
@@ -49,7 +49,7 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
-        initStrategies();
+        initConverties();
         processMap(jsonStructure);
     }
 
@@ -90,8 +90,8 @@ public class JSONProcessor extends AbstractProcessor {
 
     private Value processBasicType(String key, Object value) {
         Value newValue = new Value(value);
-        for (Strategy strategy : strategies) {
-            newValue = strategy.convert(new Key(key), newValue);
+        for (Converter converter : converters) {
+            newValue = converter.convert(new Key(key), newValue);
         }
 
         return newValue;

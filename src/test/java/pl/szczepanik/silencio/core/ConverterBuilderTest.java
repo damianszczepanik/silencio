@@ -5,9 +5,9 @@ import static org.assertj.core.api.Assertions.fail;
 
 import org.junit.Test;
 
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.stubs.StubConverter;
 
 /**
@@ -16,32 +16,32 @@ import pl.szczepanik.silencio.stubs.StubConverter;
 public class ConverterBuilderTest {
 
     @Test
-    public void shouldNotFailWhenPassingAnyStrategy() {
+    public void shouldNotFailWhenPassingAnyConverter() {
 
         // when
         Format format = Format.JSON;
-        Strategy[] strategies = { new StubConverter(), new StubConverter() };
+        Converter[] converters = { new StubConverter(), new StubConverter() };
 
         // then
-        Processor processor = ConverterBuilder.build(format, strategies);
+        Processor processor = ConverterBuilder.build(format, converters);
 
         // then
         assertThat(processor).isNotNull();
     }
 
     @Test
-    public void shouldFailWhenPassingNoneStrategy() {
+    public void shouldFailWhenPassingNoneConverter() {
 
         // when
         Format format = Format.XML;
-        Strategy[] strategies = null;
+        Converter[] converters = null;
 
         // then
         try {
-            ConverterBuilder.build(format, strategies);
+            ConverterBuilder.build(format, converters);
             fail("expected exception");
         } catch (IntegrityException e) {
-            assertThat(e.getMessage()).isEqualTo("Array with strategies must not be empty!");
+            assertThat(e.getMessage()).isEqualTo("Array with converters must not be empty!");
         }
     }
 

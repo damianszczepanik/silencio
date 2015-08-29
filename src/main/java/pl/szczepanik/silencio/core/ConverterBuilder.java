@@ -1,8 +1,8 @@
 package pl.szczepanik.silencio.core;
 
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.api.Strategy;
 import pl.szczepanik.silencio.converters.Blank;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 
@@ -13,18 +13,18 @@ import pl.szczepanik.silencio.processors.JSONProcessor;
  */
 public final class ConverterBuilder {
 
-    public static Processor build(Format format, Strategy... strategiesToApply) {
-        Strategy[] strategyList = {};
+    public static Processor build(Format format, Converter... converterToApply) {
+        Converter[] converterList = {};
         // may happen when calling build(format)
-        if (strategiesToApply != null) {
-            strategyList = strategiesToApply;
+        if (converterToApply != null) {
+            converterList = converterToApply;
         }
-        return new JSONProcessor(strategyList);
+        return new JSONProcessor(converterList);
     }
 
 
     /**
-     * Provides list of strategies that are supported by default
+     * Provides list of converters that are supported by default
      */
-    public static final Strategy BLANK = new Blank();
+    public static final Converter BLANK = new Blank();
 }
