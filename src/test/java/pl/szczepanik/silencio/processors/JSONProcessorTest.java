@@ -1,13 +1,14 @@
-package pl.szczepanik.silencio.integration;
+package pl.szczepanik.silencio.processors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.fail;
 
 import java.io.IOException;
 import java.io.Reader;
-import java.io.StringWriter;
 import java.io.Writer;
 
+import org.apache.commons.io.IOUtils;
+import org.junit.After;
 import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
@@ -18,7 +19,6 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.stubs.StubConverter;
 import pl.szczepanik.silencio.utils.ReflectionUtil;
 
@@ -27,33 +27,13 @@ import pl.szczepanik.silencio.utils.ReflectionUtil;
  */
 public class JSONProcessorTest {
 
-    @Test
-    public void shouldRemoveAllKeysFromJSONFile() throws IOException {
-
-        // given
-        Reader input = TestUtils.loadJsonAsReader("suv.json");
-        Writer output = new StringWriter();
-
-        // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
-        processor.load(input);
-        processor.process();
-        processor.write(output);
-
-        // then
-        String reference = TestUtils.loadJSonAsString("suv_blank.json");
-        assertThat(output.toString()).isEqualTo(reference);
-
-        // don't forget
-        input.close();
-        output.close();
-    }
-
+    private Writer output;
+    private Reader input;
     @Test
     public void shouldFailWhenLoadingInvalidJSONFile() {
 
         // given
-        Reader input = TestUtils.loadJsonAsReader("corrupted.json");
+        input = TestUtils.loadJsonAsReader("corrupted.json");
 
         // when
         Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
@@ -85,4 +65,48 @@ public class JSONProcessorTest {
             assertThat(e.getMessage()).isEqualTo("Unknown type of the key: " + value.getClass().getName());
         }
     }
+
+    @Test
+    public void shouldFailWhenWrittingToInvalidWriter() {
+
+        final String errorMessage = "Don't write into this writter!";
+        // given
+
+         input = TestUtils.loadJsonAsReader("empty.json");
+         output = new Writer() {
+
+            @Override
+            public void write(char[] cbuf, int off, int len) throws IOException {
+                throw new IOException(errorMessage);
+            }
+
+            @Override
+            public void flush() throws IOException {
+            }
+
+            @Override
+            public void close() throws IOException {
+            }
+        };
+
+        // when
+        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
+        processor.load(input);
+        processor.process();
+
+        // then
+        try {
+            processor.write(output);
+            fail("expected exception");
+        } catch (ProcessorException e) {
+            assertThat(e.getCause().getMessage()).isEqualTo(errorMessage);
+        }
+    }
+
+    @After
+    public void closeStreams() {
+        IOUtils.closeQuietly(input);
+        IOUtils.closeQuietly(output);
+    }
+
 }

@@ -6,6 +6,10 @@
     "height":2.05,
     "width":2.200
   },
+  "weight":{
+    "value":2.200,
+    "unit":"ton"
+  },
   "accessories":[
     "sunroof",
     "radio"

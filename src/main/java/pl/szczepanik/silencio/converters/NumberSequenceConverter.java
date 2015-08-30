@@ -12,7 +12,7 @@ import pl.szczepanik.silencio.core.Value;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class NumberSequence implements Converter {
+public class NumberSequenceConverter implements Converter {
 
     // Reserved for null value
     private static final int NULL_INDEX = 0;

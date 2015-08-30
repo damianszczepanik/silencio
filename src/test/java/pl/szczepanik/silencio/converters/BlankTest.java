@@ -18,7 +18,7 @@ public class BlankTest {
     public void shouldReturnEmptyValue() {
 
         // given
-        Converter blank = new Blank();
+        Converter blank = new BlankConverter();
         Key key = new Key("funnyKey");
         Value value = new Value(StubFormat.class);
 

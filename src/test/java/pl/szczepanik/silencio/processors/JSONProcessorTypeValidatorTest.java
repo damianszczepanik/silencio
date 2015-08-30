@@ -1,4 +1,4 @@
-package pl.szczepanik.silencio.integration;
+package pl.szczepanik.silencio.processors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
