@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.core.Value;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class Blank implements Converter {
+public class BlankConverter implements Converter {
 
     @Override
     public Value convert(Key key, Value value) {

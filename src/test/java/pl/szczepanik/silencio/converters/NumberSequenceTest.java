@@ -17,7 +17,7 @@ public class NumberSequenceTest {
     public void shouldReturnValueWhenPassingNull() {
 
         // given
-        Converter blank = new NumberSequence();
+        Converter blank = new NumberSequenceConverter();
         Key key = new Key("funnyKey");
         Value value = new Value(null);
 
@@ -32,7 +32,7 @@ public class NumberSequenceTest {
     public void shouldReturnSameValuesWhenPassingEqualsValues() {
 
         // given having 2 values with the same value (compareTo returns true) but different reference
-        Converter blank = new NumberSequence();
+        Converter blank = new NumberSequenceConverter();
         Key key = new Key("funnyKey");
         Value value1 = new Value(Integer.toBinaryString(12345));
         Value value2 = new Value(Integer.toBinaryString(12345));
@@ -49,7 +49,7 @@ public class NumberSequenceTest {
     @Test
     public void shouldReturnDifferentValuesWhenPassingDifferentValue() {
 
-        Converter blank = new NumberSequence();
+        Converter blank = new NumberSequenceConverter();
         Key key = new Key("funnyKey");
         Value value1 = new Value(Integer.toBinaryString(12345));
         Value value2 = new Value(Integer.toBinaryString(54321));
@@ -67,7 +67,7 @@ public class NumberSequenceTest {
     public void shouldReturnSameValuesWhenPassingSameValue() {
 
         // given
-        Converter blank = new NumberSequence();
+        Converter blank = new NumberSequenceConverter();
         Key key = new Key("funnyKey");
         Value value = new Value(Integer.toBinaryString(12345));
 

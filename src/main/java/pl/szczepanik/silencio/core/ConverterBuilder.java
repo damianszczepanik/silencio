@@ -3,7 +3,8 @@ package pl.szczepanik.silencio.core;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.converters.Blank;
+import pl.szczepanik.silencio.converters.BlankConverter;
+import pl.szczepanik.silencio.converters.NumberSequenceConverter;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 
 /**
@@ -26,5 +27,6 @@ public final class ConverterBuilder {
     /**
      * Provides list of converters that are supported by default
      */
-    public static final Converter BLANK = new Blank();
+    public static final Converter BLANK = new BlankConverter();
+    public static final Converter NUMBER_SEQUENCE = new NumberSequenceConverter();
 }
