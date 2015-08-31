@@ -14,6 +14,8 @@ public class ProcessorStateMachine {
         PROCESSED;
     }
 
+    private final static String ERROR_MESSAGE = "This operation is not allowed for this state: ";
+
     /**
      * Information about current state.
      */
@@ -27,7 +29,7 @@ public class ProcessorStateMachine {
      */
     public void validateProcess() {
         if (state == States.CREATED) {
-            reportViolation();
+            throw new ProcessorException(ERROR_MESSAGE + state.name());
         }
     }
 
@@ -39,16 +41,10 @@ public class ProcessorStateMachine {
      */
     public void validateWrite() {
         if (state != States.PROCESSED) {
-            reportViolation();
+            throw new ProcessorException(ERROR_MESSAGE + state.name());
         }
     }
 
-    /**
-     * Throws an exception with information that for given state requested operation is not allowed.
-     */
-    private void reportViolation() {
-        throw new ProcessorException("This operation is not allowed for this state: " + state.name());
-    }
 
     /**
      * Changes state into new one.
