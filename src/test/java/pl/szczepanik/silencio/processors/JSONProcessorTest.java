@@ -13,7 +13,6 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.core.JsonParseException;
 
-import pl.szczepanik.silencio.TestUtils;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -21,6 +20,7 @@ import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.stubs.StubConverter;
 import pl.szczepanik.silencio.utils.ReflectionUtil;
+import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -33,7 +33,7 @@ public class JSONProcessorTest {
     public void shouldFailWhenLoadingInvalidJSONFile() {
 
         // given
-        input = TestUtils.loadJsonAsReader("corrupted.json");
+        input = ResourceLoader.loadJsonAsReader("corrupted.json");
 
         // when
         Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
@@ -72,7 +72,7 @@ public class JSONProcessorTest {
         final String errorMessage = "Don't write into this writter!";
         // given
 
-         input = TestUtils.loadJsonAsReader("empty.json");
+         input = ResourceLoader.loadJsonAsReader("empty.json");
          output = new Writer() {
 
             @Override
