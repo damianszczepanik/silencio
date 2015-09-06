@@ -11,9 +11,11 @@ import java.util.Map;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.databind.SerializationFeature;
 
-import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Converter;
+import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.ProcessorException;
@@ -119,8 +121,9 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public void realWrite(Writer writer) {
+        ObjectWriter objectWriter = mapper.writer().with(SerializationFeature.INDENT_OUTPUT);
         try {
-            mapper.writeValue(writer, jsonStructure);
+            objectWriter.writeValue(writer, jsonStructure);
         } catch (IOException e) {
             throw new ProcessorException(e);
         }

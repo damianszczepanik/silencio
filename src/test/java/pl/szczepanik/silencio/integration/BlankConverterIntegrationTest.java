@@ -10,10 +10,10 @@ import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Test;
 
-import pl.szczepanik.silencio.TestUtils;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -27,7 +27,7 @@ public class BlankConverterIntegrationTest {
     public void shouldProcessNumberSequenceConverter() {
 
         // given
-        input = TestUtils.loadJsonAsReader("suv.json");
+        input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
 
         // when
@@ -37,7 +37,7 @@ public class BlankConverterIntegrationTest {
         processor.write(output);
 
         // then
-        String reference = TestUtils.loadJSonAsString("suv_numbersequence.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_numbersequence.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 
