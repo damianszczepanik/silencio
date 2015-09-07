@@ -7,6 +7,7 @@ import pl.szczepanik.silencio.converters.BlankConverter;
 import pl.szczepanik.silencio.converters.NumberSequenceConverter;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.processors.PropertiesProcessor;
+import pl.szczepanik.silencio.processors.XMLProcessor;
 
 /**
  * Default implementation of class that holds processors.
@@ -15,12 +16,19 @@ import pl.szczepanik.silencio.processors.PropertiesProcessor;
  */
 public final class ConverterBuilder {
 
+    /**
+     * Provides list of converters that are supported by default
+     */
+    public static final Converter BLANK = new BlankConverter();
+    public static final Converter NUMBER_SEQUENCE = new NumberSequenceConverter();
+
     public static Processor build(Format format, Converter... converterToApply) {
         Converter[] converters = {};
         // may happen when calling build(format)
         if (converterToApply != null) {
             converters = converterToApply;
         }
+
         Processor processor = buildProcessor(format);
         processor.setConverters(converters);
 
@@ -32,13 +40,10 @@ public final class ConverterBuilder {
             return new JSONProcessor();
         } else if (Format.PROPERTIES.getName().equals(format.getName())) {
             return new PropertiesProcessor();
+        } else if (Format.XML.getName().equals(format.getName())) {
+            return new XMLProcessor();
         }
-        throw new IntegrityException("Unsupported format: " + format.getName());
+        throw new ProcessorException("Unsupported format:" + format.getName());
     }
 
-    /**
-     * Provides list of converters that are supported by default.
-     */
-    public static final Converter BLANK = new BlankConverter();
-    public static final Converter NUMBER_SEQUENCE = new NumberSequenceConverter();
 }
