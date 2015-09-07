@@ -3,7 +3,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.silencio</groupId>
     <artifactId>silencio</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
+    <version>1.0.0-SNAPSHOT</version>
+    <name>silencio</name>
     <url>https://github.com/damianszczepanik/silencio</url>
 
     <properties>
@@ -22,36 +24,62 @@
         </developer>
     </developers>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.assertj</groupId>
-            <artifactId>assertj-core</artifactId>
-            <version>2.1.0</version>
-            <scope>test</scope>
-        </dependency>
+    <scm>
+        <connection>scm:git:git@github.com:damianszczepanik/silencio.git</connection>
+        <developerConnection>scm:git:git@github.com:damianszczepanik/silencio.git</developerConnection>
+        <url>git@github.com:damianszczepanik/silencio.git</url>
+    </scm>
 
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-databind</artifactId>
-            <version>2.6.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.commons</groupId>
-            <artifactId>commons-io</artifactId>
-            <version>1.3.2</version>
-        </dependency>
-    </dependencies>
+    <description>
+        Silencio is a tool for transforming and converting JSON files.
+    </description>
+
+    <licenses>
+        <license>
+            <name>Apache License 2.0</name>
+            <url>http://www.apache.org/licenses/</url>
+        </license>
+    </licenses>
+
+    <profiles>
+        <profile>
+            <id>release-sign-artifacts</id>
+
+            <activation>
+                <property>
+                    <!-- will be set by the release plugin upon performing 
+                        mvn clean deploy -Prelease-sign-artifacts -->
+                    <name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
+
+            <properties>
+                <gpg.keyname>0738FA8F</gpg.keyname>
+                <release.username>Damian Szczepanik</release.username>
+            </properties>
+
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>1.6</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+
+        </profile>
+    </profiles>
 
     <build>
         <plugins>
@@ -85,5 +113,41 @@
             </plugin>
         </plugins>
     </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>2.1.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.6.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>2.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+    </dependencies>
 
 </project>
