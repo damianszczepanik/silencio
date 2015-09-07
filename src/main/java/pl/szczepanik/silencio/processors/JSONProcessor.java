@@ -17,9 +17,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
-import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.core.Value;
 
 /**
  * Provides processor that supports JSON format.
@@ -72,7 +70,7 @@ public class JSONProcessor extends AbstractProcessor {
             Object value = keyMap.getValue();
 
             if (isBasicType(value)) {
-                map.put(key, processBasicType(key, value).getValue());
+                map.put(key, processValue(key, value).getValue());
             } else {
                 processComplex(key, value);
             }
@@ -83,20 +81,11 @@ public class JSONProcessor extends AbstractProcessor {
         for (int i = 0; i < list.size(); i++) {
             Object value = list.get(i);
             if (isBasicType(value)) {
-                list.set(i, processBasicType(key, value).getValue());
+                list.set(i, processValue(key, value).getValue());
             } else {
                 processComplex(key, value);
             }
         }
-    }
-
-    private Value processBasicType(String key, Object value) {
-        Value newValue = new Value(value);
-        for (Converter converter : converters) {
-            newValue = converter.convert(new Key(key), newValue);
-        }
-
-        return newValue;
     }
 
     private boolean isMap(Object value) {

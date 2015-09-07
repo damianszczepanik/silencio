@@ -6,6 +6,7 @@ import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.BlankConverter;
 import pl.szczepanik.silencio.converters.NumberSequenceConverter;
 import pl.szczepanik.silencio.processors.JSONProcessor;
+import pl.szczepanik.silencio.processors.PropertiesProcessor;
 
 /**
  * Default implementation of class that holds processors.
@@ -20,9 +21,17 @@ public final class ConverterBuilder {
         if (converterToApply != null) {
             converterList = converterToApply;
         }
-        return new JSONProcessor(converterList);
+        return buildProcessor(format, converterList);
     }
 
+    private static Processor buildProcessor(Format format, Converter[] converterList) {
+        if (Format.JSON.getName().equals(format.getName())) {
+            return new JSONProcessor(converterList);
+        } else if (Format.PROPERTIES.getName().equals(format.getName())) {
+            return new PropertiesProcessor(converterList);
+        }
+        throw new IntegrityException("Unsupported format: " + format.getName());
+    }
 
     /**
      * Provides list of converters that are supported by default

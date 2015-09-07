@@ -16,6 +16,7 @@ public class ResourceLoader {
 
     private static final String JSON_DIR = "json/";
     private static final String XML_DIR = "xml/";
+    private static final String PROPERTIES_DIR = "property/";
 
     public static Reader loadJsonAsReader(String fileName) {
         return new InputStreamReader(loadFileAsStream(JSON_DIR + fileName));
@@ -31,6 +32,14 @@ public class ResourceLoader {
 
     public static String loadXmlAsString(String fileName) {
         return loadFileAsString(XML_DIR + fileName);
+    }
+
+    public static Reader loadPropertiesAsReader(String fileName) {
+        return new InputStreamReader(loadFileAsStream(PROPERTIES_DIR + fileName));
+    }
+
+    public static String loadPropertiesAsString(String fileName) {
+        return loadFileAsString(PROPERTIES_DIR + fileName);
     }
 
     private static String loadFileAsString(String fileName) {

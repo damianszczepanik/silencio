@@ -21,7 +21,7 @@ public class AbstractProcessorTest {
 
         // given
         Converter[] converters = { new StubConverter() };
-        Format format = Format.XML;
+        Format format = Format.PROPERTIES;
 
         // when
         Processor processor = new StubAbstractProcessor(format, converters);
@@ -52,7 +52,7 @@ public class AbstractProcessorTest {
     public void shouldFailWhenBuildFromNullConverter() {
 
         // given
-        Format format = Format.XML;
+        Format format = Format.PROPERTIES;
 
         // when
         Converter[] converter = null;
@@ -70,7 +70,7 @@ public class AbstractProcessorTest {
     public void shouldFailWhenBuildFromEmptyConverter() {
 
         // given
-        Format format = Format.XML;
+        Format format = Format.PROPERTIES;
 
         // when
         Converter[] converter = {};
