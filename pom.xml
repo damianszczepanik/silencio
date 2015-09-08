@@ -4,7 +4,7 @@
     <groupId>pl.damianszczepanik</groupId>
     <artifactId>silencio</artifactId>
     <packaging>jar</packaging>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>silencio</name>
     <url>https://github.com/damianszczepanik/silencio</url>
 
@@ -15,14 +15,22 @@
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
     </properties>
 
-    <developers>
-        <developer>
-            <id>damianszczepanik</id>
-            <name>Damian Szczepanik</name>
-            <email>damianszczepanik@github</email>
-            <url>https://github.com/damianszczepanik</url>
-        </developer>
-    </developers>
+    <parent>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
+    </parent>
+
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+        <repository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+    </distributionManagement>
 
     <scm>
         <connection>scm:git:git@github.com:damianszczepanik/silencio.git</connection>
@@ -40,6 +48,15 @@
             <url>http://www.apache.org/licenses/</url>
         </license>
     </licenses>
+
+    <developers>
+        <developer>
+            <id>damianszczepanik</id>
+            <name>Damian Szczepanik</name>
+            <email>damianszczepanik@github</email>
+            <url>https://github.com/damianszczepanik</url>
+        </developer>
+    </developers>
 
     <profiles>
         <profile>
@@ -91,6 +108,32 @@
                     <source>1.7</source>
                     <target>1.7</target>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+                <version>2.4</version>
+                <executions>
+                    <execution>
+                        <id>attach-sources</id>
+                        <goals>
+                            <goal>jar-no-fork</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
             <plugin>
                 <groupId>org.jacoco</groupId>
