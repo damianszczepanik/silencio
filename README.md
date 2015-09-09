@@ -24,7 +24,7 @@ The simplest way to understand how to use chosen processor with set of converter
 Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](https://github.com/damianszczepanik/silencio/blob/master/src/main/java/pl/szczepanik/silencio/core/ConverterBuilder.java) converters but if you still need your own then all you need to do is to implement ``convert()`` method and provide the algorithm you need. It might be very [simple](https://github.com/damianszczepanik/silencio/blob/master/src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
 
 ## Contribution
-[![Github Issues](http://githubbadges.herokuapp.com/damianszczepanik/silencio/issues.svg)](https://github.com/damianszczepanik/silencio/issues)
-[![Pending Pull-Requests](http://githubbadges.herokuapp.com/damianszczepanik/silencio/pulls.svg)](https://github.com/damianszczepanik/silencio/pulls)
+[![Issues](http://img.shields.io/badge/open%20issues-1-blue.svg)](https://github.com/damianszczepanik/silencio/issues)
+[![Pull-Requests](http://img.shields.io/badge/pending%20pull--requests-1-blue.svg)](https://github.com/damianszczepanik/silencio/pulls)
 
 When you implement new processor or converter you are more than welcome to [pull](https://github.com/damianszczepanik/silencio/pulls) this change and make someone happier!
