@@ -33,7 +33,7 @@ public class ConverterBuilderTest {
     public void shouldFailWhenPassingNoneConverter() {
 
         // when
-        Format format = Format.XML;
+        Format format = Format.PROPERTIES;
         Converter[] converters = null;
 
         // then
@@ -45,4 +45,19 @@ public class ConverterBuilderTest {
         }
     }
 
+    @Test
+    public void shouldFailWhenPassingInvalidFormat() {
+
+        // when
+        Format format = new Format("tr!cky") { };
+        Converter[] converters = { ConverterBuilder.BLANK };
+
+        // then
+        try {
+            ConverterBuilder.build(format, converters);
+            fail("expected exception");
+        } catch (IntegrityException e) {
+            assertThat(e.getMessage()).isEqualTo("Unsupported format: " + format.getName());
+        }
+    }
 }

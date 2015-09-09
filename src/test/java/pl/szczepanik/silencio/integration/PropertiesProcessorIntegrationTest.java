@@ -1,10 +1,12 @@
 package pl.szczepanik.silencio.integration;
 
-import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
@@ -13,32 +15,36 @@ import org.junit.Test;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.utils.PropertiesUtils;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class BlankConverterIntegrationTest {
+public class PropertiesProcessorIntegrationTest {
 
     private Writer output;
     private Reader input;
 
     @Test
-    public void shouldProcessNumberSequenceConverter() {
+    public void shouldProcessPropertiesFile() throws IOException {
 
         // given
-        input = ResourceLoader.loadJsonAsReader("suv.json");
+        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
         output = new StringWriter();
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.NUMBER_SEQUENCE);
+        Processor processor = ConverterBuilder.build(Format.PROPERTIES, ConverterBuilder.BLANK);
         processor.load(input);
         processor.process();
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_numbersequence.json");
-        assertThat(output.toString()).isEqualTo(reference);
+        Properties reference = new Properties();
+        reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_blank.properties")));
+        Properties converted = new Properties();
+        converted.load(new StringReader(output.toString()));
+        PropertiesUtils.assertEqual(reference, converted);
     }
 
     @After

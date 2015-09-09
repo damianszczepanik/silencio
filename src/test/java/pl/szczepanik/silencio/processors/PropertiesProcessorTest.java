@@ -11,8 +11,6 @@ import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Test;
 
-import com.fasterxml.jackson.core.JsonParseException;
-
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -25,27 +23,27 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class JSONProcessorTest {
+public class PropertiesProcessorTest {
 
     private Writer output;
     private Reader input;
 
     @Test
-    public void shouldFailWhenLoadingInvalidJSONFile() {
+    public void shouldFailWhenLoadingInvalidPropertiesFile() {
 
         // given
-        input = ResourceLoader.loadJsonAsReader("corrupted.json");
+        input = ResourceLoader.loadPropertiesAsReader("corrupted.properties");
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
+        Processor processor = ConverterBuilder.build(Format.PROPERTIES, ConverterBuilder.BLANK);
 
         // then
         try {
             processor.load(input);
             fail("Expected exception");
         } catch (ProcessorException e) {
-            assertThat(e.getCause()).isInstanceOf(JsonParseException.class);
-            assertThat(e.getMessage()).contains("Unexpected character");
+            assertThat(e.getCause()).isInstanceOf(IllegalArgumentException.class);
+            assertThat(e.getMessage()).contains("Malformed \\uxxxx encoding.");
         }
     }
 
@@ -73,7 +71,7 @@ public class JSONProcessorTest {
         final String errorMessage = "Don't write into this writter!";
         // given
 
-         input = ResourceLoader.loadJsonAsReader("empty.json");
+        input = ResourceLoader.loadPropertiesAsReader("empty.properties");
          output = new Writer() {
 
             @Override
@@ -91,7 +89,7 @@ public class JSONProcessorTest {
         };
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
+        Processor processor = ConverterBuilder.build(Format.PROPERTIES, ConverterBuilder.BLANK);
         processor.load(input);
         processor.process();
 

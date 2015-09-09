@@ -3,7 +3,7 @@ package pl.szczepanik.silencio.utils;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class ReflectionUtil {
+public class ReflectionUtils {
 
     public static <T> T invokeMethod(Object instance, String methodName, Class<T> returnType, Object... arguments)
             throws Exception {

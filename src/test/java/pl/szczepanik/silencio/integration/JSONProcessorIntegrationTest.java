@@ -18,26 +18,26 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class NumberSequenceConverterIntegrationTest {
+public class JSONProcessorIntegrationTest {
 
     private Writer output;
     private Reader input;
 
     @Test
-    public void shouldProcessBlankConverter() {
+    public void shouldProcessJSONFile() {
 
         // given
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
+        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.NUMBER_SEQUENCE);
         processor.load(input);
         processor.process();
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_blank.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_numbersequence.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 

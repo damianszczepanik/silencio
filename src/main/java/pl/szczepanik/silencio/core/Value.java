@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.api.Converter;
 // TODO: allow for IoC different implementation of this class based on what ConverterBuilder decides
 public class Value {
 
-    private Object value;
+    private final Object value;
 
     public Value(Object value) {
         this.value = value;

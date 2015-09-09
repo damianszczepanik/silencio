@@ -12,8 +12,8 @@ import pl.szczepanik.silencio.core.IntegrityException;
  */
 public abstract class Format {
 
-    /** Predefined format for XML files. */
-    public static final Format XML = new Format("XML") {};
+    /** Predefined format for property files. */
+    public static final Format PROPERTIES = new Format("PROPERTIES") {};
 
     /** Predefined format for JSON files. */
     public static final Format JSON = new Format("JSON"){};
