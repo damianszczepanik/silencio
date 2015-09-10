@@ -34,7 +34,7 @@ public final class ConverterBuilder {
     }
 
     /**
-     * Provides list of converters that are supported by default
+     * Provides list of converters that are supported by default.
      */
     public static final Converter BLANK = new BlankConverter();
     public static final Converter NUMBER_SEQUENCE = new NumberSequenceConverter();
