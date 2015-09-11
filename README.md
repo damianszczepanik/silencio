@@ -18,7 +18,7 @@ It is built from [processors](https://github.com/damianszczepanik/silencio/blob/
 
 ## Usage
 
-Add a maven dependency (using version from below shield) to your pom:
+Add a maven dependency (using version from above shield) to your pom:
 ```xml
 <dependency>
     <groupId>pl.damianszczepanik</groupId>
