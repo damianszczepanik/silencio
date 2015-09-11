@@ -15,8 +15,12 @@ import pl.szczepanik.silencio.core.AbstractProcessor;
 public class StubAbstractProcessor extends AbstractProcessor {
 
     public StubAbstractProcessor(Format format, Converter[] converters) {
-        super(format);
+        this(format);
         setConverters(converters);
+    }
+
+    public StubAbstractProcessor(Format format) {
+        super(format);
     }
 
     @Override

@@ -2,7 +2,9 @@ package pl.szczepanik.silencio.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.stubs.StubFormat;
@@ -11,6 +13,9 @@ import pl.szczepanik.silencio.stubs.StubFormat;
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public class FormatTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void shouldReturnFormatName() {
@@ -32,11 +37,9 @@ public class FormatTest {
         String emptyName = "";
 
         // then
-        try {
-            new StubFormat(emptyName);
-        } catch (IntegrityException e) {
-            assertThat(e).hasMessage("Name of the format must not be empty!");
-        }
+        thrown.expect(IntegrityException.class);
+        thrown.expectMessage("Name of the format must not be empty!");
+        new StubFormat(emptyName);
     }
 
     @Test

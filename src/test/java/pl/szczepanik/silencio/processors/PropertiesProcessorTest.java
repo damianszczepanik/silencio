@@ -1,7 +1,6 @@
 package pl.szczepanik.silencio.processors;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
+import static org.hamcrest.core.StringContains.containsString;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -9,7 +8,9 @@ import java.io.Writer;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
@@ -26,6 +27,9 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
  */
 public class PropertiesProcessorTest {
 
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
     private Writer output;
     private Reader input;
 
@@ -39,17 +43,13 @@ public class PropertiesProcessorTest {
         Processor processor = ConverterBuilder.build(Format.PROPERTIES, ConverterBuilder.BLANK);
 
         // then
-        try {
-            processor.load(input);
-            fail("Expected exception");
-        } catch (ProcessorException e) {
-            assertThat(e.getCause()).isInstanceOf(IllegalArgumentException.class);
-            assertThat(e.getMessage()).contains("Malformed \\uxxxx encoding.");
-        }
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage(containsString("Malformed \\uxxxx encoding."));
+        processor.load(input);
     }
 
     @Test
-    public void shouldReportExceptionOnUnsupportedModel() {
+    public void shouldReportExceptionOnUnsupportedModel() throws Exception {
 
         // when
         String key = "myKey";
@@ -58,13 +58,9 @@ public class PropertiesProcessorTest {
         processor.setConverters(new Converter[] { new StubConverter() });
 
         // then
-        try {
-            ReflectionUtils.invokeMethod(processor, "processComplex", Void.class, key, value);
-            fail("expected exception");
-        } catch (Exception e) {
-            assertThat(e).isInstanceOf(ProcessorException.class);
-            assertThat(e.getMessage()).isEqualTo("Unknown type of the key: " + value.getClass().getName());
-        }
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
+        ReflectionUtils.invokeMethod(processor, "processComplex", Void.class, key, value);
     }
 
     @Test
@@ -88,12 +84,9 @@ public class PropertiesProcessorTest {
         processor.process();
 
         // then
-        try {
-            processor.write(output);
-            fail("expected exception");
-        } catch (ProcessorException e) {
-            assertThat(e.getCause().getMessage()).isEqualTo(errorMessage);
-        }
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage(errorMessage);
+        processor.write(output);
     }
 
     @After
