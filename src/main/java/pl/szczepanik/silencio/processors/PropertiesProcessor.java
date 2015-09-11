@@ -5,7 +5,6 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Properties;
 
-import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
@@ -20,8 +19,8 @@ public class PropertiesProcessor extends AbstractProcessor {
 
     private final Properties properties = new Properties();
 
-    public PropertiesProcessor(Converter[] converters) {
-        super(Format.JSON, converters);
+    public PropertiesProcessor() {
+        super(Format.JSON);
     }
 
     @Override
@@ -39,7 +38,7 @@ public class PropertiesProcessor extends AbstractProcessor {
         initConverties();
         for (Object key : properties.keySet()) {
             Value newValue = processValue(key.toString(), properties.getProperty(key.toString()));
-            properties.put(key, newValue == null ? null : newValue.getValue().toString());
+            properties.put(key, newValue.getValue().toString());
         }
     }
 

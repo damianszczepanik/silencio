@@ -17,6 +17,12 @@ public interface Processor {
     Format getFormat();
 
     /**
+     * Defines list of converters that should be used by this processor.
+     * @param converters list of converters that should be applied
+     */
+    void setConverters(Converter[] converters);
+
+    /**
      * Reads content that will be processed.
      * @param reader content to process
      */

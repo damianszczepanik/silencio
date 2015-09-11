@@ -16,19 +16,22 @@ import pl.szczepanik.silencio.processors.PropertiesProcessor;
 public final class ConverterBuilder {
 
     public static Processor build(Format format, Converter... converterToApply) {
-        Converter[] converterList = {};
+        Converter[] converters = {};
         // may happen when calling build(format)
         if (converterToApply != null) {
-            converterList = converterToApply;
+            converters = converterToApply;
         }
-        return buildProcessor(format, converterList);
+        Processor processor = buildProcessor(format);
+        processor.setConverters(converters);
+
+        return processor;
     }
 
-    private static Processor buildProcessor(Format format, Converter[] converterList) {
+    private static Processor buildProcessor(Format format) {
         if (Format.JSON.getName().equals(format.getName())) {
-            return new JSONProcessor(converterList);
+            return new JSONProcessor();
         } else if (Format.PROPERTIES.getName().equals(format.getName())) {
-            return new PropertiesProcessor(converterList);
+            return new PropertiesProcessor();
         }
         throw new IntegrityException("Unsupported format: " + format.getName());
     }

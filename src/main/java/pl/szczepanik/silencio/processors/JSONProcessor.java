@@ -14,7 +14,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
-import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
@@ -30,8 +29,8 @@ public class JSONProcessor extends AbstractProcessor {
 
     private Map<String, Object> jsonStructure;
 
-    public JSONProcessor(Converter[] converters) {
-        super(Format.JSON, converters);
+    public JSONProcessor() {
+        super(Format.JSON);
 
         mapper = new ObjectMapper();
         // this prevents printing eg. 2.20 as 2.2
