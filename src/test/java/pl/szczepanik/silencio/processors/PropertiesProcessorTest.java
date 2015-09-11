@@ -54,11 +54,12 @@ public class PropertiesProcessorTest {
         // when
         String key = "myKey";
         Object value = new Object();
-        JSONProcessor tested = new JSONProcessor(new Converter[] { new StubConverter() });
+        JSONProcessor processor = new JSONProcessor();
+        processor.setConverters(new Converter[] { new StubConverter() });
 
         // then
         try {
-            ReflectionUtils.invokeMethod(tested, "processComplex", Void.class, key, value);
+            ReflectionUtils.invokeMethod(processor, "processComplex", Void.class, key, value);
             fail("expected exception");
         } catch (Exception e) {
             assertThat(e).isInstanceOf(ProcessorException.class);

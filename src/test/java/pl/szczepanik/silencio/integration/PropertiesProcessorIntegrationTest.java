@@ -15,6 +15,8 @@ import org.junit.Test;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
+import pl.szczepanik.silencio.processors.PropertiesProcessor;
 import pl.szczepanik.silencio.utils.PropertiesUtils;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
@@ -45,6 +47,16 @@ public class PropertiesProcessorIntegrationTest {
         Properties converted = new Properties();
         converted.load(new StringReader(output.toString()));
         PropertiesUtils.assertEqual(reference, converted);
+    }
+
+    @Test
+    public void shouldPassDiagnosticTests() {
+
+        // given
+        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+
+        // then
+        ProcessorSmokeChecker.validateProcessor(new PropertiesProcessor(), input);
     }
 
     @After

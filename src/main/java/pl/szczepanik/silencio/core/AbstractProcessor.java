@@ -16,22 +16,26 @@ import pl.szczepanik.silencio.api.Processor;
 public abstract class AbstractProcessor implements Processor {
 
     protected final Format format;
-    protected final Converter[] converters;
+    protected Converter[] converters;
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 
-    public AbstractProcessor(Format format, Converter[] converties) {
+    public AbstractProcessor(Format format) {
         validateFormat(format);
-        validateConverters(converties);
-
         this.format = format;
-        // deep copy to prevent manipulating on private list
-        this.converters = Arrays.copyOf(converties, converties.length);
     }
 
     @Override
     public Format getFormat() {
         return format;
+    }
+
+    @Override
+    public void setConverters(Converter[] converters) {
+        validateConverters(converters);
+
+        // deep copy to prevent manipulating on private list
+        this.converters = Arrays.copyOf(converters, converters.length);
     }
 
     /**

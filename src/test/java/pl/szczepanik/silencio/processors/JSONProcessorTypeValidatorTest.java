@@ -15,7 +15,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Value;
-import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.stubs.StubConverter;
 import pl.szczepanik.silencio.utils.ReflectionUtils;
 
@@ -51,10 +50,11 @@ public class JSONProcessorTypeValidatorTest {
     public void shouldValidateBasicObject() throws Exception {
 
         // given
-        JSONProcessor tested = new JSONProcessor(new Converter[] { new StubConverter() });
+        JSONProcessor processor = new JSONProcessor();
+        processor.setConverters(new Converter[] { new StubConverter() });
         
         // when
-        boolean isType = ReflectionUtils.invokeMethod(tested, "isBasicType", Boolean.class, type);
+        boolean isType = ReflectionUtils.invokeMethod(processor, "isBasicType", Boolean.class, type);
 
         // then
         assertThat(isType).isEqualTo(isBasic);

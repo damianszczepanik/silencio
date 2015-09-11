@@ -56,11 +56,12 @@ public class JSONProcessorTest {
         // when
         String key = "myKey";
         Object value = new Object();
-        JSONProcessor tested = new JSONProcessor(new Converter[] { new StubConverter() });
+        JSONProcessor processor = new JSONProcessor();
+        processor.setConverters(new Converter[] { new StubConverter() });
 
         // then
         try {
-            ReflectionUtils.invokeMethod(tested, "processComplex", Void.class, key, value);
+            ReflectionUtils.invokeMethod(processor, "processComplex", Void.class, key, value);
             fail("expected exception");
         } catch (Exception e) {
             assertThat(e).isInstanceOf(ProcessorException.class);
@@ -72,8 +73,8 @@ public class JSONProcessorTest {
     public void shouldFailWhenWrittingToInvalidWriter() {
 
         final String errorMessage = "Don't write into this writter!";
-        // given
 
+        // given
         input = ResourceLoader.loadJsonAsReader("empty.json");
         output = new WriterStub() {
 

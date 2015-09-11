@@ -13,6 +13,8 @@ import org.junit.Test;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
+import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -39,6 +41,16 @@ public class JSONProcessorIntegrationTest {
         // then
         String reference = ResourceLoader.loadJsonAsString("suv_numbersequence.json");
         assertThat(output.toString()).isEqualTo(reference);
+    }
+
+    @Test
+    public void shouldPassDiagnosticTests() {
+
+        // given
+        input = ResourceLoader.loadJsonAsReader("suv.json");
+
+        // then
+        ProcessorSmokeChecker.validateProcessor(new JSONProcessor(), input);
     }
 
     @After
