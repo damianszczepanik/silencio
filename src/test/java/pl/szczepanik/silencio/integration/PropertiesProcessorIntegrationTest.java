@@ -50,7 +50,7 @@ public class PropertiesProcessorIntegrationTest {
     }
 
     @Test
-    public void shouldPassDiagnosticTests() {
+    public void shouldNotCrashOnDiagnosticTests() {
 
         // given
         input = ResourceLoader.loadPropertiesAsReader("suv.properties");

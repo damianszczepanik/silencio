@@ -4,6 +4,9 @@ import static org.assertj.core.api.Assertions.fail;
 
 import java.util.Properties;
 
+/**
+ * @author Damian Szczepanik <damianszczepanik@github>
+ */
 public class PropertiesUtils {
 
     /**
@@ -19,6 +22,7 @@ public class PropertiesUtils {
         if (!keysEqual) {
             fail("Keys form both properties are not equal!");
         }
+
         for (Object key : prop1.keySet()) {
             String value1 = prop1.getProperty(key.toString());
             String value2 = prop2.getProperty(key.toString());

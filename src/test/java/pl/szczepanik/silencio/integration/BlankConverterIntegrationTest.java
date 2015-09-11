@@ -2,6 +2,7 @@ package pl.szczepanik.silencio.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
@@ -13,44 +14,33 @@ import org.junit.Test;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
-import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
-import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class JSONProcessorIntegrationTest {
+public class BlankConverterIntegrationTest {
 
     private Writer output;
     private Reader input;
 
     @Test
-    public void shouldProcessJSONFile() {
+    public void shoulClearValuesWhenBlankSiExecutedAsLast() throws IOException {
 
         // given
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.NUMBER_SEQUENCE);
+        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.NUMBER_SEQUENCE,
+                ConverterBuilder.BLANK);
         processor.load(input);
         processor.process();
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_numbersequence.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_blank.json");
         assertThat(output.toString()).isEqualTo(reference);
-    }
-
-    @Test
-    public void shouldNotCrashOnDiagnosticTests() {
-
-        // given
-        input = ResourceLoader.loadJsonAsReader("suv.json");
-
-        // then
-        ProcessorSmokeChecker.validateProcessor(new JSONProcessor(), input);
     }
 
     @After

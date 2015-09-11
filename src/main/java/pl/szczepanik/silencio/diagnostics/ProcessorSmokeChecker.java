@@ -11,12 +11,12 @@ import pl.szczepanik.silencio.core.ProcessorException;
 
 /**
  * Executes basic tests on processor to make sure that basic, functional requirements are met.
- * 
+ *
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public final class ProcessorSmokeChecker {
 
-    public static final Converter[] converters = {
+    public static final Converter[] CONVERTERS = {
             new BlankConverter(),
             new BlankCharConverter(),
             new ConstantValueConverter(),
@@ -26,7 +26,7 @@ public final class ProcessorSmokeChecker {
 
     /**
      * Passes sets of basic converters into given processor and make sure that processor does not crash.
-     * 
+     *
      * @param processor
      *            processor to test
      * @param reader
@@ -39,7 +39,7 @@ public final class ProcessorSmokeChecker {
         Writer output = new StringWriter();
 
         try {
-            processor.setConverters(converters);
+            processor.setConverters(CONVERTERS);
             processor.load(reader);
             processor.process();
             processor.write(output);
