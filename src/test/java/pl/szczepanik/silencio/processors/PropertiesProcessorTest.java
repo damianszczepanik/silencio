@@ -17,6 +17,7 @@ import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.stubs.StubConverter;
+import pl.szczepanik.silencio.stubs.WriterStub;
 import pl.szczepanik.silencio.utils.ReflectionUtils;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
@@ -72,19 +73,11 @@ public class PropertiesProcessorTest {
         // given
 
         input = ResourceLoader.loadPropertiesAsReader("empty.properties");
-         output = new Writer() {
+        output = new WriterStub() {
 
             @Override
             public void write(char[] cbuf, int off, int len) throws IOException {
                 throw new IOException(errorMessage);
-            }
-
-            @Override
-            public void flush() throws IOException {
-            }
-
-            @Override
-            public void close() throws IOException {
             }
         };
 
