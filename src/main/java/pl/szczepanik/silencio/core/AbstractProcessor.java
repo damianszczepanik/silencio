@@ -39,7 +39,7 @@ public abstract class AbstractProcessor implements Processor {
     }
 
     /**
-     * Calls {@link Converter#reset()} method on each converter.
+     * Calls {@link Converter#init()} method on each converter.
      */
     protected void initConverties() {
         for (Converter converter : converters) {
