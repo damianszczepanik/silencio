@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.core.Value;
 public class ConstantValueConverterTest {
 
     @Test
-    public void shouldReturnCorrectValue() {
+    public void shouldReturnConstantValue() {
 
         // given
         Value value1 = new Value("value1");
