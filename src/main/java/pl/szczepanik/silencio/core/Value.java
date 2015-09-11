@@ -8,7 +8,6 @@ import pl.szczepanik.silencio.api.Converter;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-// TODO: allow for IoC different implementation of this class based on what ConverterBuilder decides
 public class Value {
 
     private final Object value;

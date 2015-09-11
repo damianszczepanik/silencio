@@ -22,7 +22,7 @@ public final class ProcessorSmokeChecker {
             new KeyValueConverter(),
             new PassedValueConverter(),
             };
-    
+
     /**
      * Passes sets of basic converters into given processor and make sure that processor does not crash.
      * 

@@ -14,7 +14,7 @@ Silencio is a library for transforming and converting JSON files. It is applicab
 
 ## Philosophy
 
-It is built from [processors](https://github.com/damianszczepanik/silencio/blob/master/src/main/java/pl/szczepanik/silencio/api/Processor.java) that know how transform given file format (XML, JSON, CSV) and [converters](https://github.com/damianszczepanik/silencio/blob/master/src/main/java/pl/szczepanik/silencio/api/Converter.java) that are responsible for transforming existing values into new one.
+It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor.java) that know how transform given file format (XML, JSON, CSV) and [converters](src/main/java/pl/szczepanik/silencio/api/Converter.java) that are responsible for transforming existing values into new one.
 
 ## Usage
 
@@ -27,12 +27,17 @@ Add a maven dependency (using version from above shield) to your pom:
 </dependency>
 ```
 
-The simplest way to understand how to use chosen processor with set of converters is to check any of the [tests](https://github.com/damianszczepanik/silencio/tree/master/src/test/java/pl/szczepanik/silencio/integration) that validate implementation.
+The simplest way to understand how to use chosen processor with set of converters is to check any of the [tests](src/test/java/pl/szczepanik/silencio/integration) that validate implementation.
 
-## Custom processor or converter
+## Create custom processor or converter
 
-Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](https://github.com/damianszczepanik/silencio/blob/master/src/main/java/pl/szczepanik/silencio/core/ConverterBuilder.java) converters but if you still need your own then all you need to do is to implement ``convert()`` method and provide the algorithm you need. It might be very [simple](https://github.com/damianszczepanik/silencio/blob/master/src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
+Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](src/main/java/pl/szczepanik/silencio/converters) that can be easily accessed via [builder](src/main/java/pl/szczepanik/silencio/core/ConverterBuilder.java). Nevertheless if you need to create your own then what you need is to implement [``convert()`` method](src/main/java/pl/szczepanik/silencio/api/Converter.java) and provide the algorithm you expect. Sometimes it can be very [simple](src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
+
+Once you developed your new processor you should test it by providing several unit tests and by passing it to [processor tester](src/main/java/pl/szczepanik/silencio/diagnostics/ProcessorSmokeChecker.java) that makes basic tests using [edge cases](https://en.wikipedia.org/wiki/Edge_case).
 
 ## Contribution
 
 When you implement new processor or converter you are more than welcome to [pull](https://github.com/damianszczepanik/silencio/pulls) this change and make someone happier!
+
+Mind that this project has several metrics that measure code quality. From [continuous integration](https://travis-ci.org/damianszczepanik/silencio) and [code coverage](https://codecov.io/github/damianszczepanik/silencio) to [coverity](https://scan.coverity.com/projects/damianszczepanik-silencio). Please mind that PR are welcome but try to keep high code coverage.
+
