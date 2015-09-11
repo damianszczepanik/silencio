@@ -18,6 +18,7 @@ public final class ProcessorSmokeChecker {
 
     public static final Converter[] converters = {
             new BlankConverter(),
+            new BlankCharConverter(),
             new ConstantValueConverter(),
             new KeyValueConverter(),
             new PassedValueConverter(),
