@@ -1,14 +1,16 @@
 package pl.szczepanik.silencio.core;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public class ProcessorStateMachineTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void shouldNotAllowForValidateProcess() {
@@ -17,12 +19,9 @@ public class ProcessorStateMachineTest {
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
-        try {
-            machine.validateProcess();
-            fail("expected exception");
-        } catch (ProcessorException e) {
-            assertThat(e.getMessage()).isEqualTo("This operation is not allowed for this state: CREATED");
-        }
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage("This operation is not allowed for this state: CREATED");
+        machine.validateProcess();
     }
 
     @Test
@@ -45,12 +44,9 @@ public class ProcessorStateMachineTest {
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
-        try {
-            machine.validateWrite();
-            fail("expected exception");
-        } catch (ProcessorException e) {
-            assertThat(e.getMessage()).isEqualTo("This operation is not allowed for this state: CREATED");
-        }
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage("This operation is not allowed for this state: CREATED");
+        machine.validateWrite();
     }
 
     @Test

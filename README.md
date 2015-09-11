@@ -7,10 +7,10 @@
 
 # silencio
 
-Silencio is a library for transforming and converting JSON files. It is applicable for most of operations such as:
+Silencio is a library for transforming and converting [JSON](https://pl.wikipedia.org/wiki/JSON) and [Properties](https://en.wikipedia.org/wiki/.properties) files. It is applicable for most of operations such as:
 - obfuscation
-- minimisation
-- anonymous
+- minimisation (eg anonymous)
+- transformation
 
 ## Philosophy
 
@@ -31,7 +31,7 @@ The simplest way to understand how to use chosen processor with set of converter
 
 ## Create custom processor or converter
 
-Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](src/main/java/pl/szczepanik/silencio/converters) that can be easily accessed via [builder](src/main/java/pl/szczepanik/silencio/core/ConverterBuilder.java). Nevertheless if you need to create your own then what you need is to implement [``convert()`` method](src/main/java/pl/szczepanik/silencio/api/Converter.java) and provide the algorithm you expect. Sometimes it can be very [simple](src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
+Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](src/main/java/pl/szczepanik/silencio/converters) converters that can be easily accessed via [builder](src/main/java/pl/szczepanik/silencio/core/ConverterBuilder.java). Nevertheless if you need to create your own then what you need is to implement [``convert()`` method](src/main/java/pl/szczepanik/silencio/api/Converter.java) and provide the algorithm you expect. Sometimes it can be very [simple](src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
 
 Once you developed your new processor you should test it by providing several unit tests and by passing it to [processor tester](src/main/java/pl/szczepanik/silencio/diagnostics/ProcessorSmokeChecker.java) that makes basic tests using [edge cases](https://en.wikipedia.org/wiki/Edge_case).
 

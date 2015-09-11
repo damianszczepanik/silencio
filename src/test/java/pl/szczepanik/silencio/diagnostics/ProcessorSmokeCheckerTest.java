@@ -1,11 +1,10 @@
 package pl.szczepanik.silencio.diagnostics;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
-
 import java.io.StringReader;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
@@ -17,6 +16,9 @@ import pl.szczepanik.silencio.stubs.StubConverter;
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public class ProcessorSmokeCheckerTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
     
     @Test
     public void shouldReportFailureWhenProcessorFails() {
@@ -33,12 +35,9 @@ public class ProcessorSmokeCheckerTest {
         };
 
         // then
-        try {
-            ProcessorSmokeChecker.validateProcessor(processor, new StringReader(""));
-            fail("Excepted exception");
-        } catch (ProcessorException e) {
-            assertThat(e.getCause().getMessage()).isEqualTo(errorMessage);
-        }
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage(errorMessage);
+        ProcessorSmokeChecker.validateProcessor(processor, new StringReader(""));
     }
 
 }

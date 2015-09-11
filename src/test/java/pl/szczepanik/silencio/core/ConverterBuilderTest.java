@@ -1,9 +1,10 @@
 package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.fail;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
@@ -14,6 +15,9 @@ import pl.szczepanik.silencio.stubs.StubConverter;
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public class ConverterBuilderTest {
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void shouldNotFailWhenPassingAnyConverter() {
@@ -37,12 +41,9 @@ public class ConverterBuilderTest {
         Converter[] converters = null;
 
         // then
-        try {
-            ConverterBuilder.build(format, converters);
-            fail("expected exception");
-        } catch (IntegrityException e) {
-            assertThat(e.getMessage()).isEqualTo("Array with converters must not be empty!");
-        }
+        thrown.expect(IntegrityException.class);
+        thrown.expectMessage("Array with converters must not be empty!");
+        ConverterBuilder.build(format, converters);
     }
 
     @Test
@@ -53,11 +54,8 @@ public class ConverterBuilderTest {
         Converter[] converters = { ConverterBuilder.BLANK };
 
         // then
-        try {
-            ConverterBuilder.build(format, converters);
-            fail("expected exception");
-        } catch (IntegrityException e) {
-            assertThat(e.getMessage()).isEqualTo("Unsupported format: " + format.getName());
-        }
+        thrown.expect(IntegrityException.class);
+        thrown.expectMessage("Unsupported format: " + format.getName());
+        ConverterBuilder.build(format, converters);
     }
 }

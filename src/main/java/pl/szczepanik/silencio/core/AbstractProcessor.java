@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 
 /**
- * Provides helper methods for processors.
+ * Provides basic implementations of methods used by processors.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
@@ -20,6 +20,12 @@ public abstract class AbstractProcessor implements Processor {
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 
+    /**
+     * Creates new instance.
+     * 
+     * @param format
+     *            format that will be supported by this processor.
+     */
     public AbstractProcessor(Format format) {
         validateFormat(format);
         this.format = format;
@@ -28,14 +34,6 @@ public abstract class AbstractProcessor implements Processor {
     @Override
     public Format getFormat() {
         return format;
-    }
-
-    @Override
-    public void setConverters(Converter[] converters) {
-        validateConverters(converters);
-
-        // deep copy to prevent manipulating on private list
-        this.converters = Arrays.copyOf(converters, converters.length);
     }
 
     /**
@@ -50,10 +48,19 @@ public abstract class AbstractProcessor implements Processor {
     @Override
     public final void load(Reader reader) {
         realLoad(reader);
-        stateMachine.moveToLoaded();
     }
 
     protected abstract void realLoad(Reader reader);
+
+    @Override
+    public void setConverters(Converter[] converters) {
+        validateConverters(converters);
+
+        // deep copy to prevent manipulating on private list
+        this.converters = Arrays.copyOf(converters, converters.length);
+
+        stateMachine.moveToLoaded();
+    }
 
     @Override
     public final void process() {
