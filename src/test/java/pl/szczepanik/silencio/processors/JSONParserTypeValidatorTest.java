@@ -49,7 +49,7 @@ public class JSONParserTypeValidatorTest {
     public void shouldValidateBasicObject() throws Exception {
 
         // given
-        JSONParser parser = new JSONParser(new StubProcessable());
+        JSONVisitor parser = new JSONVisitor(new StubProcessable());
 
         // when
         boolean isType = ReflectionUtils.invokeMethod(parser, "isBasicType", Boolean.class, type);
