@@ -13,11 +13,11 @@ import pl.szczepanik.silencio.core.ProcessorException;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class JSONParser {
+public class JSONVisitor {
 
     private final Processable processable;
 
-    public JSONParser(Processable processable) {
+    public JSONVisitor(Processable processable) {
         this.processable = processable;
     }
 

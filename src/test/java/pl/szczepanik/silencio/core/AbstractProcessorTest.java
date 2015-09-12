@@ -35,6 +35,24 @@ public class AbstractProcessorTest {
     }
 
     @Test
+    public void shouldProcessAllConverters() {
+        // given
+        AbstractProcessor processor = new StubAbstractProcessor(Format.JSON);
+        ConverterCounter[] converters = { new ConverterCounter() };
+        String key = "myKey";
+        Object value = "yourValue";
+
+        // when
+        processor.setConverters(converters);
+        Value retValue = processor.processValue(key, value);
+
+        // then
+        assertThat(converters[0].key.getKey()).isEqualTo(key);
+        assertThat(converters[0].value.getValue()).isEqualTo(value);
+        assertThat(retValue.getValue()).isEqualTo(value);
+    }
+
+    @Test
     public void shouldFailWhenBuildFromEmptyFormat() {
 
         // given
@@ -108,5 +126,17 @@ public class AbstractProcessorTest {
         thrown.expect(ProcessorException.class);
         thrown.expectMessage("This operation is not allowed for this state: CREATED");
         processor.process();
+    }
+
+    private final class ConverterCounter extends StubConverter {
+        public Key key;
+        public Value value;
+
+        @Override
+        public Value convert(Key key, Value value) {
+            this.key = key;
+            this.value = value;
+            return value;
+        }
     }
 }
