@@ -13,7 +13,7 @@ import pl.szczepanik.silencio.api.Processor;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public abstract class AbstractProcessor implements Processor {
+public abstract class AbstractProcessor implements Processor, Processable {
 
     protected final Format format;
     protected Converter[] converters;
@@ -71,16 +71,8 @@ public abstract class AbstractProcessor implements Processor {
 
     protected abstract void realProcess();
 
-    /**
-     * Calls each converters and passes value to convert.
-     * 
-     * @param key
-     *            key
-     * @param value
-     *            value that should be converted
-     * @return converted value
-     */
-    protected Value processValue(String key, Object value) {
+    @Override
+    public Value processValue(String key, Object value) {
         Value newValue = new Value(value);
         for (Converter converter : converters) {
             newValue = converter.convert(new Key(key), newValue);

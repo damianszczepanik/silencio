@@ -12,14 +12,11 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.stubs.StubConverter;
 import pl.szczepanik.silencio.stubs.WriterStub;
-import pl.szczepanik.silencio.utils.ReflectionUtils;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -46,21 +43,6 @@ public class PropertiesProcessorTest {
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(containsString("Malformed \\uxxxx encoding."));
         processor.load(input);
-    }
-
-    @Test
-    public void shouldReportExceptionOnUnsupportedModel() throws Exception {
-
-        // when
-        String key = "myKey";
-        Object value = new Object();
-        JSONProcessor processor = new JSONProcessor();
-        processor.setConverters(new Converter[] { new StubConverter() });
-
-        // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        ReflectionUtils.invokeMethod(processor, "processComplex", Void.class, key, value);
     }
 
     @Test
