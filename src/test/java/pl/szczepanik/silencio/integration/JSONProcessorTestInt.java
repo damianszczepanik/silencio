@@ -47,10 +47,10 @@ public class JSONProcessorTestInt {
     public void shouldNotCrashOnDiagnosticTests() {
 
         // given
-        input = ResourceLoader.loadJsonAsReader("suv.json");
+        String content = ResourceLoader.loadJsonAsString("suv.json");
 
         // then
-        ProcessorSmokeChecker.validateProcessor(new JSONProcessor(), input);
+        ProcessorSmokeChecker.validateProcessor(new JSONProcessor(), content);
     }
 
     @After

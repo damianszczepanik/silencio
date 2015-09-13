@@ -12,14 +12,14 @@ import pl.szczepanik.silencio.core.AbstractProcessor;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class StubAbstractProcessor extends AbstractProcessor {
+public class StubProcessor extends AbstractProcessor {
 
-    public StubAbstractProcessor(Format format, Converter[] converters) {
+    public StubProcessor(Format format, Converter[] converters) {
         this(format);
         setConverters(converters);
     }
 
-    public StubAbstractProcessor(Format format) {
+    public StubProcessor(Format format) {
         super(format);
     }
 

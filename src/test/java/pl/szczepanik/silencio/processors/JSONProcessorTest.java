@@ -1,8 +1,10 @@
 package pl.szczepanik.silencio.processors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
 
 import java.io.Reader;
+import java.io.StringWriter;
 import java.io.Writer;
 
 import org.apache.commons.io.IOUtils;
@@ -11,6 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
@@ -30,13 +33,44 @@ public class JSONProcessorTest {
     private Reader input;
 
     @Test
+    public void shouldReturnProperFormat() {
+
+        // given
+        JSONProcessor processor = new JSONProcessor();
+
+        // when
+        Format format = processor.getFormat();
+
+        // then
+        assertThat(format).isEqualTo(Format.JSON);
+    }
+
+    @Test
+    public void shouldLoadJSONFileOnRealLoad() {
+
+        // given
+        input = ResourceLoader.loadJsonAsReader("suv.json");
+        String refInput = ResourceLoader.loadJsonAsString("suv.json");
+        output = new StringWriter();
+
+        // when
+        JSONProcessor processor = new JSONProcessor();
+        processor.load(input);
+        processor.realWrite(output);
+
+        // then
+        assertThat(refInput).isEqualTo(output.toString());
+    }
+
+    @Test
     public void shouldFailWhenLoadingInvalidJSONFile() {
 
         // given
         input = ResourceLoader.loadJsonAsReader("corrupted.json");
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
+        Processor processor = new JSONProcessor();
+        processor.setConverters(new Converter[] { ConverterBuilder.BLANK });
 
         // then
         thrown.expect(ProcessorException.class);
@@ -54,14 +88,15 @@ public class JSONProcessorTest {
         output = new WriterCrashOnWrite(errorMessage);
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);
+        JSONProcessor processor = new JSONProcessor();
+        processor.setConverters(new Converter[] { ConverterBuilder.BLANK });
         processor.load(input);
-        processor.process();
+        processor.realProcess();
 
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(errorMessage);
-        processor.write(output);
+        processor.realWrite(output);
     }
 
     @After

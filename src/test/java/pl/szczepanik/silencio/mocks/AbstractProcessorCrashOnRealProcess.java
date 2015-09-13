@@ -4,7 +4,7 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.stubs.StubAbstractProcessor;
+import pl.szczepanik.silencio.stubs.StubProcessor;
 
 /**
  * Mock for {@link AbstractProcessor} that crashes when {@link AbstractProcessorCrashOnRealProcess#realProcess()} method
@@ -12,7 +12,7 @@ import pl.szczepanik.silencio.stubs.StubAbstractProcessor;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class AbstractProcessorCrashOnRealProcess extends StubAbstractProcessor {
+public class AbstractProcessorCrashOnRealProcess extends StubProcessor {
 
     private final String errorMessage;
 

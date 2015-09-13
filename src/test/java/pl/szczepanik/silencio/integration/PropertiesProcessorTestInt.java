@@ -53,10 +53,10 @@ public class PropertiesProcessorTestInt {
     public void shouldNotCrashOnDiagnosticTests() {
 
         // given
-        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        String content = ResourceLoader.loadPropertiesAsString("suv.properties");
 
         // then
-        ProcessorSmokeChecker.validateProcessor(new PropertiesProcessor(), input);
+        ProcessorSmokeChecker.validateProcessor(new PropertiesProcessor(), content);
     }
 
     @After
