@@ -1,4 +1,4 @@
-package pl.szczepanik.silencio.processors;
+package pl.szczepanik.silencio.processors.visitors;
 
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -13,12 +13,10 @@ import pl.szczepanik.silencio.core.ProcessorException;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class JSONVisitor {
-
-    private final Processable processable;
+public class JSONVisitor extends AbstractVisitor {
 
     public JSONVisitor(Processable processable) {
-        this.processable = processable;
+        super(processable);
     }
 
     public void process(Map<String, Object> json) {

@@ -8,7 +8,7 @@ import java.util.Properties;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.core.Value;
+import pl.szczepanik.silencio.processors.visitors.PropertiesVisitor;
 
 /**
  * Provides processor that supports Properties format.
@@ -18,6 +18,8 @@ import pl.szczepanik.silencio.core.Value;
 public class PropertiesProcessor extends AbstractProcessor {
 
     private final Properties properties = new Properties();
+
+    private final PropertiesVisitor visitor = new PropertiesVisitor(this);
 
     public PropertiesProcessor() {
         super(Format.JSON);
@@ -36,10 +38,7 @@ public class PropertiesProcessor extends AbstractProcessor {
     @Override
     public void realProcess() {
         initConverties();
-        for (Object key : properties.keySet()) {
-            Value newValue = processValue(key.toString(), properties.getProperty(key.toString()));
-            properties.put(key, newValue.getValue().toString());
-        }
+        visitor.process(properties);
     }
 
     @Override
