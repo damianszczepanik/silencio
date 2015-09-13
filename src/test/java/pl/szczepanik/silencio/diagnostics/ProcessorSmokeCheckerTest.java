@@ -1,7 +1,5 @@
 package pl.szczepanik.silencio.diagnostics;
 
-import java.io.StringReader;
-
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -11,6 +9,7 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.mocks.AbstractProcessorCrashOnRealProcess;
 import pl.szczepanik.silencio.stubs.StubConverter;
+import pl.szczepanik.silencio.stubs.StubProcessor;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -21,7 +20,17 @@ public class ProcessorSmokeCheckerTest {
     public ExpectedException thrown = ExpectedException.none();
     
     @Test
-    public void shouldReportFailureWhenProcessorFails() {
+    public void shouldPassWithStubProcessor() {
+
+        // given
+        StubProcessor processor = new StubProcessor(Format.JSON, new Converter[] { new StubConverter() });
+
+        // then
+        ProcessorSmokeChecker.validateProcessor(processor, "");
+    }
+
+    @Test
+    public void shouldThrowProcessorExceptionWhenValidationFails() {
         
         final String errorMessage = "Ups, I did it again!";
 
@@ -32,7 +41,7 @@ public class ProcessorSmokeCheckerTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(errorMessage);
-        ProcessorSmokeChecker.validateProcessor(processor, new StringReader(""));
+        ProcessorSmokeChecker.validateProcessor(processor, "");
     }
 
 }

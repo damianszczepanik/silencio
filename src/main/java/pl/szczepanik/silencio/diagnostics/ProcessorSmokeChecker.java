@@ -1,8 +1,11 @@
 package pl.szczepanik.silencio.diagnostics;
 
 import java.io.Reader;
+import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+
+import org.apache.commons.io.IOUtils;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
@@ -29,22 +32,28 @@ public final class ProcessorSmokeChecker {
      *
      * @param processor
      *            processor to test
-     * @param reader
-     *            source with the data to convert
+     * @param content
+     *            content to the data to convert
      * @throws ProcessorException
      *             when processing fails (any reason)
      */
-    public static void validateProcessor(Processor processor, Reader reader) {
+    public static void validateProcessor(Processor processor, String content) {
 
-        Writer output = new StringWriter();
+        for (Converter converter : CONVERTERS) {
+            Writer output = new StringWriter();
+            Reader input = new StringReader(content);
 
-        try {
-            processor.setConverters(CONVERTERS);
-            processor.load(reader);
-            processor.process();
-            processor.write(output);
-        } catch (Exception e) {
-            throw new ProcessorException(e);
+            try {
+                processor.setConverters(new Converter[] { converter });
+                processor.load(input);
+                processor.process();
+                processor.write(output);
+            } catch (Exception e) {
+                throw new ProcessorException(e);
+            } finally {
+                IOUtils.closeQuietly(input);
+                IOUtils.closeQuietly(output);
+            }
         }
     }
 

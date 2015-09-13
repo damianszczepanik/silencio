@@ -31,6 +31,7 @@ public class ConverterBuilderTest {
 
         // then
         assertThat(processor).isNotNull();
+        assertThat(processor.getFormat()).isEqualTo(format);
     }
 
     @Test

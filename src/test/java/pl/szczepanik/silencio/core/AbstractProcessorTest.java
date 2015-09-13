@@ -10,7 +10,7 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.mocks.ConverterHolder;
-import pl.szczepanik.silencio.stubs.StubAbstractProcessor;
+import pl.szczepanik.silencio.stubs.StubProcessor;
 import pl.szczepanik.silencio.stubs.StubConverter;
 
 /**
@@ -29,7 +29,7 @@ public class AbstractProcessorTest {
         Format format = Format.PROPERTIES;
 
         // when
-        Processor processor = new StubAbstractProcessor(format, converters);
+        Processor processor = new StubProcessor(format, converters);
 
         // then
         assertThat(processor.getFormat()).isEqualTo(format);
@@ -38,7 +38,7 @@ public class AbstractProcessorTest {
     @Test
     public void shouldProcessAllConverters() {
         // given
-        AbstractProcessor processor = new StubAbstractProcessor(Format.JSON);
+        AbstractProcessor processor = new StubProcessor(Format.JSON);
         ConverterHolder[] converters = { new ConverterHolder() };
         String key = "myKey";
         Object value = "yourValue";
@@ -65,7 +65,7 @@ public class AbstractProcessorTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Format must not be null!");
-        new StubAbstractProcessor(format, converters);
+        new StubProcessor(format, converters);
     }
 
     @Test
@@ -80,7 +80,7 @@ public class AbstractProcessorTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Array with converters must not be empty!");
-        new StubAbstractProcessor(format, converter);
+        new StubProcessor(format, converter);
     }
 
     @Test
@@ -95,7 +95,7 @@ public class AbstractProcessorTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Array with converters must not be empty!");
-        new StubAbstractProcessor(format, converter);
+        new StubProcessor(format, converter);
     }
 
     @Test
@@ -110,7 +110,7 @@ public class AbstractProcessorTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Converter passed on index 1 is null!");
-        new StubAbstractProcessor(format, converters);
+        new StubProcessor(format, converters);
     }
 
     @Test
@@ -120,7 +120,7 @@ public class AbstractProcessorTest {
         Format format = Format.PROPERTIES;
 
         // when
-        AbstractProcessor processor = new StubAbstractProcessor(format);
+        AbstractProcessor processor = new StubProcessor(format);
 
         // then
         thrown.expect(ProcessorException.class);
