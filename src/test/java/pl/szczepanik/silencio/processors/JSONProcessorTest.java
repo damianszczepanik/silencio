@@ -2,7 +2,6 @@ package pl.szczepanik.silencio.processors;
 
 import static org.hamcrest.core.StringContains.containsString;
 
-import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 
@@ -16,7 +15,7 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.stubs.WriterStub;
+import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -52,13 +51,7 @@ public class JSONProcessorTest {
 
         // given
         input = ResourceLoader.loadJsonAsReader("empty.json");
-        output = new WriterStub() {
-
-            @Override
-            public void write(char[] cbuf, int off, int len) throws IOException {
-                throw new IOException(errorMessage);
-            }
-        };
+        output = new WriterCrashOnWrite(errorMessage);
 
         // when
         Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.BLANK);

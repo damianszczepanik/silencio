@@ -9,6 +9,7 @@ import org.junit.rules.ExpectedException;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
+import pl.szczepanik.silencio.mocks.ConverterHolder;
 import pl.szczepanik.silencio.stubs.StubAbstractProcessor;
 import pl.szczepanik.silencio.stubs.StubConverter;
 
@@ -38,7 +39,7 @@ public class AbstractProcessorTest {
     public void shouldProcessAllConverters() {
         // given
         AbstractProcessor processor = new StubAbstractProcessor(Format.JSON);
-        ConverterCounter[] converters = { new ConverterCounter() };
+        ConverterHolder[] converters = { new ConverterHolder() };
         String key = "myKey";
         Object value = "yourValue";
 
@@ -47,8 +48,8 @@ public class AbstractProcessorTest {
         Value retValue = processor.processValue(key, value);
 
         // then
-        assertThat(converters[0].key.getKey()).isEqualTo(key);
-        assertThat(converters[0].value.getValue()).isEqualTo(value);
+        assertThat(converters[0].getKey().getKey()).isEqualTo(key);
+        assertThat(converters[0].getValue().getValue()).isEqualTo(value);
         assertThat(retValue.getValue()).isEqualTo(value);
     }
 
@@ -112,7 +113,6 @@ public class AbstractProcessorTest {
         new StubAbstractProcessor(format, converters);
     }
 
-
     @Test
     public void shouldFailOnProcessWhenConvertersAreNotSet() {
 
@@ -128,15 +128,4 @@ public class AbstractProcessorTest {
         processor.process();
     }
 
-    private final class ConverterCounter extends StubConverter {
-        public Key key;
-        public Value value;
-
-        @Override
-        public Value convert(Key key, Value value) {
-            this.key = key;
-            this.value = value;
-            return value;
-        }
-    }
 }

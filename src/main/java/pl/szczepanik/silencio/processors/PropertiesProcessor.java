@@ -22,7 +22,7 @@ public class PropertiesProcessor extends AbstractProcessor {
     private final PropertiesVisitor visitor = new PropertiesVisitor(this);
 
     public PropertiesProcessor() {
-        super(Format.JSON);
+        super(Format.PROPERTIES);
     }
 
     @Override
@@ -37,13 +37,11 @@ public class PropertiesProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
-        initConverties();
         visitor.process(properties);
     }
 
     @Override
     public void realWrite(Writer writer) {
-        
         try {
             // stores in no deterministic order
             properties.store(writer, null);

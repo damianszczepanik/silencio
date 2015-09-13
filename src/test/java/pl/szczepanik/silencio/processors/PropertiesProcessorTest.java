@@ -1,10 +1,14 @@
 package pl.szczepanik.silencio.processors;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
 
 import java.io.IOException;
 import java.io.Reader;
+import java.io.StringReader;
+import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
@@ -13,10 +17,10 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.stubs.WriterStub;
+import pl.szczepanik.silencio.mocks.PropertyVisitorHolder;
+import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
+import pl.szczepanik.silencio.utils.ReflectionUtils;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -31,44 +35,104 @@ public class PropertiesProcessorTest {
     private Reader input;
 
     @Test
+    public void shouldReturnProperFormat() {
+         
+        // given
+        PropertiesProcessor processor = new PropertiesProcessor ();
+        
+        // when
+        Format format = processor.getFormat();
+        
+        // then
+        assertThat(format).isEqualTo(Format.PROPERTIES);
+    }
+
+    @Test
+    public void shouldLoadPropertiesFileOnRealLoad() throws IOException {
+
+        // given
+        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+
+        Properties refProps = new Properties();
+        // input once read cannot be read again to need to have two streams to the same file
+        Reader refInput = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        refProps.load(refInput);
+
+        // when
+        PropertiesProcessor processor = new PropertiesProcessor();
+        processor.realLoad(input);
+        Properties properties = (Properties) ReflectionUtils.getField(processor, "properties");
+
+        // then
+        assertThat(properties).isEqualTo(refProps);
+
+        IOUtils.closeQuietly(refInput);
+    }
+
+    @Test
     public void shouldFailWhenLoadingInvalidPropertiesFile() {
 
         // given
         input = ResourceLoader.loadPropertiesAsReader("corrupted.properties");
-
-        // when
-        Processor processor = ConverterBuilder.build(Format.PROPERTIES, ConverterBuilder.BLANK);
+        PropertiesProcessor processor = new PropertiesProcessor();
 
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(containsString("Malformed \\uxxxx encoding."));
-        processor.load(input);
+        processor.realLoad(input);
     }
 
     @Test
-    public void shouldFailWhenWrittingToInvalidWriter() {
+    public void shouldCallProcessByRealProcess() {
 
-        final String errorMessage = "Don't write into this writter!";
         // given
+        PropertiesProcessor processor = new PropertiesProcessor();
+        PropertyVisitorHolder visitorMock = new PropertyVisitorHolder();
+        ReflectionUtils.setField(processor, "visitor", visitorMock);
 
-        input = ResourceLoader.loadPropertiesAsReader("empty.properties");
-        output = new WriterStub() {
-
-            @Override
-            public void write(char[] cbuf, int off, int len) throws IOException {
-                throw new IOException(errorMessage);
-            }
-        };
+        Properties properties = new Properties();
+        ReflectionUtils.setField(processor, "properties", properties);
 
         // when
-        Processor processor = ConverterBuilder.build(Format.PROPERTIES, ConverterBuilder.BLANK);
-        processor.load(input);
-        processor.process();
+        processor.realProcess();
+        
+        // then
+        assertThat(visitorMock.getProperties()).isEqualTo(properties);
+    }
+
+    @Test
+    public void shouldFailOnRealWrite() {
+
+        // given
+        final String errorMessage = "Don't write into this writer any more!";
+        PropertiesProcessor processor = new PropertiesProcessor();
+        Writer writer = new WriterCrashOnWrite(errorMessage);
 
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(errorMessage);
-        processor.write(output);
+        processor.realWrite(writer);
+    }
+
+    @Test
+    public void shouldWritePropertiesInitoWRiter() throws IOException {
+
+        // given
+        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        output = new StringWriter();
+
+        PropertiesProcessor processor = new PropertiesProcessor();
+        Properties properties = new Properties();
+        properties.load(input);
+        ReflectionUtils.setField(processor, "properties", properties);
+
+        // when
+        processor.realWrite(output);
+
+        // then
+        Properties refProps = new Properties();
+        refProps.load(new StringReader(output.toString()));
+        assertThat(properties).isEqualTo(refProps);
     }
 
     @After

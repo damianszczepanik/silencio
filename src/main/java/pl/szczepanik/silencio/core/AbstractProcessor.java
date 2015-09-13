@@ -65,6 +65,7 @@ public abstract class AbstractProcessor implements Processor, Processable {
     @Override
     public final void process() {
         stateMachine.validateProcess();
+        initConverties();
         realProcess();
         stateMachine.moveToProcessed();
     }

@@ -9,7 +9,7 @@ import org.junit.rules.ExpectedException;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.stubs.StubAbstractProcessor;
+import pl.szczepanik.silencio.mocks.AbstractProcessorCrashOnRealProcess;
 import pl.szczepanik.silencio.stubs.StubConverter;
 
 /**
@@ -26,13 +26,8 @@ public class ProcessorSmokeCheckerTest {
         final String errorMessage = "Ups, I did it again!";
 
         // given
-        StubAbstractProcessor processor = new StubAbstractProcessor(Format.JSON,
-                new Converter[] { new StubConverter() }) {
-            @Override
-            public void realProcess() {
-                throw new RuntimeException(errorMessage);
-            }
-        };
+        AbstractProcessorCrashOnRealProcess processor = new AbstractProcessorCrashOnRealProcess(Format.JSON,
+                new Converter[] { new StubConverter() }, errorMessage);
 
         // then
         thrown.expect(ProcessorException.class);
