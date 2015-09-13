@@ -14,6 +14,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
+import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 
 /**
  * Provides processor that supports JSON format.
@@ -25,6 +26,8 @@ public class JSONProcessor extends AbstractProcessor {
     private final ObjectMapper mapper;
 
     private Map<String, Object> jsonStructure;
+
+    private final JSONVisitor visitor = new JSONVisitor(this);
 
     public JSONProcessor() {
         super(Format.JSON);
@@ -46,7 +49,7 @@ public class JSONProcessor extends AbstractProcessor {
     @Override
     public void realProcess() {
         initConverties();
-        new JSONVisitor(this).process(jsonStructure);
+        visitor.process(jsonStructure);
     }
 
     @Override

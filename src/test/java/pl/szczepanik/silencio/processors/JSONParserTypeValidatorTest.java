@@ -14,6 +14,7 @@ import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
 import pl.szczepanik.silencio.core.Value;
+import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 import pl.szczepanik.silencio.stubs.StubProcessable;
 import pl.szczepanik.silencio.utils.ReflectionUtils;
 

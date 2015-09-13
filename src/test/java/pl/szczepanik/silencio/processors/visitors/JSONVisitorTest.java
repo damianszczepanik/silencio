@@ -1,4 +1,4 @@
-package pl.szczepanik.silencio.processors;
+package pl.szczepanik.silencio.processors.visitors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -18,6 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.szczepanik.silencio.core.Processable;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.core.Value;
+import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 import pl.szczepanik.silencio.stubs.StubProcessable;
 import pl.szczepanik.silencio.utils.ReflectionUtils;
 import pl.szczepanik.silencio.utils.ResourceLoader;
@@ -53,17 +54,17 @@ public class JSONVisitorTest {
 
         // given
         input = ResourceLoader.loadJsonAsReader("suv.json");
-        VisitorProcessable visitor = new VisitorProcessable();
+        VisitorProcessable processableVisitor = new VisitorProcessable();
         Map<String, Object> jsonStructure = new ObjectMapper().readValue(input,
                 new TypeReference<Map<String, Object>>() {
                 });
 
         // when
-        JSONVisitor parser = new JSONVisitor(visitor);
-        parser.process(jsonStructure);
+        JSONVisitor visitor = new JSONVisitor(processableVisitor);
+        visitor.process(jsonStructure);
 
         // then
-        assertThat(visitor.visitCounter).isEqualTo(nodeCounter);
+        assertThat(processableVisitor.visitCounter).isEqualTo(nodeCounter);
     }
 
     @After
