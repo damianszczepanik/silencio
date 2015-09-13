@@ -70,8 +70,8 @@ public final class ProcessorSmokeChecker {
     /**
      * Passes sets of basic converters into given processor and make sure that processor does not crash.
      *
-     * @param processor
-     *            processor to test
+     * @param converter
+     *            converter that will be used for validation
      * @param content
      *            content to the data to convert
      * @throws ProcessorException
