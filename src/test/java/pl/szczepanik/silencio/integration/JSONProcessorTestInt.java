@@ -48,9 +48,11 @@ public class JSONProcessorTestInt {
 
         // given
         String content = ResourceLoader.loadJsonAsString("suv.json");
+        ProcessorSmokeChecker checker = new ProcessorSmokeChecker(new JSONProcessor());
 
         // then
-        ProcessorSmokeChecker.validateProcessor(new JSONProcessor(), content);
+        checker.validateWithAllConverters(content);
+        checker.validateWithSetsOfConverters(content);
     }
 
     @After
