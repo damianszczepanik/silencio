@@ -54,9 +54,11 @@ public class PropertiesProcessorTestInt {
 
         // given
         String content = ResourceLoader.loadPropertiesAsString("suv.properties");
+        ProcessorSmokeChecker checker = new ProcessorSmokeChecker(new PropertiesProcessor());
 
         // then
-        ProcessorSmokeChecker.validateProcessor(new PropertiesProcessor(), content);
+        checker.validateWithAllConverters(content);
+        checker.validateWithSetsOfConverters(content);
     }
 
     @After
