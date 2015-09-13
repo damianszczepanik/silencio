@@ -15,10 +15,8 @@ import org.junit.rules.ExpectedException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import pl.szczepanik.silencio.core.Processable;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.core.Value;
-import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
+import pl.szczepanik.silencio.mocks.ProcessableCounter;
 import pl.szczepanik.silencio.stubs.StubProcessable;
 import pl.szczepanik.silencio.utils.ReflectionUtils;
 import pl.szczepanik.silencio.utils.ResourceLoader;
@@ -54,7 +52,7 @@ public class JSONVisitorTest {
 
         // given
         input = ResourceLoader.loadJsonAsReader("suv.json");
-        VisitorProcessable processableVisitor = new VisitorProcessable();
+        ProcessableCounter processableVisitor = new ProcessableCounter();
         Map<String, Object> jsonStructure = new ObjectMapper().readValue(input,
                 new TypeReference<Map<String, Object>>() {
                 });
@@ -64,7 +62,7 @@ public class JSONVisitorTest {
         visitor.process(jsonStructure);
 
         // then
-        assertThat(processableVisitor.visitCounter).isEqualTo(nodeCounter);
+        assertThat(processableVisitor.getVisitCounter()).isEqualTo(nodeCounter);
     }
 
     @After
@@ -72,13 +70,4 @@ public class JSONVisitorTest {
         IOUtils.closeQuietly(input);
     }
 
-    private final class VisitorProcessable implements Processable {
-        public int visitCounter;
-
-        @Override
-        public Value processValue(String key, Object value) {
-            visitCounter++;
-            return new Value(value);
-        }
-    }
 }

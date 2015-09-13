@@ -48,7 +48,6 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
-        initConverties();
         visitor.process(jsonStructure);
     }
 
