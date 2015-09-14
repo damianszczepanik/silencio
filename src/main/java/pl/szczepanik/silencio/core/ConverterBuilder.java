@@ -15,6 +15,9 @@ import pl.szczepanik.silencio.processors.PropertiesProcessor;
  */
 public final class ConverterBuilder {
 
+    private ConverterBuilder() {
+    }
+
     public static Processor build(Format format, Converter... converterToApply) {
         Converter[] converters = {};
         // may happen when calling build(format)

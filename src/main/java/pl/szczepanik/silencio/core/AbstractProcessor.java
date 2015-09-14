@@ -15,8 +15,8 @@ import pl.szczepanik.silencio.api.Processor;
  */
 public abstract class AbstractProcessor implements Processor, Processable {
 
-    protected final Format format;
-    protected Converter[] converters;
+    private final Format format;
+    private Converter[] converters;
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 

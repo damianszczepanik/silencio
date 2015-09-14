@@ -5,7 +5,7 @@ import java.util.Properties;
 import pl.szczepanik.silencio.processors.visitors.PropertiesVisitor;
 
 /**
- * Counts how many {{@link #} {@link #process(Properties)} method has been invoked.
+ * Counts how many {@link #process(Properties)} method has been invoked.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */

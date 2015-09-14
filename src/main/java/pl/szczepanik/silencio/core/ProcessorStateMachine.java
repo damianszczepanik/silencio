@@ -14,7 +14,7 @@ public class ProcessorStateMachine {
         PROCESSED;
     }
 
-    private final static String ERROR_MESSAGE = "This operation is not allowed for this state: ";
+    private static final String ERROR_MESSAGE = "This operation is not allowed for this state: ";
 
     /**
      * Information about current state.
