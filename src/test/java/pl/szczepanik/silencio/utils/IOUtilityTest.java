@@ -22,7 +22,7 @@ import pl.szczepanik.silencio.core.IntegrityException;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(IOUtils.class)
-public class IOUtilsTest {
+public class IOUtilityTest {
     
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
     private static final String URL_ADDRESS = "http://www.fancy.page";
@@ -39,7 +39,7 @@ public class IOUtilsTest {
             .thenReturn(INVALID_HTML_PAGE);
 
         // then
-        String page = pl.szczepanik.silencio.utils.IOUtils.urlToString(new URL(URL_ADDRESS));
+        String page = IOUtility.urlToString(new URL(URL_ADDRESS));
 
         // then
         assertThat(page).isEqualTo(INVALID_HTML_PAGE);
@@ -57,7 +57,7 @@ public class IOUtilsTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage(errorMessage);
-        pl.szczepanik.silencio.utils.IOUtils.urlToString(new URL(URL_ADDRESS));
+        IOUtility.urlToString(new URL(URL_ADDRESS));
     }
 
     @Test
@@ -69,6 +69,6 @@ public class IOUtilsTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("no protocol: " + invalidURL);
-        pl.szczepanik.silencio.utils.IOUtils.createURL(invalidURL);
+        IOUtility.createURL(invalidURL);
     }
 }

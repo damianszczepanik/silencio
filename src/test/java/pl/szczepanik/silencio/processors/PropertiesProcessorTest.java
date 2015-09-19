@@ -20,7 +20,7 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.mocks.PropertyVisitorHolder;
 import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
-import pl.szczepanik.silencio.utils.ReflectionUtils;
+import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -61,7 +61,7 @@ public class PropertiesProcessorTest {
         // when
         PropertiesProcessor processor = new PropertiesProcessor();
         processor.realLoad(input);
-        Properties properties = (Properties) ReflectionUtils.getField(processor, "properties");
+        Properties properties = (Properties) ReflectionUtility.getField(processor, "properties");
 
         // then
         assertThat(properties).isEqualTo(refProps);
@@ -88,10 +88,10 @@ public class PropertiesProcessorTest {
         // given
         PropertiesProcessor processor = new PropertiesProcessor();
         PropertyVisitorHolder visitorMock = new PropertyVisitorHolder();
-        ReflectionUtils.setField(processor, "visitor", visitorMock);
+        ReflectionUtility.setField(processor, "visitor", visitorMock);
 
         Properties properties = new Properties();
-        ReflectionUtils.setField(processor, "properties", properties);
+        ReflectionUtility.setField(processor, "properties", properties);
 
         // when
         processor.realProcess();
@@ -124,7 +124,7 @@ public class PropertiesProcessorTest {
         PropertiesProcessor processor = new PropertiesProcessor();
         Properties properties = new Properties();
         properties.load(input);
-        ReflectionUtils.setField(processor, "properties", properties);
+        ReflectionUtility.setField(processor, "properties", properties);
 
         // when
         processor.realWrite(output);

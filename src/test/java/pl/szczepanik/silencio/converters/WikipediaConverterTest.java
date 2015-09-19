@@ -23,13 +23,14 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.processors.JSONProcessor;
+import pl.szczepanik.silencio.utils.IOUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(pl.szczepanik.silencio.utils.IOUtils.class)
+@PrepareForTest(IOUtility.class)
 public class WikipediaConverterTest {
 
     private static final String URL_ADDRESS = "https://en.m.wikipedia.org/wiki/Special:Random";
@@ -53,13 +54,13 @@ public class WikipediaConverterTest {
         processor.load(input);
 
         // when
-        mockStatic(pl.szczepanik.silencio.utils.IOUtils.class);
-        when(pl.szczepanik.silencio.utils.IOUtils.urlToString(new URL(URL_ADDRESS)))
+        mockStatic(pl.szczepanik.silencio.utils.IOUtility.class);
+        when(pl.szczepanik.silencio.utils.IOUtility.urlToString(new URL(URL_ADDRESS)))
             .thenReturn(INVALID_HTML_PAGE);
 
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Could not header pattern for page: " + INVALID_HTML_PAGE);
+        thrown.expectMessage("Could not find header pattern for page: " + INVALID_HTML_PAGE);
         processor.process();
     }
 
@@ -75,18 +76,18 @@ public class WikipediaConverterTest {
         processor.load(input);
 
         // when
-        mockStatic(pl.szczepanik.silencio.utils.IOUtils.class);
-        when(pl.szczepanik.silencio.utils.IOUtils.urlToString(new URL(URL_ADDRESS)))
+        mockStatic(pl.szczepanik.silencio.utils.IOUtility.class);
+        when(pl.szczepanik.silencio.utils.IOUtility.urlToString(new URL(URL_ADDRESS)))
              .thenReturn(toWikiPage("George Washington"))
              .thenReturn(toWikiPage("John Adams"))
              .thenReturn(toWikiPage("George Washington")) // one more time
              .thenReturn(toWikiPage("George Washington")) // one more time
              .thenReturn(toWikiPage("Thomas Jefferson"))
              .thenReturn(toWikiPage("James Madison"))
-             .thenReturn(toWikiPage("James Monroe"))
+             .thenReturn(toWikiPageI("James Monroe")) // with italics
              .thenReturn(toWikiPage("James Monroe")) // one more time
              .thenReturn(toWikiPage("John Quincy Adams"))
-             .thenReturn(toWikiPage("Andrew Jackson"))
+             .thenReturn(toWikiPageI("Andrew Jackson")) // with italics
              .thenReturn(toWikiPage("Martin Van Buren"))
              .thenReturn(toWikiPage("William Henry Harrison"))
              .thenReturn(toWikiPage("William Henry Harrison"))
@@ -101,8 +102,12 @@ public class WikipediaConverterTest {
         assertThat(output.toString()).isEqualTo(reference);
     }
 
-    private static String toWikiPage(String president) {
-        return String.format("ble bla bla <h1 id=\"section_0\">%s</h1> ble ble ble", president);
+    private static String toWikiPage(String text) {
+        return String.format("ble bla bla <h1 id=\"section_0\">%s</h1> ble ble ble", text);
+    }
+
+    private static String toWikiPageI(String text) {
+        return String.format("<h1 id=\"section_0\"><i>%s</i></h1> something, something", text);
     }
 
     @After

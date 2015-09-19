@@ -6,11 +6,13 @@ import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
+
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
-import pl.szczepanik.silencio.utils.IOUtils;
+import pl.szczepanik.silencio.utils.IOUtility;
 
 /**
  * Converter that changes each passed value into random words taken from Wikipedia. Internet access required when using
@@ -26,7 +28,7 @@ public class WikipediaConverter implements Converter {
      */
     private static final String URL_ADDRESS = "https://en.m.wikipedia.org/wiki/Special:Random";
 
-    private final URL url = IOUtils.createURL(URL_ADDRESS);
+    private final URL url = IOUtility.createURL(URL_ADDRESS);
 
     /**
      * Keeps passed values and corresponding numbers;
@@ -68,22 +70,17 @@ public class WikipediaConverter implements Converter {
         final String startPattern = "<h1 id=\"section_0\">";
         final String endPattern = "</h1>";
 
-        String page = IOUtils.urlToString(url);
-        // look for the h1 tag that starts headline
-        int startWord = page.indexOf(startPattern);
-        // look for the end of h1 tag
-        int endWord = page.indexOf(endPattern, startWord + startPattern.length());
-        if (endWord == -1) {
-            throw new IntegrityException("Could not header pattern for page: " + page);
-        }
+        String page = IOUtility.urlToString(url);
+
         // extract characters between opening and closing h1 tag
-        String title = page.substring(startWord + startPattern.length(), endWord);
+        String title = StringUtils.substringBetween(page, startPattern, endPattern);
+        if (title == null) {
+            throw new IntegrityException("Could not find header pattern for page: " + page);
+        }
         // some headlines are wrapped with italics - remove them
         String rawTitle = title.replaceFirst("<i>(.+)</i>", "$1");
-        // remove all no digits or letters characters and wrapped spaced then
-        String validTitle = rawTitle.replaceAll("[^\\d\\w]", " ").trim();
-
-        return validTitle;
+        // remove all no digits or letters characters and trailing spaces
+        return rawTitle.replaceAll("[^\\d\\w]", " ").trim();
     }
 
     @Override

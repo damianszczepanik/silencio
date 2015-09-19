@@ -4,12 +4,14 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.commons.io.IOUtils;
+
 import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public final class IOUtils {
+public final class IOUtility {
 
     /**
      * Loads and returns content accessible via given URL.
@@ -22,7 +24,7 @@ public final class IOUtils {
      */
     public static String urlToString(URL url) {
         try {
-            return org.apache.commons.io.IOUtils.toString(url);
+            return IOUtils.toString(url);
         } catch (IOException e) {
             throw new IntegrityException(e.getMessage());
         }

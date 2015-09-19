@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.WikipediaConverter;
 import pl.szczepanik.silencio.core.ConverterBuilder;
-import pl.szczepanik.silencio.utils.JSONUtils;
+import pl.szczepanik.silencio.utils.JSONUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -41,7 +41,7 @@ public class WikipediaConverterIntegrationTest {
         processor.write(output);
 
         // then
-        assertThat(JSONUtils.matchesJsonToPattern(output.toString(), "suv-pattern.json")).isTrue();
+        assertThat(JSONUtility.matchesJsonToPattern(output.toString(), "suv-pattern.json")).isTrue();
     }
 
     @After
