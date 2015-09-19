@@ -16,7 +16,7 @@ import org.junit.runners.Parameterized.Parameters;
 import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 import pl.szczepanik.silencio.stubs.StubProcessable;
-import pl.szczepanik.silencio.utils.ReflectionUtils;
+import pl.szczepanik.silencio.utils.ReflectionUtility;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -53,7 +53,7 @@ public class JSONParserTypeValidatorTest {
         JSONVisitor parser = new JSONVisitor(new StubProcessable());
 
         // when
-        boolean isType = ReflectionUtils.invokeMethod(parser, "isBasicType", Boolean.class, type);
+        boolean isType = ReflectionUtility.invokeMethod(parser, "isBasicType", Boolean.class, type);
 
         // then
         assertThat(isType).isEqualTo(isBasic);

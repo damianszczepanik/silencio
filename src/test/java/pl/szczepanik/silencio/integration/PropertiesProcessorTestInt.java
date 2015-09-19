@@ -17,7 +17,7 @@ import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 import pl.szczepanik.silencio.processors.PropertiesProcessor;
-import pl.szczepanik.silencio.utils.PropertiesUtils;
+import pl.szczepanik.silencio.utils.PropertiesUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -46,7 +46,7 @@ public class PropertiesProcessorTestInt {
         reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_blank.properties")));
         Properties converted = new Properties();
         converted.load(new StringReader(output.toString()));
-        PropertiesUtils.assertEqual(reference, converted);
+        PropertiesUtility.assertEqual(reference, converted);
     }
 
     @Test

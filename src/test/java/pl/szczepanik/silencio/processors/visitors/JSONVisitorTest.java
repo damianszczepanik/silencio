@@ -18,7 +18,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.mocks.ProcessableCounter;
 import pl.szczepanik.silencio.stubs.StubProcessable;
-import pl.szczepanik.silencio.utils.ReflectionUtils;
+import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -42,7 +42,7 @@ public class JSONVisitorTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        ReflectionUtils.invokeMethod(parserr, "processComplex", Void.class, key, value);
+        ReflectionUtility.invokeMethod(parserr, "processComplex", Void.class, key, value);
     }
 
     @Test

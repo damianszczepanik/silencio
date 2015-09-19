@@ -7,7 +7,7 @@ import java.util.Properties;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class PropertiesUtils {
+public class PropertiesUtility {
 
     /**
      * Assert two properties files according to keys and values are equal (comments are skipped).
