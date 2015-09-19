@@ -15,7 +15,11 @@ public class ReflectionUtils {
             for (Method method : methods) {
                 if (method.getName().equals(methodName)) {
                     method.setAccessible(true);
-                    return (T) method.invoke(instance, arguments);
+                    if (arguments == null) {
+                        return (T) method.invoke(instance);
+                    } else {
+                        return (T) method.invoke(instance, arguments);
+                    }
                 }
             }
             throw new RuntimeException("Could not find method: " + methodName);

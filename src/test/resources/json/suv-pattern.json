@@ -1,0 +1,21 @@
+\{
+  "model" : ".*",
+  "wheels" : ".*",
+  "size" : \{
+    "length" : ".*",
+    "height" : ".*",
+    "width" : ".*"
+  \},
+  "weight" : \{
+    "value" : ".*",
+    "unit" : ".*"
+  \},
+  "accessories" : \[ ".*", ".*" \],
+  "fuel" : \[ \{
+    "diesel" : ".*",
+    "LPG" : ".*"
+  \} \],
+  "notes" : ".*",
+  "alarms" : \{ \},
+  "assistance" : \[ \]
+\}
