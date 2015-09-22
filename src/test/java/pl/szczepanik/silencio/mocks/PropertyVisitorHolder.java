@@ -13,13 +13,10 @@ public class PropertyVisitorHolder extends PropertiesVisitor {
 
     private Properties properties;
 
-    public PropertyVisitorHolder() {
-        super(null);
-    }
-
     @Override
     public void process(Properties properties) {
         this.properties = properties;
+        super.process(properties);
     }
 
     public Properties getProperties() {

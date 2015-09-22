@@ -9,11 +9,9 @@ import pl.szczepanik.silencio.core.Value;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class PassedValueConverter implements Converter {
+public final class PassedValueConverter implements Converter {
 
-    /**
-     * Limits the access to diagnostic package.
-     */
+    // Limits the access only to diagnostic package.
     PassedValueConverter() {
     }
 

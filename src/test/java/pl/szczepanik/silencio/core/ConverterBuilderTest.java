@@ -43,7 +43,7 @@ public class ConverterBuilderTest {
 
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Array with converters must not be empty!");
+        thrown.expectMessage("Array with Converters must not be empty!");
         ConverterBuilder.build(format, converters);
     }
 

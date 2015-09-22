@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.core.Value;
 public class PositiveDecisionTest {
 
     @Test
-    public void shouldAlwaysReturnTrue() {
+    public void shouldAllowForConversion() {
 
         // given
         Decision d = new PositiveDecision();

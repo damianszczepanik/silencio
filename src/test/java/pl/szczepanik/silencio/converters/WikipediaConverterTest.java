@@ -23,6 +23,7 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.processors.JSONProcessor;
+import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.IOUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
@@ -50,7 +51,7 @@ public class WikipediaConverterTest {
         Converter wikipedia = new WikipediaConverter();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         Processor processor = new JSONProcessor();
-        processor.setConverters(new Converter[] { wikipedia });
+        processor.setExecutionConfig(StubExecutionConfig.asList(wikipedia));
         processor.load(input);
 
         // when
@@ -68,11 +69,11 @@ public class WikipediaConverterTest {
     public void shouldConvertWholeFile() throws IOException {
 
         // given
-        Converter wikipedia = new WikipediaConverter();
+        Converter converter = new WikipediaConverter();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
         Processor processor = new JSONProcessor();
-        processor.setConverters(new Converter[] { wikipedia });
+        processor.setExecutionConfig(StubExecutionConfig.asList(converter));
         processor.load(input);
 
         // when
@@ -92,7 +93,7 @@ public class WikipediaConverterTest {
              .thenReturn(toWikiPage("William Henry Harrison"))
              .thenReturn(toWikiPage("William Henry Harrison"))
              .thenReturn(toWikiPage("John Tyler"))
-             .thenThrow(new IllegalArgumentException("Trying to parse more elements than allowed!"));
+             .thenThrow(new IllegalArgumentException("Trying to parse more elements than expected!"));
 
         processor.process();
         processor.write(output);

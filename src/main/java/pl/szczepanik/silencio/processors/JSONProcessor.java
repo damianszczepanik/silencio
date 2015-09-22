@@ -27,7 +27,7 @@ public class JSONProcessor extends AbstractProcessor {
 
     private Map<String, Object> jsonStructure;
 
-    private final JSONVisitor visitor = new JSONVisitor(this);
+    private final JSONVisitor visitor = new JSONVisitor();
 
     public JSONProcessor() {
         super(Format.JSON);
@@ -48,6 +48,8 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
+        // TODO: this should be called by parent class so each concrete implementation does not need to worry about it
+        visitor.setExecutionConfigs(executionConfigs);
         visitor.process(jsonStructure);
     }
 

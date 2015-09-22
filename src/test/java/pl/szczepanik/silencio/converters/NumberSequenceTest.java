@@ -25,46 +25,48 @@ public class NumberSequenceTest {
         blank.init();
 
         // then
-        assertThat(blank.convert(key, value).getValue()).isNotNull();
+        assertThat(blank.convert(key, value).getValue()).isEqualTo(0);
     }
 
     @Test
-    public void shouldReturnSameValuesWhenPassingEqualsValues() {
+    public void shouldReturnSameNumbersWhenPassingEqualsValues() {
 
         // given having 2 values with the same value (compareTo returns true) but different reference
         Converter blank = new NumberSequenceConverter();
         Key key = new Key("funnyKey");
-        Value value1 = new Value(Integer.toBinaryString(12345));
-        Value value2 = new Value(Integer.toBinaryString(12345));
+        Value inputValue1 = new Value(Integer.toBinaryString(12345));
+        Value inputValue2 = new Value(Long.toBinaryString(12345));
 
         // when
         blank.init();
-        Value ref1 = blank.convert(key, value1);
-        Value ref2 = blank.convert(key, value2);
+        Value outputValue1 = blank.convert(key, inputValue1);
+        Value outputValue2 = blank.convert(key, inputValue2);
 
         // then
-        assertThat(ref1.getValue()).isEqualTo(ref2.getValue());
+        assertThat(inputValue1.getValue()).isEqualTo(inputValue2.getValue());
+        assertThat(outputValue1.getValue()).isEqualTo(outputValue2.getValue());
     }
 
     @Test
-    public void shouldReturnDifferentValuesWhenPassingDifferentValue() {
+    public void shouldReturnDifferentNumberWhenPassingDifferentValue() {
 
         Converter blank = new NumberSequenceConverter();
         Key key = new Key("funnyKey");
-        Value value1 = new Value(Integer.toBinaryString(12345));
-        Value value2 = new Value(Integer.toBinaryString(54321));
+        Value inputValue1 = new Value(Integer.toBinaryString(12345));
+        Value inputValue2 = new Value(Integer.toBinaryString(54321));
 
         // when
         blank.init();
-        Value ref1 = blank.convert(key, value1);
-        Value ref2 = blank.convert(key, value2);
+        Value outputValue1 = blank.convert(key, inputValue1);
+        Value outputValue2 = blank.convert(key, inputValue2);
 
         // then
-        assertThat(ref1.getValue()).isNotEqualTo(ref2.getValue());
+        assertThat(inputValue1.getValue()).isNotEqualTo(inputValue2.getValue());
+        assertThat(outputValue1.getValue()).isNotEqualTo(outputValue2.getValue());
     }
 
     @Test
-    public void shouldReturnSameValuesWhenPassingSameValue() {
+    public void shouldReturnSameNumberWhenPassingSameReference() {
 
         // given
         Converter blank = new NumberSequenceConverter();
@@ -73,10 +75,10 @@ public class NumberSequenceTest {
 
         // when
         blank.init();
-        Value ref1 = blank.convert(key, value);
-        Value ref2 = blank.convert(key, value);
+        Value outputValue1 = blank.convert(key, value);
+        Value outputValue2 = blank.convert(key, value);
 
         // then
-        assertThat(ref1.getValue()).isEqualTo(ref2.getValue());
+        assertThat(outputValue1.getValue()).isEqualTo(outputValue2.getValue());
     }
 }

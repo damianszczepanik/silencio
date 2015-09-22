@@ -13,12 +13,12 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
-import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.ConverterBuilder;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
+import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -33,7 +33,7 @@ public class JSONProcessorTest {
     private Reader input;
 
     @Test
-    public void shouldReturnProperFormat() {
+    public void shouldReturnPassedFormat() {
 
         // given
         JSONProcessor processor = new JSONProcessor();
@@ -70,7 +70,7 @@ public class JSONProcessorTest {
 
         // when
         Processor processor = new JSONProcessor();
-        processor.setConverters(new Converter[] { ConverterBuilder.BLANK });
+        processor.setExecutionConfig(StubExecutionConfig.asList(ConverterBuilder.BLANK));
 
         // then
         thrown.expect(ProcessorException.class);
@@ -89,7 +89,7 @@ public class JSONProcessorTest {
 
         // when
         JSONProcessor processor = new JSONProcessor();
-        processor.setConverters(new Converter[] { ConverterBuilder.BLANK });
+        processor.setExecutionConfig(StubExecutionConfig.asList(ConverterBuilder.BLANK));
         processor.load(input);
         processor.realProcess();
 

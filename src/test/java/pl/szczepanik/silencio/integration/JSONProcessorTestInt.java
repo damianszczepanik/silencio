@@ -51,8 +51,7 @@ public class JSONProcessorTestInt {
         ProcessorSmokeChecker checker = new ProcessorSmokeChecker(new JSONProcessor());
 
         // then
-        checker.validateWithAllConverters(content);
-        checker.validateWithSetsOfConverters(content);
+        checker.validateWithAllCombinations(content);
     }
 
     @After

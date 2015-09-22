@@ -13,7 +13,7 @@ public class ProcessorStateMachineTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldNotAllowForValidateProcess() {
+    public void shouldNotAllowToValidateProcessInCreatedState() {
 
         // when
         ProcessorStateMachine machine = new ProcessorStateMachine();
@@ -38,7 +38,7 @@ public class ProcessorStateMachineTest {
     }
 
     @Test
-    public void shouldNotAllowForValidateWrite() {
+    public void shouldNotAllowToValidateWriteInCreatedState() {
 
         // when
         ProcessorStateMachine machine = new ProcessorStateMachine();

@@ -26,17 +26,7 @@ public class ProcessorSmokeCheckerTest {
         StubProcessor processor = new StubProcessor(Format.JSON, new Converter[] { new StubConverter() });
 
         // then
-        new ProcessorSmokeChecker(processor).validateWithAllConverters("");
-    }
-
-    @Test
-    public void shouldPassWithSetProcessor() {
-
-        // given
-        StubProcessor processor = new StubProcessor(Format.JSON, new Converter[] { new StubConverter() });
-
-        // then
-        new ProcessorSmokeChecker(processor).validateWithSetsOfConverters("");
+        new ProcessorSmokeChecker(processor).validateWithAllCombinations("");
     }
 
     @Test
@@ -51,7 +41,6 @@ public class ProcessorSmokeCheckerTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(errorMessage);
-        new ProcessorSmokeChecker(processor).validateWithAllConverters("");
+        new ProcessorSmokeChecker(processor).validateWithAllCombinations("");
     }
-
 }

@@ -10,7 +10,9 @@ import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Test;
 
-import pl.szczepanik.silencio.mocks.ProcessableCounter;
+import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.mocks.ConverterVisitor;
+import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -23,20 +25,23 @@ public class PropertiesVisitorTest {
     @Test
     public void shouldVisitAllJsonNodes() throws IOException {
 
-        final int nodeCounter = 14;
+        final int nodesCounter = 14;
 
         // given
         input = ResourceLoader.loadPropertiesAsReader("suv.properties");
         Properties properties = new Properties();
         properties.load(input);
-        ProcessableCounter processableVisitor = new ProcessableCounter();
+
+        PropertiesVisitor visitor = new PropertiesVisitor();
+        ConverterVisitor visitCounter = new ConverterVisitor();
+        ExecutionConfig[] executionConfigs = StubExecutionConfig.asList(visitCounter);
+        visitor.setExecutionConfigs(executionConfigs);
 
         // when
-        PropertiesVisitor visitor = new PropertiesVisitor(processableVisitor);
         visitor.process(properties);
 
         // then
-        assertThat(processableVisitor.getVisitCounter()).isEqualTo(nodeCounter);
+        assertThat(visitCounter.getVisitCounter()).isEqualTo(nodesCounter);
     }
 
     @After

@@ -57,8 +57,7 @@ public class PropertiesProcessorTestInt {
         ProcessorSmokeChecker checker = new ProcessorSmokeChecker(new PropertiesProcessor());
 
         // then
-        checker.validateWithAllConverters(content);
-        checker.validateWithSetsOfConverters(content);
+        checker.validateWithAllCombinations(content);
     }
 
     @After

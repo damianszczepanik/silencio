@@ -5,19 +5,15 @@ import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
 
-import pl.szczepanik.silencio.core.Processable;
+import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.ProcessorException;
 
 /**
- * Iterates over JSON nodes and calls {@link Processable} for each basic node.
+ * Iterates over JSON nodes and calls {@link #processValue(Key, Object)} for each basic node.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public class JSONVisitor extends AbstractVisitor {
-
-    public JSONVisitor(Processable processable) {
-        super(processable);
-    }
 
     public void process(Map<String, Object> json) {
         processMap(json);
@@ -40,7 +36,7 @@ public class JSONVisitor extends AbstractVisitor {
             Object value = keyMap.getValue();
 
             if (isBasicType(value)) {
-                map.put(key, processable.processValue(key, value).getValue());
+                map.put(key, processValue(new Key(key), value).getValue());
             } else {
                 processComplex(key, value);
             }
@@ -51,7 +47,7 @@ public class JSONVisitor extends AbstractVisitor {
         for (int i = 0; i < list.size(); i++) {
             Object value = list.get(i);
             if (isBasicType(value)) {
-                list.set(i, processable.processValue(key, value).getValue());
+                list.set(i, processValue(new Key(key), value).getValue());
             } else {
                 processComplex(key, value);
             }

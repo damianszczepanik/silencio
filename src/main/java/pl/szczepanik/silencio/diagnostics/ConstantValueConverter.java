@@ -9,13 +9,11 @@ import pl.szczepanik.silencio.core.Value;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class ConstantValueConverter implements Converter {
+public final class ConstantValueConverter implements Converter {
 
     private final Value value = new Value("");
 
-    /**
-     * Limits the access to diagnostic package.
-     */
+    // Limits the access only to diagnostic package.
     ConstantValueConverter() {
     }
 

@@ -7,13 +7,13 @@ import org.junit.Test;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class ElementTest {
+public class ValueTest {
 
     @Test
     public void shouldReturnValue() {
 
         // given
-        String value = "twoValue";
+        String value = "secondValue";
 
         // when
         Value element = new Value(value);

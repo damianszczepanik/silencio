@@ -19,7 +19,7 @@ public class PropertiesProcessor extends AbstractProcessor {
 
     private final Properties properties = new Properties();
 
-    private final PropertiesVisitor visitor = new PropertiesVisitor(this);
+    private final PropertiesVisitor visitor = new PropertiesVisitor();
 
     public PropertiesProcessor() {
         super(Format.PROPERTIES);
@@ -37,6 +37,7 @@ public class PropertiesProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
+        visitor.setExecutionConfigs(executionConfigs);
         visitor.process(properties);
     }
 

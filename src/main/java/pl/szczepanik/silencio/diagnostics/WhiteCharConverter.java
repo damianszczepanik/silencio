@@ -9,14 +9,12 @@ import pl.szczepanik.silencio.core.Value;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class BlankCharConverter implements Converter {
+public final class WhiteCharConverter implements Converter {
 
     private final Value value = new Value(" ");
 
-    /**
-     * Limits the access to diagnostic package.
-     */
-    BlankCharConverter() {
+    // Limits the access only to diagnostic package.
+    WhiteCharConverter() {
     }
 
     @Override
