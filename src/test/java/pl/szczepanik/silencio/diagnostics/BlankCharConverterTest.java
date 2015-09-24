@@ -18,7 +18,7 @@ public class BlankCharConverterTest {
         Key key = new Key("key1");
 
         // when
-        Converter converter = new BlankCharConverter();
+        Converter converter = new WhiteCharConverter();
         Value reference = converter.convert(key, value);
 
         // then

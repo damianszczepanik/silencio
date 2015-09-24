@@ -15,7 +15,6 @@ import org.junit.runners.Parameterized.Parameters;
 
 import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
-import pl.szczepanik.silencio.stubs.StubProcessable;
 import pl.szczepanik.silencio.utils.ReflectionUtility;
 
 /**
@@ -27,30 +26,30 @@ public class JSONParserTypeValidatorTest {
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
-            { new String(), true },
+            { new String(),    true },
             { new Integer(55), true },
-            { new Long(32), true },
+            { new Long(32),    true },
             { BigInteger.ZERO, true },
-            { BigDecimal.TEN, true },
+            { BigDecimal.TEN,  true },
             { new Double(-88), true },
-            { Boolean.FALSE, true },
-            { null, true },
-            { new Object(), false },
+            { Boolean.FALSE,   true },
+            { null,            true },
+            { new Object(),    false },
             { new Value(null), false },
-            });
+        });
     }
 
     @Parameter(value = 0)
-    public /* NOT private */ Object type;
+    public Object type;
 
     @Parameter(value = 1)
-    public /* NOT private */ boolean isBasic;
+    public boolean isBasic;
 
     @Test
     public void shouldValidateBasicObject() throws Exception {
 
         // given
-        JSONVisitor parser = new JSONVisitor(new StubProcessable());
+        JSONVisitor parser = new JSONVisitor();
 
         // when
         boolean isType = ReflectionUtility.invokeMethod(parser, "isBasicType", Boolean.class, type);

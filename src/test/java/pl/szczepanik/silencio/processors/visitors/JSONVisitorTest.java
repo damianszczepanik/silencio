@@ -16,8 +16,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.mocks.ProcessableCounter;
-import pl.szczepanik.silencio.stubs.StubProcessable;
+import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.mocks.ConverterVisitor;
+import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
@@ -37,7 +38,7 @@ public class JSONVisitorTest {
         // when
         String key = "myKey";
         Object value = new Object();
-        JSONVisitor parserr = new JSONVisitor(new StubProcessable());
+        JSONVisitor parserr = new JSONVisitor();
 
         // then
         thrown.expect(ProcessorException.class);
@@ -52,17 +53,19 @@ public class JSONVisitorTest {
 
         // given
         input = ResourceLoader.loadJsonAsReader("suv.json");
-        ProcessableCounter processableVisitor = new ProcessableCounter();
         Map<String, Object> jsonStructure = new ObjectMapper().readValue(input,
                 new TypeReference<Map<String, Object>>() {
                 });
+        ConverterVisitor visitCounter = new ConverterVisitor();
+        ExecutionConfig[] executionConfigs = StubExecutionConfig.asList(visitCounter);
+        JSONVisitor visitor = new JSONVisitor();
+        visitor.setExecutionConfigs(executionConfigs);
 
         // when
-        JSONVisitor visitor = new JSONVisitor(processableVisitor);
         visitor.process(jsonStructure);
 
         // then
-        assertThat(processableVisitor.getVisitCounter()).isEqualTo(nodeCounter);
+        assertThat(visitCounter.getVisitCounter()).isEqualTo(nodeCounter);
     }
 
     @After

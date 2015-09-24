@@ -35,11 +35,11 @@ public class PropertiesProcessorTest {
     private Reader input;
 
     @Test
-    public void shouldReturnProperFormat() {
+    public void shouldReturnPassedFormat() {
          
         // given
-        PropertiesProcessor processor = new PropertiesProcessor ();
-        
+        PropertiesProcessor processor = new PropertiesProcessor();
+
         // when
         Format format = processor.getFormat();
         
@@ -83,7 +83,7 @@ public class PropertiesProcessorTest {
     }
 
     @Test
-    public void shouldCallProcessByRealProcess() {
+    public void shouldInvokeProcessByRealProcess() {
 
         // given
         PropertiesProcessor processor = new PropertiesProcessor();
@@ -115,7 +115,7 @@ public class PropertiesProcessorTest {
     }
 
     @Test
-    public void shouldWritePropertiesInitoWRiter() throws IOException {
+    public void shouldWritePropertiesIntoWriter() throws IOException {
 
         // given
         input = ResourceLoader.loadPropertiesAsReader("suv.properties");

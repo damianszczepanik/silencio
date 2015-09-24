@@ -4,6 +4,8 @@ import java.io.Reader;
 import java.io.Writer;
 import java.util.Arrays;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -13,10 +15,11 @@ import pl.szczepanik.silencio.api.Processor;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public abstract class AbstractProcessor implements Processor, Processable {
+public abstract class AbstractProcessor implements Processor {
 
     protected final Format format;
-    protected Converter[] converters;
+
+    protected ExecutionConfig[] executionConfigs;
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 
@@ -40,8 +43,10 @@ public abstract class AbstractProcessor implements Processor, Processable {
      * Calls {@link Converter#init()} method on each converter.
      */
     protected void initConverties() {
-        for (Converter converter : converters) {
-            converter.init();
+        for (ExecutionConfig executionConfig : executionConfigs) {
+            for (Converter converter : executionConfig.getConverters()) {
+                converter.init();
+            }
         }
     }
 
@@ -53,11 +58,11 @@ public abstract class AbstractProcessor implements Processor, Processable {
     protected abstract void realLoad(Reader reader);
 
     @Override
-    public void setConverters(Converter[] converters) {
-        validateConverters(converters);
+    public void setExecutionConfig(ExecutionConfig[] executionConfig) {
+        validateExecutionConfig(executionConfig);
 
         // deep copy to prevent manipulating on private list
-        this.converters = Arrays.copyOf(converters, converters.length);
+        this.executionConfigs = Arrays.copyOf(executionConfig, executionConfig.length);
 
         stateMachine.moveToLoaded();
     }
@@ -73,16 +78,6 @@ public abstract class AbstractProcessor implements Processor, Processable {
     protected abstract void realProcess();
 
     @Override
-    public Value processValue(String key, Object value) {
-        Value newValue = new Value(value);
-        for (Converter converter : converters) {
-            newValue = converter.convert(new Key(key), newValue);
-        }
-
-        return newValue;
-    }
-
-    @Override
     public final void write(Writer writer) {
         stateMachine.validateWrite();
         realWrite(writer);
@@ -96,14 +91,10 @@ public abstract class AbstractProcessor implements Processor, Processable {
         }
     }
 
-    private void validateConverters(Converter[] converters) {
-        if (converters == null || converters.length == 0) {
-            throw new IntegrityException("Array with converters must not be empty!");
-        }
-        for (int i = 0; i < converters.length; i++) {
-            if (converters[i] == null) {
-                throw new IntegrityException(String.format("Converter passed on index %d is null!", i));
-            }
+    private void validateExecutionConfig(ExecutionConfig[] executionConfig) {
+        if (ArrayUtils.isEmpty(executionConfig)) {
+            throw new IntegrityException("Array with ExecutionConfig must not be empty!");
         }
     }
+
 }

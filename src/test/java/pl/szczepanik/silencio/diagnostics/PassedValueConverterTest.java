@@ -16,11 +16,12 @@ public class PassedValueConverterTest {
         // given
         Value value = new Value("someValue");
         Key key = new Key("someKey");
-
-        // when
         Converter converter = new PassedValueConverter();
 
+        // when
+        Value outputValue = converter.convert(key, value);
+
         // then
-        assertThat(converter.convert(key, value)).isEqualTo(value);
+        assertThat(outputValue).isEqualTo(value);
     }
 }

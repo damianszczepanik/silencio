@@ -23,7 +23,7 @@ import pl.szczepanik.silencio.core.IntegrityException;
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(IOUtils.class)
 public class IOUtilityTest {
-    
+
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
     private static final String URL_ADDRESS = "http://www.fancy.page";
 
@@ -32,7 +32,7 @@ public class IOUtilityTest {
 
     @Test
     public void shouldReturnWholeHtmlPage() throws Exception {
-        
+
         // given
         mockStatic(IOUtils.class);
         when(IOUtils.toString(new URL(URL_ADDRESS)))

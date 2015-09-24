@@ -6,6 +6,8 @@ import java.io.Writer;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
+import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.decisions.PositiveDecision;
 
 /**
  * Stub of @link {@link AbstractProcessor} that has only stub methods.
@@ -16,7 +18,7 @@ public class StubProcessor extends AbstractProcessor {
 
     public StubProcessor(Format format, Converter[] converters) {
         this(format);
-        setConverters(converters);
+        setExecutionConfig(new ExecutionConfig[] { new ExecutionConfig(new PositiveDecision(), converters) });
     }
 
     public StubProcessor(Format format) {

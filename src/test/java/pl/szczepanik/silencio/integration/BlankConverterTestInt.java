@@ -25,7 +25,7 @@ public class BlankConverterTestInt {
     private Reader input;
 
     @Test
-    public void shoulClearValuesWhenBlankSiExecutedAsLast() throws IOException {
+    public void shoulClearValuesWhenBlankIsExecutedAsLast() throws IOException {
 
         // given
         input = ResourceLoader.loadJsonAsReader("suv.json");

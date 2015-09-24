@@ -8,10 +8,8 @@ import org.junit.rules.ExpectedException;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.mocks.ConverterHolder;
-import pl.szczepanik.silencio.stubs.StubProcessor;
 import pl.szczepanik.silencio.stubs.StubConverter;
+import pl.szczepanik.silencio.stubs.StubProcessor;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -22,35 +20,17 @@ public class AbstractProcessorTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void shouldReturnValidFormat() {
+    public void shouldReturnPassedFormat() {
 
         // given
         Converter[] converters = { new StubConverter() };
         Format format = Format.PROPERTIES;
 
         // when
-        Processor processor = new StubProcessor(format, converters);
+        AbstractProcessor processor = new StubProcessor(format, converters);
 
         // then
         assertThat(processor.getFormat()).isEqualTo(format);
-    }
-
-    @Test
-    public void shouldProcessAllConverters() {
-        // given
-        AbstractProcessor processor = new StubProcessor(Format.JSON);
-        ConverterHolder[] converters = { new ConverterHolder() };
-        String key = "myKey";
-        Object value = "yourValue";
-
-        // when
-        processor.setConverters(converters);
-        Value retValue = processor.processValue(key, value);
-
-        // then
-        assertThat(converters[0].getKey().getKey()).isEqualTo(key);
-        assertThat(converters[0].getValue().getValue()).isEqualTo(value);
-        assertThat(retValue.getValue()).isEqualTo(value);
     }
 
     @Test
@@ -69,18 +49,20 @@ public class AbstractProcessorTest {
     }
 
     @Test
-    public void shouldFailWhenBuildFromNullConverter() {
+    public void shouldFailWhenBuildFromNullConfiguration() {
 
         // given
         Format format = Format.PROPERTIES;
+        AbstractProcessor processor = new StubProcessor(format);
 
         // when
-        Converter[] converter = null;
+        ExecutionConfig[] executionConfig = {};
 
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Array with converters must not be empty!");
-        new StubProcessor(format, converter);
+        thrown.expectMessage("Array with ExecutionConfig must not be empty!");
+        processor.setExecutionConfig(executionConfig);
+
     }
 
     @Test
@@ -94,7 +76,7 @@ public class AbstractProcessorTest {
 
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Array with converters must not be empty!");
+        thrown.expectMessage("Array with Converters must not be empty!");
         new StubProcessor(format, converter);
     }
 
@@ -109,7 +91,7 @@ public class AbstractProcessorTest {
 
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Converter passed on index 1 is null!");
+        thrown.expectMessage("Passed Converter is null!");
         new StubProcessor(format, converters);
     }
 
@@ -127,5 +109,4 @@ public class AbstractProcessorTest {
         thrown.expectMessage("This operation is not allowed for this state: CREATED");
         processor.process();
     }
-
 }

@@ -5,6 +5,7 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.BlankConverter;
 import pl.szczepanik.silencio.converters.NumberSequenceConverter;
+import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.processors.PropertiesProcessor;
 
@@ -22,7 +23,8 @@ public final class ConverterBuilder {
             converters = converterToApply;
         }
         Processor processor = buildProcessor(format);
-        processor.setConverters(converters);
+        ExecutionConfig[] executionConfigs = { new ExecutionConfig(new PositiveDecision(), converters) };
+        processor.setExecutionConfig(executionConfigs);
 
         return processor;
     }

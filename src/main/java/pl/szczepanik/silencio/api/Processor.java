@@ -3,6 +3,8 @@ package pl.szczepanik.silencio.api;
 import java.io.Reader;
 import java.io.Writer;
 
+import pl.szczepanik.silencio.core.ExecutionConfig;
+
 /**
  * Contract for processor that converts content.
  * 
@@ -17,10 +19,10 @@ public interface Processor {
     Format getFormat();
 
     /**
-     * Defines list of converters that should be used by this processor.
-     * @param converters list of converters that should be applied
+     * Defines list of {@link ExecutionConfig} that should be used by this processor.
+     * @param executionConfig list of ExecutionConfig that should be applied
      */
-    void setConverters(Converter[] converters);
+    void setExecutionConfig(ExecutionConfig[] executionConfig);
 
     /**
      * Reads content that will be processed.
