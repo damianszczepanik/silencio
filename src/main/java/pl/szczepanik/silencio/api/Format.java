@@ -5,6 +5,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 
 import pl.szczepanik.silencio.core.IntegrityException;
 
+
 /**
  * Type of the content.
  * 
@@ -16,7 +17,10 @@ public abstract class Format {
     public static final Format PROPERTIES = new Format("PROPERTIES") {};
 
     /** Predefined format for JSON files. */
-    public static final Format JSON = new Format("JSON"){};
+    public static final Format JSON = new Format("JSON") {};
+
+    /** Predefined format for XML files. */
+    public static final Format XML = new Format("XML") {};
 
     private final String name;
 
