@@ -6,7 +6,7 @@
 
 # silencio
 
-Silencio is a library for transforming and converting [JSON](https://pl.wikipedia.org/wiki/JSON) and [Properties](https://en.wikipedia.org/wiki/.properties) files. It is applicable for most of operations such as:
+Silencio is a library for transforming and converting any format such as [JSON](https://pl.wikipedia.org/wiki/JSON) or [Properties](https://en.wikipedia.org/wiki/.properties) files. It is applicable for most of operations such as:
 - obfuscation
 - minimisation (eg anonymous)
 - transformation

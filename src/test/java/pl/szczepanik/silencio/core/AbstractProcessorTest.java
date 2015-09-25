@@ -55,13 +55,10 @@ public class AbstractProcessorTest {
         Format format = Format.PROPERTIES;
         AbstractProcessor processor = new StubProcessor(format);
 
-        // when
-        ExecutionConfig[] executionConfig = {};
-
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Array with ExecutionConfig must not be empty!");
-        processor.setExecutionConfig(executionConfig);
+        thrown.expectMessage("Configuration must not be null!");
+        processor.setConfiguration(null);
 
     }
 

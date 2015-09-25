@@ -15,10 +15,11 @@ import org.junit.rules.ExpectedException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.ProcessorException;
-import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.ConverterVisitor;
-import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
@@ -57,9 +58,9 @@ public class JSONVisitorTest {
                 new TypeReference<Map<String, Object>>() {
                 });
         ConverterVisitor visitCounter = new ConverterVisitor();
-        ExecutionConfig[] executionConfigs = StubExecutionConfig.asList(visitCounter);
+        Execution execution = new Execution(new PositiveDecision(), visitCounter);
         JSONVisitor visitor = new JSONVisitor();
-        visitor.setExecutionConfigs(executionConfigs);
+        visitor.setConfiguration(new Configuration(execution));
 
         // when
         visitor.process(jsonStructure);

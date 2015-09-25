@@ -11,12 +11,12 @@ import pl.szczepanik.silencio.api.Decision;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class ExecutionConfig {
+public class Execution {
 
     private final Decision[] decisions;
     private final Converter[] converters;
-    
-    public ExecutionConfig(Decision[] decisions, Converter[] converters) {
+
+    public Execution(Decision[] decisions, Converter[] converters) {
         validateDecisions(decisions);
         validateConverters(converters);
 
@@ -24,10 +24,13 @@ public class ExecutionConfig {
         this.converters = converters;
     }
 
-    public ExecutionConfig(Decision decision, Converter[] converters) {
+    public Execution(Decision decision, Converter[] converters) {
         this(new Decision[] { decision }, converters);
     }
 
+    public Execution(Decision decision, Converter converter) {
+        this(new Decision[] { decision }, new Converter[] { converter });
+    }
 
     public Decision[] getDecisions() {
         return decisions;
@@ -36,7 +39,6 @@ public class ExecutionConfig {
     public Converter[] getConverters() {
         return converters;
     }
-
 
     private void validateDecisions(Decision[] decisions) {
         if (ArrayUtils.isEmpty(decisions)) {

@@ -6,7 +6,8 @@ import java.io.Writer;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.AbstractProcessor;
-import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 
 /**
@@ -18,7 +19,8 @@ public class StubProcessor extends AbstractProcessor {
 
     public StubProcessor(Format format, Converter[] converters) {
         this(format);
-        setExecutionConfig(new ExecutionConfig[] { new ExecutionConfig(new PositiveDecision(), converters) });
+        Execution execution = new Execution(new PositiveDecision(), converters);
+        setConfiguration(new Configuration(execution));
     }
 
     public StubProcessor(Format format) {

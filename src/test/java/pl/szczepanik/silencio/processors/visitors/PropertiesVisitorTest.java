@@ -10,9 +10,10 @@ import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Test;
 
-import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
+import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.ConverterVisitor;
-import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -34,8 +35,8 @@ public class PropertiesVisitorTest {
 
         PropertiesVisitor visitor = new PropertiesVisitor();
         ConverterVisitor visitCounter = new ConverterVisitor();
-        ExecutionConfig[] executionConfigs = StubExecutionConfig.asList(visitCounter);
-        visitor.setExecutionConfigs(executionConfigs);
+        Execution execution = new Execution(new PositiveDecision(), visitCounter);
+        visitor.setConfiguration(new Configuration(execution));
 
         // when
         visitor.process(properties);

@@ -27,7 +27,7 @@ public class ConverterBuilderTest {
         Converter[] converters = { new StubConverter(), new StubConverter() };
 
         // then
-        Processor processor = ConverterBuilder.build(format, converters);
+        Processor processor = Builder.build(format, converters);
 
         // then
         assertThat(processor).isNotNull();
@@ -44,7 +44,7 @@ public class ConverterBuilderTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Array with Converters must not be empty!");
-        ConverterBuilder.build(format, converters);
+        Builder.build(format, converters);
     }
 
     @Test
@@ -52,11 +52,11 @@ public class ConverterBuilderTest {
 
         // when
         Format format = new Format("tr!cky") { };
-        Converter[] converters = { ConverterBuilder.BLANK };
+        Converter[] converters = { Builder.BLANK };
 
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Unsupported format: " + format.getName());
-        ConverterBuilder.build(format, converters);
+        Builder.build(format, converters);
     }
 }

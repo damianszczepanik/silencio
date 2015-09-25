@@ -21,9 +21,11 @@ import org.powermock.modules.junit4.PowerMockRunner;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.IntegrityException;
+import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
-import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.IOUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
@@ -51,7 +53,8 @@ public class WikipediaConverterTest {
         Converter wikipedia = new WikipediaConverter();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         Processor processor = new JSONProcessor();
-        processor.setExecutionConfig(StubExecutionConfig.asList(wikipedia));
+        Execution execution = new Execution(new PositiveDecision(), wikipedia);
+        processor.setConfiguration(new Configuration(execution));
         processor.load(input);
 
         // when
@@ -73,7 +76,8 @@ public class WikipediaConverterTest {
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
         Processor processor = new JSONProcessor();
-        processor.setExecutionConfig(StubExecutionConfig.asList(converter));
+        Execution execution = new Execution(new PositiveDecision(), converter);
+        processor.setConfiguration(new Configuration(execution));
         processor.load(input);
 
         // when

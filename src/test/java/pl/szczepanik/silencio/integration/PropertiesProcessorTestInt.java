@@ -14,7 +14,7 @@ import org.junit.Test;
 
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.core.Builder;
 import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 import pl.szczepanik.silencio.processors.PropertiesProcessor;
 import pl.szczepanik.silencio.utils.PropertiesUtility;
@@ -36,7 +36,7 @@ public class PropertiesProcessorTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = ConverterBuilder.build(Format.PROPERTIES, ConverterBuilder.BLANK);
+        Processor processor = Builder.build(Format.PROPERTIES, Builder.BLANK);
         processor.load(input);
         processor.process();
         processor.write(output);
