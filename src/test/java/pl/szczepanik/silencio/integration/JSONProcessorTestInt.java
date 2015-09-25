@@ -39,7 +39,7 @@ public class JSONProcessorTestInt {
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_PositiveDecision_NumberSequence.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_Positive_NumberSequence.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 

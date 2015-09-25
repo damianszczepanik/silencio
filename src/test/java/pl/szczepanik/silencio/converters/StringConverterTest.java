@@ -12,22 +12,23 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class BlankTest {
+public class StringConverterTest {
 
     @Test
     public void shouldReturnEmptyValue() {
 
         // given
-        Converter blank = new BlankConverter();
+        String pattern = "constant";
+        Converter string = new StringConverter(pattern);
         Key key = new Key("funnyKey");
         Value value = new Value(StubFormat.class);
 
         // when
-        blank.init();
-        Value retValue = blank.convert(key, value);
+        string.init();
+        Value retValue = string.convert(key, value);
 
         // then
-        assertThat(retValue.getValue()).isEqualTo("");
+        assertThat(retValue.getValue()).isEqualTo(pattern);
     }
 
 }

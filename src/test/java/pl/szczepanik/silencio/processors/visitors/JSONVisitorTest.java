@@ -50,7 +50,7 @@ public class JSONVisitorTest {
     @Test
     public void shouldVisitAllJsonNodes() throws IOException {
 
-        final int nodeCounter = 12;
+        final int nodeCounter = 14;
 
         // given
         input = ResourceLoader.loadJsonAsReader("suv.json");

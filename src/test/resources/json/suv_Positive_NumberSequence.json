@@ -1,0 +1,25 @@
+{
+  "model" : 1,
+  "price" : {
+    "value" : 2,
+    "currency" : 3
+  },
+  "wheels" : 4,
+  "size" : {
+    "length" : 5,
+    "height" : 6,
+    "width" : 7
+  },
+  "weight" : {
+    "value" : 7,
+    "unit" : 8
+  },
+  "accessories" : [ 9, 10 ],
+  "fuel" : [ {
+    "diesel" : 11,
+    "LPG" : 11
+  } ],
+  "notes" : 0,
+  "alarms" : { },
+  "assistance" : [ ]
+}

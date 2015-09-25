@@ -1,5 +1,9 @@
 {
   "model" : "SUV",
+  "price" : {
+    "value" : 38504,
+    "currency" : "$"
+  },
   "wheels" : 4,
   "size" : {
     "length" : 4.45,
