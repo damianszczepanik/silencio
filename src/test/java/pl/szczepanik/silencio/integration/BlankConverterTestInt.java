@@ -38,7 +38,7 @@ public class BlankConverterTestInt {
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_PositiveDecision_Blank.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_Positive_Blank.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 

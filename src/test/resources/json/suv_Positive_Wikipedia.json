@@ -1,0 +1,25 @@
+{
+  "model" : "George Washington",
+  "price" : {
+    "value" : "John Adams",
+    "currency" : "Thomas Jefferson"
+  },
+  "wheels" : "James Madison",
+  "size" : {
+    "length" : "James Monroe",
+    "height" : "John Quincy Adams",
+    "width" : "Andrew Jackson"
+  },
+  "weight" : {
+    "value" : "Andrew Jackson",
+    "unit" : "Martin Van Buren"
+  },
+  "accessories" : [ "William Henry Harrison", "John Tyler" ],
+  "fuel" : [ {
+    "diesel" : "James Polk",
+    "LPG" : "James Polk"
+  } ],
+  "notes" : "Zachary Taylor",
+  "alarms" : { },
+  "assistance" : [ ]
+}

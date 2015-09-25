@@ -7,15 +7,13 @@ import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
 /**
- * Implementation of {@link Decision} that returns positive decision if passed key and value matches to declared
- * pattern. If values passed to decision method contains <code>null<code> key or value then relevant pattern will not be
- * checked.
+ * Implementation of {@link Decision} that returns positive decision if passed key and value matches (WHOLE string) to
+ * declared pattern. If value or key pattern is <code>null</code> then relevant pattern will not be checked assuming
+ * that pattern matches.
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 public class MatcherDecision implements Decision {
-
-    private static final String ACCEPT_ALL_PATTERN = ".*";
 
     private final Pattern keyPattern;
     private final Pattern valuePattern;
@@ -25,29 +23,30 @@ public class MatcherDecision implements Decision {
         this.valuePattern = createPattern(valuePattern);
     }
 
-    private Pattern createPattern(String pattern) {
-        String newPattern = pattern;
-        if (newPattern == null) {
-            newPattern = ACCEPT_ALL_PATTERN;
-        }
-        return Pattern.compile(newPattern);
-    }
-
     public MatcherDecision(String valuePattern) {
         this(null, valuePattern);
     }
 
+    private Pattern createPattern(String pattern) {
+        if (pattern == null) {
+            return null;
+        }
+        return Pattern.compile(pattern);
+    }
+
     @Override
     public boolean decide(Key key, Value value) {
-        boolean result = true;
-        if (value.getValue() != null) {
-            result &= valuePattern.matcher(value.getValue().toString()).matches();
-        }
-        if (key.getKey() != null) {
-            result &= keyPattern.matcher(key.getKey()).matches();
+        boolean shouldConvert = true;
+
+        if (key.getKey() != null && keyPattern != null) {
+            shouldConvert &= keyPattern.matcher(key.getKey()).matches();
         }
 
-        return result;
+        if (value.getValue() != null && valuePattern != null) {
+            shouldConvert &= valuePattern.matcher(value.getValue().toString()).matches();
+        }
+
+        return shouldConvert;
     }
 
 }

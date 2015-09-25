@@ -85,25 +85,27 @@ public class WikipediaConverterTest {
         when(pl.szczepanik.silencio.utils.IOUtility.urlToString(new URL(URL_ADDRESS)))
              .thenReturn(toWikiPage("George Washington"))
              .thenReturn(toWikiPage("John Adams"))
-             .thenReturn(toWikiPage("George Washington")) // one more time
-             .thenReturn(toWikiPage("George Washington")) // one more time
+             .thenReturn(toWikiPage("George Washington"))
+             .thenReturn(toWikiPage("George Washington")) // duplicate to check elimination duplicates
              .thenReturn(toWikiPage("Thomas Jefferson"))
              .thenReturn(toWikiPage("James Madison"))
              .thenReturn(toWikiPageI("James Monroe")) // with italics
-             .thenReturn(toWikiPage("James Monroe")) // one more time
-             .thenReturn(toWikiPage("John Quincy Adams"))
+             .thenReturn(toWikiPage("John Quincy Adams")) // one more time
+             .thenReturn(toWikiPage("Andrew Jackson"))
              .thenReturn(toWikiPageI("Andrew Jackson")) // with italics
              .thenReturn(toWikiPage("Martin Van Buren"))
              .thenReturn(toWikiPage("William Henry Harrison"))
-             .thenReturn(toWikiPage("William Henry Harrison"))
              .thenReturn(toWikiPage("John Tyler"))
+             .thenReturn(toWikiPage("James Polk"))
+             .thenReturn(toWikiPage("James Polk"))
+             .thenReturn(toWikiPage("Zachary Taylor"))
              .thenThrow(new IllegalArgumentException("Trying to parse more elements than expected!"));
 
         processor.process();
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_PositiveDecision_Wikipedia.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_Positive_Wikipedia.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 

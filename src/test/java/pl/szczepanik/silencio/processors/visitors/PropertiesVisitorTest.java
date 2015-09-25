@@ -26,7 +26,7 @@ public class PropertiesVisitorTest {
     @Test
     public void shouldVisitAllJsonNodes() throws IOException {
 
-        final int nodesCounter = 14;
+        final int nodesCounter = 16;
 
         // given
         input = ResourceLoader.loadPropertiesAsReader("suv.properties");

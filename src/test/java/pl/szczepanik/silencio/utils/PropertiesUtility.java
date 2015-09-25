@@ -27,8 +27,7 @@ public class PropertiesUtility {
             String value1 = prop1.getProperty(key.toString());
             String value2 = prop2.getProperty(key.toString());
             if (!value1.equals(value2)) {
-                fail(String.format("Value '%s' for key '%s' from first propery is not equal to second '%s'!", value1,
-                        key, value2));
+                fail(String.format("Value for key '%s' is '%s', expected: '%s'", key, value1, value2));
             }
         }
     }

@@ -41,4 +41,16 @@ public class MatcherDecisionTest {
         assertThat(d.decide(new Key("WORLD@UNIVERSE"), new Value("fofofoo"))).isFalse();
     }
 
+    @Test
+    public void shouldAcceptNullValues() {
+
+        // given
+        Decision d = new MatcherDecision(null, null);
+
+        // then
+        assertThat(d.decide(new Key(""), new Value(null))).isTrue();
+        assertThat(d.decide(new Key("Hello"), new Value("World"))).isTrue();
+        assertThat(d.decide(new Key(null), new Value("-123"))).isTrue();
+    }
+
 }

@@ -1,5 +1,9 @@
 \{
   "model" : ".*",
+  "price" : \{
+    "value" : ".*",
+    "currency" : ".*"
+  \},
   "wheels" : ".*",
   "size" : \{
     "length" : ".*",
