@@ -34,25 +34,25 @@ public final class Builder {
         this.format = format;
     }
 
-    public Builder append(Decision[] decision, Converter... converters) {
+    public Builder with(Decision[] decision, Converter... converters) {
         executions.add(new Execution(decision, converters));
         return this;
     }
 
-    public Builder append(Decision decision, Converter... converters) {
-        return append(new Decision[] { decision }, converters);
+    public Builder with(Decision decision, Converter... converters) {
+        return with(new Decision[] { decision }, converters);
     }
 
-    public Builder append(Decision decision, Converter converter) {
-        return append(decision, new Converter[] { converter });
+    public Builder with(Decision decision, Converter converter) {
+        return with(decision, new Converter[] { converter });
     }
 
-    public Builder append(Converter... converters) {
-        return append(new PositiveDecision(), converters);
+    public Builder with(Converter... converters) {
+        return with(new PositiveDecision(), converters);
     }
 
-    public Builder append(Converter converter) {
-        return append(new PositiveDecision(), new Converter[] { converter });
+    public Builder with(Converter converter) {
+        return with(new PositiveDecision(), new Converter[] { converter });
     }
 
     public Processor build() {

@@ -49,7 +49,7 @@ public class BuilderTest {
         Decision[] decisions = { new PositiveDecision(), new NegativeDecision() };
 
         // when
-        Builder builder = new Builder(format).append(decisions, converters[0], converters[1]);
+        Builder builder = new Builder(format).with(decisions, converters[0], converters[1]);
         List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
 
         // then
@@ -68,7 +68,7 @@ public class BuilderTest {
         Decision decision = new NegativeDecision();
 
         // when
-        Builder builder = new Builder(format).append(decision, converters[0], converters[1]);
+        Builder builder = new Builder(format).with(decision, converters[0], converters[1]);
         List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
 
         // then
@@ -87,7 +87,7 @@ public class BuilderTest {
         Decision decision = new NegativeDecision();
 
         // when
-        Builder builder = new Builder(format).append(decision, converter);
+        Builder builder = new Builder(format).with(decision, converter);
         List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
 
         // then
@@ -105,7 +105,7 @@ public class BuilderTest {
         Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
 
         // when
-        Builder builder = new Builder(format).append(converters[0], converters[1]);
+        Builder builder = new Builder(format).with(converters[0], converters[1]);
         List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
 
         // then
@@ -123,7 +123,7 @@ public class BuilderTest {
         Converter converter = new StubConverter();
 
         // when
-        Builder builder = new Builder(format).append(converter);
+        Builder builder = new Builder(format).with(converter);
         List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
 
         // then
@@ -152,7 +152,7 @@ public class BuilderTest {
         
         // given
         Builder builder = new Builder(Format.PROPERTIES);
-        builder.append(new NegativeDecision(), Builder.BLANK);
+        builder.with(new NegativeDecision(), Builder.BLANK);
 
         // when
         builder.build();

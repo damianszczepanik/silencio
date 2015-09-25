@@ -103,7 +103,7 @@ public class WikipediaConverterTest {
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_wikipedia.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_PositiveDecision_Wikipedia.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 
