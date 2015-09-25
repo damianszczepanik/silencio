@@ -36,7 +36,7 @@ public class PropertiesProcessorTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = Builder.build(Format.PROPERTIES, Builder.BLANK);
+        Processor processor = new Builder(Format.PROPERTIES).append(Builder.BLANK).build();
         processor.load(input);
         processor.process();
         processor.write(output);

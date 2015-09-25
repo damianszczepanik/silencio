@@ -35,7 +35,7 @@ public class WikipediaConverterIntegrationTest {
         output = new StringWriter();
 
         // when
-        Processor processor = Builder.build(Format.JSON, new WikipediaConverter());
+        Processor processor = new Builder(Format.JSON).append(new WikipediaConverter()).build();
         processor.load(input);
         processor.process();
         processor.write(output);

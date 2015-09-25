@@ -15,17 +15,17 @@ It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor
 
 ## Example
 
-As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorTestInt.java) there is quite easy to convert the file:
+As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorTestInt.java#L36) there is quite easy to convert the file:
 
 ```java
    Reader input = new FileReader("myStructure.json");
    Writer output = new StringWriter();
 
-   Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.NUMBER_SEQUENCE);
+   Processor processor = new Builder(Format.JSON).append(Builder.NUMBER_SEQUENCE).build();
    processor.load(input);
    processor.process();
    processor.write(output);
-   
+
    System.out.println(output);
    
 ```
@@ -73,7 +73,7 @@ The simplest way to understand how to use processor with set of converters is to
 
 ## Create custom processor or converter
 
-Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](src/main/java/pl/szczepanik/silencio/converters) converters that can be easily accessed via [builder](src/main/java/pl/szczepanik/silencio/core/ConverterBuilder.java). Nevertheless if you need to create your own just implement [``convert()``](src/main/java/pl/szczepanik/silencio/api/Converter.java) method and provide the algorithm you expect. Sometimes rules might be very [simple](src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
+Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](src/main/java/pl/szczepanik/silencio/converters) converters that can be easily accessed via [builder](src/main/java/pl/szczepanik/silencio/core/Builder.java). Nevertheless if you need to create your own just implement [``convert()``](src/main/java/pl/szczepanik/silencio/api/Converter.java#L19) method and provide the algorithm you expect. Sometimes rules might be very [simple](src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
 
 ## Code quality
 
