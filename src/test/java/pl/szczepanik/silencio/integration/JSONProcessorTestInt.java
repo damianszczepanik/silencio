@@ -33,7 +33,7 @@ public class JSONProcessorTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = Builder.build(Format.JSON, Builder.NUMBER_SEQUENCE);
+        Processor processor = new Builder(Format.JSON).append(Builder.NUMBER_SEQUENCE).build();
         processor.load(input);
         processor.process();
         processor.write(output);

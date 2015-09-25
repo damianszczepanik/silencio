@@ -32,8 +32,7 @@ public class BlankConverterTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = Builder.build(Format.JSON, Builder.NUMBER_SEQUENCE,
-                Builder.BLANK);
+        Processor processor = new Builder(Format.JSON).append(Builder.NUMBER_SEQUENCE, Builder.BLANK).build();
         processor.load(input);
         processor.process();
         processor.write(output);
