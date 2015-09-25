@@ -32,13 +32,13 @@ public class BlankConverterTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = new Builder(Format.JSON).append(Builder.NUMBER_SEQUENCE, Builder.BLANK).build();
+        Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE, Builder.BLANK).build();
         processor.load(input);
         processor.process();
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_blank.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_PositiveDecision_Blank.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 

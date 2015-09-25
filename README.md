@@ -15,13 +15,13 @@ It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor
 
 ## Example
 
-As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorTestInt.java#L36) there is quite easy to convert the file:
+As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorTestInt.java#L36-L39) there is quite easy to convert the file:
 
 ```java
    Reader input = new FileReader("myStructure.json");
    Writer output = new StringWriter();
 
-   Processor processor = new Builder(Format.JSON).append(Builder.NUMBER_SEQUENCE).build();
+   Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE).build();
    processor.load(input);
    processor.process();
    processor.write(output);

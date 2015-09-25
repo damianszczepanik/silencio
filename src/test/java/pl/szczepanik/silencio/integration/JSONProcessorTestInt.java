@@ -33,13 +33,13 @@ public class JSONProcessorTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = new Builder(Format.JSON).append(Builder.NUMBER_SEQUENCE).build();
+        Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE).build();
         processor.load(input);
         processor.process();
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_numbersequence.json");
+        String reference = ResourceLoader.loadJsonAsString("suv_PositiveDecision_NumberSequence.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 

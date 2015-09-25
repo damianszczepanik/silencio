@@ -36,14 +36,14 @@ public class PropertiesProcessorTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = new Builder(Format.PROPERTIES).append(Builder.BLANK).build();
+        Processor processor = new Builder(Format.PROPERTIES).with(Builder.BLANK).build();
         processor.load(input);
         processor.process();
         processor.write(output);
 
         // then
         Properties reference = new Properties();
-        reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_blank.properties")));
+        reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_PositiveDecision_Blank.properties")));
         Properties converted = new Properties();
         converted.load(new StringReader(output.toString()));
         PropertiesUtility.assertEqual(reference, converted);
