@@ -14,7 +14,8 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.BlankConverter;
-import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.decisions.MatcherDecision;
 import pl.szczepanik.silencio.decisions.NegativeDecision;
@@ -79,8 +80,8 @@ public final class ProcessorSmokeChecker {
         for (ICombinatoricsVector<Decision> subDecisions : subSet) {
             if (subDecisions.getSize() != 0) {
                 Decision[] decisions = subDecisions.getVector().toArray(new Decision[subDecisions.getSize()]);
-                ExecutionConfig[] executionConfig = { new ExecutionConfig(decisions, converters) };
-                validateProcessor(executionConfig, content);
+                Execution[] executions = { new Execution(decisions, converters) };
+                validateProcessor(executions, content);
             }
         }
     }
@@ -88,19 +89,19 @@ public final class ProcessorSmokeChecker {
     /**
      * Passes sets of basic converters into given processor and make sure that processor does not crash.
      *
-     * @param executionConfig
-     *            ExecutionConfig that will be used for validation
+     * @param executions
+     *            Executions that will be used for validation
      * @param content
      *            content to the data to convert
      * @throws ProcessorException
      *             when processing fails (any reason)
      */
-    public void validateProcessor(ExecutionConfig[] executionConfig, String content) {
+    public void validateProcessor(Execution[] executions, String content) {
         Writer output = new StringWriter();
         Reader input = new StringReader(content);
 
         try {
-            processor.setExecutionConfig(executionConfig);
+            processor.setConfiguration(new Configuration(executions));
             processor.load(input);
             processor.process();
             processor.write(output);

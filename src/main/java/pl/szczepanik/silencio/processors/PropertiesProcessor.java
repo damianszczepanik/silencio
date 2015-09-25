@@ -37,7 +37,7 @@ public class PropertiesProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
-        visitor.setExecutionConfigs(executionConfigs);
+        visitor.setConfiguration(configuration);
         visitor.process(properties);
     }
 

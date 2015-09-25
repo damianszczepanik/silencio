@@ -2,7 +2,8 @@ package pl.szczepanik.silencio.processors.visitors;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
-import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
@@ -13,10 +14,10 @@ import pl.szczepanik.silencio.core.Value;
  */
 public abstract class AbstractVisitor {
 
-    private ExecutionConfig[] executionConfigs;
+    private Configuration configuration;
 
-    public void setExecutionConfigs(ExecutionConfig[] executionConfigs) {
-        this.executionConfigs = executionConfigs;
+    public void setConfiguration(Configuration configuration) {
+        this.configuration = configuration;
     }
 
     /**
@@ -32,9 +33,9 @@ public abstract class AbstractVisitor {
     protected Value processValue(Key key, Object value) {
         Value newValue = new Value(value);
 
-        for (ExecutionConfig executionConfig : executionConfigs) {
+        for (Execution execution : configuration.getExecutions()) {
             boolean shouldConvert = true;
-            for (Decision decision : executionConfig.getDecisions()) {
+            for (Decision decision : execution.getDecisions()) {
                 shouldConvert &= decision.decide(key, newValue);
                 if (!shouldConvert) {
                     break;
@@ -42,7 +43,7 @@ public abstract class AbstractVisitor {
             }
 
             if (shouldConvert) {
-                for (Converter converter : executionConfig.getConverters()) {
+                for (Converter converter : execution.getConverters()) {
                     newValue = converter.convert(key, newValue);
                 }
             }

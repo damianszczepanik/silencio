@@ -13,7 +13,7 @@ import org.junit.Test;
 
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.core.Builder;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -32,8 +32,8 @@ public class BlankConverterTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.NUMBER_SEQUENCE,
-                ConverterBuilder.BLANK);
+        Processor processor = Builder.build(Format.JSON, Builder.NUMBER_SEQUENCE,
+                Builder.BLANK);
         processor.load(input);
         processor.process();
         processor.write(output);

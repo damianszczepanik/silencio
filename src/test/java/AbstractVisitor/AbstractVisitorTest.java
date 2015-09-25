@@ -14,14 +14,14 @@ import org.junit.runners.Parameterized.Parameters;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
-import pl.szczepanik.silencio.core.ExecutionConfig;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.decisions.NegativeDecision;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.ConverterVisitor;
 import pl.szczepanik.silencio.stubs.StubAbstractVisitor;
-import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
@@ -74,8 +74,8 @@ public class AbstractVisitorTest {
     public void shouldProcessAllConvertersForPositiveDecision() {
         // given
         StubAbstractVisitor visitor = new StubAbstractVisitor();
-        ExecutionConfig[] executionConfigs = StubExecutionConfig.asList(decisions, processors);
-        visitor.setExecutionConfigs(executionConfigs);
+        Execution execution = new Execution(decisions, processors);
+        visitor.setConfiguration(new Configuration(execution));
 
         // when
         Value retValue = visitor.processValue(key, value);

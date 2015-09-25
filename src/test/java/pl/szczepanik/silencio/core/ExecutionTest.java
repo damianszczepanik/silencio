@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.stubs.StubConverter;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class ExecutionConfigTest {
+public class ExecutionTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
@@ -28,11 +28,11 @@ public class ExecutionConfigTest {
         Converter[] converters = { new BlankConverter(), new StubConverter() };
 
         // when
-        ExecutionConfig round = new ExecutionConfig(decisions, converters);
+        Execution execution = new Execution(decisions, converters);
 
         // then
-        assertThat(round.getConverters()).isEqualTo(converters);
-        assertThat(round.getDecisions()).isEqualTo(decisions);
+        assertThat(execution.getConverters()).isEqualTo(converters);
+        assertThat(execution.getDecisions()).isEqualTo(decisions);
     }
 
     @Test
@@ -45,7 +45,7 @@ public class ExecutionConfigTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Array with Decisions must not be empty!");
-        new ExecutionConfig(decisions, converters);
+        new Execution(decisions, converters);
     }
 
     @Test
@@ -58,7 +58,7 @@ public class ExecutionConfigTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Passed Decision is null!");
-        new ExecutionConfig(decisions, converters);
+        new Execution(decisions, converters);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class ExecutionConfigTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Array with Converters must not be empty!");
-        new ExecutionConfig(decisions, converters);
+        new Execution(decisions, converters);
     }
 
     @Test
@@ -84,6 +84,6 @@ public class ExecutionConfigTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Passed Converter is null!");
-        new ExecutionConfig(decisions, converters);
+        new Execution(decisions, converters);
     }
 }

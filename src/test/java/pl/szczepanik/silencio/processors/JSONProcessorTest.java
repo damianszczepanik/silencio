@@ -15,10 +15,12 @@ import org.junit.rules.ExpectedException;
 
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.core.Builder;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.ProcessorException;
+import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
-import pl.szczepanik.silencio.stubs.StubExecutionConfig;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -70,7 +72,8 @@ public class JSONProcessorTest {
 
         // when
         Processor processor = new JSONProcessor();
-        processor.setExecutionConfig(StubExecutionConfig.asList(ConverterBuilder.BLANK));
+        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
+        processor.setConfiguration(new Configuration(execution));
 
         // then
         thrown.expect(ProcessorException.class);
@@ -89,7 +92,8 @@ public class JSONProcessorTest {
 
         // when
         JSONProcessor processor = new JSONProcessor();
-        processor.setExecutionConfig(StubExecutionConfig.asList(ConverterBuilder.BLANK));
+        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
+        processor.setConfiguration(new Configuration(execution));
         processor.load(input);
         processor.realProcess();
 

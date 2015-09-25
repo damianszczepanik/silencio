@@ -49,7 +49,7 @@ public class JSONProcessor extends AbstractProcessor {
     @Override
     public void realProcess() {
         // TODO: this should be called by parent class so each concrete implementation does not need to worry about it
-        visitor.setExecutionConfigs(executionConfigs);
+        visitor.setConfiguration(configuration);
         visitor.process(jsonStructure);
     }
 

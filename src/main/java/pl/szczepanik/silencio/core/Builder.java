@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.processors.PropertiesProcessor;
  * 
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public final class ConverterBuilder {
+public final class Builder {
 
     public static Processor build(Format format, Converter... converterToApply) {
         Converter[] converters = {};
@@ -23,8 +23,8 @@ public final class ConverterBuilder {
             converters = converterToApply;
         }
         Processor processor = buildProcessor(format);
-        ExecutionConfig[] executionConfigs = { new ExecutionConfig(new PositiveDecision(), converters) };
-        processor.setExecutionConfig(executionConfigs);
+        Execution execution = new Execution(new PositiveDecision(), converters);
+        processor.setConfiguration(new Configuration(execution));
 
         return processor;
     }

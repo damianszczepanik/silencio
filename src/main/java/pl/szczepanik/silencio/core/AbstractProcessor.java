@@ -2,9 +2,6 @@ package pl.szczepanik.silencio.core;
 
 import java.io.Reader;
 import java.io.Writer;
-import java.util.Arrays;
-
-import org.apache.commons.lang3.ArrayUtils;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
@@ -19,7 +16,7 @@ public abstract class AbstractProcessor implements Processor {
 
     protected final Format format;
 
-    protected ExecutionConfig[] executionConfigs;
+    protected Configuration configuration;
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 
@@ -43,8 +40,8 @@ public abstract class AbstractProcessor implements Processor {
      * Calls {@link Converter#init()} method on each converter.
      */
     protected void initConverties() {
-        for (ExecutionConfig executionConfig : executionConfigs) {
-            for (Converter converter : executionConfig.getConverters()) {
+        for (Execution execution : configuration.getExecutions()) {
+            for (Converter converter : execution.getConverters()) {
                 converter.init();
             }
         }
@@ -58,11 +55,11 @@ public abstract class AbstractProcessor implements Processor {
     protected abstract void realLoad(Reader reader);
 
     @Override
-    public void setExecutionConfig(ExecutionConfig[] executionConfig) {
-        validateExecutionConfig(executionConfig);
+    public void setConfiguration(Configuration configuration) {
+        validateConfiguration(configuration);
 
         // deep copy to prevent manipulating on private list
-        this.executionConfigs = Arrays.copyOf(executionConfig, executionConfig.length);
+        this.configuration = configuration;
 
         stateMachine.moveToLoaded();
     }
@@ -91,9 +88,9 @@ public abstract class AbstractProcessor implements Processor {
         }
     }
 
-    private void validateExecutionConfig(ExecutionConfig[] executionConfig) {
-        if (ArrayUtils.isEmpty(executionConfig)) {
-            throw new IntegrityException("Array with ExecutionConfig must not be empty!");
+    private void validateConfiguration(Configuration configuration) {
+        if (configuration == null) {
+            throw new IntegrityException("Configuration must not be null!");
         }
     }
 

@@ -12,7 +12,7 @@ import org.junit.Test;
 
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.core.ConverterBuilder;
+import pl.szczepanik.silencio.core.Builder;
 import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.utils.ResourceLoader;
@@ -33,7 +33,7 @@ public class JSONProcessorTestInt {
         output = new StringWriter();
 
         // when
-        Processor processor = ConverterBuilder.build(Format.JSON, ConverterBuilder.NUMBER_SEQUENCE);
+        Processor processor = Builder.build(Format.JSON, Builder.NUMBER_SEQUENCE);
         processor.load(input);
         processor.process();
         processor.write(output);
