@@ -1,4 +1,4 @@
-package AbstractVisitor;
+package pl.szczepanik.silencio.processors.visitors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
