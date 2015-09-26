@@ -11,11 +11,13 @@ Silencio is a library for transforming and converting any format such as [JSON](
 - minimisation (eg anonymous)
 - transformation
 
-It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor.java) that know how transform given file format (JSON, Properties, etc.) and [converters](src/main/java/pl/szczepanik/silencio/api/Converter.java) that are responsible for transforming existing values into new one.
+It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor.java) that manage transformations of the files (JSON, Properties, etc.) [decisions](src/main/java/pl/szczepanik/silencio/api/Decision.java) which decide which elements should be converted and [converters](src/main/java/pl/szczepanik/silencio/api/Converter.java) that changes old value into new one.
 
-## Example
+## Examples
 
-As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorTestInt.java#L36-L39) there is quite easy to convert the file:
+#### Make it fast, write it simple
+
+As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorTestInt.java#L36-L39) this is quite easy to convert the file:
 
 ```java
    Reader input = new FileReader("myStructure.json");
@@ -27,7 +29,7 @@ As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONPro
    processor.write(output);
 
    System.out.println(output);
-   
+
 ```
 and as the result you may expect (depends of [converter](src/main/java/pl/szczepanik/silencio/converters) you selected) following output:
 
@@ -56,6 +58,46 @@ and as the result you may expect (depends of [converter](src/main/java/pl/szczep
 |  "assistance" : [ ]                      |   "assistance" : [ ]          |   "assistance" : [ ]        |                   |
 | }                                        | }                             | }                           |                   |
 |==========================================|===============================|=============================|===================|
+</pre>
+
+#### Sky is the limit
+
+So you know how it works but you want to decide which nodes should be transfered into what values. Imagine you are renting cars and your partner asked you to share all your specifications. Sounds good but you don't want to share prices (sensitive information). Also your database is a little bit outdated because all your cars already have sunroof even your services provide different information.
+
+Take a look at [example](src/test/java/pl/szczepanik/silencio/integration/BuilderTestInt.java#L37-L44) below. There are two iterations on the same file. First removes all values that match to given key `money|cash|price`. Second validates key (`sunroot`) and value (`Optional`) and transfers values into new one (`[Standard]`).
+
+```java
+   Builder builder = new Builder(Format.PROPERTIES);
+   builder.with(new MatcherDecision(".*(money|cash|price).*", null), Builder.BLANK)
+          .with(new MatcherDecision(".*sunroof.*", ".*Optional.*"), new StringConverter("[Standard]"));
+   Processor processor = builder.build();
+   processor.load(input);
+   processor.process();
+   processor.write(output);
+
+```
+and the conversion will produce following outcome:
+
+<pre>
+|   suv.properties  -->>         |   [ removing price ]           |   [ updated sunroof ]          |
+|================================|================================|================================|
+| model=SUV                      | model=SUV                      | model=SUV                      |
+| price.value=38504              | price.value=                   | price.value=                   |
+| price.currency=$               | price.currency=                | price.currency=                |
+| wheels=4                       | wheels=4                       | wheels=4                       |
+| size.length=4.45               | size.length=4.45               | size.length=4.45               |
+| size.height=2.05               | size.height=2.05               | size.height=2.05               |
+| size.width=2.200               | size.width=2.200               | size.width=2.200               |
+| weight.value=2.200             | weight.value=2.200             | weight.value=2.200             |
+| weight.unit=ton                | weight.unit=ton                | weight.unit=ton                |
+| accessories.sunroof=[Optional] | accessories.sunroof=[Optional] | accessories.sunroof=[Standard] |
+| accessories.radio=yes          | accessories.radio=yes          | accessories.radio=yes          |
+| fuel.diesel=true               | fuel.diesel=true               | fuel.diesel=true               |
+| fuel.LPG=true                  | fuel.LPG=true                  | fuel.LPG=true                  |
+| notes=null                     | notes=null                     | notes=null                     |
+| alarms=                        | alarms=                        | alarms=                        |
+| assistance=                    | assistance=                    | assistance=                    |
+|================================|================================|================================|
 </pre>
 
 ## Usage

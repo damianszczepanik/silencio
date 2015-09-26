@@ -36,8 +36,7 @@ public class BuilderTestInt {
         // when
         Builder builder = new Builder(Format.PROPERTIES);
         builder.with(new MatcherDecision(".*(money|cash|price).*", null), Builder.BLANK)
-                .with(new MatcherDecision(".*sunroof.*", ".*Optional.*"), new StringConverter("[Standard]"))
-                .build();
+                .with(new MatcherDecision(".*sunroof.*", ".*Optional.*"), new StringConverter("[Standard]"));
         Processor processor = builder.build();
         processor.load(input);
         processor.process();
@@ -45,8 +44,7 @@ public class BuilderTestInt {
 
         // then
         Properties reference = new Properties();
-        reference.load(
-                new StringReader(ResourceLoader.loadPropertiesAsString("suv_Matcher_Blank+Matcher_String.properties")));
+        reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_Matcher_Blank+Matcher_String.properties")));
         Properties converted = new Properties();
         converted.load(new StringReader(output.toString()));
         PropertiesUtility.assertEqual(reference, converted);
