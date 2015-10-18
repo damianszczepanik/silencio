@@ -49,6 +49,7 @@ public class WikipediaConverter implements Converter {
             return new Value(newValue);
         } else {
             // this loop theoretically may never ends but Wikipedia has millions of words to ask for
+            // so practically it make slows down for a while but should not hang
             while (true) {
                 newValue = generateNextString();
                 // check if this word was not generated for other key
