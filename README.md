@@ -128,5 +128,5 @@ Once you developed your new processor or converter you should test it by providi
 
 When you implement new processor or converter you are more than welcome to [pull](https://github.com/damianszczepanik/silencio/pulls) this change and make someone happier!
 
-Mind that this project has several metrics that measure code quality. From [continuous integration](https://travis-ci.org/damianszczepanik/silencio) and [code coverage](https://codecov.io/github/damianszczepanik/silencio) to [coverity](https://scan.coverity.com/projects/damianszczepanik-silencio). Please mind that PR are welcome but try to keep high code coverage.
+Mind that this project has several metrics that measure code quality. From [continuous integration](https://travis-ci.org/damianszczepanik/silencio) and [code coverage](https://codecov.io/github/damianszczepanik/silencio) to [coverity](https://scan.coverity.com/projects/damianszczepanik-silencio) and [checkstyle](http://checkstyle.sourceforge.net). All PRs are welcome but try to keep high code coverage and good documentation of the code you deliver.
 

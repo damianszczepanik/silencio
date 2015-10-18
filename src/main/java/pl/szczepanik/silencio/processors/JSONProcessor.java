@@ -29,6 +29,7 @@ public class JSONProcessor extends AbstractProcessor {
 
     private final JSONVisitor visitor = new JSONVisitor();
 
+    /** Creates new processor for JSON file. */
     public JSONProcessor() {
         super(Format.JSON);
 
@@ -48,9 +49,8 @@ public class JSONProcessor extends AbstractProcessor {
 
     @Override
     public void realProcess() {
-        // TODO: this should be called by parent class so each concrete implementation does not need to worry about it
         visitor.setConfiguration(configuration);
-        visitor.process(jsonStructure);
+        visitor.processJSON(jsonStructure);
     }
 
     @Override

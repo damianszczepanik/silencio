@@ -14,7 +14,7 @@ public interface Converter {
      * Converts value passed to this converter into new value.
      * @param key key mapped with passed value
      * @param value value that shall be converted
-     * @return changed value which should not be <code>null<code>
+     * @return changed value which should not be <code>null</code>
      */
      Value convert(Key key, Value value);
 

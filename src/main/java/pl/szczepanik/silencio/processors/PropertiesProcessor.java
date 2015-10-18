@@ -21,6 +21,7 @@ public class PropertiesProcessor extends AbstractProcessor {
 
     private final PropertiesVisitor visitor = new PropertiesVisitor();
 
+    /** Creates new processor for properties file. */
     public PropertiesProcessor() {
         super(Format.PROPERTIES);
     }

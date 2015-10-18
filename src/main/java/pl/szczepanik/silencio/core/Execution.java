@@ -16,6 +16,14 @@ public class Execution {
     private final Decision[] decisions;
     private final Converter[] converters;
 
+    /**
+     * Creates execution with pairs of decisions and converters.
+     * 
+     * @param decisions
+     *            list of decisions use for this execution
+     * @param converters
+     *            list of converters use for this execution
+     */
     public Execution(Decision[] decisions, Converter[] converters) {
         validateDecisions(decisions);
         validateConverters(converters);
@@ -24,18 +32,44 @@ public class Execution {
         this.converters = converters;
     }
 
+    /**
+     * Creates execution with pairs of decisions and converters.
+     * 
+     * @param decision
+     *            single decision use for this execution
+     * @param converters
+     *            list of converters use for this execution
+     */
     public Execution(Decision decision, Converter[] converters) {
         this(new Decision[] { decision }, converters);
     }
 
+    /**
+     * Creates execution with pairs of decisions and converters.
+     * 
+     * @param decision
+     *            single decision use for this execution
+     * @param converter
+     *            single converter use for this execution
+     */
     public Execution(Decision decision, Converter converter) {
         this(new Decision[] { decision }, new Converter[] { converter });
     }
 
+    /**
+     * Gets all decisions for this execution.
+     * 
+     * @return all decisions
+     */
     public Decision[] getDecisions() {
         return decisions;
     }
 
+    /**
+     * Gets all converters for this execution.
+     * 
+     * @return all converters
+     */
     public Converter[] getConverters() {
         return converters;
     }

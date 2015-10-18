@@ -7,6 +7,12 @@ package pl.szczepanik.silencio.core;
  */
 public class IntegrityException extends RuntimeException {
 
+    /**
+     * Creates new instance from passed message.
+     * 
+     * @param message
+     *            reason of the exception
+     */
     public IntegrityException(String message) {
         super(message);
     }

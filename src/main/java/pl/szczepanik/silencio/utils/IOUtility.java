@@ -13,6 +13,10 @@ import pl.szczepanik.silencio.core.IntegrityException;
  */
 public final class IOUtility {
 
+    /** Does not allow to create instance of utility class. */
+    private IOUtility() {
+    }
+
     /**
      * Loads and returns content accessible via given URL.
      * 

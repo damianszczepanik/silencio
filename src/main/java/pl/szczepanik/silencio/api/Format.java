@@ -20,6 +20,12 @@ public abstract class Format {
 
     private final String name;
 
+    /**
+     * Creates new format with given name.
+     * 
+     * @param name
+     *            name of the format
+     */
     public Format(String name) {
         validateName(name);
 
@@ -28,6 +34,8 @@ public abstract class Format {
 
     /**
      * Gets name of the format. Usually file format such as XML or JSON.
+     * 
+     * @return name of the format
      */
     public String getName() {
         return name;

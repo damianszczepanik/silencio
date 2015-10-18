@@ -41,9 +41,6 @@ public class WikipediaConverter implements Converter {
      */
     private final Set<String> words = new LinkedHashSet<>();
 
-    public WikipediaConverter() {
-    }
-
     @Override
     public Value convert(Key key, Value value) {
 
