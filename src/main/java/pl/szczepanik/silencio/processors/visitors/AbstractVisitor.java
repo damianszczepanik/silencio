@@ -16,6 +16,12 @@ public abstract class AbstractVisitor {
 
     private Configuration configuration;
 
+    /**
+     * Sets the configuration so visitor knows how to iterate over passing structure.
+     * 
+     * @param configuration
+     *            configuration
+     */
     public void setConfiguration(Configuration configuration) {
         this.configuration = configuration;
     }

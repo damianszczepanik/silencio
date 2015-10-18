@@ -63,7 +63,7 @@ public class JSONVisitorTest {
         visitor.setConfiguration(new Configuration(execution));
 
         // when
-        visitor.process(jsonStructure);
+        visitor.processJSON(jsonStructure);
 
         // then
         assertThat(visitCounter.getVisitCounter()).isEqualTo(nodeCounter);

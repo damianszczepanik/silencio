@@ -49,7 +49,7 @@ public class BuilderTest {
         Decision[] decisions = { new PositiveDecision(), new NegativeDecision() };
 
         // when
-        Builder builder = new Builder(format).with(decisions, converters[0], converters[1]);
+        Builder builder = new Builder(format).with(decisions, converters);
         List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
 
         // then

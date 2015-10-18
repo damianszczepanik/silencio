@@ -10,10 +10,21 @@ public class Key {
 
     private final String key;
 
+    /**
+     * Creates key from passed value.
+     * 
+     * @param key
+     *            value of the key
+     */
     public Key(String key) {
         this.key = key;
     }
 
+    /**
+     * Gets the key.
+     * 
+     * @return the key
+     */
     public String getKey() {
         return key;
     }

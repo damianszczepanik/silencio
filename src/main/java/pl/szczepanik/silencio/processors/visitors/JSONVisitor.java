@@ -15,7 +15,13 @@ import pl.szczepanik.silencio.core.ProcessorException;
  */
 public class JSONVisitor extends AbstractVisitor {
 
-    public void process(Map<String, Object> json) {
+    /**
+     * Process passed JSON map and iterates over each node.
+     * 
+     * @param json
+     *            JSON map to iterate
+     */
+    public void processJSON(Map<String, Object> json) {
         processMap(json);
     }
 

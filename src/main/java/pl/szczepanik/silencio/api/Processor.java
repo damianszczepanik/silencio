@@ -37,6 +37,7 @@ public interface Processor {
 
     /**
      * Writes results into passed writer.
+     * @param writer writer where the results will be stored
      */
     void write(Writer writer);
 }

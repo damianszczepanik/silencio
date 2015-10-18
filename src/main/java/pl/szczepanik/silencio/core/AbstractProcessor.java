@@ -14,8 +14,10 @@ import pl.szczepanik.silencio.api.Processor;
  */
 public abstract class AbstractProcessor implements Processor {
 
+    /** Format used by this type of processor. */
     protected final Format format;
 
+    /** Configuration used by current processor. */
     protected Configuration configuration;
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
@@ -52,6 +54,10 @@ public abstract class AbstractProcessor implements Processor {
         realLoad(reader);
     }
 
+    /**
+     * Method implemented by processors which is responsible only for loading content from reader.
+     * @param reader reader with the content to read
+     */
     protected abstract void realLoad(Reader reader);
 
     @Override
@@ -72,6 +78,9 @@ public abstract class AbstractProcessor implements Processor {
         stateMachine.moveToProcessed();
     }
 
+    /**
+     * Method implemented by processors which is responsible only for processing content.
+     */
     protected abstract void realProcess();
 
     @Override
@@ -80,6 +89,10 @@ public abstract class AbstractProcessor implements Processor {
         realWrite(writer);
     }
 
+    /**
+     * Method implemented by processors which is responsible only for writing results into the writer.
+     * @param writer writer to which the content will be written
+     */
     protected abstract void realWrite(Writer writer);
 
     private void validateFormat(Format format) {

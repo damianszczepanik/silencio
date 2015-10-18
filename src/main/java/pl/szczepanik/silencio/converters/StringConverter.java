@@ -13,6 +13,12 @@ public class StringConverter implements Converter {
 
     private final String newValue;
 
+    /**
+     * Creates new converter with value that will be returned by this converter.
+     * 
+     * @param newValue
+     *            new value used as return value
+     */
     public StringConverter(String newValue) {
         this.newValue = newValue;
     }

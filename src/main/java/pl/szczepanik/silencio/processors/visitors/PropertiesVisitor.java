@@ -12,6 +12,12 @@ import pl.szczepanik.silencio.core.Value;
  */
 public class PropertiesVisitor extends AbstractVisitor {
 
+    /**
+     * Process passed properties and iterates over each node.
+     * 
+     * @param properties
+     *            properties to process
+     */
     public void process(Properties properties) {
         for (Object key : properties.keySet()) {
             Value newValue = processValue(new Key(key.toString()),

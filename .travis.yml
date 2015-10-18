@@ -7,9 +7,11 @@ env:
 language: java
 
 jdk:
-  - oraclejdk7 
+  - oraclejdk7
   - oraclejdk8
-  - openjdk7  
+  - openjdk7
+
+script: mvn checkstyle:check test
 
 after_success:
   bash <(curl -s https://codecov.io/bash)

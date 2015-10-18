@@ -18,11 +18,25 @@ public class MatcherDecision implements Decision {
     private final Pattern keyPattern;
     private final Pattern valuePattern;
 
+    /**
+     * Creates new decision with key and value patterns.
+     * 
+     * @param keyPattern
+     *            pattern for key
+     * @param valuePattern
+     *            pattern for value
+     */
     public MatcherDecision(String keyPattern, String valuePattern) {
         this.keyPattern = createPattern(keyPattern);
         this.valuePattern = createPattern(valuePattern);
     }
 
+    /**
+     * Creates new decision with key and value patterns.
+     * 
+     * @param valuePattern
+     *            pattern for value
+     */
     public MatcherDecision(String valuePattern) {
         this(null, valuePattern);
     }

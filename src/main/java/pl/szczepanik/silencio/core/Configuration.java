@@ -11,16 +11,33 @@ public class Configuration {
 
     private final Execution[] executions;
 
+    /**
+     * Creates configuration with passed list of executions.
+     * 
+     * @param executions
+     *            executions used by this configuration
+     */
     public Configuration(Execution[] executions) {
         validateConfiguration(executions);
 
         this.executions = executions;
     }
 
+    /**
+     * Creates configuration with passed execution.
+     * 
+     * @param execution
+     *            execution used by this configuration
+     */
     public Configuration(Execution execution) {
         this(new Execution[] { execution });
     }
 
+    /**
+     * Gets all configurations.
+     * 
+     * @return all configurations
+     */
     public Execution[] getExecutions() {
         return executions;
     }

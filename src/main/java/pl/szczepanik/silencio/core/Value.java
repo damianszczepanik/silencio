@@ -12,10 +12,21 @@ public class Value {
 
     private final Object value;
 
+    /**
+     * Creates new instance from passed value.
+     * 
+     * @param value
+     *            value of this instance
+     */
     public Value(Object value) {
         this.value = value;
     }
 
+    /**
+     * Gets value of this instance.
+     * 
+     * @return value of this instance
+     */
     public Object getValue() {
         return value;
     }
