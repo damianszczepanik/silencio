@@ -94,10 +94,10 @@ public class WikipediaConverterTest {
              .thenReturn(toWikiPage("George Washington")) // duplicate to check elimination duplicates
              .thenReturn(toWikiPage("Thomas Jefferson"))
              .thenReturn(toWikiPage("James Madison"))
-             .thenReturn(toWikiPageI("James Monroe")) // with italics
+             .thenReturn(toWikiPageItalics("James Monroe")) // with italics
              .thenReturn(toWikiPage("John Quincy Adams")) // one more time
              .thenReturn(toWikiPage("Andrew Jackson"))
-             .thenReturn(toWikiPageI("Andrew Jackson")) // with italics
+             .thenReturn(toWikiPageItalics("Andrew Jackson")) // with italics
              .thenReturn(toWikiPage("Martin Van Buren"))
              .thenReturn(toWikiPage("William Henry Harrison"))
              .thenReturn(toWikiPage("John Tyler"))
@@ -140,7 +140,7 @@ public class WikipediaConverterTest {
         return String.format("ble bla bla <h1 id=\"section_0\">%s</h1> ble ble ble", text);
     }
 
-    private static String toWikiPageI(String text) {
+    private static String toWikiPageItalics(String text) {
         return String.format("<h1 id=\"section_0\"><i>%s</i></h1> something, something", text);
     }
 

@@ -1,0 +1,25 @@
+{
+  "model" : "Cherri St, Winters, TX 79567, Stany Zjednoczone",
+  "price" : {
+    "value" : "Camí Pla de Museros, 30-42, 12550 Almassora, Castelló, Hiszpania",
+    "currency" : "CM1372, 3320, Portugalia"
+  },
+  "wheels" : "524 Meadow Brook Rd, Waynesburg, PA 15370, Stany Zjednoczone",
+  "size" : {
+    "length" : "469 Ocean Blvd, Golden Beach, FL 33160, Stany Zjednoczone",
+    "height" : "Great Abaco Hwy, Bahamy",
+    "width" : "Unnamed Road, Todi, Madhya Pradesh 476335, Indie"
+  },
+  "weight" : {
+    "value" : "Unnamed Road, Todi, Madhya Pradesh 476335, Indie",
+    "unit" : "Qesm Al Wahat Ad Dakhlah, New Valley Governorate, Egipt"
+  },
+  "accessories" : [ "Prefektura Mbomou, Republika Środkowoafrykańska", "Bench Maji, Etiopia" ],
+  "fuel" : [ {
+    "diesel" : "Al-Dżauf, Jemen",
+    "LPG" : "Al-Dżauf, Jemen"
+  } ],
+  "notes" : "A2, 3545 Halen, Belgia",
+  "alarms" : { },
+  "assistance" : [ ]
+}

@@ -1,0 +1,289 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "CM1372",
+               "short_name" : "CM1372",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Coimbra",
+               "short_name" : "Coimbra",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Portugalia",
+               "short_name" : "PT",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "3320",
+               "short_name" : "3320",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            }
+         ],
+         "formatted_address" : "CM1372, 3320, Portugalia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 39.9707968,
+                  "lng" : -8.0821311
+               },
+               "southwest" : {
+                  "lat" : 39.957147,
+                  "lng" : -8.095685099999999
+               }
+            },
+            "location" : {
+               "lat" : 39.9662738,
+               "lng" : -8.0934302
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 39.9707968,
+                  "lng" : -8.0821311
+               },
+               "southwest" : {
+                  "lat" : 39.957147,
+                  "lng" : -8.095685099999999
+               }
+            }
+         },
+         "place_id" : "ChIJpZJolYq-Ig0RnKDV5tTITqA",
+         "types" : [ "route" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Portela do Fojo",
+               "short_name" : "Portela do Fojo",
+               "types" : [ "administrative_area_level_3", "political" ]
+            },
+            {
+               "long_name" : "Pampilhosa da Serra",
+               "short_name" : "Pampilhosa da Serra",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Coimbra",
+               "short_name" : "Coimbra",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Portugalia",
+               "short_name" : "PT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Portela do Fojo, Portugalia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.0146291,
+                  "lng" : -7.995840999999999
+               },
+               "southwest" : {
+                  "lat" : 39.9342195,
+                  "lng" : -8.131368999999999
+               }
+            },
+            "location" : {
+               "lat" : 39.9855792,
+               "lng" : -8.0661419
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.0146291,
+                  "lng" : -7.995840999999999
+               },
+               "southwest" : {
+                  "lat" : 39.9342195,
+                  "lng" : -8.131368999999999
+               }
+            }
+         },
+         "place_id" : "ChIJORFiG9C-Ig0REKuQ5L3rAAU",
+         "types" : [ "administrative_area_level_3", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "3320",
+               "short_name" : "3320",
+               "types" : [ "postal_code_prefix", "postal_code" ]
+            },
+            {
+               "long_name" : "Portugalia",
+               "short_name" : "PT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "3320, Portugalia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.2109011,
+                  "lng" : -7.7317585
+               },
+               "southwest" : {
+                  "lat" : 39.9328108,
+                  "lng" : -8.132733500000001
+               }
+            },
+            "location" : {
+               "lat" : 40.1010954,
+               "lng" : -7.8939317
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.2109011,
+                  "lng" : -7.7317585
+               },
+               "southwest" : {
+                  "lat" : 39.9328108,
+                  "lng" : -8.132733500000001
+               }
+            }
+         },
+         "place_id" : "ChIJwbcFM1jIIg0RMLw7DsHrABw",
+         "types" : [ "postal_code_prefix", "postal_code" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Pampilhosa da Serra",
+               "short_name" : "Pampilhosa da Serra",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Dystrykt Coimbra",
+               "short_name" : "Dystrykt Coimbra",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Portugalia",
+               "short_name" : "PT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Pampilhosa da Serra, Portugalia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.2109013,
+                  "lng" : -7.731755499999999
+               },
+               "southwest" : {
+                  "lat" : 39.9342195,
+                  "lng" : -8.131368999999999
+               }
+            },
+            "location" : {
+               "lat" : 40.0460146,
+               "lng" : -7.951996099999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.2109013,
+                  "lng" : -7.731755499999999
+               },
+               "southwest" : {
+                  "lat" : 39.9342205,
+                  "lng" : -8.131368999999999
+               }
+            }
+         },
+         "place_id" : "ChIJAwmNkw7IIg0RDRfcK1lwkFM",
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Dystrykt Coimbra",
+               "short_name" : "Dystrykt Coimbra",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Portugalia",
+               "short_name" : "PT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Dystrykt Coimbra, Portugalia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 40.5198614,
+                  "lng" : -7.731755499999999
+               },
+               "southwest" : {
+                  "lat" : 39.9237866,
+                  "lng" : -8.9092392
+               }
+            },
+            "location" : {
+               "lat" : 40.2057994,
+               "lng" : -8.413689999999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 40.5198614,
+                  "lng" : -7.731755499999999
+               },
+               "southwest" : {
+                  "lat" : 39.9237866,
+                  "lng" : -8.9092392
+               }
+            }
+         },
+         "place_id" : "ChIJFUjiC3P5Ig0R7rw4Vqbg9Dk",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Portugalia",
+               "short_name" : "PT",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Portugalia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 42.1542048,
+                  "lng" : -6.1902091
+               },
+               "southwest" : {
+                  "lat" : 32.40374,
+                  "lng" : -31.2753886
+               }
+            },
+            "location" : {
+               "lat" : 39.39987199999999,
+               "lng" : -8.224454
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 42.1542048,
+                  "lng" : -6.1902091
+               },
+               "southwest" : {
+                  "lat" : 36.9601772,
+                  "lng" : -9.5171107
+               }
+            }
+         },
+         "place_id" : "ChIJ1SZCvy0kMgsRQfBOHAlLuCo",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
