@@ -33,10 +33,10 @@ public class WikipediaConverter implements Converter {
     /**
      * Keeps passed values and corresponding numbers;
      */
-    private final Map<Object, String> convertedValues = new HashMap<>();
+    private final Map<Object, String> values = new HashMap<>();
 
     /**
-     * Keeps words that have been already used. This duplicates {@link WikipediaConverter#convertedValues} collection to
+     * Keeps words that have been already used. This duplicates {@link WikipediaConverter#values} collection to
      * speed up searching.
      */
     private final Set<String> words = new LinkedHashSet<>();
@@ -44,7 +44,7 @@ public class WikipediaConverter implements Converter {
     @Override
     public Value convert(Key key, Value value) {
 
-        String newValue = convertedValues.get(value.getValue());
+        String newValue = values.get(value.getValue());
         if (newValue != null) {
             return new Value(newValue);
         } else {
@@ -57,7 +57,7 @@ public class WikipediaConverter implements Converter {
                     continue;
                 }
 
-                convertedValues.put(value.getValue(), newValue);
+                values.put(value.getValue(), newValue);
                 words.add(newValue);
                 return new Value(newValue);
             }
@@ -83,7 +83,7 @@ public class WikipediaConverter implements Converter {
 
     @Override
     public void init() {
-        convertedValues.clear();
+        values.clear();
         words.clear();
     }
 
