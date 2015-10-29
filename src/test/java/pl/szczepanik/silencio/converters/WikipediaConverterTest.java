@@ -9,6 +9,10 @@ import java.io.Reader;
 import java.io.StringWriter;
 import java.io.Writer;
 import java.net.URL;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.After;
@@ -27,6 +31,7 @@ import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.utils.IOUtility;
+import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -58,8 +63,8 @@ public class WikipediaConverterTest {
         processor.load(input);
 
         // when
-        mockStatic(pl.szczepanik.silencio.utils.IOUtility.class);
-        when(pl.szczepanik.silencio.utils.IOUtility.urlToString(new URL(URL_ADDRESS)))
+        mockStatic(IOUtility.class);
+        when(IOUtility.urlToString(new URL(URL_ADDRESS)))
             .thenReturn(INVALID_HTML_PAGE);
 
         // then
@@ -81,8 +86,8 @@ public class WikipediaConverterTest {
         processor.load(input);
 
         // when
-        mockStatic(pl.szczepanik.silencio.utils.IOUtility.class);
-        when(pl.szczepanik.silencio.utils.IOUtility.urlToString(new URL(URL_ADDRESS)))
+        mockStatic(IOUtility.class);
+        when(IOUtility.urlToString(new URL(URL_ADDRESS)))
              .thenReturn(toWikiPage("George Washington"))
              .thenReturn(toWikiPage("John Adams"))
              .thenReturn(toWikiPage("George Washington"))
@@ -107,6 +112,28 @@ public class WikipediaConverterTest {
         // then
         String reference = ResourceLoader.loadJsonAsString("suv_Positive_Wikipedia.json");
         assertThat(output.toString()).isEqualTo(reference);
+    }
+
+    @Test
+    public void shouldClearHistoryOnInit() {
+
+        // given
+        Converter blank = new WikipediaConverter();
+        Map<Object, Integer> values = new HashMap<>();
+        values.put(this, 0);
+        Set<String> words = new HashSet<>();
+        words.add(null);
+
+        // when
+        ReflectionUtility.setField(blank, "values", values);
+        ReflectionUtility.setField(blank, "words", words);
+        blank.init();
+
+        // then
+        Map<Object, Integer> retValues = (Map) ReflectionUtility.getField(blank, "values");
+        assertThat(retValues).isEmpty();
+        Set<String> retWords = (Set) ReflectionUtility.getField(blank, "words");
+        assertThat(retWords).isEmpty();
     }
 
     private static String toWikiPage(String text) {

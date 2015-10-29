@@ -2,16 +2,20 @@ package pl.szczepanik.silencio.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.junit.Test;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
+import pl.szczepanik.silencio.utils.ReflectionUtility;
 
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class NumberSequenceTest {
+public class NumberSequenceConverterTest {
 
     @Test
     public void shouldReturnValueWhenPassingNull() {
@@ -80,5 +84,22 @@ public class NumberSequenceTest {
 
         // then
         assertThat(outputValue1.getValue()).isEqualTo(outputValue2.getValue());
+    }
+
+    @Test
+    public void shouldClearHistoryOnInit() {
+
+        // given
+        Converter blank = new NumberSequenceConverter();
+        Map<Object, Integer> values = new HashMap<>();
+        values.put(this, 0);
+
+        // when
+        ReflectionUtility.setField(blank, "values", values);
+        blank.init();
+
+        // then
+        Map<Object, Integer> retValues = (Map) ReflectionUtility.getField(blank, "values");
+        assertThat(retValues).isEmpty();
     }
 }
