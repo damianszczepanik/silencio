@@ -9,11 +9,13 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import pl.szczepanik.silencio.GenericTest;
+
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(Parameterized.class)
-public class CommonUtility_saveWaitTest {
+public class CommonUtility_saveWaitTest extends GenericTest {
 
     @Parameters
     public static Collection<Long> timeout() {

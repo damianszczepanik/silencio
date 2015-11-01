@@ -6,9 +6,7 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
@@ -17,16 +15,13 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.junit.After;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Configuration;
@@ -44,16 +39,9 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(value = { IOUtility.class, Random.class })
-public class GeoLocationConverterTest {
+public class GeoLocationConverterTest extends GenericTest {
 
     private static final String URL_ADDRESS_FORMAT = "http://maps.googleapis.com/maps/api/geocode/json?language=en&components=locality&latlng=%s,%s";
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    private Writer output;
-    private Reader input;
-
 
     @Test
     public void shouldWaitBetweenRequests() throws Exception {
@@ -250,9 +238,4 @@ public class GeoLocationConverterTest {
         ReflectionUtility.invokeMethod(converter, "generateNextLocation", GeoLocationJSON.class, latitude, longitude);
     }
 
-    @After
-    public void closeStreams() {
-        IOUtils.closeQuietly(input);
-        IOUtils.closeQuietly(output);
-    }
 }

@@ -11,11 +11,9 @@ import java.io.Writer;
 import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.After;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.mocks.PropertyVisitorHolder;
@@ -26,13 +24,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class PropertiesProcessorTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    private Writer output;
-    private Reader input;
+public class PropertiesProcessorTest extends GenericTest {
 
     @Test
     public void shouldReturnPassedFormat() {
@@ -55,8 +47,8 @@ public class PropertiesProcessorTest {
 
         Properties refProps = new Properties();
         // input once read cannot be read again to need to have two streams to the same file
-        Reader refInput = ResourceLoader.loadPropertiesAsReader("suv.properties");
-        refProps.load(refInput);
+        Reader referenceInput = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        refProps.load(referenceInput);
 
         // when
         PropertiesProcessor processor = new PropertiesProcessor();
@@ -66,7 +58,7 @@ public class PropertiesProcessorTest {
         // then
         assertThat(properties).isEqualTo(refProps);
 
-        IOUtils.closeQuietly(refInput);
+        IOUtils.closeQuietly(referenceInput);
     }
 
     @Test
@@ -133,12 +125,6 @@ public class PropertiesProcessorTest {
         Properties refProps = new Properties();
         refProps.load(new StringReader(output.toString()));
         assertThat(properties).isEqualTo(refProps);
-    }
-
-    @After
-    public void closeStreams() {
-        IOUtils.closeQuietly(input);
-        IOUtils.closeQuietly(output);
     }
 
 }

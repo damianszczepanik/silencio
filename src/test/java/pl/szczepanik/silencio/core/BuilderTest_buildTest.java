@@ -12,6 +12,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.BlankConverter;
@@ -22,7 +23,7 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
  */
 
 @RunWith(Parameterized.class)
-public class BuilderTest_buildTest {
+public class BuilderTest_buildTest extends GenericTest {
 
 
     @Parameters

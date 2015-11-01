@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
@@ -11,7 +12,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class NegativeDecisionTest {
+public class NegativeDecisionTest extends GenericTest {
 
     @Test
     public void shouldNotAllowForConversion() {

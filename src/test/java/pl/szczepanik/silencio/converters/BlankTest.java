@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
@@ -12,7 +13,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BlankTest {
+public class BlankTest extends GenericTest {
 
     @Test
     public void shouldReturnEmptyValue() {

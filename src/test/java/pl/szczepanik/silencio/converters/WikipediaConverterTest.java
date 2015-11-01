@@ -5,24 +5,19 @@ import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.when;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.After;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Configuration;
@@ -39,16 +34,11 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(IOUtility.class)
-public class WikipediaConverterTest {
+public class WikipediaConverterTest extends GenericTest {
 
     private static final String URL_ADDRESS = "https://en.m.wikipedia.org/wiki/Special:Random";
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    private Writer output;
-    private Reader input;
 
 
     @Test
@@ -144,9 +134,4 @@ public class WikipediaConverterTest {
         return String.format("<h1 id=\"section_0\"><i>%s</i></h1> something, something", text);
     }
 
-    @After
-    public void closeStreams() {
-        IOUtils.closeQuietly(input);
-        IOUtils.closeQuietly(output);
-    }
 }

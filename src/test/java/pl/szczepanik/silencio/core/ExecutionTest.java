@@ -2,10 +2,9 @@ package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.converters.BlankConverter;
@@ -15,10 +14,7 @@ import pl.szczepanik.silencio.stubs.StubConverter;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ExecutionTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+public class ExecutionTest extends GenericTest {
 
     @Test
     public void shouldReturnPassedValues() {

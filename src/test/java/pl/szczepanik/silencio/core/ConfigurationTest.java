@@ -2,20 +2,16 @@ package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.stubs.StubConverter;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ConfigurationTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+public class ConfigurationTest extends GenericTest {
 
     @Test
     public void shouldReturnPassedExecutions() {

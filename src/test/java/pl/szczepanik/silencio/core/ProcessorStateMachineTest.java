@@ -1,16 +1,13 @@
 package pl.szczepanik.silencio.core;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+
+import pl.szczepanik.silencio.GenericTest;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ProcessorStateMachineTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+public class ProcessorStateMachineTest extends GenericTest {
 
     @Test
     public void shouldNotAllowToValidateProcessInCreatedState() {

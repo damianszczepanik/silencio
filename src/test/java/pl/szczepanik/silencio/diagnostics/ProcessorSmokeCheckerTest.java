@@ -1,9 +1,8 @@
 package pl.szczepanik.silencio.diagnostics;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.ProcessorException;
@@ -14,10 +13,7 @@ import pl.szczepanik.silencio.stubs.StubProcessor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ProcessorSmokeCheckerTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+public class ProcessorSmokeCheckerTest extends GenericTest {
     
     @Test
     public void shouldPassWithStubProcessor() {

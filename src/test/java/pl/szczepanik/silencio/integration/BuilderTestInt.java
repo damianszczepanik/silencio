@@ -1,16 +1,13 @@
 package pl.szczepanik.silencio.integration;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
-import java.io.Writer;
 import java.util.Properties;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.After;
 import org.junit.Test;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.StringConverter;
@@ -22,9 +19,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BuilderTestInt {
-    private Writer output;
-    private Reader input;
+public class BuilderTestInt extends GenericTest {
 
     @Test
     public void shouldProcessPropertiesFile() throws IOException {
@@ -50,9 +45,4 @@ public class BuilderTestInt {
         PropertiesUtility.assertEqual(reference, converted);
     }
 
-    @After
-    public void closeStreams() {
-        IOUtils.closeQuietly(input);
-        IOUtils.closeQuietly(output);
-    }
 }

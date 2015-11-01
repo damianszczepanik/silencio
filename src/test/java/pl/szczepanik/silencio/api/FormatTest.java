@@ -2,20 +2,16 @@ package pl.szczepanik.silencio.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.stubs.StubFormat;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class FormatTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+public class FormatTest extends GenericTest {
 
     @Test
     public void shouldReturnFormatName() {

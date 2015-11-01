@@ -12,6 +12,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.core.Configuration;
@@ -27,7 +28,7 @@ import pl.szczepanik.silencio.stubs.StubAbstractVisitor;
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(Parameterized.class)
-public class AbstractVisitorTest {
+public class AbstractVisitorTest extends GenericTest {
 
     private static final Key key = new Key("myKey");
     private static final Object value = "yourValue";
