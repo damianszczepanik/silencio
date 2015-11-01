@@ -1,0 +1,137 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Bench Maji",
+               "short_name" : "Bench Maji",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Southern Nations, Nationalities, and People's Region",
+               "short_name" : "SNNPR",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Etiopia",
+               "short_name" : "ET",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Bench Maji, Etiopia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 7.230336299999999,
+                  "lng" : 36.098671
+               },
+               "southwest" : {
+                  "lat" : 5.330960399999999,
+                  "lng" : 34.1873933
+               }
+            },
+            "location" : {
+               "lat" : 6.6315082,
+               "lng" : 35.5657862
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 7.230336299999999,
+                  "lng" : 36.098671
+               },
+               "southwest" : {
+                  "lat" : 5.330960399999999,
+                  "lng" : 34.1873933
+               }
+            }
+         },
+         "place_id" : "ChIJn4QRb9zSpxcRLf0hJ88j-_Y",
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Region Narodów",
+               "short_name" : "SNNPR",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Etiopia",
+               "short_name" : "ET",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Region Narodów, Etiopia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 8.455644999999999,
+                  "lng" : 39.143376
+               },
+               "southwest" : {
+                  "lat" : 4.440267,
+                  "lng" : 34.187561
+               }
+            },
+            "location" : {
+               "lat" : 6.5156911,
+               "lng" : 36.954107
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 8.455644999999999,
+                  "lng" : 39.143376
+               },
+               "southwest" : {
+                  "lat" : 4.440267,
+                  "lng" : 34.187561
+               }
+            }
+         },
+         "place_id" : "ChIJRVVRJI6ZrxcRNJNfJzlZ3rg",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Etiopia",
+               "short_name" : "ET",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Etiopia",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 14.8942141,
+                  "lng" : 48.0010561
+               },
+               "southwest" : {
+                  "lat" : 3.4041369,
+                  "lng" : 32.997734
+               }
+            },
+            "location" : {
+               "lat" : 9.145000000000001,
+               "lng" : 40.489673
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 14.8942141,
+                  "lng" : 48.0010561
+               },
+               "southwest" : {
+                  "lat" : 3.4041369,
+                  "lng" : 32.997734
+               }
+            }
+         },
+         "place_id" : "ChIJK_1s3c7QNRYRWsVIU3-m9ns",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

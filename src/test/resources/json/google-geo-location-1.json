@@ -1,0 +1,255 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Cherri Street",
+               "short_name" : "Cherri St",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Winters",
+               "short_name" : "Winters",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Runnels County",
+               "short_name" : "Runnels County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Texas",
+               "short_name" : "TX",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Stany Zjednoczone",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "79567",
+               "short_name" : "79567",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "Cherri St, Winters, TX 79567, Stany Zjednoczone",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 31.9719794,
+                  "lng" : -99.9001694
+               },
+               "southwest" : {
+                  "lat" : 31.96323679999999,
+                  "lng" : -99.9017027
+               }
+            },
+            "location" : {
+               "lat" : 31.9675246,
+               "lng" : -99.90162309999999
+            },
+            "location_type" : "GEOMETRIC_CENTER",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 31.9719794,
+                  "lng" : -99.8995870697085
+               },
+               "southwest" : {
+                  "lat" : 31.96323679999999,
+                  "lng" : -99.90228503029151
+               }
+            }
+         },
+         "place_id" : "ChIJ5xrVEwAAV4YRkr1b_SjfKi0",
+         "types" : [ "route" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "79567",
+               "short_name" : "79567",
+               "types" : [ "postal_code" ]
+            },
+            {
+               "long_name" : "Winters",
+               "short_name" : "Winters",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Texas",
+               "short_name" : "TX",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Stany Zjednoczone",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Winters, TX 79567, Stany Zjednoczone",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 32.16066,
+                  "lng" : -99.74334909999999
+               },
+               "southwest" : {
+                  "lat" : 31.833884,
+                  "lng" : -100.219973
+               }
+            },
+            "location" : {
+               "lat" : 32.0101146,
+               "lng" : -99.9465077
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 32.16066,
+                  "lng" : -99.74334909999999
+               },
+               "southwest" : {
+                  "lat" : 31.833884,
+                  "lng" : -100.219973
+               }
+            }
+         },
+         "place_id" : "ChIJ89wiHS5VVoYRgiQ9yX7J1eg",
+         "types" : [ "postal_code" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Hrabstwo Runnels",
+               "short_name" : "Hrabstwo Runnels",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "Teksas",
+               "short_name" : "TX",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Stany Zjednoczone",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Hrabstwo Runnels, Teksas, Stany Zjednoczone",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 32.0826559,
+                  "lng" : -99.7139519
+               },
+               "southwest" : {
+                  "lat" : 31.576688,
+                  "lng" : -100.2361889
+               }
+            },
+            "location" : {
+               "lat" : 31.8714508,
+               "lng" : -99.99122539999999
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 32.0826559,
+                  "lng" : -99.7139519
+               },
+               "southwest" : {
+                  "lat" : 31.576688,
+                  "lng" : -100.2361889
+               }
+            }
+         },
+         "place_id" : "ChIJn9G4wDepV4YRWlWzGTZ58ko",
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Teksas",
+               "short_name" : "TX",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Stany Zjednoczone",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Teksas, Stany Zjednoczone",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 36.5007041,
+                  "lng" : -93.5080389
+               },
+               "southwest" : {
+                  "lat" : 25.8371638,
+                  "lng" : -106.6456461
+               }
+            },
+            "location" : {
+               "lat" : 31.9685988,
+               "lng" : -99.9018131
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 36.5015087,
+                  "lng" : -93.5080389
+               },
+               "southwest" : {
+                  "lat" : 25.8371638,
+                  "lng" : -106.6456461
+               }
+            }
+         },
+         "place_id" : "ChIJSTKCCzZwQIYRPN4IGI8c6xY",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Stany Zjednoczone",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Stany Zjednoczone",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 71.3867745,
+                  "lng" : -66.9502861
+               },
+               "southwest" : {
+                  "lat" : 18.9106768,
+                  "lng" : 172.4458955
+               }
+            },
+            "location" : {
+               "lat" : 37.09024,
+               "lng" : -95.712891
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 49.38,
+                  "lng" : -66.94
+               },
+               "southwest" : {
+                  "lat" : 25.82,
+                  "lng" : -124.39
+               }
+            }
+         },
+         "place_id" : "ChIJCzYy5IS16lQRQrfeQ5K5Oxw",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

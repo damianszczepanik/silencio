@@ -1,0 +1,137 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Qesm Al Wahat Ad Dakhlah",
+               "short_name" : "Qesm Al Wahat Ad Dakhlah",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "New Valley Governorate",
+               "short_name" : "New Valley Governorate",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Egipt",
+               "short_name" : "EG",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Qesm Al Wahat Ad Dakhlah, New Valley Governorate, Egipt",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 27.6561537,
+                  "lng" : 30.9691549
+               },
+               "southwest" : {
+                  "lat" : 21.9915523,
+                  "lng" : 25.0009723
+               }
+            },
+            "location" : {
+               "lat" : 24.5455638,
+               "lng" : 27.1735316
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 27.6561537,
+                  "lng" : 30.9691549
+               },
+               "southwest" : {
+                  "lat" : 21.9915523,
+                  "lng" : 25.0009723
+               }
+            }
+         },
+         "place_id" : "ChIJnQpv9YizFRQRBNJbuTbkW6k",
+         "types" : [ "administrative_area_level_2", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Prowincja Nowa Dolina",
+               "short_name" : "Prowincja Nowa Dolina",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Egipt",
+               "short_name" : "EG",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Prowincja Nowa Dolina, Egipt",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 27.6966292,
+                  "lng" : 32.9224299
+               },
+               "southwest" : {
+                  "lat" : 21.9915523,
+                  "lng" : 25.0003101
+               }
+            },
+            "location" : {
+               "lat" : 24.5455638,
+               "lng" : 27.1735316
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 27.6966292,
+                  "lng" : 32.9224299
+               },
+               "southwest" : {
+                  "lat" : 21.9915523,
+                  "lng" : 25.0003101
+               }
+            }
+         },
+         "place_id" : "ChIJizo3_7NpRxQRv-B5djN7Zhw",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Egipt",
+               "short_name" : "EG",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Egipt",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 31.6715347,
+                  "lng" : 36.8945446
+               },
+               "southwest" : {
+                  "lat" : 21.9999999,
+                  "lng" : 24.696775
+               }
+            },
+            "location" : {
+               "lat" : 26.820553,
+               "lng" : 30.802498
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 31.6715347,
+                  "lng" : 36.8945446
+               },
+               "southwest" : {
+                  "lat" : 21.9999999,
+                  "lng" : 24.696775
+               }
+            }
+         },
+         "place_id" : "ChIJ6TZcw3aJNhQRRMTEJQmgRSw",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}

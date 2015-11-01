@@ -72,7 +72,7 @@ public class WikipediaConverter implements Converter {
 
         // extract characters between opening and closing h1 tag
         String title = StringUtils.substringBetween(page, startPattern, endPattern);
-        if (title == null) {
+        if (StringUtils.isBlank(title)) {
             throw new IntegrityException("Could not find header pattern for page: " + page);
         }
         // some headlines are wrapped with italics - remove them

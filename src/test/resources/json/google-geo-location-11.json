@@ -1,0 +1,88 @@
+{
+   "results" : [
+      {
+         "address_components" : [
+            {
+               "long_name" : "Al-Dżauf",
+               "short_name" : "Al-Dżauf",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "Jemen",
+               "short_name" : "YE",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Al-Dżauf, Jemen",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 17.4041709,
+                  "lng" : 47.0087311
+               },
+               "southwest" : {
+                  "lat" : 15.722451,
+                  "lng" : 44.067691
+               }
+            },
+            "location" : {
+               "lat" : 16.7901819,
+               "lng" : 45.29938620000001
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 17.4041709,
+                  "lng" : 47.0087311
+               },
+               "southwest" : {
+                  "lat" : 15.722451,
+                  "lng" : 44.067691
+               }
+            }
+         },
+         "place_id" : "ChIJbwDFneKBAD4RTSsBjG2K_7Q",
+         "types" : [ "administrative_area_level_1", "political" ]
+      },
+      {
+         "address_components" : [
+            {
+               "long_name" : "Jemen",
+               "short_name" : "YE",
+               "types" : [ "country", "political" ]
+            }
+         ],
+         "formatted_address" : "Jemen",
+         "geometry" : {
+            "bounds" : {
+               "northeast" : {
+                  "lat" : 18.9996331,
+                  "lng" : 54.5341125
+               },
+               "southwest" : {
+                  "lat" : 12.1081762,
+                  "lng" : 41.8160553
+               }
+            },
+            "location" : {
+               "lat" : 15.552727,
+               "lng" : 48.516388
+            },
+            "location_type" : "APPROXIMATE",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 18.9996331,
+                  "lng" : 54.5341125
+               },
+               "southwest" : {
+                  "lat" : 12.1081762,
+                  "lng" : 41.8160553
+               }
+            }
+         },
+         "place_id" : "ChIJX7w0fKzbAxYRrneufjcp8ZI",
+         "types" : [ "country", "political" ]
+      }
+   ],
+   "status" : "OK"
+}
