@@ -35,7 +35,7 @@ public class BuilderTest {
 
         // when
         Builder builder = new Builder(format);
-        Format retFormat = (Format) ReflectionUtility.getField(builder, "format");
+        Format retFormat = ReflectionUtility.getField(builder, "format", Format.class);
 
         // then
         assertThat(format).isEqualTo(retFormat);
@@ -51,7 +51,7 @@ public class BuilderTest {
 
         // when
         Builder builder = new Builder(format).with(decisions, converters);
-        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
         assertThat(executions.get(0).getDecisions().length).isEqualTo(decisions.length);
@@ -70,7 +70,7 @@ public class BuilderTest {
 
         // when
         Builder builder = new Builder(format).with(decision, converters[0], converters[1]);
-        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
@@ -92,7 +92,7 @@ public class BuilderTest {
         builder.with(decision, converter);
 
         // then
-        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
         assertThat(executions).hasSize(2);
 
         Execution appendExecution = executions.get(1);
@@ -111,7 +111,7 @@ public class BuilderTest {
 
         // when
         Builder builder = new Builder(format).with(converters[0], converters[1]);
-        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
@@ -129,7 +129,7 @@ public class BuilderTest {
 
         // when
         Builder builder = new Builder(format).with(converter);
-        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
@@ -162,7 +162,7 @@ public class BuilderTest {
         // when
         builder.build();
         builder.clearExecutions();
-        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
         assertThat(executions).isEmpty();

@@ -130,9 +130,9 @@ public class WikipediaConverterTest {
         blank.init();
 
         // then
-        Map<Object, Integer> retValues = (Map) ReflectionUtility.getField(blank, "values");
+        Map<Object, Integer> retValues = ReflectionUtility.getField(blank, "values", Map.class);
         assertThat(retValues).isEmpty();
-        Set<String> retWords = (Set) ReflectionUtility.getField(blank, "words");
+        Set<String> retWords = ReflectionUtility.getField(blank, "words", Set.class);
         assertThat(retWords).isEmpty();
     }
 

@@ -99,7 +99,7 @@ public class NumberSequenceConverterTest {
         blank.init();
 
         // then
-        Map<Object, Integer> retValues = (Map) ReflectionUtility.getField(blank, "values");
+        Map<Object, Integer> retValues = ReflectionUtility.getField(blank, "values", Map.class);
         assertThat(retValues).isEmpty();
     }
 }
