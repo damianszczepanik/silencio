@@ -21,7 +21,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
-public class WikipediaConverterIntegrationTest {
+public class WikipediaConverterTestInt {
 
     private Writer output;
     private Reader input;
