@@ -4,10 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import pl.szczepanik.silencio.GenericTest;
+
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class KeyTest {
+public class KeyTest extends GenericTest {
 
     @Test
     public void shouldReturnKey() {

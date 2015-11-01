@@ -3,16 +3,11 @@ package pl.szczepanik.silencio.processors;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.core.StringContains.containsString;
 
-import java.io.Reader;
 import java.io.StringWriter;
-import java.io.Writer;
 
-import org.apache.commons.io.IOUtils;
-import org.junit.After;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Builder;
@@ -26,13 +21,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class JSONProcessorTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
-
-    private Writer output;
-    private Reader input;
+public class JSONProcessorTest extends GenericTest {
 
     @Test
     public void shouldReturnPassedFormat() {
@@ -102,11 +91,4 @@ public class JSONProcessorTest {
         thrown.expectMessage(errorMessage);
         processor.realWrite(output);
     }
-
-    @After
-    public void closeStreams() {
-        IOUtils.closeQuietly(input);
-        IOUtils.closeQuietly(output);
-    }
-
 }

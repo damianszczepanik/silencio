@@ -7,6 +7,7 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
@@ -15,7 +16,7 @@ import pl.szczepanik.silencio.utils.ReflectionUtility;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class NumberSequenceConverterTest {
+public class NumberSequenceConverterTest extends GenericTest {
 
     @Test
     public void shouldReturnValueWhenPassingNull() {

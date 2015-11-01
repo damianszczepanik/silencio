@@ -8,13 +8,12 @@ import java.io.IOException;
 import java.net.URL;
 
 import org.apache.commons.io.IOUtils;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
@@ -22,13 +21,10 @@ import pl.szczepanik.silencio.core.IntegrityException;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(IOUtils.class)
-public class IOUtilityTest {
+public class IOUtilityTest extends GenericTest {
 
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
     private static final String URL_ADDRESS = "http://www.fancy.page";
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
     @Test
     public void shouldReturnWholeHtmlPage() throws Exception {

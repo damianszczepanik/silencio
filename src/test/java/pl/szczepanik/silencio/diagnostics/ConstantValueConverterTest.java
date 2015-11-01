@@ -4,11 +4,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.junit.Test;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
-public class ConstantValueConverterTest {
+public class ConstantValueConverterTest extends GenericTest {
 
     @Test
     public void shouldReturnConstantValue() {

@@ -5,10 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.api.Format;
@@ -22,10 +21,7 @@ import pl.szczepanik.silencio.utils.ReflectionUtility;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BuilderTest {
-
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
+public class BuilderTest extends GenericTest {
 
     @Test
     public void shouldHoldPassedFormat() {

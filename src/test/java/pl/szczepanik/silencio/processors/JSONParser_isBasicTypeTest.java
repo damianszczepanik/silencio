@@ -13,6 +13,7 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 import pl.szczepanik.silencio.utils.ReflectionUtility;
@@ -21,7 +22,7 @@ import pl.szczepanik.silencio.utils.ReflectionUtility;
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(Parameterized.class)
-public class JSONParser_isBasicTypeTest {
+public class JSONParser_isBasicTypeTest extends GenericTest {
 
     @Parameters
     public static Collection<Object[]> data() {
