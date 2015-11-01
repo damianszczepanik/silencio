@@ -12,6 +12,7 @@ import org.junit.rules.ExpectedException;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.api.Format;
+import pl.szczepanik.silencio.converters.BlankConverter;
 import pl.szczepanik.silencio.decisions.NegativeDecision;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.stubs.StubConverter;
@@ -83,18 +84,22 @@ public class BuilderTest {
 
         // given
         Format format = Format.JSON;
-        Converter converter = new StubConverter();
         Decision decision = new NegativeDecision();
+        Converter converter = new StubConverter();
+        Builder builder = new Builder(format).with(new PositiveDecision(), new BlankConverter());
 
         // when
-        Builder builder = new Builder(format).with(decision, converter);
-        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        builder.with(decision, converter);
 
         // then
-        assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
-        assertThat(executions.get(0).getDecisions()[0]).isEqualTo(decision);
-        assertThat(executions.get(0).getConverters().length).isEqualTo(1);
-        assertThat(executions.get(0).getConverters()[0]).isEqualTo(converter);
+        List<Execution> executions = (List<Execution>) ReflectionUtility.getField(builder, "executions");
+        assertThat(executions).hasSize(2);
+
+        Execution appendExecution = executions.get(1);
+        assertThat(appendExecution.getDecisions().length).isEqualTo(1);
+        assertThat(appendExecution.getDecisions()[0]).isEqualTo(decision);
+        assertThat(appendExecution.getConverters().length).isEqualTo(1);
+        assertThat(appendExecution.getConverters()[0]).isEqualTo(converter);
     }
 
     @Test
