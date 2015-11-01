@@ -21,7 +21,7 @@ import pl.szczepanik.silencio.utils.ReflectionUtility;
  * @author Damian Szczepanik <damianszczepanik@github>
  */
 @RunWith(Parameterized.class)
-public class JSONParserTypeValidatorTest {
+public class JSONParser_isBasicTypeTest {
 
     @Parameters
     public static Collection<Object[]> data() {

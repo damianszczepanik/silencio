@@ -1,7 +1,5 @@
 package pl.szczepanik.silencio.utils;
 
-import pl.szczepanik.silencio.core.IntegrityException;
-
 /**
  * @author Damian Szczepanik <damianszczepanik@github>
  */
@@ -22,8 +20,7 @@ public final class CommonUtility {
         synchronized (currentThread) {
             try {
                 currentThread.wait(timeout);
-            } catch (InterruptedException e) {
-                throw new IntegrityException(e.getMessage());
+            } catch (InterruptedException | IllegalArgumentException e) {
             }
         }
     }

@@ -163,7 +163,7 @@ public class GeoLocationConverterTest {
     @Test
     public void convertReturnsValidItems() throws IOException {
 
-        // give
+        // given
         Converter converter = new GeoLocationConverter();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
