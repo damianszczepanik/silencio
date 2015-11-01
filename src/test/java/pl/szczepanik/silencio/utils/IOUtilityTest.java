@@ -18,7 +18,7 @@ import org.powermock.modules.junit4.PowerMockRunner;
 import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(IOUtils.class)

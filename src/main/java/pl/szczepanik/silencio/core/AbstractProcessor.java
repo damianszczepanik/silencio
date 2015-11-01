@@ -10,7 +10,7 @@ import pl.szczepanik.silencio.api.Processor;
 /**
  * Provides basic implementations of methods used by processors.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public abstract class AbstractProcessor implements Processor {
 

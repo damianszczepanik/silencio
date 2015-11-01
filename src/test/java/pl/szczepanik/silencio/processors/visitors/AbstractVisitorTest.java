@@ -24,7 +24,7 @@ import pl.szczepanik.silencio.mocks.ConverterVisitor;
 import pl.szczepanik.silencio.stubs.StubAbstractVisitor;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(Parameterized.class)
 public class AbstractVisitorTest {

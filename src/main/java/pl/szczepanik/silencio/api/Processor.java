@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.core.Configuration;
 /**
  * Contract for processor that converts content.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public interface Processor {
 

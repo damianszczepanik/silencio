@@ -1,7 +1,7 @@
 package pl.szczepanik.silencio.utils;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class JSONUtility {
 

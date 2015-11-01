@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
  * Decides whether values passed to {@link Converter} should be applied or the conversion should be skipped for this
  * value and key.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public interface Decision {
 

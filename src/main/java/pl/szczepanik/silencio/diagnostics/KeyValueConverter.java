@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Diagnostic converter that returns new instance of {@link Value} object created from passed key.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class KeyValueConverter implements Converter {
 

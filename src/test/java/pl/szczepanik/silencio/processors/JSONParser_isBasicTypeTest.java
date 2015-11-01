@@ -18,7 +18,7 @@ import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 import pl.szczepanik.silencio.utils.ReflectionUtility;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(Parameterized.class)
 public class JSONParser_isBasicTypeTest {

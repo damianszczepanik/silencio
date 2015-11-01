@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Stub converter that has only stub methods.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class StubConverter implements Converter {
 

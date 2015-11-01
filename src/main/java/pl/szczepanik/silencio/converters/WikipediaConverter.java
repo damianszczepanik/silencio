@@ -18,7 +18,7 @@ import pl.szczepanik.silencio.utils.IOUtility;
  * Converter that changes each passed value into random words taken from Wikipedia. Internet access required when using
  * this converter. Because this and other reasons this converter should not be used on production.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class WikipediaConverter implements Converter {
 

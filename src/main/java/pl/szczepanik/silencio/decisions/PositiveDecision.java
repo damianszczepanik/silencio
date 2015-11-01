@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Implementation of {@link Decision} that always returns positive decision.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class PositiveDecision implements Decision {
 

@@ -26,7 +26,7 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
 /**
  * Executes basic tests on processor to make sure that basic, functional requirements are met.
  *
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class ProcessorSmokeChecker {
 

@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Converter that changes each passed value into empty string ("").
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class BlankConverter implements Converter {
 

@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.api.Decision;
  * Keeps array of the {@link Decision} with array of the @{link {@link Converter} that will be used for single
  * conversion.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class Execution {
 

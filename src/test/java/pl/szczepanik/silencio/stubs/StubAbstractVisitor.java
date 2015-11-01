@@ -5,7 +5,7 @@ import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.processors.visitors.AbstractVisitor;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class StubAbstractVisitor extends AbstractVisitor {
 

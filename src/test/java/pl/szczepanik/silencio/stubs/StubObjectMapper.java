@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Stub of @link {@link pl.szczepanik.silencio.core.AbstractProcessor.ObjectMapper} that has only stub methods.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class StubObjectMapper extends ObjectMapper {
 

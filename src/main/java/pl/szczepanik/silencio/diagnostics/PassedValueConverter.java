@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Diagnostic converter that returns the same value as the one which was passed.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class PassedValueConverter implements Converter {
 

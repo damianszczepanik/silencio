@@ -9,7 +9,7 @@ import org.apache.commons.io.IOUtils;
 import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class IOUtility {
 
@@ -23,7 +23,7 @@ public final class IOUtility {
      * @param url
      *            address to load
      * @return loaded content
-     * @throws IOException
+     * @throws IntegrityException
      *             when input/output operation fails
      */
     public static String urlToString(URL url) {

@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.core.ProcessorException;
 /**
  * Iterates over JSON nodes and calls {@link #processValue(Key, Object)} for each basic node.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class JSONVisitor extends AbstractVisitor {
 

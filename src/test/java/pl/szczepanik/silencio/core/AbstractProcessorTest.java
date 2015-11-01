@@ -12,7 +12,7 @@ import pl.szczepanik.silencio.stubs.StubConverter;
 import pl.szczepanik.silencio.stubs.StubProcessor;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class AbstractProcessorTest {
 

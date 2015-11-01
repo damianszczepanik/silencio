@@ -10,7 +10,7 @@ import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.stubs.StubFormat;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class StringConverterTest {
 
