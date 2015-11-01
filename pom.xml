@@ -140,19 +140,34 @@
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.7.5.201505241946</version>
                 <executions>
+                <!-- this instrumentation allows to count covered/tested code that is annotated with @RunWith(PowerMockRunner.class) -->
                     <execution>
+                        <id>instrument</id>
+                        <phase>process-classes</phase>
                         <goals>
-                            <goal>prepare-agent</goal>
+                            <goal>instrument</goal>
                         </goals>
                     </execution>
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
                         <goals>
+                            <goal>restore-instrumented-classes</goal>
                             <goal>report</goal>
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.12.2</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <!-- JaCoCo runtime must know where to dump coverage: -->
+                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                    </systemPropertyVariables>
+                </configuration>
             </plugin>
         </plugins>
 
@@ -210,6 +225,13 @@
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
             <version>1.6.3</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.jacoco</groupId>
+            <artifactId>org.jacoco.agent</artifactId>
+            <classifier>runtime</classifier>
+            <version>0.7.5.201505241946</version>
             <scope>test</scope>
         </dependency>
 

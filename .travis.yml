@@ -11,7 +11,7 @@ jdk:
   - oraclejdk8
   - openjdk7
 
-script: mvn checkstyle:check test
+script: mvn clean checkstyle:check test
 
 after_success:
   bash <(curl -s https://codecov.io/bash)
