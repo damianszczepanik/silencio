@@ -31,11 +31,11 @@ public class ReflectionUtility {
         }
     }
 
-    public static Object getField(Object instance, String fieldName) {
+    public static <T> T getField(Object instance, String fieldName, Class<T> returnType) {
         try {
             Field field = instance.getClass().getDeclaredField(fieldName);
             field.setAccessible(true);
-            return field.get(instance);
+            return (T) field.get(instance);
         } catch (NoSuchFieldException | SecurityException | IllegalAccessException e) {
             // if method throws an exception the cause needs to be extracted to pass to caller
             throw new RuntimeException(e);

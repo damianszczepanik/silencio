@@ -61,7 +61,7 @@ public class PropertiesProcessorTest {
         // when
         PropertiesProcessor processor = new PropertiesProcessor();
         processor.realLoad(input);
-        Properties properties = (Properties) ReflectionUtility.getField(processor, "properties");
+        Properties properties = ReflectionUtility.getField(processor, "properties", Properties.class);
 
         // then
         assertThat(properties).isEqualTo(refProps);

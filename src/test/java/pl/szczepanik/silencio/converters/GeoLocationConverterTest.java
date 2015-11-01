@@ -124,9 +124,9 @@ public class GeoLocationConverterTest {
         converter.init();
 
         // then
-        Map<Object, Integer> retValues = (Map) ReflectionUtility.getField(converter, "values");
+        Map<Object, Integer> retValues = ReflectionUtility.getField(converter, "values", Map.class);
         assertThat(retValues).isEmpty();
-        Set<String> retWords = (Set) ReflectionUtility.getField(converter, "words");
+        Set<String> retWords = ReflectionUtility.getField(converter, "words", Set.class);
         assertThat(retWords).isEmpty();
     }
 
