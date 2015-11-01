@@ -5,7 +5,7 @@ import org.apache.commons.lang3.ArrayUtils;
 /**
  * Keeps information about whole conversion process.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class Configuration {
 

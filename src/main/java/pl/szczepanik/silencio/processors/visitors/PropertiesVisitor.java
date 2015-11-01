@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Iterates over Properties nodes and calls {@link #processValue(Key, Object)} for each basic node.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class PropertiesVisitor extends AbstractVisitor {
 

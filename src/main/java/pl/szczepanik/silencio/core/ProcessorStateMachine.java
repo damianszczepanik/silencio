@@ -3,7 +3,7 @@ package pl.szczepanik.silencio.core;
 /**
  * State machine for processors.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class ProcessorStateMachine {
 
@@ -24,8 +24,8 @@ public class ProcessorStateMachine {
     /**
      * Checks if given operation is allowed.
      * 
-     * @throws {@link
-     *             ProcessorException} when operation is not allowed for this processor state
+     * @throws ProcessorException
+     *             when operation is not allowed for this processor state
      */
     public void validateProcess() {
         if (state == States.CREATED) {
@@ -36,8 +36,8 @@ public class ProcessorStateMachine {
     /**
      * Checks if given operation is allowed.
      * 
-     * @throws {@link
-     *             ProcessorException} when operation is not allowed for this processor state
+     * @throws ProcessorException
+     *             when operation is not allowed for this processor state
      */
     public void validateWrite() {
         if (state != States.PROCESSED) {

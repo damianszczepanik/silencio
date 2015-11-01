@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Converter that changes each passed value into given string.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class StringConverter implements Converter {
 

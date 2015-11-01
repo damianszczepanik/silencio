@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * Contains selected (not all!) attributes from JSON response that contains Google geo information.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public final class GeoLocationJSON {
@@ -19,7 +19,8 @@ public final class GeoLocationJSON {
     /**
      * Details about response status.
      * 
-     * @see https://developers.google.com/maps/documentation/geocoding/intro?csw=1#StatusCodes
+     * @see <a href="https://developers.google.com/maps/documentation/geocoding/intro?csw=1#StatusCodes">Status
+     *      codes</a>
      */
     public final String status = null;
 

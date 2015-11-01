@@ -10,7 +10,7 @@ import org.apache.commons.io.IOUtils;
 import pl.szczepanik.silencio.core.ProcessorException;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class ResourceLoader {
 

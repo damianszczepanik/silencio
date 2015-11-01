@@ -13,7 +13,7 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
 /**
  * Stub of @link {@link AbstractProcessor} that has only stub methods.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class StubProcessor extends AbstractProcessor {
 

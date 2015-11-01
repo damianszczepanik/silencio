@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.core.IntegrityException;
 /**
  * Type of the content.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public abstract class Format {
 

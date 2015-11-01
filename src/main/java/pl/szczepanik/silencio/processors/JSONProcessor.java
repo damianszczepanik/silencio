@@ -19,7 +19,7 @@ import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 /**
  * Provides processor that supports JSON format.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class JSONProcessor extends AbstractProcessor {
 

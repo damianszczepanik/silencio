@@ -6,7 +6,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Contract for all converters.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public interface Converter {
 

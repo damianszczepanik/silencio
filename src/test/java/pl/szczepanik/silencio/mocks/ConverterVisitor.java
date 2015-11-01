@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Stores key and value passed to this converter.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class ConverterVisitor implements Converter {
 

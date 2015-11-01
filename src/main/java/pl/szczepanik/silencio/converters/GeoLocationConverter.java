@@ -22,9 +22,9 @@ import pl.szczepanik.silencio.utils.IOUtility;
 /**
  * Converter changes passed values into geo location such as cities, countries or villages.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  * 
- * @see https://developers.google.com/maps/documentation/geocoding/intro?csw=1
+ * @see <a href="https://developers.google.com/maps/documentation/geocoding/intro?csw=1">Google documentation</a>
  */
 public class GeoLocationConverter implements Converter {
 

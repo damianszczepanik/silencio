@@ -13,7 +13,7 @@ import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.utils.ReflectionUtility;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class NumberSequenceConverterTest {
 

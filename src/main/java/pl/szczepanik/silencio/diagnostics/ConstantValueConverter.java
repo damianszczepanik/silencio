@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Diagnostic converter that always returns the same instance.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class ConstantValueConverter implements Converter {
 

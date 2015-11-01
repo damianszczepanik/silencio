@@ -13,7 +13,7 @@ import pl.szczepanik.silencio.processors.visitors.PropertiesVisitor;
 /**
  * Provides processor that supports Properties format.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class PropertiesProcessor extends AbstractProcessor {
 

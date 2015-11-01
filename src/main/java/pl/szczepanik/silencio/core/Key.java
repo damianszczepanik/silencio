@@ -4,7 +4,7 @@ package pl.szczepanik.silencio.core;
  * Key for the {@link Value}. This type is immutable. This class wraps passed key but it allows also to store metadata
  * or change behavior when requirements changes.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class Key {
 

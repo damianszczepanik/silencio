@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.fail;
 import java.util.Properties;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class PropertiesUtility {
 

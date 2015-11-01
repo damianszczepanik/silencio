@@ -7,7 +7,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Diagnostic converter that returns blank space <code>' '</code> for every passed value.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class WhiteCharConverter implements Converter {
 

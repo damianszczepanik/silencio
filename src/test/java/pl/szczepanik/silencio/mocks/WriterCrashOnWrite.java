@@ -8,7 +8,7 @@ import org.omg.CORBA.portable.IndirectionException;
 /**
  * Writer that throws {@link IndirectionException} when {@link #write(char[], int, int)}} method is invoked.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class WriterCrashOnWrite extends Writer {
 

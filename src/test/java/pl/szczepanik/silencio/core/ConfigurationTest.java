@@ -10,7 +10,7 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.stubs.StubConverter;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class ConfigurationTest {
 

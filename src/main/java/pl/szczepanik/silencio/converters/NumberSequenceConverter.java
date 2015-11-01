@@ -10,7 +10,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Converter that changes each passed value into number in way that the same passed value has the same number.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class NumberSequenceConverter implements Converter {
 

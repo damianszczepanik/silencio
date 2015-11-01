@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class PositiveDecisionTest {
 

@@ -16,7 +16,7 @@ import pl.szczepanik.silencio.processors.PropertiesProcessor;
 /**
  * Default implementation of class that holds processors.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class Builder {
 

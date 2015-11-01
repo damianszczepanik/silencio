@@ -10,7 +10,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * Collects common methods and attributes used by visitors that goes over passed model and visits all nodes.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public abstract class AbstractVisitor {
 

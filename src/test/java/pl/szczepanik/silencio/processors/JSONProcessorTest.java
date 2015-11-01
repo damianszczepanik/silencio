@@ -24,7 +24,7 @@ import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class JSONProcessorTest {
 

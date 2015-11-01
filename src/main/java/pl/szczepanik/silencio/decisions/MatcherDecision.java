@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.core.Value;
  * declared pattern. If value or key pattern is <code>null</code> then relevant pattern will not be checked assuming
  * that pattern matches.
  * 
- * @author Damian Szczepanik <damianszczepanik@github>
+ * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class MatcherDecision implements Decision {
 
