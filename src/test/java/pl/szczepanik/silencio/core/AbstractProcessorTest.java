@@ -7,6 +7,7 @@ import org.junit.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
+import pl.szczepanik.silencio.processors.AbstractProcessor;
 import pl.szczepanik.silencio.stubs.StubConverter;
 import pl.szczepanik.silencio.stubs.StubProcessor;
 

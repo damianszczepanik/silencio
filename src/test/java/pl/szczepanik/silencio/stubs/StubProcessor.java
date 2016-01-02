@@ -5,10 +5,10 @@ import java.io.Writer;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
+import pl.szczepanik.silencio.processors.AbstractProcessor;
 
 /**
  * Stub of @link {@link AbstractProcessor} that has only stub methods.
