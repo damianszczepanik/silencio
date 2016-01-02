@@ -44,7 +44,10 @@ public class JSONProcessorTestInt extends GenericTest {
         String content = ResourceLoader.loadJsonAsString("suv.json");
         ProcessorSmokeChecker checker = new ProcessorSmokeChecker(new JSONProcessor());
 
-        // then
+        // when
         checker.validateWithAllCombinations(content);
+
+        // then
+        // no crash
     }
 }
