@@ -6,7 +6,6 @@ import java.io.Writer;
 import java.util.Properties;
 
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.processors.visitors.PropertiesVisitor;
 

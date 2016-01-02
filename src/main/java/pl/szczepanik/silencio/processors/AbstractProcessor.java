@@ -1,4 +1,4 @@
-package pl.szczepanik.silencio.core;
+package pl.szczepanik.silencio.processors;
 
 import java.io.Reader;
 import java.io.Writer;
@@ -6,6 +6,10 @@ import java.io.Writer;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
+import pl.szczepanik.silencio.core.Configuration;
+import pl.szczepanik.silencio.core.Execution;
+import pl.szczepanik.silencio.core.IntegrityException;
+import pl.szczepanik.silencio.core.ProcessorStateMachine;
 
 /**
  * Provides basic implementations of methods used by processors.

@@ -12,7 +12,6 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 

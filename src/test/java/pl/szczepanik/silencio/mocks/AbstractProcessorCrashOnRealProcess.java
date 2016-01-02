@@ -2,8 +2,8 @@ package pl.szczepanik.silencio.mocks;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.core.AbstractProcessor;
 import pl.szczepanik.silencio.core.ProcessorException;
+import pl.szczepanik.silencio.processors.AbstractProcessor;
 import pl.szczepanik.silencio.stubs.StubProcessor;
 
 /**
