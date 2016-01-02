@@ -155,7 +155,7 @@ public class BuilderTest extends GenericTest {
     public void shouldClearExecutions() {
         
         // given
-        Builder builder = new Builder(Format.PROPERTIES);
+        Builder builder = new Builder(Format.XML);
         builder.with(new NegativeDecision(), Builder.BLANK);
 
         // when

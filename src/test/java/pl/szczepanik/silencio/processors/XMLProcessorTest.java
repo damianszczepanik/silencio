@@ -21,28 +21,28 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class JSONProcessorTest extends GenericTest {
+public class XMLProcessorTest extends GenericTest {
 
     @Test
     public void shouldReturnPassedFormat() {
 
         // given
-        Processor processor = new JSONProcessor();
+        XMLProcessor processor = new XMLProcessor();
 
         // when
         Format format = processor.getFormat();
 
         // then
-        assertThat(format).isEqualTo(Format.JSON);
+        assertThat(format).isEqualTo(Format.XML);
     }
 
     @Test
-    public void shouldLoadJSONFileOnRealLoad() {
+    public void shouldLoadXMLFileOnRealLoad() {
 
         // given
-        JSONProcessor processor = new JSONProcessor();
-        input = ResourceLoader.loadJsonAsReader("suv.json");
-        String refInput = ResourceLoader.loadJsonAsString("suv.json");
+        XMLProcessor processor = new XMLProcessor();
+        input = ResourceLoader.loadXmlAsReader("suv.xml");
+        String refInput = ResourceLoader.loadXmlAsString("suv_tranformed.xml");
         output = new StringWriter();
 
         // when
@@ -57,16 +57,16 @@ public class JSONProcessorTest extends GenericTest {
     public void shouldFailWhenLoadingInvalidJSONFile() {
 
         // given
-        Processor processor = new JSONProcessor();
+        Processor processor = new XMLProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
-        input = ResourceLoader.loadJsonAsReader("corrupted.json");
+        input = ResourceLoader.loadXmlAsReader("corrupted.xml");
 
         // when
         processor.setConfiguration(new Configuration(execution));
 
         // then
         thrown.expect(ProcessorException.class);
-        thrown.expectMessage(containsString("Unexpected character"));
+        thrown.expectMessage(containsString("XML document structures must start and end within the same entity"));
         processor.load(input);
     }
 
@@ -76,10 +76,10 @@ public class JSONProcessorTest extends GenericTest {
         final String errorMessage = "Don't write into this writter!";
 
         // given
-        JSONProcessor processor = new JSONProcessor();
+        XMLProcessor processor = new XMLProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
         processor.setConfiguration(new Configuration(execution));
-        input = ResourceLoader.loadJsonAsReader("empty.json");
+        input = ResourceLoader.loadXmlAsReader("suv.xml");
         output = new WriterCrashOnWrite(errorMessage);
 
         // when

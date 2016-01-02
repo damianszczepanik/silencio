@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!-- this comment will be dropped during transformation --><car>
+    <model>suv</model>
+    <price>
+        38504
+        <currency>$</currency>
+    </price>
+    <wheels>5</wheels>
+    <size>
+        <length>4.45</length>
+        <height>2.05</height>
+        <width>2.200</width>
+    </size>
+    <weight unit="ton" value="2.200"/>
+    <accessories>
+        <value>sunroof</value><value>radio</value>
+    </accessories>
+    <fuel>
+        <diesel>true</diesel>
+        <LPG>true</LPG>
+    </fuel>
+    <notes>null</notes>
+    <alarms/>
+    <assistance/>
+</car>

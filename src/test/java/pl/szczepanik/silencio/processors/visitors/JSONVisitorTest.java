@@ -28,8 +28,8 @@ public class JSONVisitorTest extends GenericTest {
     public void shouldReportExceptionOnUnsupportedModel() throws Exception {
 
         // when
-        String key = "myKey";
-        Object value = new Object();
+        final String key = "myKey";
+        final Object value = new Object();
         JSONVisitor parserr = new JSONVisitor();
 
         // then
