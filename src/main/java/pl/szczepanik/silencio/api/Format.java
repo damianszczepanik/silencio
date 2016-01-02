@@ -6,17 +6,20 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
- * Type of the content.
+ * Type of the file content.
  * 
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public abstract class Format {
+public class Format {
 
     /** Predefined format for property files. */
-    public static final Format PROPERTIES = new Format("PROPERTIES") {};
+    public static final Format PROPERTIES = new Format("PROPERTIES");
 
     /** Predefined format for JSON files. */
-    public static final Format JSON = new Format("JSON"){};
+    public static final Format JSON = new Format("JSON");
+
+    /** Predefined format for XML files. */
+    public static final Format XML = new Format("XML");
 
     private final String name;
 
