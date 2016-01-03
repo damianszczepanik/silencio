@@ -2,6 +2,7 @@ package pl.szczepanik.silencio.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
 
 import pl.szczepanik.silencio.GenericTest;
@@ -30,7 +31,7 @@ public class FormatTest extends GenericTest {
     public void shouldNotAllowForEmptyName() {
 
         // when
-        String emptyName = "";
+        String emptyName = StringUtils.EMPTY;
 
         // then
         thrown.expect(IntegrityException.class);

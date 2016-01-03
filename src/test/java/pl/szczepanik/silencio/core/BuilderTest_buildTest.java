@@ -53,5 +53,4 @@ public class BuilderTest_buildTest extends GenericTest {
         // just make sure that processor is created
         assertThat(processor).isNotNull();
     }
-
 }

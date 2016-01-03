@@ -23,5 +23,4 @@ public class KeyTest extends GenericTest {
         // then
         assertThat(key.getKey()).isEqualTo(keyString);
     }
-
 }

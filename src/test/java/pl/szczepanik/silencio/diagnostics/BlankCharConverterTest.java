@@ -15,11 +15,12 @@ public class BlankCharConverterTest extends GenericTest {
     public void shouldReturnConstantValue() {
 
         // given
+        Converter converter = new WhiteCharConverter();
+
         Value value = new Value("value1");
         Key key = new Key("key1");
 
         // when
-        Converter converter = new WhiteCharConverter();
         Value reference = converter.convert(key, value);
 
         // then

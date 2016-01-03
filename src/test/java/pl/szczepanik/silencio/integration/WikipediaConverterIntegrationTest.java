@@ -25,16 +25,16 @@ public class WikipediaConverterIntegrationTest extends GenericTest {
         // WARNING: this test fail when no Internet connection is available
 
         // given
+        Processor processor = new Builder(Format.JSON).with(new WikipediaConverter()).build();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
 
         // when
-        Processor processor = new Builder(Format.JSON).with(new WikipediaConverter()).build();
         processor.load(input);
         processor.process();
-        processor.write(output);
 
         // then
+        processor.write(output);
         assertThat(JSONUtility.matchesJsonToPattern(output.toString(), "suv-pattern.json")).isTrue();
     }
 }

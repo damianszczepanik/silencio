@@ -23,8 +23,9 @@ public class BlankTest extends GenericTest {
         Key key = new Key("funnyKey");
         Value value = new Value(StubFormat.class);
 
-        // when
         blank.init();
+
+        // when
         Value retValue = blank.convert(key, value);
 
         // then

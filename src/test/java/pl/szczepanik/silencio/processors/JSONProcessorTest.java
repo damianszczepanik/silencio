@@ -40,16 +40,16 @@ public class JSONProcessorTest extends GenericTest {
     public void shouldLoadJSONFileOnRealLoad() {
 
         // given
+        JSONProcessor processor = new JSONProcessor();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         String refInput = ResourceLoader.loadJsonAsString("suv.json");
         output = new StringWriter();
 
         // when
-        JSONProcessor processor = new JSONProcessor();
         processor.load(input);
-        processor.realWrite(output);
 
         // then
+        processor.realWrite(output);
         assertThat(refInput).isEqualTo(output.toString());
     }
 
@@ -57,11 +57,11 @@ public class JSONProcessorTest extends GenericTest {
     public void shouldFailWhenLoadingInvalidJSONFile() {
 
         // given
+        Processor processor = new JSONProcessor();
+        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
         input = ResourceLoader.loadJsonAsReader("corrupted.json");
 
         // when
-        Processor processor = new JSONProcessor();
-        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
         processor.setConfiguration(new Configuration(execution));
 
         // then
@@ -76,13 +76,13 @@ public class JSONProcessorTest extends GenericTest {
         final String errorMessage = "Don't write into this writter!";
 
         // given
+        JSONProcessor processor = new JSONProcessor();
+        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
+        processor.setConfiguration(new Configuration(execution));
         input = ResourceLoader.loadJsonAsReader("empty.json");
         output = new WriterCrashOnWrite(errorMessage);
 
         // when
-        JSONProcessor processor = new JSONProcessor();
-        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
-        processor.setConfiguration(new Configuration(execution));
         processor.load(input);
         processor.realProcess();
 
