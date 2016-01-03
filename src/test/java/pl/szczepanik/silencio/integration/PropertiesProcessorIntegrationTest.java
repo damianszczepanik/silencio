@@ -20,7 +20,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class PropertiesProcessorTestInt extends GenericTest {
+public class PropertiesProcessorIntegrationTest extends GenericTest {
 
     @Test
     public void shouldProcessPropertiesFile() throws IOException {

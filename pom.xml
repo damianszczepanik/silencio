@@ -13,6 +13,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.build.resourceEncoding>UTF-8</project.build.resourceEncoding>
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
+        
+        <test.integration.pattern>**/*IntegrationTest*.java</test.integration.pattern>
     </properties>
 
     <parent>
@@ -167,7 +169,30 @@
                         <!-- JaCoCo runtime must know where to dump coverage: -->
                         <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
                     </systemPropertyVariables>
+                    <excludes>
+                        <!-- Integration tests should not be counted by code coverage -->
+                        <exclude>${test.integration.pattern}</exclude>
+                    </excludes>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.19</version>
+                <configuration>
+                    <includes>
+                        <!-- Run only integration tests -->
+                        <include>${test.integration.pattern}</include>
+                    </includes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
 

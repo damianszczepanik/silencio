@@ -35,9 +35,7 @@ public final class ProcessorSmokeChecker {
             new WhiteCharConverter(),
             new ConstantValueConverter(),
             new KeyValueConverter(),
-            new PassedValueConverter(),
-            new WikipediaConverter(),
-            new GeoLocationConverter()
+            new PassedValueConverter()
     };
 
     private static final Decision[] DECISIONS = {

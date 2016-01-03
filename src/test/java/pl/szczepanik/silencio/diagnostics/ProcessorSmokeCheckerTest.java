@@ -20,9 +20,10 @@ public class ProcessorSmokeCheckerTest extends GenericTest {
 
         // given
         StubProcessor processor = new StubProcessor(Format.JSON, new Converter[] { new StubConverter() });
+        ProcessorSmokeChecker processorChecker = new ProcessorSmokeChecker(processor);
 
         // then
-        new ProcessorSmokeChecker(processor).validateWithAllCombinations("");
+        processorChecker.validateWithAllCombinations("");
     }
 
     @Test
@@ -33,10 +34,11 @@ public class ProcessorSmokeCheckerTest extends GenericTest {
         // given
         AbstractProcessorCrashOnRealProcess processor = new AbstractProcessorCrashOnRealProcess(Format.JSON,
                 new Converter[] { new StubConverter() }, errorMessage);
+        ProcessorSmokeChecker processorChecker = new ProcessorSmokeChecker(processor);
 
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(errorMessage);
-        new ProcessorSmokeChecker(processor).validateWithAllCombinations("");
+        processorChecker.validateWithAllCombinations("");
     }
 }
