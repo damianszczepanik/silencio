@@ -22,8 +22,11 @@ public class ProcessorSmokeCheckerTest extends GenericTest {
         StubProcessor processor = new StubProcessor(Format.JSON, new Converter[] { new StubConverter() });
         ProcessorSmokeChecker processorChecker = new ProcessorSmokeChecker(processor);
 
-        // then
+        // when
         processorChecker.validateWithAllCombinations("");
+
+        // then
+        // no crash
     }
 
     @Test

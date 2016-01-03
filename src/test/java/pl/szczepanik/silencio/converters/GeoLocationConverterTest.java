@@ -54,9 +54,9 @@ public class GeoLocationConverterTest extends GenericTest {
 
         // when
         ReflectionUtility.invokeMethod(converter, "waitForNextLocation", Void.class);
-        long endTime = System.currentTimeMillis();
 
         // then
+        long endTime = System.currentTimeMillis();
         assertThat(endTime - startTime).isGreaterThan(minDelay);
     }
 
@@ -106,9 +106,10 @@ public class GeoLocationConverterTest extends GenericTest {
         Set<String> words = new HashSet<>();
         words.add(null);
 
-        // when
         ReflectionUtility.setField(converter, "values", values);
         ReflectionUtility.setField(converter, "words", words);
+
+        // when
         converter.init();
 
         // then
@@ -183,15 +184,11 @@ public class GeoLocationConverterTest extends GenericTest {
                 .thenThrow(new IllegalArgumentException("Trying to parse more elements than expected!"));
 
         processor.process();
-        processor.write(output);
 
         // then
+        processor.write(output);
         String reference = ResourceLoader.loadJsonAsString("suv_Positive_GeoLocation.json");
         assertThat(output.toString()).isEqualTo(reference);
-    }
-
-    private static String loadJson(int index) {
-        return ResourceLoader.loadJsonAsString(String.format("google-geo-location-%d.json", index));
     }
 
     @Test
@@ -238,4 +235,7 @@ public class GeoLocationConverterTest extends GenericTest {
         ReflectionUtility.invokeMethod(converter, "generateNextLocation", GeoLocationJSON.class, latitude, longitude);
     }
 
+    private static String loadJson(int index) {
+        return ResourceLoader.loadJsonAsString(String.format("google-geo-location-%d.json", index));
+    }
 }

@@ -23,13 +23,12 @@ public class StringConverterTest extends GenericTest {
         Converter string = new StringConverter(pattern);
         Key key = new Key("funnyKey");
         Value value = new Value(StubFormat.class);
+        string.init();
 
         // when
-        string.init();
         Value retValue = string.convert(key, value);
 
         // then
         assertThat(retValue.getValue()).isEqualTo(pattern);
     }
-
 }

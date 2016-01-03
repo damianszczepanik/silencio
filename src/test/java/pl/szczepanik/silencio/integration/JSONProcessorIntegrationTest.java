@@ -23,16 +23,16 @@ public class JSONProcessorIntegrationTest extends GenericTest {
     public void shouldProcessJSONFile() {
 
         // given
+        Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE).build();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
 
         // when
-        Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE).build();
         processor.load(input);
         processor.process();
-        processor.write(output);
 
         // then
+        processor.write(output);
         String reference = ResourceLoader.loadJsonAsString("suv_Positive_NumberSequence.json");
         assertThat(output.toString()).isEqualTo(reference);
     }

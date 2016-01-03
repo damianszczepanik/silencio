@@ -26,16 +26,17 @@ public class PropertiesProcessorIntegrationTest extends GenericTest {
     public void shouldProcessPropertiesFile() throws IOException {
 
         // given
+        Processor processor = new Builder(Format.PROPERTIES).with(Builder.BLANK).build();
         input = ResourceLoader.loadPropertiesAsReader("suv.properties");
         output = new StringWriter();
 
         // when
-        Processor processor = new Builder(Format.PROPERTIES).with(Builder.BLANK).build();
         processor.load(input);
         processor.process();
-        processor.write(output);
 
         // then
+        processor.write(output);
+
         Properties reference = new Properties();
         reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_Positive_Blank.properties")));
         Properties converted = new Properties();
@@ -50,7 +51,10 @@ public class PropertiesProcessorIntegrationTest extends GenericTest {
         String content = ResourceLoader.loadPropertiesAsString("suv.properties");
         ProcessorSmokeChecker checker = new ProcessorSmokeChecker(new PropertiesProcessor());
 
-        // then
+        // when
         checker.validateWithAllCombinations(content);
+
+        // then
+        // no crash
     }
 }

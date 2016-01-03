@@ -39,8 +39,6 @@ public class WikipediaConverterTest extends GenericTest {
     private static final String URL_ADDRESS = "https://en.m.wikipedia.org/wiki/Special:Random";
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
 
-
-
     @Test
     public void shouldFailWhenServerReturnsInvalidPage() throws IOException {
 
@@ -114,9 +112,10 @@ public class WikipediaConverterTest extends GenericTest {
         Set<String> words = new HashSet<>();
         words.add(null);
 
-        // when
         ReflectionUtility.setField(blank, "values", values);
         ReflectionUtility.setField(blank, "words", words);
+
+        // when
         blank.init();
 
         // then

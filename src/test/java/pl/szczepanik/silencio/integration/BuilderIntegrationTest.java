@@ -25,19 +25,21 @@ public class BuilderIntegrationTest extends GenericTest {
     public void shouldProcessPropertiesFile() throws IOException {
 
         // given
-        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
-        output = new StringWriter();
-
-        // when
         Builder builder = new Builder(Format.PROPERTIES);
         builder.with(new MatcherDecision(".*(money|cash|price).*", null), Builder.BLANK)
                 .with(new MatcherDecision(".*sunroof.*", ".*Optional.*"), new StringConverter("[Standard]"));
         Processor processor = builder.build();
+
+        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        output = new StringWriter();
+
+        // when
         processor.load(input);
         processor.process();
-        processor.write(output);
 
         // then
+        processor.write(output);
+
         Properties reference = new Properties();
         reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_Matcher_Blank+Matcher_String.properties")));
         Properties converted = new Properties();

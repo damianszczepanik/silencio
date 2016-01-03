@@ -31,9 +31,9 @@ public class BuilderTest extends GenericTest {
 
         // when
         Builder builder = new Builder(format);
-        Format retFormat = ReflectionUtility.getField(builder, "format", Format.class);
 
         // then
+        Format retFormat = ReflectionUtility.getField(builder, "format", Format.class);
         assertThat(format).isEqualTo(retFormat);
     }
 
@@ -47,9 +47,9 @@ public class BuilderTest extends GenericTest {
 
         // when
         Builder builder = new Builder(format).with(decisions, converters);
-        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
         assertThat(executions.get(0).getDecisions().length).isEqualTo(decisions.length);
         assertThat(executions.get(0).getDecisions()).isEqualTo(decisions);
         assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
@@ -66,9 +66,9 @@ public class BuilderTest extends GenericTest {
 
         // when
         Builder builder = new Builder(format).with(decision, converters[0], converters[1]);
-        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
         assertThat(executions.get(0).getDecisions()[0]).isEqualTo(decision);
         assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
@@ -104,12 +104,13 @@ public class BuilderTest extends GenericTest {
         // given
         Format format = Format.JSON;
         Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
+        Builder builder = new Builder(format);
 
         // when
-        Builder builder = new Builder(format).with(converters[0], converters[1]);
-        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
+        builder.with(converters[0], converters[1]);
 
         // then
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
         assertThat(executions.get(0).getDecisions()[0]).isInstanceOf(PositiveDecision.class);
         assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
@@ -122,12 +123,13 @@ public class BuilderTest extends GenericTest {
         // given
         Format format = Format.JSON;
         Converter converter = new StubConverter();
+        Builder builder = new Builder(format);
 
         // when
-        Builder builder = new Builder(format).with(converter);
-        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
+        builder.with(converter);
 
         // then
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
         assertThat(executions.get(0).getDecisions()[0]).isInstanceOf(PositiveDecision.class);
         assertThat(executions.get(0).getConverters().length).isEqualTo(1);
@@ -142,6 +144,7 @@ public class BuilderTest extends GenericTest {
 
         // when
         Builder builder = new Builder(format);
+
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Unsupported format: " + format.getName());
@@ -158,9 +161,9 @@ public class BuilderTest extends GenericTest {
         // when
         builder.build();
         builder.clearExecutions();
-        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
 
         // then
+        List<Execution> executions = ReflectionUtility.getField(builder, "executions", List.class);
         assertThat(executions).isEmpty();
     }
 }

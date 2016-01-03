@@ -15,13 +15,14 @@ public class ConstantValueConverterTest extends GenericTest {
     public void shouldReturnConstantValue() {
 
         // given
+        Converter converter = new ConstantValueConverter();
+
         Value value1 = new Value("value1");
         Key key1 = new Key("key1");
         Value value2 = new Value("value2");
         Key key2 = new Key("key2");
 
         // when
-        Converter converter = new ConstantValueConverter();
         Value reference = converter.convert(key1, value1);
 
         // then

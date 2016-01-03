@@ -56,7 +56,6 @@ public class AbstractProcessorTest extends GenericTest {
         thrown.expect(IntegrityException.class);
         thrown.expectMessage("Configuration must not be null!");
         processor.setConfiguration(null);
-
     }
 
     @Test
@@ -64,8 +63,6 @@ public class AbstractProcessorTest extends GenericTest {
 
         // given
         Format format = Format.PROPERTIES;
-
-        // when
         Converter[] converter = {};
 
         // then

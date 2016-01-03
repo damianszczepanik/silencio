@@ -12,7 +12,7 @@ public class ProcessorStateMachineTest extends GenericTest {
     @Test
     public void shouldNotAllowToValidateProcessInCreatedState() {
 
-        // when
+        // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
@@ -37,7 +37,7 @@ public class ProcessorStateMachineTest extends GenericTest {
     @Test
     public void shouldNotAllowToValidateWriteInCreatedState() {
 
-        // when
+        // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
@@ -51,13 +51,14 @@ public class ProcessorStateMachineTest extends GenericTest {
 
         // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
-
-        // when
         machine.moveToLoaded();
         machine.moveToProcessed();
 
-        // then
+        // when
         machine.validateWrite();
+
+        // then
+        // no crash
     }
 
     @Test
@@ -65,12 +66,13 @@ public class ProcessorStateMachineTest extends GenericTest {
 
         // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
-
-        // when
         machine.moveToLoaded();
         machine.moveToProcessed();
 
-        // then
+        // when
         machine.moveToLoaded();
+
+        // then
+        // no crash
     }
 }

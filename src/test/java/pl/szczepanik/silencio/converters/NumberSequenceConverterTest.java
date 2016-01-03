@@ -42,8 +42,9 @@ public class NumberSequenceConverterTest extends GenericTest {
         Value inputValue1 = new Value(Integer.toBinaryString(12345));
         Value inputValue2 = new Value(Long.toBinaryString(12345));
 
-        // when
         blank.init();
+
+        // when
         Value outputValue1 = blank.convert(key, inputValue1);
         Value outputValue2 = blank.convert(key, inputValue2);
 
@@ -60,8 +61,9 @@ public class NumberSequenceConverterTest extends GenericTest {
         Value inputValue1 = new Value(Integer.toBinaryString(12345));
         Value inputValue2 = new Value(Integer.toBinaryString(54321));
 
-        // when
         blank.init();
+
+        // when
         Value outputValue1 = blank.convert(key, inputValue1);
         Value outputValue2 = blank.convert(key, inputValue2);
 
@@ -78,8 +80,9 @@ public class NumberSequenceConverterTest extends GenericTest {
         Key key = new Key("funnyKey");
         Value value = new Value(Integer.toBinaryString(12345));
 
-        // when
         blank.init();
+
+        // when
         Value outputValue1 = blank.convert(key, value);
         Value outputValue2 = blank.convert(key, value);
 
@@ -94,9 +97,9 @@ public class NumberSequenceConverterTest extends GenericTest {
         Converter blank = new NumberSequenceConverter();
         Map<Object, Integer> values = new HashMap<>();
         values.put(this, 0);
+        ReflectionUtility.setField(blank, "values", values);
 
         // when
-        ReflectionUtility.setField(blank, "values", values);
         blank.init();
 
         // then

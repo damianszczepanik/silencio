@@ -22,16 +22,17 @@ public class BlankConverterIntegrationTest extends GenericTest {
     public void shoulClearValuesWhenBlankIsExecutedAsLast() throws IOException {
 
         // given
+        Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE, Builder.BLANK).build();
         input = ResourceLoader.loadJsonAsReader("suv.json");
         output = new StringWriter();
 
         // when
-        Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE, Builder.BLANK).build();
         processor.load(input);
         processor.process();
-        processor.write(output);
 
         // then
+        processor.write(output);
+
         String reference = ResourceLoader.loadJsonAsString("suv_Positive_Blank.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
