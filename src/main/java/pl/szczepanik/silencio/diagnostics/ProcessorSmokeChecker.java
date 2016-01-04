@@ -14,8 +14,6 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.BlankConverter;
-import pl.szczepanik.silencio.converters.GeoLocationConverter;
-import pl.szczepanik.silencio.converters.WikipediaConverter;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.ProcessorException;

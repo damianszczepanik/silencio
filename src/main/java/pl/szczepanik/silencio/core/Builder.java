@@ -12,6 +12,7 @@ import pl.szczepanik.silencio.converters.NumberSequenceConverter;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.processors.PropertiesProcessor;
+import pl.szczepanik.silencio.processors.XMLProcessor;
 
 /**
  * Default implementation of class that holds processors.
@@ -110,6 +111,8 @@ public final class Builder {
         Processor processor;
         if (Format.JSON.equals(format)) {
             processor = new JSONProcessor();
+        } else if (Format.XML.equals(format)) {
+            processor = new XMLProcessor();
         } else if (Format.PROPERTIES.equals(format)) {
             processor = new PropertiesProcessor();
         } else {

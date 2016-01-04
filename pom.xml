@@ -40,9 +40,7 @@
         <url>git@github.com:damianszczepanik/silencio.git</url>
     </scm>
 
-    <description>
-        Silencio is a tool for transforming and converting JSON files.
-    </description>
+    <description>Silencio is a tool for transforming and converting JSON, XML and Properties files.</description>
 
     <licenses>
         <license>
