@@ -8,12 +8,12 @@
 
 # silencio
 
-Silencio is a library for transforming and converting any format such as [JSON](https://pl.wikipedia.org/wiki/JSON) or [Properties](https://en.wikipedia.org/wiki/.properties) files. It is applicable for most of operations such as:
+Silencio is a library for transforming and converting any format such as [XML](https://pl.wikipedia.org/wiki/XML), [JSON](https://pl.wikipedia.org/wiki/JSON) or [Properties](https://en.wikipedia.org/wiki/.properties) files. It is applicable for most of operations such as:
 - obfuscation
 - minimisation (eg anonymous)
 - transformation
 
-It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor.java) that manage transformations of the files (JSON, Properties, etc.) [decisions](src/main/java/pl/szczepanik/silencio/api/Decision.java) which decide which elements should be converted and [converters](src/main/java/pl/szczepanik/silencio/api/Converter.java) that changes old value into new one.
+It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor.java) that manage transformations of the files (XML, JSON, Properties, etc.) [decisions](src/main/java/pl/szczepanik/silencio/api/Decision.java) which decide which elements should be converted and [converters](src/main/java/pl/szczepanik/silencio/api/Converter.java) that changes old value into new one.
 
 ## Examples
 
@@ -109,15 +109,17 @@ Add a maven dependency (using version from above shield) to your `pom.xml` or `b
 <dependency>
     <groupId>pl.damianszczepanik</groupId>
     <artifactId>silencio</artifactId>
-    <version>2.0.0</version>
+    <version>2.0.0</version> <!-- check above shield to confirm last release -->
 </dependency>
 ```
 
 The simplest way to understand how to use processor with set of converters is to check [tests](src/test/java/pl/szczepanik/silencio/integration) that validate this implementation.
 
-## Create custom processor or converter
+## Create custom processor, converter or format
 
 Both processors and converters can be extended. They are like plugins: you can add your own implementation as long as you keep the contract. There are several [built-in](src/main/java/pl/szczepanik/silencio/converters) converters that can be easily accessed via [builder](src/main/java/pl/szczepanik/silencio/core/Builder.java). Nevertheless if you need to create your own just implement [``convert()``](src/main/java/pl/szczepanik/silencio/api/Converter.java#L19) method and provide the algorithm you expect. Sometimes rules might be very [simple](src/main/java/pl/szczepanik/silencio/converters/BlankConverter.java).
+
+Silencio supports most of the popular data formats but it is possible to write support for new one. It is not difficult when using external library that allows to manipulate such format. For more reference check [pull](https://github.com/damianszczepanik/silencio/pull/70) that introduced support for XML.
 
 ## Code quality
 
