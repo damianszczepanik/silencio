@@ -14,6 +14,8 @@ import pl.szczepanik.silencio.core.Value;
  */
 public abstract class AbstractVisitor {
 
+    static final String EXCEPTION_MESSAGE_INVALID_VALUE_TYPE = "Excepcted pure value, not packed into Value object.";
+
     private Configuration configuration;
 
     /**
@@ -37,6 +39,11 @@ public abstract class AbstractVisitor {
      * @return converted value
      */
     protected Value processValue(Key key, Object value) {
+        // passed element should not be already packed into Value
+        if (value instanceof Value) {
+            throw new IllegalArgumentException(EXCEPTION_MESSAGE_INVALID_VALUE_TYPE);
+        }
+
         Value newValue = new Value(value);
 
         for (Execution execution : configuration.getExecutions()) {

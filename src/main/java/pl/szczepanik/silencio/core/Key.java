@@ -28,4 +28,9 @@ public class Key {
     public String getKey() {
         return key;
     }
+
+    @Override
+    public String toString() {
+        return String.format("Key [key='%s']", key);
+    }
 }

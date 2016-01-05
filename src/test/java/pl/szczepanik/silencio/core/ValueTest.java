@@ -24,4 +24,17 @@ public class ValueTest extends GenericTest {
         assertThat(element.getValue()).isEqualTo(value);
     }
 
+    @Test
+    public void shouldReturnValidFormat() {
+
+        // given
+        String valueName = "go, go go!";
+        Value value = new Value(valueName);
+
+        // when
+        String dump = value.toString();
+
+        // then
+        assertThat(dump).isEqualTo(String.format("Value [value='%s']", valueName));
+    }
 }

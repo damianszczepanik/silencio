@@ -91,4 +91,18 @@ public class FormatTest extends GenericTest {
         // then
         assertThat(format.hashCode()).isEqualTo(name.hashCode());
     }
+
+    @Test
+    public void shouldReturnValidFormat() {
+
+        // given
+        String formatName = "some, some, some";
+        Format format = new Format(formatName);
+
+        // when
+        String dump = format.toString();
+
+        // then
+        assertThat(dump).isEqualTo(String.format("Format [name='%s']", formatName));
+    }
 }
