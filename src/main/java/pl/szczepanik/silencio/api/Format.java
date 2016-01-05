@@ -77,4 +77,9 @@ public class Format {
             throw new IntegrityException("Name of the format must not be empty!");
         }
     }
+
+    @Override
+    public String toString() {
+        return String.format("Format [name='%s']", name);
+    }
 }
