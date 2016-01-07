@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.core.Key;
+import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.utils.CommonUtility;
 import pl.szczepanik.silencio.utils.IOUtility;
@@ -27,6 +28,8 @@ import pl.szczepanik.silencio.utils.IOUtility;
  * @see <a href="https://developers.google.com/maps/documentation/geocoding/intro?csw=1">Google documentation</a>
  */
 public class GeoLocationConverter implements Converter {
+
+    static final String EXCEPTION_MESSAGE_EMPTY_JSON = "Could not create JSON file for coordinations %s,%s!";
 
     /** String format used to retrieve JSON file with geo information. */
     private static final String URL_ADDRESS_FORMAT = "http://maps.googleapis.com/maps/api/geocode/json?language=en&components=locality&latlng=%s,%s";
@@ -104,7 +107,12 @@ public class GeoLocationConverter implements Converter {
             String url = String.format(URL_ADDRESS_FORMAT, latitude, longitude);
             String json = IOUtility.urlToString(new URL(url));
             if (StringUtils.isNotBlank(json)) {
-                return mapper.readValue(json, GeoLocationJSON.class);
+                GeoLocationJSON locationJson = mapper.readValue(json, GeoLocationJSON.class);
+                if (locationJson == null) {
+                    throw new ProcessorException(String.format(EXCEPTION_MESSAGE_EMPTY_JSON, latitude, longitude));
+                } else {
+                    return locationJson;
+                }
             } else {
                 throw new IntegrityException(String.format("URL '%s' returned empty content!", url));
             }

@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
@@ -22,12 +24,16 @@ public class StubObjectMapper extends ObjectMapper {
     }
 
     public StubObjectMapper(String... jsons) {
-        this.jsons = Arrays.asList(jsons).iterator();
+        if (ArrayUtils.isEmpty(jsons)) {
+            this.jsons = Arrays.asList(jsons).iterator();
+        }
     }
 
     public <T> T readValue(String content, Class<T> valueType) throws IOException {
         if (exception != null) {
             throw exception;
+        } else if (jsons == null) {
+            return null;
         } else {
             return super.readValue(jsons.next(), valueType);
         }

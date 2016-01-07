@@ -27,6 +27,7 @@ import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.IntegrityException;
+import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.stubs.StubObjectMapper;
@@ -192,8 +193,8 @@ public class GeoLocationConverterTest extends GenericTest {
     }
 
     @Test
-    public void generateNextLocationFailsOnEmptyJson() throws Exception {
-        
+    public void generateNextLocationFailsOnEmptyUrl() throws Exception {
+
         // given
         Converter converter = new GeoLocationConverter();
 
@@ -211,23 +212,38 @@ public class GeoLocationConverterTest extends GenericTest {
         ReflectionUtility.invokeMethod(converter, "generateNextLocation", GeoLocationJSON.class, latitude, longitude);
     }
 
+    @Test
+    public void generateNextLocationFailsOnEmptyJson() throws Exception {
+
+        // given
+        Converter converter = new GeoLocationConverter();
+        final String latitude = "32.0";
+        final String longitude = "-83.0";
+        final StubObjectMapper objectMapper = new StubObjectMapper((String) null);
+        ReflectionUtility.setField(converter, "mapper", objectMapper);
+
+        // then
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage(String.format(GeoLocationConverter.EXCEPTION_MESSAGE_EMPTY_JSON, latitude, longitude));
+        ReflectionUtility.invokeMethod(converter, "generateNextLocation", GeoLocationJSON.class, latitude, longitude);
+    }
 
     @Test
     public void generateNextLocationFailsOnInvalidURL() throws Exception {
 
         // given
-        GeoLocationConverter converter = new GeoLocationConverter();
+        Converter converter = new GeoLocationConverter();
 
         final String latitude = "alaska";
         final String longitude = "greenland";
         final String url = String.format(URL_ADDRESS_FORMAT, latitude, longitude);
         final MalformedURLException exception = new MalformedURLException("ups, something is wrong!");
         final StubObjectMapper objectMapper = new StubObjectMapper(exception);
+        ReflectionUtility.setField(converter, "mapper", objectMapper);
 
         // when
         mockStatic(IOUtility.class);
         when(IOUtility.urlToString(new URL(url))).thenReturn("any string");
-        ReflectionUtility.setField(converter, "mapper", objectMapper);
 
         // then
         thrown.expect(IntegrityException.class);
