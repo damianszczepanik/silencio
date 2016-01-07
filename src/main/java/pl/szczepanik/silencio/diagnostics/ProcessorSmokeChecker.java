@@ -12,6 +12,7 @@ import org.paukov.combinatorics.ICombinatoricsVector;
 
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
+import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.BlankConverter;
 import pl.szczepanik.silencio.core.Configuration;
@@ -42,6 +43,13 @@ public final class ProcessorSmokeChecker {
             new MatcherDecision(".*")
     };
 
+    /** List of all available formatters. */
+    public static final Format[] FORMATS = {
+            Format.JSON,
+            Format.PROPERTIES,
+            Format.XML
+    };
+    
     private final Processor processor;
 
     /**

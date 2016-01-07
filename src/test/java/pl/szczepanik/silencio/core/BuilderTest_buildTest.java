@@ -17,21 +17,18 @@ import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.converters.BlankConverter;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
+import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-
 @RunWith(Parameterized.class)
 public class BuilderTest_buildTest extends GenericTest {
 
 
     @Parameters
     public static Collection<Format> formats() {
-        return Arrays.asList(new Format[] {
-                Format.JSON,
-                Format.PROPERTIES
-        });
+        return Arrays.asList(ProcessorSmokeChecker.FORMATS);
     }
 
     @Parameter(value = 0)
