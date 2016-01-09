@@ -18,6 +18,7 @@ public class BlankConverter implements Converter {
 
     @Override
     public void init() {
+        // This method is intentionally empty, because this class is stateless
     }
 
 }

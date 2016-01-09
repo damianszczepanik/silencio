@@ -24,6 +24,7 @@ public final class ConstantValueConverter implements Converter {
 
     @Override
     public void init() {
+        // This method is intentionally empty, because this class is stateless
     }
 
 }
