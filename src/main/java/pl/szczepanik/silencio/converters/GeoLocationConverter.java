@@ -84,7 +84,7 @@ public class GeoLocationConverter implements Converter {
      */
     private void waitForNextLocation() {
         // no more than 10 requests per second
-        final int waitTime = 150;
+        final int waitTime = 250;
         CommonUtility.saveWait(waitTime);
     }
 

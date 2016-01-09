@@ -1,10 +1,13 @@
-[![Build Status](https://img.shields.io/travis/damianszczepanik/silencio/master.svg)](https://travis-ci.org/damianszczepanik/silencio)
-[![Build Status](https://img.shields.io/appveyor/ci/damianszczepanik/silencio.svg)](https://ci.appveyor.com/project/damianszczepanik/silencio/history)
+[![Build Status](https://img.shields.io/travis/damianszczepanik/silencio/master.svg?label=Travis%20bulid)](https://travis-ci.org/damianszczepanik/silencio)
+[![Build Status](https://img.shields.io/appveyor/ci/damianszczepanik/silencio.svg?label=AppVeyor%20build)](https://ci.appveyor.com/project/damianszczepanik/silencio/history)
 
-[![Coverage Status](https://img.shields.io/codecov/c/github/damianszczepanik/silencio/master.svg)](https://codecov.io/github/damianszczepanik/silencio)
-[![Coverity Status](https://scan.coverity.com/projects/6162/badge.svg)](https://scan.coverity.com/projects/damianszczepanik-silencio)
-[![Maven Central](https://img.shields.io/maven-central/v/pl.damianszczepanik/silencio.svg)](http://search.maven.org/#search|gav|1|g%3A%22pl.damianszczepanik%22%20AND%20a%3A%22silencio%22)
+[![Coverage](https://img.shields.io/codecov/c/github/damianszczepanik/silencio/master.svg)](https://codecov.io/github/damianszczepanik/silencio)
+[![Coverity](https://scan.coverity.com/projects/6162/badge.svg)](https://scan.coverity.com/projects/damianszczepanik-silencio)
+[![Codacy Badge](https://api.codacy.com/project/badge/grade/7d8811903fda44a39bb0f7c5e142a965)](https://www.codacy.com/app/damianszczepanik/silencio)
 [![Maven Dependencies](https://www.versioneye.com/user/projects/55c5300965376200170035e9/badge.svg)](https://www.versioneye.com/user/projects/55c5300965376200170035e9?child=summary)
+
+[![Maven Central](https://img.shields.io/maven-central/v/pl.damianszczepanik/silencio.svg)](http://search.maven.org/#search|gav|1|g%3A%22pl.damianszczepanik%22%20AND%20a%3A%22silencio%22)
+[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/)
 
 # silencio
 
@@ -128,7 +131,6 @@ Once you developed your new processor or converter you should test it by providi
 ![codecov.io](http://codecov.io/github/damianszczepanik/silencio/branch.svg?branch=master)
 
 ## Contribution
-[![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/)
 
 When you implement new processor or converter you are more than welcome to [pull](https://github.com/damianszczepanik/silencio/pulls) this change and make someone happier!
 
