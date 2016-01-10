@@ -29,15 +29,17 @@ public class StubProcessor extends AbstractProcessor {
 
     @Override
     public void realLoad(Reader reader) {
+        // This method is intentionally empty, it is overridden only to meet AbstractProcessor class
     }
 
     @Override
     public void realProcess() {
-
+        // This method is intentionally empty, it is overridden only to meet AbstractProcessor class
     }
 
     @Override
     public void realWrite(Writer writer) {
+        // This method is intentionally empty, it is overridden only to meet AbstractProcessor class
     }
 
 }

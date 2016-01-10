@@ -59,8 +59,9 @@ public class WikipediaConverter implements Converter {
 
                 values.put(value.getValue(), newValue);
                 words.add(newValue);
-                return new Value(newValue);
+                break;
             }
+            return new Value(newValue);
         }
     }
 
@@ -86,5 +87,4 @@ public class WikipediaConverter implements Converter {
         values.clear();
         words.clear();
     }
-
 }

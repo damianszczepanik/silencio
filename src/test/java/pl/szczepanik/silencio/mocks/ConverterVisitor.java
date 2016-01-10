@@ -46,5 +46,6 @@ public class ConverterVisitor implements Converter {
 
     @Override
     public void init() {
+        // This method is intentionally empty, it is overridden only to meet Converter interface
     }
 }
