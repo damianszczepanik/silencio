@@ -9,13 +9,12 @@ import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.mocks.AbstractProcessorCrashOnRealProcess;
 import pl.szczepanik.silencio.stubs.StubConverter;
 import pl.szczepanik.silencio.stubs.StubProcessor;
-import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class ProcessorSmokeCheckerTest extends GenericTest {
-    
+
     @Test
     public void shouldPassWithStubProcessor() {
 

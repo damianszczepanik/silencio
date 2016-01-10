@@ -32,7 +32,7 @@ public class AbstractVisitor_processValueTest extends GenericTest {
 
     private static final Key key = new Key("myKey");
     private static final Object value = "yourValue";
-
+    private static final ConverterVisitor visitCounter = new ConverterVisitor();
 
     @Parameters
     public static Collection<Object[]> data() {
@@ -69,7 +69,6 @@ public class AbstractVisitor_processValueTest extends GenericTest {
     @Parameter(value = 4)
     public Object expectVisitCounter;
     
-    private static final ConverterVisitor visitCounter = new ConverterVisitor();
 
     @Test
     public void shouldProcessAllConvertersForPositiveDecision() {

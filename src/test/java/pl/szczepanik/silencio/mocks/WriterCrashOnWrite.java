@@ -25,9 +25,11 @@ public class WriterCrashOnWrite extends Writer {
 
     @Override
     public void flush() throws IOException {
+        // This method is intentionally empty, it is overridden only to meet Writer class
     }
 
     @Override
     public void close() throws IOException {
+        // This method is intentionally empty, it is overridden only to meet Writer class
     }
 }

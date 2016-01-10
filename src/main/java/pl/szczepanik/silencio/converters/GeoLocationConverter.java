@@ -72,8 +72,9 @@ public class GeoLocationConverter implements Converter {
                 words.add(newValue);
 
                 // return value from first item - could be any but first seems to be less susceptible for duplication
-                return new Value(newValue);
+                break;
             }
+            return new Value(newValue);
         }
     }
 
