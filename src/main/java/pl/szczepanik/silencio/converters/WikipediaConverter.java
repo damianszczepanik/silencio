@@ -36,8 +36,8 @@ public class WikipediaConverter implements Converter {
     private final Map<Object, String> values = new HashMap<>();
 
     /**
-     * Keeps words that have been already used. This duplicates {@link WikipediaConverter#values} collection to
-     * speed up searching.
+     * Keeps words that have been already used. This duplicates {@link WikipediaConverter#values} collection to speed up
+     * searching. Used only to decrease complexity of {@link java.util.Set#contains(Object)} method.
      */
     private final Set<String> words = new LinkedHashSet<>();
 
@@ -50,17 +50,14 @@ public class WikipediaConverter implements Converter {
         } else {
             // this loop theoretically may never ends but Wikipedia has millions of words to ask for
             // so practically it make slows down for a while but should not hang
-            while (true) {
+            do {
                 newValue = generateNextString();
                 // check if this word was not generated for other key
-                if (words.contains(newValue)) {
-                    continue;
-                }
+            } while (words.contains(newValue));
 
-                values.put(value.getValue(), newValue);
-                words.add(newValue);
-                break;
-            }
+            values.put(value.getValue(), newValue);
+            words.add(newValue);
+
             return new Value(newValue);
         }
     }

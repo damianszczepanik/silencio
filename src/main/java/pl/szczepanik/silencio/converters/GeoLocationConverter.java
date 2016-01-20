@@ -41,8 +41,8 @@ public class GeoLocationConverter implements Converter {
     private final Map<Object, String> values = new HashMap<>();
 
     /**
-     * Keeps words that have been already used. This duplicates {@link WikipediaConverter#values} collection to
-     * speed up searching.
+     * Keeps words that have been already used. This duplicates {@link WikipediaConverter#values} collection to speed up
+     * searching. Used only to decrease complexity of {@link java.util.Set#contains(Object)} method.
      */
     private final Set<String> words = new LinkedHashSet<>();
 
@@ -56,7 +56,7 @@ public class GeoLocationConverter implements Converter {
         if (newValue != null) {
             return new Value(newValue);
         } else {
-            while (true) {
+            do {
                 waitForNextLocation();
                 GeoLocationJSON newLocation = generateNextLocation(generateNextUSLatitude(), generateNextUSLongitude());
                 assertGeoIsValid(newLocation);
@@ -64,16 +64,11 @@ public class GeoLocationConverter implements Converter {
                 // usually there are more but use first item from results
                 newValue = newLocation.results[0].formattedAddress;
                 // check if this word was not generated for other key
-                if (words.contains(newValue)) {
-                    continue;
-                }
+            } while (words.contains(newValue));
 
-                values.put(value.getValue(), newValue);
-                words.add(newValue);
+            values.put(value.getValue(), newValue);
+            words.add(newValue);
 
-                // return value from first item - could be any but first seems to be less susceptible for duplication
-                break;
-            }
             return new Value(newValue);
         }
     }
