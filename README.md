@@ -1,6 +1,8 @@
 [![Build Status](https://img.shields.io/travis/damianszczepanik/silencio/master.svg?label=Travis%20bulid)](https://travis-ci.org/damianszczepanik/silencio)
 [![Build Status](https://img.shields.io/appveyor/ci/damianszczepanik/silencio.svg?label=AppVeyor%20build)](https://ci.appveyor.com/project/damianszczepanik/silencio/history)
 
+[![SonarQube coverage](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/coverage.svg?label=Sonarqube%20coverage)](https://nemo.sonarqube.org/overview/coverage?id=pl.damianszczepanik%3Asilencio)
+[![SonarQube tech debt](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/tech_debt.svg?label=Sonarqube%20tech%20debt)](https://nemo.sonarqube.org/overview/debt?id=pl.damianszczepanik%3Asilencio)
 [![Coverage](https://img.shields.io/codecov/c/github/damianszczepanik/silencio/master.svg)](https://codecov.io/github/damianszczepanik/silencio)
 [![Coverity](https://scan.coverity.com/projects/6162/badge.svg)](https://scan.coverity.com/projects/damianszczepanik-silencio)
 [![Codacy](https://api.codacy.com/project/badge/grade/7d8811903fda44a39bb0f7c5e142a965)](https://www.codacy.com/app/damianszczepanik/silencio)
