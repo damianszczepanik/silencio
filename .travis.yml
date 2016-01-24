@@ -17,6 +17,10 @@ script: mvn clean checkstyle:check verify
 after_success:
   bash <(curl -s https://codecov.io/bash)
 
+cache:
+  directories:
+  - ~/.m2
+
 addons:
   coverity_scan:
     project:
