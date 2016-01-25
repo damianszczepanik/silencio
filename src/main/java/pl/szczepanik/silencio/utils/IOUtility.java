@@ -30,7 +30,7 @@ public final class IOUtility {
         try {
             return IOUtils.toString(url);
         } catch (IOException e) {
-            throw new IntegrityException(e.getMessage());
+            throw new IntegrityException(e.getMessage(), e);
         }
     }
 
@@ -45,7 +45,7 @@ public final class IOUtility {
         try {
             return new URL(url);
         } catch (MalformedURLException e) {
-            throw new IntegrityException(e.getMessage());
+            throw new IntegrityException(e.getMessage(), e);
         }
     }
 
