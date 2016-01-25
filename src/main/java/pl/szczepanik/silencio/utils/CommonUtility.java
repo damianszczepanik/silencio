@@ -16,10 +16,10 @@ public final class CommonUtility {
      *            timeout the maximum time to wait in milliseconds
      */
     public static void saveWait(long timeout) {
-        Thread currentThread = Thread.currentThread();
-        synchronized (currentThread) {
+        Thread myThread = new Thread(Thread.currentThread());
+        synchronized (myThread) {
             try {
-                currentThread.wait(timeout);
+                myThread.wait(timeout);
             } catch (InterruptedException | IllegalArgumentException e) {
             }
         }

@@ -113,7 +113,7 @@ public class GeoLocationConverter implements Converter {
                 throw new IntegrityException(String.format("URL '%s' returned empty content!", url));
             }
         } catch (IOException e) {
-            throw new IntegrityException(e.getMessage());
+            throw new IntegrityException(e.getMessage(), e);
         }
     }
 
