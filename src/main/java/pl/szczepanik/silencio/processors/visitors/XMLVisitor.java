@@ -42,10 +42,8 @@ public class XMLVisitor extends AbstractVisitor {
 
     private void processAttributes(NamedNodeMap attributes) {
         int attributeLength = attributes == null ? 0 : attributes.getLength();
-        if (attributeLength != 0) {
-            for (int i = 0; i < attributeLength; i++) {
-                processNode(attributes.item(i));
-            }
+        for (int i = 0; i < attributeLength; i++) {
+            processNode(attributes.item(i));
         }
     }
 
