@@ -72,21 +72,6 @@ public class AbstractProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenBuildFromOneOfEmptyConverter() {
-
-        // given
-        Format format = Format.JSON;
-
-        // when
-        Converter[] converters = { new StubConverter(), null };
-
-        // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Passed Converter is null!");
-        new StubProcessor(format, converters);
-    }
-
-    @Test
     public void shouldFailOnProcessWhenConvertersAreNotSet() {
 
         // given

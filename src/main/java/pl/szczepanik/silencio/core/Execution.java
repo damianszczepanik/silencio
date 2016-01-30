@@ -79,7 +79,7 @@ public class Execution {
             throw new IntegrityException("Array with Decisions must not be empty!");
         }
         if (ArrayUtils.contains(decisions, null)) {
-            throw new IntegrityException(String.format("Passed Decision is null!"));
+            throw new IntegrityException("None of passed Decision can be null!");
         }
     }
 
@@ -88,7 +88,7 @@ public class Execution {
             throw new IntegrityException("Array with Converters must not be empty!");
         }
         if (ArrayUtils.contains(converters, null)) {
-            throw new IntegrityException(String.format("Passed Converter is null!"));
+            throw new IntegrityException(String.format("None of passed Converter can be null!"));
         }
     }
 }

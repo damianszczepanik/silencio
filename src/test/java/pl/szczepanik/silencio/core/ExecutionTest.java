@@ -53,7 +53,7 @@ public class ExecutionTest extends GenericTest {
 
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Passed Decision is null!");
+        thrown.expectMessage("None of passed Decision can be null!");
         new Execution(decisions, converters);
     }
 
@@ -79,7 +79,7 @@ public class ExecutionTest extends GenericTest {
 
         // then
         thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Passed Converter is null!");
+        thrown.expectMessage("None of passed Converter can be null!");
         new Execution(decisions, converters);
     }
 }
