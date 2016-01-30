@@ -14,7 +14,7 @@ matrix:
   include:
     - jdk: oraclejdk7
       # coding standard
-      script: mvn clean checkstyle:check
+      script: mvn clean checkstyle:check test
 
     - jdk: openjdk7
       # use 'verify' phrase to execute integration tests
