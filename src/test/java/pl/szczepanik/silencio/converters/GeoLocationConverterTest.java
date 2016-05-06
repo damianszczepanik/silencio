@@ -54,7 +54,7 @@ public class GeoLocationConverterTest extends GenericTest {
         long startTime = System.currentTimeMillis();
 
         // when
-        ReflectionUtility.invokeMethod(converter, "waitForNextLocation", Void.class);
+        ReflectionUtility.invokeMethod(converter, "waitForNextLocation");
 
         // then
         long endTime = System.currentTimeMillis();
@@ -68,7 +68,7 @@ public class GeoLocationConverterTest extends GenericTest {
         GeoLocationConverter converter = new GeoLocationConverter();
 
         // when
-        String latitude = ReflectionUtility.invokeMethod(converter, "generateNextUSLatitude", String.class);
+        String latitude = ReflectionUtility.invokeMethod(converter, "generateNextUSLatitude");
 
         // then
         String[] latitudeParts = latitude.split("\\.");
@@ -86,7 +86,7 @@ public class GeoLocationConverterTest extends GenericTest {
         GeoLocationConverter converter = new GeoLocationConverter();
 
         // when
-        String longitude = ReflectionUtility.invokeMethod(converter, "generateNextUSLongitude", String.class);
+        String longitude = ReflectionUtility.invokeMethod(converter, "generateNextUSLongitude");
 
         // then
         String[] longitudeParts = longitude.split("\\.");
@@ -133,7 +133,7 @@ public class GeoLocationConverterTest extends GenericTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage(String.format("Result status is '%s' but expected 'OK'", status));
-        ReflectionUtility.invokeMethod(converter, "assertGeoIsValid", Void.class, json);
+        ReflectionUtility.invokeMethod(converter, "assertGeoIsValid", json);
     }
 
     @Test
@@ -147,7 +147,7 @@ public class GeoLocationConverterTest extends GenericTest {
         ReflectionUtility.setField(json, "status", status);
 
         // then
-        ReflectionUtility.invokeMethod(converter, "assertGeoIsValid", Void.class, json);
+        ReflectionUtility.invokeMethod(converter, "assertGeoIsValid", json);
     }
 
     @Test
@@ -209,7 +209,7 @@ public class GeoLocationConverterTest extends GenericTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage(String.format("URL '%s' returned empty content!", url));
-        ReflectionUtility.invokeMethod(converter, "generateNextLocation", GeoLocationJSON.class, latitude, longitude);
+        ReflectionUtility.invokeMethod(converter, "generateNextLocation", latitude, longitude);
     }
 
     @Test
@@ -225,7 +225,7 @@ public class GeoLocationConverterTest extends GenericTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(String.format(GeoLocationConverter.EXCEPTION_MESSAGE_EMPTY_JSON, latitude, longitude));
-        ReflectionUtility.invokeMethod(converter, "generateNextLocation", GeoLocationJSON.class, latitude, longitude);
+        ReflectionUtility.invokeMethod(converter, "generateNextLocation", latitude, longitude);
     }
 
     @Test
@@ -248,7 +248,7 @@ public class GeoLocationConverterTest extends GenericTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage(exception.getMessage());
-        ReflectionUtility.invokeMethod(converter, "generateNextLocation", GeoLocationJSON.class, latitude, longitude);
+        ReflectionUtility.invokeMethod(converter, "generateNextLocation", latitude, longitude);
     }
 
     private static String loadJson(int index) {

@@ -45,7 +45,7 @@ public class XMLVisitorTest extends GenericTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        ReflectionUtility.invokeMethod(parserr, "processComplex", Void.class, key, value);
+        ReflectionUtility.invokeMethod(parserr, "processComplex", key, value);
     }
 
     @Test
@@ -90,6 +90,6 @@ public class XMLVisitorTest extends GenericTest {
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(String.format(XMLVisitor.EXCEPTION_MESSAGE_NODE_TYPE_UNSUPPORTED, invalidNodeType,
                 nodeName, nodeValue));
-        ReflectionUtility.invokeMethod(visitor, "processNode", Void.class, node);
+        ReflectionUtility.invokeMethod(visitor, "processNode", node);
     }
 }

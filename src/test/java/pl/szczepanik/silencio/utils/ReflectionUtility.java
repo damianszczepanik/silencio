@@ -4,9 +4,12 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+/**
+ * @author Damian Szczepanik (damianszczepanik@github)
+ */
 public class ReflectionUtility {
 
-    public static <T> T invokeMethod(Object instance, String methodName, Class<T> returnType, Object... arguments)
+    public static <T> T invokeMethod(Object instance, String methodName, Object... arguments)
             throws Exception {
         try {
             Method[] methods = instance.getClass().getDeclaredMethods();

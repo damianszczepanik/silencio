@@ -53,7 +53,7 @@ public class JSONParser_isBasicTypeTest extends GenericTest {
         JSONVisitor parser = new JSONVisitor();
 
         // when
-        boolean isType = ReflectionUtility.invokeMethod(parser, "isBasicType", Boolean.class, type);
+        boolean isType = ReflectionUtility.invokeMethod(parser, "isBasicType", type);
 
         // then
         assertThat(isType).isEqualTo(isBasic);
