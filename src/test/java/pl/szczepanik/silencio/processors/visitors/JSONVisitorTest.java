@@ -35,7 +35,7 @@ public class JSONVisitorTest extends GenericTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        ReflectionUtility.invokeMethod(parserr, "processComplex", Void.class, key, value);
+        ReflectionUtility.invokeMethod(parserr, "processComplex", key, value);
     }
 
     @Test
