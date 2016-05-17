@@ -13,10 +13,10 @@ import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
 
+import mockit.Deencapsulation;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
-import pl.szczepanik.silencio.utils.ReflectionUtility;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
@@ -34,7 +34,6 @@ public class JSONParser_isBasicTypeTest extends GenericTest {
             { BigDecimal.TEN,  true },
             { new Double(-88), true },
             { Boolean.FALSE,   true },
-            { null,            true },
             { new Object(),    false },
             { new Value(null), false },
         });
@@ -53,7 +52,7 @@ public class JSONParser_isBasicTypeTest extends GenericTest {
         JSONVisitor parser = new JSONVisitor();
 
         // when
-        boolean isType = ReflectionUtility.invokeMethod(parser, "isBasicType", type);
+        boolean isType = Deencapsulation.invoke(parser, "isBasicType", type);
 
         // then
         assertThat(isType).isEqualTo(isBasic);

@@ -21,6 +21,7 @@ import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import mockit.Deencapsulation;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
@@ -32,7 +33,6 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.stubs.StubObjectMapper;
 import pl.szczepanik.silencio.utils.IOUtility;
-import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -54,7 +54,7 @@ public class GeoLocationConverterTest extends GenericTest {
         long startTime = System.currentTimeMillis();
 
         // when
-        ReflectionUtility.invokeMethod(converter, "waitForNextLocation");
+        Deencapsulation.invoke(converter, "waitForNextLocation");
 
         // then
         long endTime = System.currentTimeMillis();
@@ -68,7 +68,7 @@ public class GeoLocationConverterTest extends GenericTest {
         GeoLocationConverter converter = new GeoLocationConverter();
 
         // when
-        String latitude = ReflectionUtility.invokeMethod(converter, "generateNextUSLatitude");
+        String latitude = Deencapsulation.invoke(converter, "generateNextUSLatitude");
 
         // then
         String[] latitudeParts = latitude.split("\\.");
@@ -86,7 +86,7 @@ public class GeoLocationConverterTest extends GenericTest {
         GeoLocationConverter converter = new GeoLocationConverter();
 
         // when
-        String longitude = ReflectionUtility.invokeMethod(converter, "generateNextUSLongitude");
+        String longitude = Deencapsulation.invoke(converter, "generateNextUSLongitude");
 
         // then
         String[] longitudeParts = longitude.split("\\.");
@@ -107,16 +107,16 @@ public class GeoLocationConverterTest extends GenericTest {
         Set<String> words = new HashSet<>();
         words.add(null);
 
-        ReflectionUtility.setField(converter, "values", values);
-        ReflectionUtility.setField(converter, "words", words);
+        Deencapsulation.setField(converter, "values", values);
+        Deencapsulation.setField(converter, "words", words);
 
         // when
         converter.init();
 
         // then
-        Map<Object, Integer> retValues = ReflectionUtility.getField(converter, "values", Map.class);
+        Map<Object, Integer> retValues = Deencapsulation.getField(converter, "values");
         assertThat(retValues).isEmpty();
-        Set<String> retWords = ReflectionUtility.getField(converter, "words", Set.class);
+        Set<String> retWords = Deencapsulation.getField(converter, "words");
         assertThat(retWords).isEmpty();
     }
 
@@ -128,12 +128,12 @@ public class GeoLocationConverterTest extends GenericTest {
 
         GeoLocationJSON json = new GeoLocationJSON();
         final String status = "hello!";
-        ReflectionUtility.setField(json, "status", status);
+        Deencapsulation.setField(json, "status", status);
 
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage(String.format("Result status is '%s' but expected 'OK'", status));
-        ReflectionUtility.invokeMethod(converter, "assertGeoIsValid", json);
+        Deencapsulation.invoke(converter, "assertGeoIsValid", json);
     }
 
     @Test
@@ -144,10 +144,10 @@ public class GeoLocationConverterTest extends GenericTest {
 
         GeoLocationJSON json = new GeoLocationJSON();
         final String status = "OK";
-        ReflectionUtility.setField(json, "status", status);
+        Deencapsulation.setField(json, "status", status);
 
         // then
-        ReflectionUtility.invokeMethod(converter, "assertGeoIsValid", json);
+        Deencapsulation.invoke(converter, "assertGeoIsValid", json);
     }
 
     @Test
@@ -165,7 +165,7 @@ public class GeoLocationConverterTest extends GenericTest {
         // when
         Random random = mock(Random.class);
         when(random.nextInt(100)).thenReturn(0);
-        ReflectionUtility.setField(converter, "locationGenerator", random);
+        Deencapsulation.setField(converter, "locationGenerator", random);
 
         mockStatic(IOUtility.class);
         when(IOUtility.urlToString(new URL(String.format(URL_ADDRESS_FORMAT, "32.0", "-83.0"))))
@@ -209,7 +209,7 @@ public class GeoLocationConverterTest extends GenericTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage(String.format("URL '%s' returned empty content!", url));
-        ReflectionUtility.invokeMethod(converter, "generateNextLocation", latitude, longitude);
+        Deencapsulation.invoke(converter, "generateNextLocation", latitude, longitude);
     }
 
     @Test
@@ -220,12 +220,12 @@ public class GeoLocationConverterTest extends GenericTest {
         final String latitude = "32.0";
         final String longitude = "-83.0";
         final StubObjectMapper objectMapper = new StubObjectMapper((String) null);
-        ReflectionUtility.setField(converter, "mapper", objectMapper);
+        Deencapsulation.setField(converter, "mapper", objectMapper);
 
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(String.format(GeoLocationConverter.EXCEPTION_MESSAGE_EMPTY_JSON, latitude, longitude));
-        ReflectionUtility.invokeMethod(converter, "generateNextLocation", latitude, longitude);
+        Deencapsulation.invoke(converter, "generateNextLocation", latitude, longitude);
     }
 
     @Test
@@ -239,7 +239,7 @@ public class GeoLocationConverterTest extends GenericTest {
         final String url = String.format(URL_ADDRESS_FORMAT, latitude, longitude);
         final MalformedURLException exception = new MalformedURLException("ups, something is wrong!");
         final StubObjectMapper objectMapper = new StubObjectMapper(exception);
-        ReflectionUtility.setField(converter, "mapper", objectMapper);
+        Deencapsulation.setField(converter, "mapper", objectMapper);
 
         // when
         mockStatic(IOUtility.class);
@@ -248,7 +248,7 @@ public class GeoLocationConverterTest extends GenericTest {
         // then
         thrown.expect(IntegrityException.class);
         thrown.expectMessage(exception.getMessage());
-        ReflectionUtility.invokeMethod(converter, "generateNextLocation", latitude, longitude);
+        Deencapsulation.invoke(converter, "generateNextLocation", latitude, longitude);
     }
 
     private static String loadJson(int index) {

@@ -19,13 +19,13 @@ import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
+import mockit.Deencapsulation;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.ConverterVisitor;
-import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
@@ -45,7 +45,7 @@ public class XMLVisitorTest extends GenericTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        ReflectionUtility.invokeMethod(parserr, "processComplex", key, value);
+        Deencapsulation.invoke(parserr, "processComplex", key, value);
     }
 
     @Test
@@ -90,6 +90,6 @@ public class XMLVisitorTest extends GenericTest {
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(String.format(XMLVisitor.EXCEPTION_MESSAGE_NODE_TYPE_UNSUPPORTED, invalidNodeType,
                 nodeName, nodeValue));
-        ReflectionUtility.invokeMethod(visitor, "processNode", node);
+        Deencapsulation.invoke(visitor, "processNode", node);
     }
 }
