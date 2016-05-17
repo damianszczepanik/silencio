@@ -13,12 +13,12 @@ import java.util.Properties;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 
+import mockit.Deencapsulation;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.mocks.PropertyVisitorHolder;
 import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
-import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -53,7 +53,7 @@ public class PropertiesProcessorTest extends GenericTest {
         // when
         PropertiesProcessor processor = new PropertiesProcessor();
         processor.realLoad(input);
-        Properties properties = ReflectionUtility.getField(processor, "properties", Properties.class);
+        Properties properties = Deencapsulation.getField(processor, "properties");
 
         // then
         assertThat(properties).isEqualTo(refProps);
@@ -80,10 +80,10 @@ public class PropertiesProcessorTest extends GenericTest {
         // given
         PropertiesProcessor processor = new PropertiesProcessor();
         PropertyVisitorHolder visitorMock = new PropertyVisitorHolder();
-        ReflectionUtility.setField(processor, "visitor", visitorMock);
+        Deencapsulation.setField(processor, "visitor", visitorMock);
 
         Properties properties = new Properties();
-        ReflectionUtility.setField(processor, "properties", properties);
+        Deencapsulation.setField(processor, "properties", properties);
 
         // when
         processor.realProcess();
@@ -116,7 +116,7 @@ public class PropertiesProcessorTest extends GenericTest {
         PropertiesProcessor processor = new PropertiesProcessor();
         Properties properties = new Properties();
         properties.load(input);
-        ReflectionUtility.setField(processor, "properties", properties);
+        Deencapsulation.setField(processor, "properties", properties);
 
         // when
         processor.realWrite(output);

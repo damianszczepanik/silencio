@@ -17,6 +17,7 @@ import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import mockit.Deencapsulation;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
@@ -26,7 +27,6 @@ import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.utils.IOUtility;
-import pl.szczepanik.silencio.utils.ReflectionUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
@@ -112,16 +112,16 @@ public class WikipediaConverterTest extends GenericTest {
         Set<String> words = new HashSet<>();
         words.add(null);
 
-        ReflectionUtility.setField(blank, "values", values);
-        ReflectionUtility.setField(blank, "words", words);
+        Deencapsulation.setField(blank, "values", values);
+        Deencapsulation.setField(blank, "words", words);
 
         // when
         blank.init();
 
         // then
-        Map<Object, Integer> retValues = ReflectionUtility.getField(blank, "values", Map.class);
+        Map<Object, Integer> retValues = Deencapsulation.getField(blank, "values");
         assertThat(retValues).isEmpty();
-        Set<String> retWords = ReflectionUtility.getField(blank, "words", Set.class);
+        Set<String> retWords = Deencapsulation.getField(blank, "words");
         assertThat(retWords).isEmpty();
     }
 

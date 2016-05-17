@@ -7,11 +7,11 @@ import java.util.Map;
 
 import org.junit.Test;
 
+import mockit.Deencapsulation;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
-import pl.szczepanik.silencio.utils.ReflectionUtility;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
@@ -97,13 +97,13 @@ public class NumberSequenceConverterTest extends GenericTest {
         Converter blank = new NumberSequenceConverter();
         Map<Object, Integer> values = new HashMap<>();
         values.put(this, 0);
-        ReflectionUtility.setField(blank, "values", values);
+        Deencapsulation.setField(blank, "values", values);
 
         // when
         blank.init();
 
         // then
-        Map<Object, Integer> retValues = ReflectionUtility.getField(blank, "values", Map.class);
+        Map<Object, Integer> retValues = Deencapsulation.getField(blank, "values");
         assertThat(retValues).isEmpty();
     }
 }
