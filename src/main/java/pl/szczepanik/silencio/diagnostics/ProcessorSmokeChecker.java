@@ -4,6 +4,9 @@ import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
 import java.io.Writer;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
 import org.apache.commons.io.IOUtils;
 import org.paukov.combinatorics.Factory;
@@ -29,26 +32,23 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
  */
 public final class ProcessorSmokeChecker {
 
-    private static final Converter[] CONVERTERS = {
+    private static final List<Converter> CONVERTERS = Collections.unmodifiableList(Arrays.asList(
             new BlankConverter(),
             new WhiteCharConverter(),
             new ConstantValueConverter(),
             new KeyValueConverter(),
-            new PassedValueConverter()
-    };
+            new PassedValueConverter()));
 
-    private static final Decision[] DECISIONS = {
+    private static final List<Decision> DECISIONS = Collections.unmodifiableList(Arrays.asList(
             new PositiveDecision(),
             new NegativeDecision(),
-            new MatcherDecision(".*")
-    };
+            new MatcherDecision(".*")));
 
-    /** List of all available formatters. */
-    public static final Format[] FORMATS = {
+    /** Immutable list of all available formatters. */
+    public static final List<Format> FORMATS = Collections.unmodifiableList(Arrays.asList(
             Format.JSON,
             Format.PROPERTIES,
-            Format.XML
-    };
+            Format.XML));
     
     private final Processor processor;
 
