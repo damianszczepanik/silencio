@@ -3,7 +3,6 @@ package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 import org.junit.Test;
@@ -28,7 +27,7 @@ public class BuilderTest_buildTest extends GenericTest {
 
     @Parameters
     public static Collection<Format> formats() {
-        return Arrays.asList(ProcessorSmokeChecker.FORMATS);
+        return ProcessorSmokeChecker.FORMATS;
     }
 
     @Parameter(value = 0)

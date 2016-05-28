@@ -13,9 +13,9 @@
 
 # silencio
 
-Silencio is a library for transforming and converting any format such as [XML](https://pl.wikipedia.org/wiki/XML), [JSON](https://pl.wikipedia.org/wiki/JSON) or [Properties](https://en.wikipedia.org/wiki/.properties) files. It is applicable for most of operations such as:
-- obfuscation
-- minimisation (eg anonymous)
+Silencio is a library for transforming and converting any format such as [XML](https://pl.wikipedia.org/wiki/XML), [JSON](https://pl.wikipedia.org/wiki/JSON) or [Properties](https://en.wikipedia.org/wiki/.properties) files using well defined [API](https://github.com/damianszczepanik/silencio/tree/master/src/main/java/pl/szczepanik/silencio/api). It is applicable for most of operations such as:
+- [obfuscation](https://en.wikipedia.org/wiki/Obfuscation_%28software%29)
+- minimisation (eg [anonymization](https://en.wikipedia.org/wiki/Data_anonymization), minifying)
 - transformation
 
 It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor.java) that manage transformations of the files (XML, JSON, Properties, etc.) [decisions](src/main/java/pl/szczepanik/silencio/api/Decision.java) which decide which elements should be converted and [converters](src/main/java/pl/szczepanik/silencio/api/Converter.java) that changes old value into new one.
@@ -130,7 +130,7 @@ Silencio supports most of the popular data formats but it is possible to write s
 
 Once you developed your new processor or converter you should test it by providing several unit tests and by passing it to [processor checker](src/main/java/pl/szczepanik/silencio/diagnostics/ProcessorSmokeChecker.java) that makes basic tests using [edge cases](https://en.wikipedia.org/wiki/Edge_case).
 
-![codecov.io](http://codecov.io/github/damianszczepanik/silencio/branch.svg?branch=master)
+![codecov.io](https://codecov.io/gh/damianszczepanik/silencio/branch/master/graphs/tree.svg)
 
 ## Contribution
 

@@ -88,7 +88,7 @@ public class Execution {
             throw new IntegrityException("Array with Converters must not be empty!");
         }
         if (ArrayUtils.contains(converters, null)) {
-            throw new IntegrityException(String.format("None of passed Converter can be null!"));
+            throw new IntegrityException("None of passed Converter can be null!");
         }
     }
 }
