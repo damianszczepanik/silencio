@@ -1,5 +1,5 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>pl.damianszczepanik</groupId>
     <artifactId>silencio</artifactId>
@@ -15,7 +15,8 @@
         <maven.compile.encoding>UTF-8</maven.compile.encoding>
 
         <powermock.version>1.6.5</powermock.version>
-        <jackson.version>2.7.4</jackson.version>
+        <jackson.version>2.8.1</jackson.version>
+        <jacoco.version>0.7.7.201606060606</jacoco.version>
 
         <test.integration.pattern>**/*IntegrationTest*.java</test.integration.pattern>
     </properties>
@@ -43,7 +44,11 @@
         <url>git@github.com:damianszczepanik/silencio.git</url>
     </scm>
 
-    <description>Silencio is a tool for transforming and converting JSON, XML and Properties files.</description>
+    <description>
+        Silencio is a Java library for transforming and converting XML, JSON, Properties and other formats. It
+        is applicable for most operations such as obfuscation, encryption, minimisation (minifying), anonymous. Library
+        is fully customizable and extensible.
+    </description>
 
     <licenses>
         <license>
@@ -128,7 +133,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
+                <version>2.10.4</version>
                 <executions>
                     <execution>
                         <id>attach-javadocs</id>
@@ -141,20 +146,17 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
                 <executions>
-                <!-- this instrumentation allows to count covered/tested code that is annotated with @RunWith(PowerMockRunner.class) -->
                     <execution>
-                        <id>instrument</id>
-                        <phase>process-classes</phase>
                         <goals>
-                            <goal>instrument</goal>
+                            <goal>prepare-agent</goal>
                         </goals>
                     </execution>
                     <execution>
                         <id>report</id>
                         <phase>test</phase>
                         <goals>
-                            <goal>restore-instrumented-classes</goal>
                             <goal>report</goal>
                         </goals>
                     </execution>
@@ -166,8 +168,7 @@
                 <version>2.19.1</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <!-- JaCoCo runtime must know where to dump coverage: -->
-                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
+                        <jacoco-agent.destfile>${project.build.directory}/jacoco/jacoco.exec</jacoco-agent.destfile>
                     </systemPropertyVariables>
                     <excludes>
                         <!-- Integration tests should not be counted by code coverage -->
@@ -206,7 +207,7 @@
                         <dependency>
                             <groupId>com.puppycrawl.tools</groupId>
                             <artifactId>checkstyle</artifactId>
-                            <version>6.18</version>
+                            <version>6.19</version>
                         </dependency>
                     </dependencies>
                     <configuration>
@@ -237,7 +238,7 @@
         <dependency>
             <groupId>org.jmockit</groupId>
             <artifactId>jmockit</artifactId>
-            <version>1.23</version>
+            <version>1.25</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -256,7 +257,7 @@
             <groupId>org.jacoco</groupId>
             <artifactId>org.jacoco.agent</artifactId>
             <classifier>runtime</classifier>
-            <version>0.7.6.201602180812</version>
+            <version>${jacoco.version}</version>
             <scope>test</scope>
         </dependency>
 

@@ -1,8 +1,8 @@
 [![Build Status](https://img.shields.io/travis/damianszczepanik/silencio/master.svg?label=Travis%20bulid)](https://travis-ci.org/damianszczepanik/silencio)
-[![Build Status](https://img.shields.io/appveyor/ci/damianszczepanik/silencio.svg?label=AppVeyor%20build)](https://ci.appveyor.com/project/damianszczepanik/silencio/history)
+[![Build Status](https://img.shields.io/appveyor/ci/damianszczepanik/silencio/master.svg?label=AppVeyor%20build)](https://ci.appveyor.com/project/damianszczepanik/silencio/history)
 
-[![SonarQube coverage](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/coverage.svg?label=Sonarqube%20coverage)](https://nemo.sonarqube.org/overview/coverage?id=pl.damianszczepanik%3Asilencio)
-[![SonarQube tech debt](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/tech_debt.svg?label=Sonarqube%20tech%20debt)](https://nemo.sonarqube.org/overview/debt?id=pl.damianszczepanik%3Asilencio)
+[![SonarQube coverage](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/coverage.svg?label=Sonarqube%20coverage)](https://sonarqube.com/overview?id=pl.damianszczepanik%3Asilencio)
+[![SonarQube tech debt](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/tech_debt.svg?label=Sonarqube%20tech%20debt)](https://sonarqube.com/overview?id=pl.damianszczepanik%3Asilencio)
 [![Coverage](https://img.shields.io/codecov/c/github/damianszczepanik/silencio/master.svg)](https://codecov.io/github/damianszczepanik/silencio)
 [![Coverity](https://scan.coverity.com/projects/6162/badge.svg)](https://scan.coverity.com/projects/damianszczepanik-silencio)
 [![Codacy](https://api.codacy.com/project/badge/grade/7d8811903fda44a39bb0f7c5e142a965)](https://www.codacy.com/app/damianszczepanik/silencio)
@@ -16,7 +16,7 @@
 Silencio is a library for transforming and converting any format such as [XML](https://pl.wikipedia.org/wiki/XML), [JSON](https://pl.wikipedia.org/wiki/JSON) or [Properties](https://en.wikipedia.org/wiki/.properties) files using well defined [API](https://github.com/damianszczepanik/silencio/tree/master/src/main/java/pl/szczepanik/silencio/api). It is applicable for most of operations such as:
 - [obfuscation](https://en.wikipedia.org/wiki/Obfuscation_%28software%29)
 - minimisation (eg [anonymization](https://en.wikipedia.org/wiki/Data_anonymization), minifying)
-- transformation
+- transformation (eg [encryption](https://en.wikipedia.org/wiki/Encryption))
 
 It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor.java) that manage transformations of the files (XML, JSON, Properties, etc.) [decisions](src/main/java/pl/szczepanik/silencio/api/Decision.java) which decide which elements should be converted and [converters](src/main/java/pl/szczepanik/silencio/api/Converter.java) that changes old value into new one.
 
@@ -24,7 +24,7 @@ It is built from [processors](src/main/java/pl/szczepanik/silencio/api/Processor
 
 #### Make it fast, write it simple
 
-As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorTestInt.java#L36-L39) this is quite easy to convert the file:
+As presented in [tests](src/test/java/pl/szczepanik/silencio/integration/JSONProcessorIntegrationTest.java) this is quite easy to convert the file:
 
 ```java
    Reader input = new FileReader("myStructure.json");
@@ -71,7 +71,7 @@ and as the result you may expect (depends of [converter](src/main/java/pl/szczep
 
 So you know how it works but you want to decide which nodes should be transfered into what values. Imagine you are renting cars and your partner asked you to share all your specifications. Sounds good but you don't want to share prices (sensitive information). Also your database is a little bit outdated because all your cars already have sunroof even your services provide different information.
 
-Take a look at [example](src/test/java/pl/szczepanik/silencio/integration/BuilderTestInt.java#L37-L44) below. There are two iterations on the same file. First removes all values that match to given key `money|cash|price`. Second validates key (`sunroot`) and value (`Optional`) and transfers values into new one (`[Standard]`).
+Take a look at [example](src/test/java/pl/szczepanik/silencio/integration/BuilderIntegrationTest.java) below. There are two iterations on the same file. First removes all values that match to given key `money|cash|price`. Second validates key (`sunroot`) and value (`Optional`) and transfers values into new one (`[Standard]`).
 
 ```java
    Builder builder = new Builder(Format.PROPERTIES);
