@@ -41,8 +41,12 @@
     <scm>
         <connection>scm:git:git@github.com:damianszczepanik/silencio.git</connection>
         <developerConnection>scm:git:git@github.com:damianszczepanik/silencio.git</developerConnection>
-        <url>git@github.com:damianszczepanik/silencio.git</url>
+        <url>https://github.com/damianszczepanik/silencio</url>
     </scm>
+    <ciManagement>
+        <system>travis</system>
+        <url>https://travis-ci.org/damianszczepanik/silencio</url>
+    </ciManagement>
 
     <description>
         Silencio is a Java library for transforming and converting XML, JSON, Properties and other formats. It
