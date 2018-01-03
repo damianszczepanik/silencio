@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 
@@ -44,7 +45,7 @@ public class ResourceLoader {
 
     private static String loadFileAsString(String fileName) {
         try {
-            return IOUtils.toString(loadFileAsStream(fileName), "UTF-8");
+            return IOUtils.toString(loadFileAsStream(fileName), StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new ProcessorException(e);
         }

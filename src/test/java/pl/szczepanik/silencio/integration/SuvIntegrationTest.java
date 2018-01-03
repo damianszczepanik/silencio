@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.processors.PropertiesProcessor;
 import pl.szczepanik.silencio.processors.XMLProcessor;
-import  pl.szczepanik.silencio.utils.ResourceLoader;
+import pl.szczepanik.silencio.utils.ResourceLoader;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
@@ -48,6 +48,6 @@ public class SuvIntegrationTest extends GenericTest {
         checker.validateWithAllCombinations(suvInput);
 
         // then
-        // no crash
+        // no exception
     }
 }
