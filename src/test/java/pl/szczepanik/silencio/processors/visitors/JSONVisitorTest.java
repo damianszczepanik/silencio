@@ -5,12 +5,10 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.IOException;
 import java.util.Map;
 
-import org.junit.Test;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-
-import mockit.Deencapsulation;
+import org.junit.Test;
+import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
@@ -35,7 +33,7 @@ public class JSONVisitorTest extends GenericTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        Deencapsulation.invoke(parserr, "processComplex", key, value);
+        Whitebox.invokeMethod(parserr, "processComplex", key, value);
     }
 
     @Test

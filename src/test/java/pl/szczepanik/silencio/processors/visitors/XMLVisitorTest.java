@@ -9,17 +9,15 @@ import java.io.IOException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
+import org.powermock.reflect.Whitebox;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
-
-import mockit.Deencapsulation;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
@@ -45,7 +43,7 @@ public class XMLVisitorTest extends GenericTest {
         // then
         thrown.expect(ProcessorException.class);
         thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        Deencapsulation.invoke(parserr, "processComplex", key, value);
+        Whitebox.invokeMethod(parserr, "processComplex", key, value);
     }
 
     @Test
@@ -90,6 +88,6 @@ public class XMLVisitorTest extends GenericTest {
         thrown.expect(ProcessorException.class);
         thrown.expectMessage(String.format(XMLVisitor.EXCEPTION_MESSAGE_NODE_TYPE_UNSUPPORTED, invalidNodeType,
                 nodeName, nodeValue));
-        Deencapsulation.invoke(visitor, "processNode", node);
+        Whitebox.invokeMethod(visitor, "processNode", node);
     }
 }
