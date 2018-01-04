@@ -12,8 +12,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
-import mockit.Deencapsulation;
+import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Value;
 import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
@@ -52,7 +51,7 @@ public class JSONParser_isBasicTypeTest extends GenericTest {
         JSONVisitor parser = new JSONVisitor();
 
         // when
-        boolean isType = Deencapsulation.invoke(parser, "isBasicType", type);
+        boolean isType = Whitebox.invokeMethod(parser, "isBasicType", type);
 
         // then
         assertThat(isType).isEqualTo(isBasic);
