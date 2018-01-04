@@ -1,12 +1,11 @@
 [![Build Status](https://img.shields.io/travis/damianszczepanik/silencio/master.svg?label=Travis%20bulid)](https://travis-ci.org/damianszczepanik/silencio)
 [![Build Status](https://img.shields.io/appveyor/ci/damianszczepanik/silencio/master.svg?label=AppVeyor%20build)](https://ci.appveyor.com/project/damianszczepanik/silencio/history)
 
-[![SonarQube coverage](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/coverage.svg?label=Sonarqube%20coverage)](https://sonarqube.com/overview?id=pl.damianszczepanik%3Asilencio)
-[![SonarQube tech debt](https://img.shields.io/sonar/http/nemo.sonarqube.org/pl.damianszczepanik:silencio/tech_debt.svg?label=Sonarqube%20tech%20debt)](https://sonarqube.com/overview?id=pl.damianszczepanik%3Asilencio)
+[![Sonarqube coverage](https://sonarqube.com/api/badges/measure?key=pl.damianszczepanik:silencio&metric=coverage)](https://sonarcloud.io/dashboard/index/pl.damianszczepanik:silencio)
+[![Sonarqube tech debt](https://sonarqube.com/api/badges/measure?key=pl.damianszczepanik:silencio&metric=sqale_debt_ratio)](https://sonarcloud.io/dashboard/index/pl.damianszczepanik:silencio)
 [![Coverage](https://img.shields.io/codecov/c/github/damianszczepanik/silencio/master.svg)](https://codecov.io/github/damianszczepanik/silencio)
 [![Coverity](https://scan.coverity.com/projects/6162/badge.svg)](https://scan.coverity.com/projects/damianszczepanik-silencio)
 [![Codacy](https://api.codacy.com/project/badge/grade/7d8811903fda44a39bb0f7c5e142a965)](https://www.codacy.com/app/damianszczepanik/silencio)
-[![Maven Dependencies](https://www.versioneye.com/user/projects/55c5300965376200170035e9/badge.svg)](https://www.versioneye.com/user/projects/55c5300965376200170035e9?child=summary)
 
 [![Maven Central](https://img.shields.io/maven-central/v/pl.damianszczepanik/silencio.svg)](http://search.maven.org/#search|gav|1|g%3A%22pl.damianszczepanik%22%20AND%20a%3A%22silencio%22)
 [![License](http://img.shields.io/:license-apache-blue.svg)](http://www.apache.org/licenses/)
@@ -126,7 +125,7 @@ Both processors and converters can be extended. They are like plugins: you can a
 
 Silencio supports most of the popular data formats but it is possible to write support for new one. It is not difficult when using external library that allows to manipulate such format. For more reference check [pull](https://github.com/damianszczepanik/silencio/pull/70) that introduced support for XML.
 
-## Code quality
+## Code quality, test coverage
 
 Once you developed your new processor or converter you should test it by providing several unit tests and by passing it to [processor checker](src/main/java/pl/szczepanik/silencio/diagnostics/ProcessorSmokeChecker.java) that makes basic tests using [edge cases](https://en.wikipedia.org/wiki/Edge_case).
 

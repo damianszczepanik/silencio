@@ -1,6 +1,6 @@
 language: java
 
-dist: precise
+dist: trusty
 
 cache:
   directories:
@@ -54,7 +54,8 @@ addons:
     # Pattern to match selecting branches that will run analysis.
     branch_pattern: master
 
-  sonarqube:
+  sonarcloud:
+    organization: "damianszczepanik-github"
     token:
       secure: $SONAR_TOKEN
   branches:
