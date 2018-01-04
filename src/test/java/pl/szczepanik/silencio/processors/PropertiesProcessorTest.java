@@ -12,8 +12,7 @@ import java.util.Properties;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
-
-import mockit.Deencapsulation;
+import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.core.ProcessorException;
@@ -53,7 +52,7 @@ public class PropertiesProcessorTest extends GenericTest {
         // when
         PropertiesProcessor processor = new PropertiesProcessor();
         processor.realLoad(input);
-        Properties properties = Deencapsulation.getField(processor, "properties");
+        Properties properties = Whitebox.getInternalState(processor, "properties");
 
         // then
         assertThat(properties).isEqualTo(refProps);
@@ -80,10 +79,10 @@ public class PropertiesProcessorTest extends GenericTest {
         // given
         PropertiesProcessor processor = new PropertiesProcessor();
         PropertyVisitorHolder visitorMock = new PropertyVisitorHolder();
-        Deencapsulation.setField(processor, "visitor", visitorMock);
+        Whitebox.setInternalState(processor, "visitor", visitorMock);
 
         Properties properties = new Properties();
-        Deencapsulation.setField(processor, "properties", properties);
+        Whitebox.setInternalState(processor, "properties", properties);
 
         // when
         processor.realProcess();
@@ -116,7 +115,7 @@ public class PropertiesProcessorTest extends GenericTest {
         PropertiesProcessor processor = new PropertiesProcessor();
         Properties properties = new Properties();
         properties.load(input);
-        Deencapsulation.setField(processor, "properties", properties);
+        Whitebox.setInternalState(processor, "properties", properties);
 
         // when
         processor.realWrite(output);

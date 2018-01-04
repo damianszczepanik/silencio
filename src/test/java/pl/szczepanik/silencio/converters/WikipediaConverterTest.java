@@ -16,8 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-
-import mockit.Deencapsulation;
+import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Processor;
@@ -112,16 +111,16 @@ public class WikipediaConverterTest extends GenericTest {
         Set<String> words = new HashSet<>();
         words.add(null);
 
-        Deencapsulation.setField(blank, "values", values);
-        Deencapsulation.setField(blank, "words", words);
+        Whitebox.setInternalState(blank, "values", values);
+        Whitebox.setInternalState(blank, "words", words);
 
         // when
         blank.init();
 
         // then
-        Map<Object, Integer> retValues = Deencapsulation.getField(blank, "values");
+        Map<Object, Integer> retValues = Whitebox.getInternalState(blank, "values");
         assertThat(retValues).isEmpty();
-        Set<String> retWords = Deencapsulation.getField(blank, "words");
+        Set<String> retWords = Whitebox.getInternalState(blank, "words");
         assertThat(retWords).isEmpty();
     }
 
