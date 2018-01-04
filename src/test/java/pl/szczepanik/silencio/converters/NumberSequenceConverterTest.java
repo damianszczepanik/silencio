@@ -6,8 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.Test;
-
-import mockit.Deencapsulation;
+import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
@@ -97,13 +96,13 @@ public class NumberSequenceConverterTest extends GenericTest {
         Converter blank = new NumberSequenceConverter();
         Map<Object, Integer> values = new HashMap<>();
         values.put(this, 0);
-        Deencapsulation.setField(blank, "values", values);
+        Whitebox.setInternalState(blank, "values", values);
 
         // when
         blank.init();
 
         // then
-        Map<Object, Integer> retValues = Deencapsulation.getField(blank, "values");
+        Map<Object, Integer> retValues = Whitebox.getInternalState(blank, "values");
         assertThat(retValues).isEmpty();
     }
 }

@@ -6,8 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.List;
 
 import org.junit.Test;
-
-import mockit.Deencapsulation;
+import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
@@ -33,7 +32,7 @@ public class BuilderTest extends GenericTest {
         Builder builder = new Builder(format);
 
         // then
-        Format retFormat = Deencapsulation.getField(builder, "format");
+        Format retFormat = Whitebox.getInternalState(builder, "format");
         assertThat(format).isEqualTo(retFormat);
     }
 
@@ -49,7 +48,7 @@ public class BuilderTest extends GenericTest {
         Builder builder = new Builder(format).with(decisions, converters);
 
         // then
-        List<Execution> executions = Deencapsulation.getField(builder, "executions");
+        List<Execution> executions = Whitebox.getInternalState(builder, "executions");
         assertThat(executions.get(0).getDecisions().length).isEqualTo(decisions.length);
         assertThat(executions.get(0).getDecisions()).isEqualTo(decisions);
         assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
@@ -68,7 +67,7 @@ public class BuilderTest extends GenericTest {
         Builder builder = new Builder(format).with(decision, converters[0], converters[1]);
 
         // then
-        List<Execution> executions = Deencapsulation.getField(builder, "executions");
+        List<Execution> executions = Whitebox.getInternalState(builder, "executions");
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
         assertThat(executions.get(0).getDecisions()[0]).isEqualTo(decision);
         assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
@@ -88,7 +87,7 @@ public class BuilderTest extends GenericTest {
         builder.with(decision, converter);
 
         // then
-        List<Execution> executions = Deencapsulation.getField(builder, "executions");
+        List<Execution> executions = Whitebox.getInternalState(builder, "executions");
         assertThat(executions).hasSize(2);
 
         Execution appendExecution = executions.get(1);
@@ -110,7 +109,7 @@ public class BuilderTest extends GenericTest {
         builder.with(converters[0], converters[1]);
 
         // then
-        List<Execution> executions = Deencapsulation.getField(builder, "executions");
+        List<Execution> executions = Whitebox.getInternalState(builder, "executions");
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
         assertThat(executions.get(0).getDecisions()[0]).isInstanceOf(PositiveDecision.class);
         assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
@@ -129,7 +128,7 @@ public class BuilderTest extends GenericTest {
         builder.with(converter);
 
         // then
-        List<Execution> executions = Deencapsulation.getField(builder, "executions");
+        List<Execution> executions = Whitebox.getInternalState(builder, "executions");
         assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
         assertThat(executions.get(0).getDecisions()[0]).isInstanceOf(PositiveDecision.class);
         assertThat(executions.get(0).getConverters().length).isEqualTo(1);
@@ -163,7 +162,7 @@ public class BuilderTest extends GenericTest {
         builder.clearExecutions();
 
         // then
-        List<Execution> executions = Deencapsulation.getField(builder, "executions");
+        List<Execution> executions = Whitebox.getInternalState(builder, "executions");
         assertThat(executions).isEmpty();
     }
 }
