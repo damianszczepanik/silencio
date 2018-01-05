@@ -9,8 +9,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -24,15 +22,13 @@ import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 @RunWith(Parameterized.class)
 public class BuilderTest_buildTest extends GenericTest {
 
-
-    @Parameters
-    public static Collection<Format> formats() {
-        return ProcessorSmokeChecker.FORMATS;
-    }
-
     @Parameter(value = 0)
     public Format format;
 
+    @Parameterized.Parameters
+    public static Collection<Format> formats() {
+        return ProcessorSmokeChecker.FORMATS;
+    }
 
     @Test
     public void buildSupportsAllFormats() {
