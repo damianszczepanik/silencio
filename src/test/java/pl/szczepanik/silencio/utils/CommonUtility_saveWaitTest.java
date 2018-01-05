@@ -7,8 +7,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
-
 import pl.szczepanik.silencio.GenericTest;
 
 /**
@@ -17,13 +15,13 @@ import pl.szczepanik.silencio.GenericTest;
 @RunWith(Parameterized.class)
 public class CommonUtility_saveWaitTest extends GenericTest {
 
-    @Parameters
+    @Parameter(value = 0)
+    public Long timeout;
+
+    @Parameterized.Parameters
     public static Collection<Long> timeout() {
         return Arrays.asList(new Long[] { -1L, 10L });
     }
-
-    @Parameter(value = 0)
-    public Long timeout;
 
     @Test
     public void waitNeverFails() {

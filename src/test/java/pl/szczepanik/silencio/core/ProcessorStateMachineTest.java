@@ -32,6 +32,7 @@ public class ProcessorStateMachineTest extends GenericTest {
 
         // then
         machine.validateProcess();
+        // no crash here
     }
 
     @Test

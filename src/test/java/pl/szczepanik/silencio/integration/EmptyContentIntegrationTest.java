@@ -24,6 +24,12 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 @RunWith(Parameterized.class)
 public class EmptyContentIntegrationTest extends GenericTest {
 
+    @Parameter(value = 0)
+    public Format format;
+
+    @Parameter(value = 1)
+    public Reader emptyInput;
+
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
@@ -32,12 +38,6 @@ public class EmptyContentIntegrationTest extends GenericTest {
             { Format.PROPERTIES, ResourceLoader.loadPropertiesAsReader("empty.properties") },
         });
     }
-
-    @Parameter(value = 0)
-    public Format format;
-
-    @Parameter(value = 1)
-    public Reader emptyInput;
 
     @Test
     public void shouldNotFailOnEmptyContent() {

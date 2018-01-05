@@ -74,9 +74,9 @@ public class FormatTest extends GenericTest {
         Format one = Format.JSON;
 
         // then
-        assertThat(one.equals(one)).isTrue();
-        assertThat(one.equals(null)).isFalse();
-        assertThat(one.equals("one")).isFalse();
+        assertThat(one).isEqualTo(one);
+        assertThat(one).isNotNull();
+        assertThat(one).isNotEqualTo("one");
     }
 
     @Test

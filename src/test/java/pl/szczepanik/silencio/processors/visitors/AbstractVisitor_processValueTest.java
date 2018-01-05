@@ -34,26 +34,6 @@ public class AbstractVisitor_processValueTest extends GenericTest {
     private static final Object value = "yourValue";
     private static final ConverterVisitor visitCounter = new ConverterVisitor();
 
-    @Parameters
-    public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-            {
-                new Decision[] {new PositiveDecision()},
-                new Converter[] { visitCounter, visitCounter },
-                key,
-                value,
-                2
-            },
-            {
-                new Decision[] {new PositiveDecision(), new NegativeDecision()},
-                new Converter[] { visitCounter, visitCounter },
-                null,
-                value,
-                0
-            },
-        });
-    }
-    
     @Parameter(value = 0)
     public Decision[] decisions;
 
@@ -68,7 +48,27 @@ public class AbstractVisitor_processValueTest extends GenericTest {
 
     @Parameter(value = 4)
     public Object expectVisitCounter;
-    
+
+    @Parameters
+    public static Collection<Object[]> data() {
+        return Arrays.asList(new Object[][] {
+                {
+                        new Decision[] {new PositiveDecision()},
+                        new Converter[] { visitCounter, visitCounter },
+                        key,
+                        value,
+                        2
+                },
+                {
+                        new Decision[] {new PositiveDecision(), new NegativeDecision()},
+                        new Converter[] { visitCounter, visitCounter },
+                        null,
+                        value,
+                        0
+                },
+        });
+    }
+
 
     @Test
     public void shouldProcessAllConvertersForPositiveDecision() {

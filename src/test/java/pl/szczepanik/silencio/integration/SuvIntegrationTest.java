@@ -23,6 +23,12 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 @RunWith(Parameterized.class)
 public class SuvIntegrationTest extends GenericTest {
 
+    @Parameter(value = 0)
+    public Processor processor;
+
+    @Parameter(value = 1)
+    public String suvInput;
+
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
@@ -31,12 +37,6 @@ public class SuvIntegrationTest extends GenericTest {
             { new PropertiesProcessor(), ResourceLoader.loadPropertiesAsString("suv.properties") },
         });
     }
-
-    @Parameter(value = 0)
-    public Processor processor;
-
-    @Parameter(value = 1)
-    public String suvInput;
 
     @Test
     public void shouldNotCrashOnDiagnosticTests() {
