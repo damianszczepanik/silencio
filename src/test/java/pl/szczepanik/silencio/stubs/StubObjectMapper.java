@@ -1,15 +1,15 @@
 package pl.szczepanik.silencio.stubs;
 
-import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.commons.lang3.ArrayUtils;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-
 /**
- * Stub of @link {@link pl.szczepanik.silencio.core.AbstractProcessor.ObjectMapper} that has only stub methods.
+ * Stub of @link {@link ObjectMapper} that has only stub methods.
  * 
  * @author Damian Szczepanik (damianszczepanik@github)
  */
@@ -17,9 +17,9 @@ public class StubObjectMapper extends ObjectMapper {
 
     private Iterator<String> jsons;
 
-    private IOException exception;
+    private JsonMappingException exception;
 
-    public StubObjectMapper(IOException exception) {
+    public StubObjectMapper(JsonMappingException exception) {
         this.exception = exception;
     }
 
@@ -29,7 +29,7 @@ public class StubObjectMapper extends ObjectMapper {
         }
     }
 
-    public <T> T readValue(String content, Class<T> valueType) throws IOException {
+    public <T> T readValue(String content, Class<T> valueType)throws JsonProcessingException, JsonMappingException {
         if (exception != null) {
             throw exception;
         } else if (jsons == null) {
