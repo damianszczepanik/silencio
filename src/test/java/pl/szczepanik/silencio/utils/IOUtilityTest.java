@@ -6,13 +6,13 @@ import static org.powermock.api.mockito.PowerMockito.when;
 
 import java.io.IOException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.IntegrityException;
 
@@ -31,7 +31,7 @@ public class IOUtilityTest extends GenericTest {
 
         // given
         mockStatic(IOUtils.class);
-        when(IOUtils.toString(new URL(URL_ADDRESS)))
+        when(IOUtils.toString(new URL(URL_ADDRESS), StandardCharsets.UTF_8))
             .thenReturn(INVALID_HTML_PAGE);
 
         // then
@@ -47,7 +47,7 @@ public class IOUtilityTest extends GenericTest {
         String errorMessage = "Something is wrong!";
         // when
         mockStatic(IOUtils.class);
-        when(IOUtils.toString(new URL(URL_ADDRESS)))
+        when(IOUtils.toString(new URL(URL_ADDRESS), StandardCharsets.UTF_8))
             .thenThrow(new IOException(errorMessage));
 
         // then

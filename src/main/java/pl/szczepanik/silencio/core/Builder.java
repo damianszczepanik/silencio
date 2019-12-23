@@ -99,7 +99,7 @@ public final class Builder {
      * @return instance of current builder
      */
     public Builder with(Converter converter) {
-        return with(new PositiveDecision(), new Converter[] { converter });
+        return with(new PositiveDecision(), converter);
     }
 
     /**
