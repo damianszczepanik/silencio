@@ -3,6 +3,7 @@ package pl.szczepanik.silencio.utils;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
 
@@ -28,7 +29,7 @@ public final class IOUtility {
      */
     public static String urlToString(URL url) {
         try {
-            return IOUtils.toString(url);
+            return IOUtils.toString(url, StandardCharsets.UTF_8);
         } catch (IOException e) {
             throw new IntegrityException(e.getMessage(), e);
         }

@@ -26,12 +26,14 @@ matrix:
     - jdk: oraclejdk8
       env:
         - DESC="coding standard"
-      script: mvn clean checkstyle:check
+      script:
+        - mvn clean checkstyle:check
 
     - jdk: oraclejdk8
       env:
         - DESC="tests"
-      script: mvn clean verify
+      script:
+        - mvn clean verify
 
     - jdk: oraclejdk8
       env:
@@ -44,6 +46,14 @@ after_success:
   bash <(curl -s https://codecov.io/bash)
 
 addons:
+  sonarcloud:
+    organization: "damianszczepanik"
+    token:
+      secure: $SONAR_TOKEN
+  branches:
+    - master
+
+  # this plugin is quite problematic so put it at the end so other plugins run properly
   coverity_scan:
     project:
       name: "damianszczepanik/silencio"
@@ -54,10 +64,3 @@ addons:
     build_command: "mvn -DskipTests=true compile"
     # Pattern to match selecting branches that will run analysis.
     branch_pattern: master
-
-  sonarcloud:
-    organization: "damianszczepanik"
-    token:
-      secure: $SONAR_TOKEN
-  branches:
-    - master
