@@ -1,7 +1,6 @@
 [![Build Status](https://img.shields.io/travis/damianszczepanik/silencio/master.svg?label=Travis%20bulid)](https://travis-ci.org/damianszczepanik/silencio)
 [![Build Status](https://img.shields.io/appveyor/ci/damianszczepanik/silencio/master.svg?label=AppVeyor%20build)](https://ci.appveyor.com/project/damianszczepanik/silencio/history)
 
-[![Sonarqube tech debt](https://sonarqube.com/api/badges/measure?key=pl.damianszczepanik:silencio&metric=sqale_debt_ratio)](https://sonarcloud.io/dashboard/index/pl.damianszczepanik:silencio)
 [![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=pl.damianszczepanik%3Asilencio&metric=sqale_rating)](https://sonarcloud.io/dashboard?id=pl.damianszczepanik%3Asilencio)
 [![Coverage](https://img.shields.io/codecov/c/github/damianszczepanik/silencio/master.svg)](https://codecov.io/github/damianszczepanik/silencio)
 [![Coverity](https://scan.coverity.com/projects/6162/badge.svg)](https://scan.coverity.com/projects/damianszczepanik-silencio)

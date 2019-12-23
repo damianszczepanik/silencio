@@ -15,7 +15,6 @@
 
         <powermock.version>1.7.3</powermock.version>
         <jackson.version>2.10.0.pr3</jackson.version>
-        <jacoco.version>0.7.9</jacoco.version>
 
         <test.integration.pattern>**/*IntegrationTest*.java</test.integration.pattern>
     </properties>
@@ -150,7 +149,7 @@
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>${jacoco.version}</version>
+                <version>0.7.9</version>
                 <executions>
                     <execution>
                         <goals>
@@ -172,7 +171,8 @@
                 <version>2.20.1</version>
                 <configuration>
                     <systemPropertyVariables>
-                        <jacoco-agent.destfile>${project.build.directory}/jacoco/jacoco.exec</jacoco-agent.destfile>
+                        <!-- JaCoCo runtime must know where to dump coverage: -->
+                        <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
                     </systemPropertyVariables>
                     <excludes>
                         <!-- Integration tests should not be counted by code coverage -->
@@ -249,13 +249,6 @@
             <groupId>org.powermock</groupId>
             <artifactId>powermock-module-junit4</artifactId>
             <version>${powermock.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.jacoco</groupId>
-            <artifactId>org.jacoco.agent</artifactId>
-            <classifier>runtime</classifier>
-            <version>${jacoco.version}</version>
             <scope>test</scope>
         </dependency>
 
