@@ -37,7 +37,7 @@ matrix:
       env:
         - DESC="static analysis"
       script:
-        - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install -DskipITs sonar:sonar
+        - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent package sonar:sonar -Dsonar.projectKey=damianszczepanik_silencio
 
 after_success:
   # push report to codecov server
@@ -58,6 +58,7 @@ addons:
     branch_pattern: master
 
   sonarcloud:
+    organization: "damianszczepanik"
     token:
       secure: $SONAR_TOKEN
   branches:
