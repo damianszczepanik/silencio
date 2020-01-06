@@ -18,13 +18,22 @@ public class ResourceLoader {
     private static final String JSON_DIR = "json/";
     private static final String XML_DIR = "xml/";
     private static final String PROPERTIES_DIR = "properties/";
+    private static final String YAML_DIR = "yaml/";
 
     public static Reader loadJsonAsReader(String fileName) {
         return new InputStreamReader(loadFileAsStream(JSON_DIR + fileName));
     }
 
+    public static Reader loadYamlAsReader(String fileName) {
+        return new InputStreamReader(loadFileAsStream(YAML_DIR + fileName));
+    }
+
     public static String loadJsonAsString(String fileName) {
         return loadFileAsString(JSON_DIR + fileName);
+    }
+
+    public static String loadYamlAsString(String fileName) {
+        return loadFileAsString(YAML_DIR + fileName);
     }
 
     public static Reader loadXmlAsReader(String fileName) {

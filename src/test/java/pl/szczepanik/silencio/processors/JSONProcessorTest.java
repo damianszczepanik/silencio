@@ -50,7 +50,7 @@ public class JSONProcessorTest extends GenericTest {
 
         // then
         processor.realWrite(output);
-        assertThat(refInput).isEqualTo(output.toString());
+        assertThat(refInput).isEqualToNormalizingNewlines(output.toString());
     }
 
     @Test
