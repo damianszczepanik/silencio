@@ -21,6 +21,9 @@ public class Format {
     /** Predefined format for XML files. */
     public static final Format XML = new Format("XML");
 
+    /** Predefined format for YAML files. */
+    public static final Format YAML = new Format("YAML");
+
     private final String name;
 
     /**

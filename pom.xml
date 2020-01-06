@@ -47,7 +47,7 @@
     </ciManagement>
 
     <description>
-        Silencio is a Java library for transforming and converting XML, JSON, Properties and other formats. It
+        Silencio is a Java library for transforming and converting XML, JSON, Properties, YAML and other formats. It
         is applicable for most operations such as obfuscation, encryption, minimisation (minifying), anonymous. Library
         is fully customizable and extensible.
     </description>
@@ -260,6 +260,11 @@
         <dependency>
             <groupId>com.fasterxml.jackson.dataformat</groupId>
             <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-yaml</artifactId>
             <version>${jackson.version}</version>
         </dependency>
         <dependency>
