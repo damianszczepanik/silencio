@@ -1,11 +1,11 @@
 ---
 model: "SUV"
 price:
-  value: 38504
+  value: 9223372036854775809
   currency: "$"
 wheels: 4
 size:
-  length: 4.45
+  length: 3850400000
   height: 2.05
   width: 2.200
 weight:

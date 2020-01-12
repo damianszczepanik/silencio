@@ -73,7 +73,7 @@ public class XMLProcessorTest extends GenericTest {
     @Test
     public void shouldFailWhenWrittingToInvalidWriter() {
 
-        final String errorMessage = "Don't write into this writter!";
+        final String errorMessage = "Don't write into this writer!";
 
         // given
         XMLProcessor processor = new XMLProcessor();

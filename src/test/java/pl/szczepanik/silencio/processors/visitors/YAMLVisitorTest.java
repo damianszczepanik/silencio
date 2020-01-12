@@ -1,12 +1,8 @@
 package pl.szczepanik.silencio.processors.visitors;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
-import java.io.IOException;
-import java.util.Map;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
@@ -17,10 +13,15 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.ConverterVisitor;
 import pl.szczepanik.silencio.utils.ResourceLoader;
 
+import java.io.IOException;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class JSONVisitorTest extends GenericTest {
+public class YAMLVisitorTest extends GenericTest {
 
     @Test
     public void shouldReportExceptionOnUnsupportedModel() throws Exception {
@@ -28,7 +29,7 @@ public class JSONVisitorTest extends GenericTest {
         // when
         final String key = "myKey";
         final Object value = new Object();
-        JSONVisitor parser = new JSONVisitor();
+        YAMLVisitor parser = new YAMLVisitor();
 
         // then
         thrown.expect(ProcessorException.class);
@@ -37,22 +38,22 @@ public class JSONVisitorTest extends GenericTest {
     }
 
     @Test
-    public void shouldVisitAllJsonNodes() throws IOException {
+    public void shouldVisitAllYamlNodes() throws IOException {
 
-        final int nodeCounter = 14;
+        final int nodeCounter = 16;
 
         // given
-        input = ResourceLoader.loadJsonAsReader("suv.json");
-        Map<String, Object> jsonStructure = new ObjectMapper().readValue(input,
+        input = ResourceLoader.loadYamlAsReader("suv.yaml");
+        Map<String, Object> yamlStructure = new ObjectMapper(new YAMLFactory()).readValue(input,
                 new TypeReference<Map<String, Object>>() {
                 });
         ConverterVisitor visitCounter = new ConverterVisitor();
         Execution execution = new Execution(new PositiveDecision(), visitCounter);
-        JSONVisitor visitor = new JSONVisitor();
+        YAMLVisitor visitor = new YAMLVisitor();
         visitor.setConfiguration(new Configuration(execution));
 
         // when
-        visitor.processJSON(jsonStructure);
+        visitor.processYaml(yamlStructure);
 
         // then
         assertThat(visitCounter.getVisitCounter()).isEqualTo(nodeCounter);

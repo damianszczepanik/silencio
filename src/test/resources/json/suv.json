@@ -1,7 +1,7 @@
 {
   "model" : "SUV",
   "price" : {
-    "value" : 38504,
+    "value" : 3850400000,
     "currency" : "$"
   },
   "wheels" : 4,
