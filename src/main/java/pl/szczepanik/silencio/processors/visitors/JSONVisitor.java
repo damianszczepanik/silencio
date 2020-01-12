@@ -70,9 +70,10 @@ public class JSONVisitor extends AbstractVisitor {
 
     private boolean isBasicType(Object value) {
         // list of available types http://wiki.fasterxml.com/JacksonInFiveMinutes
-        return value instanceof String || value instanceof Integer || value instanceof Long
-                || value instanceof BigInteger || value instanceof BigDecimal || value instanceof Double
-                || value instanceof Boolean || value == null;
+        return value instanceof String
+                || value instanceof Integer || value instanceof Long || value instanceof BigInteger
+                || value instanceof Double || value instanceof BigDecimal
+                || value instanceof Boolean
+                || value == null;
     }
-
 }

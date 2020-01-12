@@ -71,9 +71,9 @@ public class JSONProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenWrittingToInvalidWriter() {
+    public void shouldFailWhenWritingToInvalidWriter() {
 
-        final String errorMessage = "Don't write into this writter!";
+        final String errorMessage = "Don't write into this writer!";
 
         // given
         JSONProcessor processor = new JSONProcessor();

@@ -51,4 +51,43 @@ public class YAMLProcessorTest extends GenericTest {
         processor.realWrite(output);
         assertThat(refInput).isEqualToNormalizingNewlines(output.toString());
     }
+
+    @Test
+    public void shouldFailWhenLoadingInvalidYAMLFile() {
+
+        // given
+        Processor processor = new YAMLProcessor();
+        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
+        input = ResourceLoader.loadYamlAsReader("corrupted.yaml");
+
+        // when
+        processor.setConfiguration(new Configuration(execution));
+
+        // then
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage(containsString("Cannot construct instance of"));
+        processor.load(input);
+    }
+
+    @Test
+    public void shouldFailWhenWritingToInvalidWriter() {
+
+        final String errorMessage = "Don't write into this writer!";
+
+        // given
+        YAMLProcessor processor = new YAMLProcessor();
+        Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
+        processor.setConfiguration(new Configuration(execution));
+        input = ResourceLoader.loadYamlAsReader("empty.yaml");
+        output = new WriterCrashOnWrite(errorMessage);
+
+        // when
+        processor.load(input);
+        processor.realProcess();
+
+        // then
+        thrown.expect(ProcessorException.class);
+        thrown.expectMessage(errorMessage);
+        processor.realWrite(output);
+    }
 }

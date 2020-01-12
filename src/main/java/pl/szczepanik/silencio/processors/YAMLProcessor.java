@@ -13,6 +13,7 @@ import pl.szczepanik.silencio.processors.visitors.YAMLVisitor;
 import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
+import java.util.Collections;
 import java.util.Map;
 
 /**
@@ -43,6 +44,10 @@ public class YAMLProcessor extends AbstractProcessor {
             yamlStructure = mapper.readValue(reader, new TypeReference<Map<String, Object>>() { });
         } catch (IOException e) {
             throw new ProcessorException(e);
+        }
+        // when input file is empty
+        if (yamlStructure == null) {
+            yamlStructure = Collections.emptyMap();
         }
     }
 
