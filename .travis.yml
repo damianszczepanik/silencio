@@ -16,11 +16,6 @@ before_install:
   # Workaround for issue http://bugs.java.com/bugdatabase/view_bug.do?bug_id=7089443
   - sed -e "s/^\\(127\\.0\\.0\\.1.*\\)/\\1 $(hostname | cut -c1-63)/" /etc/hosts | sudo tee /etc/hosts
 
-addons:
-  hosts:
-    - myshorthost
-  hostname: myshorthost
-
 matrix:
   include:
     - jdk: oraclejdk8
@@ -46,6 +41,9 @@ after_success:
   bash <(curl -s https://codecov.io/bash)
 
 addons:
+  hosts:
+    - myshorthost
+  hostname: myshorthost
   sonarcloud:
     organization: "damianszczepanik"
     token:
