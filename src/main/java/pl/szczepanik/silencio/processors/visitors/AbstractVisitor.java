@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.core.Value;
  */
 public abstract class AbstractVisitor {
 
-    static final String EXCEPTION_MESSAGE_INVALID_VALUE_TYPE = "Excepcted pure value, not packed into Value object.";
+    static final String EXCEPTION_MESSAGE_INVALID_VALUE_TYPE = "Expected pure value, not packed into Value object.";
 
     private Configuration configuration;
 

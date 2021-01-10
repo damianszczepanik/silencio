@@ -40,6 +40,8 @@ public class XMLProcessor extends AbstractProcessor {
     @Override
     public void realLoad(Reader reader) {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        factory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
             document = builder.parse(new InputSource(reader));
