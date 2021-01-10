@@ -1,12 +1,11 @@
 package pl.szczepanik.silencio.processors.visitors;
 
-import pl.szczepanik.silencio.core.Key;
-import pl.szczepanik.silencio.core.ProcessorException;
-
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.List;
 import java.util.Map;
+
+import pl.szczepanik.silencio.core.Key;
+import pl.szczepanik.silencio.core.ProcessorException;
 
 /**
  * Iterates over YAML nodes and calls {@link #processValue(Key, Object)} for each basic node.
