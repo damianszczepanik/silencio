@@ -14,6 +14,7 @@ import java.util.Set;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
@@ -33,6 +34,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(IOUtility.class)
+@PowerMockIgnore("jdk.internal.reflect.*")
 public class WikipediaConverterTest extends GenericTest {
 
     private static final String URL_ADDRESS = "https://en.m.wikipedia.org/wiki/Special:Random";

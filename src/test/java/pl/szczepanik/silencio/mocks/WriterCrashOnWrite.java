@@ -3,10 +3,8 @@ package pl.szczepanik.silencio.mocks;
 import java.io.IOException;
 import java.io.Writer;
 
-import org.omg.CORBA.portable.IndirectionException;
-
 /**
- * Writer that throws {@link IndirectionException} when {@link #write(char[], int, int)}} method is invoked.
+ * Writer that throws exception when {@link #write(char[], int, int)}} method is invoked.
  * 
  * @author Damian Szczepanik (damianszczepanik@github)
  */

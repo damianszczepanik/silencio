@@ -11,6 +11,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import org.powermock.reflect.Whitebox;
@@ -30,6 +31,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(value = { Node.class })
+@PowerMockIgnore("jdk.internal.reflect.*")
 public class XMLVisitorTest extends GenericTest {
 
     @Test

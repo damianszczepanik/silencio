@@ -11,6 +11,7 @@ import java.nio.charset.StandardCharsets;
 import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.powermock.core.classloader.annotations.PowerMockIgnore;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 import pl.szczepanik.silencio.GenericTest;
@@ -21,6 +22,7 @@ import pl.szczepanik.silencio.core.IntegrityException;
  */
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(IOUtils.class)
+@PowerMockIgnore("jdk.internal.reflect.*")
 public class IOUtilityTest extends GenericTest {
 
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
