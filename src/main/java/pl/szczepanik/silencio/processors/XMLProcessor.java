@@ -23,7 +23,7 @@ import pl.szczepanik.silencio.processors.visitors.XMLVisitor;
 
 /**
  * Provides processor that supports XML format.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class XMLProcessor extends AbstractProcessor {
@@ -32,7 +32,9 @@ public class XMLProcessor extends AbstractProcessor {
 
     private Document document = null;
 
-    /** Creates new processor for XML file. */
+    /**
+     * Creates new processor for XML file.
+     */
     public XMLProcessor() {
         super(Format.XML);
     }
@@ -64,6 +66,9 @@ public class XMLProcessor extends AbstractProcessor {
     @Override
     public void realWrite(Writer writer) {
         TransformerFactory transformerFactory = TransformerFactory.newInstance();
+        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_DTD, "");
+        transformerFactory.setAttribute(XMLConstants.ACCESS_EXTERNAL_SCHEMA, "");
+
         try {
             transformerFactory.setFeature(XMLConstants.FEATURE_SECURE_PROCESSING, true);
 
