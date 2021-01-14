@@ -4,7 +4,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.stubs.StubFormat;
@@ -89,7 +88,7 @@ public class FormatTest extends GenericTest {
         Format format = new StubFormat(name);
 
         // then
-        assertThat(format.hashCode()).isEqualTo(name.hashCode());
+        assertThat(format.hashCode()).hasSameHashCodeAs(name);
     }
 
     @Test

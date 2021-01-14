@@ -1,5 +1,6 @@
 package pl.szczepanik.silencio.diagnostics;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.io.StringReader;
 import java.io.StringWriter;
@@ -8,11 +9,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.apache.commons.io.IOUtils;
 import org.paukov.combinatorics.Factory;
 import org.paukov.combinatorics.Generator;
 import org.paukov.combinatorics.ICombinatoricsVector;
-
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 import pl.szczepanik.silencio.api.Format;
@@ -44,19 +43,20 @@ public final class ProcessorSmokeChecker {
             new NegativeDecision(),
             new MatcherDecision(".*")));
 
-    /** Immutable list of all available formatters. */
+    /**
+     * Immutable list of all available formatters.
+     */
     public static final List<Format> FORMATS = Collections.unmodifiableList(Arrays.asList(
             Format.JSON,
             Format.PROPERTIES,
             Format.XML));
-    
+
     private final Processor processor;
 
     /**
      * Creates checker with the processor that should be examined.
-     * 
-     * @param processor
-     *            processor that wil lbe validated
+     *
+     * @param processor processor that wil lbe validated
      */
     public ProcessorSmokeChecker(Processor processor) {
         this.processor = processor;
@@ -65,9 +65,8 @@ public final class ProcessorSmokeChecker {
     /**
      * Validates processor against many combinations built from available converters. For more details check
      * https://github.com/dpaukov/combinatoricslib#5-subsets
-     * 
-     * @param content
-     *            content that should be converted
+     *
+     * @param content content that should be converted
      */
     public void validateWithAllCombinations(String content) {
         ICombinatoricsVector<Converter> allConverters = Factory.createVector(CONVERTERS);
@@ -88,7 +87,7 @@ public final class ProcessorSmokeChecker {
         for (ICombinatoricsVector<Decision> subDecisions : subSet) {
             if (subDecisions.getSize() != 0) {
                 Decision[] decisions = subDecisions.getVector().toArray(new Decision[subDecisions.getSize()]);
-                Execution[] executions = { new Execution(decisions, converters) };
+                Execution[] executions = {new Execution(decisions, converters)};
                 validateProcessor(executions, content);
             }
         }
@@ -97,25 +96,20 @@ public final class ProcessorSmokeChecker {
     /**
      * Passes sets of basic converters into given processor and make sure that processor does not crash.
      *
-     * @param executions
-     *            Executions that will be used for validation
-     * @param content
-     *            content to the data to convert
-     * @throws ProcessorException
-     *             when processing fails (any reason)
+     * @param executions Executions that will be used for validation
+     * @param content    content to the data to convert
+     * @throws ProcessorException when processing fails (any reason)
      */
     public void validateProcessor(Execution[] executions, String content) {
-        Writer output = new StringWriter();
-        Reader input = new StringReader(content);
 
-        try {
+        try (Reader input = new StringReader(content);
+             Writer output = new StringWriter()) {
             processor.setConfiguration(new Configuration(executions));
             processor.load(input);
             processor.process();
             processor.write(output);
-        } finally {
-            IOUtils.closeQuietly(input);
-            IOUtils.closeQuietly(output);
+        } catch (IOException e) {
+            // ignore an exception
         }
     }
 }

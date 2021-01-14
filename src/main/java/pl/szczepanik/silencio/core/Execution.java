@@ -1,14 +1,13 @@
 package pl.szczepanik.silencio.core;
 
 import org.apache.commons.lang3.ArrayUtils;
-
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
 
 /**
  * Keeps array of the {@link Decision} with array of the @{link {@link Converter} that will be used for single
  * conversion.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class Execution {
@@ -18,11 +17,9 @@ public class Execution {
 
     /**
      * Creates execution with pairs of decisions and converters.
-     * 
-     * @param decisions
-     *            list of decisions use for this execution
-     * @param converters
-     *            list of converters use for this execution
+     *
+     * @param decisions  list of decisions use for this execution
+     * @param converters list of converters use for this execution
      */
     public Execution(Decision[] decisions, Converter[] converters) {
         validateDecisions(decisions);
@@ -34,31 +31,27 @@ public class Execution {
 
     /**
      * Creates execution with pairs of decisions and converters.
-     * 
-     * @param decision
-     *            single decision use for this execution
-     * @param converters
-     *            list of converters use for this execution
+     *
+     * @param decision   single decision use for this execution
+     * @param converters list of converters use for this execution
      */
     public Execution(Decision decision, Converter[] converters) {
-        this(new Decision[] { decision }, converters);
+        this(new Decision[]{decision}, converters);
     }
 
     /**
      * Creates execution with pairs of decisions and converters.
-     * 
-     * @param decision
-     *            single decision use for this execution
-     * @param converter
-     *            single converter use for this execution
+     *
+     * @param decision  single decision use for this execution
+     * @param converter single converter use for this execution
      */
     public Execution(Decision decision, Converter converter) {
-        this(new Decision[] { decision }, new Converter[] { converter });
+        this(decision, new Converter[]{converter});
     }
 
     /**
      * Gets all decisions for this execution.
-     * 
+     *
      * @return all decisions
      */
     public Decision[] getDecisions() {
@@ -67,7 +60,7 @@ public class Execution {
 
     /**
      * Gets all converters for this execution.
-     * 
+     *
      * @return all converters
      */
     public Converter[] getConverters() {

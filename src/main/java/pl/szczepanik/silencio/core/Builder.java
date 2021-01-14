@@ -16,14 +16,18 @@ import pl.szczepanik.silencio.processors.XMLProcessor;
 
 /**
  * Default implementation of class that holds processors.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class Builder {
 
-    /** Blank converter that clears value for each key. */
+    /**
+     * Blank converter that clears value for each key.
+     */
     public static final Converter BLANK = new BlankConverter();
-    /** NumberSequence converter that changes values into sequential numbers. */
+    /**
+     * NumberSequence converter that changes values into sequential numbers.
+     */
     public static final Converter NUMBER_SEQUENCE = new NumberSequenceConverter();
 
     private final Format format;
@@ -32,9 +36,8 @@ public final class Builder {
 
     /**
      * Creates new builder from given format.
-     * 
-     * @param format
-     *            format for this builder
+     *
+     * @param format format for this builder
      */
     public Builder(Format format) {
         this.format = format;
@@ -42,11 +45,9 @@ public final class Builder {
 
     /**
      * Appends list of decisions and converters into the executions as the new position.
-     * 
-     * @param decisions
-     *            decisions for next execution
-     * @param converters
-     *            converters for next execution
+     *
+     * @param decisions  decisions for next execution
+     * @param converters converters for next execution
      * @return instance of current builder
      */
     public Builder with(Decision[] decisions, Converter[] converters) {
@@ -56,35 +57,30 @@ public final class Builder {
 
     /**
      * Appends single decision and converters into the executions as the new position.
-     * 
-     * @param decision
-     *            decision for next execution
-     * @param converters
-     *            converters for next execution
+     *
+     * @param decision   decision for next execution
+     * @param converters converters for next execution
      * @return instance of current builder
      */
     public Builder with(Decision decision, Converter... converters) {
-        return with(new Decision[] { decision }, converters);
+        return with(new Decision[]{decision}, converters);
     }
 
     /**
      * Appends single decision and converter into the executions as the new position.
-     * 
-     * @param decision
-     *            decision for next execution
-     * @param converter
-     *            converter for next execution
+     *
+     * @param decision  decision for next execution
+     * @param converter converter for next execution
      * @return instance of current builder
      */
     public Builder with(Decision decision, Converter converter) {
-        return with(decision, new Converter[] { converter });
+        return with(decision, new Converter[]{converter});
     }
 
     /**
      * Appends converters into the executions as the new position.
-     * 
-     * @param converters
-     *            converters for next execution
+     *
+     * @param converters converters for next execution
      * @return instance of current builder
      */
     public Builder with(Converter... converters) {
@@ -93,9 +89,8 @@ public final class Builder {
 
     /**
      * Appends single converter into the executions as the new position.
-     * 
-     * @param converter
-     *            converter for next execution
+     *
+     * @param converter converter for next execution
      * @return instance of current builder
      */
     public Builder with(Converter converter) {
@@ -104,7 +99,7 @@ public final class Builder {
 
     /**
      * Builds the processor based on passed values.
-     * 
+     *
      * @return created processor
      */
     public Processor build() {
@@ -126,7 +121,9 @@ public final class Builder {
         return processor;
     }
 
-    /** Removes all decisions and converters from this builder. */
+    /**
+     * Removes all decisions and converters from this builder.
+     */
     public void clearExecutions() {
         executions.clear();
     }
