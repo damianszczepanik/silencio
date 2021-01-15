@@ -1,9 +1,9 @@
 package pl.szczepanik.silencio;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -20,8 +20,12 @@ public abstract class GenericTest {
     protected Reader input;
 
     @After
-    public void closeStreams() {
-        IOUtils.closeQuietly(input);
-        IOUtils.closeQuietly(output);
+    public void closeStreams() throws IOException {
+        if (input != null) {
+            input.close();
+        }
+        if (output != null) {
+            output.close();
+        }
     }
 }

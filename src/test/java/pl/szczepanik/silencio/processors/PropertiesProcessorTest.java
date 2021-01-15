@@ -10,7 +10,6 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Properties;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.Test;
 import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
@@ -27,13 +26,13 @@ public class PropertiesProcessorTest extends GenericTest {
 
     @Test
     public void shouldReturnPassedFormat() {
-         
+
         // given
         PropertiesProcessor processor = new PropertiesProcessor();
 
         // when
         Format format = processor.getFormat();
-        
+
         // then
         assertThat(format).isEqualTo(Format.PROPERTIES);
     }
@@ -57,7 +56,7 @@ public class PropertiesProcessorTest extends GenericTest {
         // then
         assertThat(properties).isEqualTo(refProps);
 
-        IOUtils.closeQuietly(referenceInput);
+        referenceInput.close();
     }
 
     @Test
@@ -86,7 +85,7 @@ public class PropertiesProcessorTest extends GenericTest {
 
         // when
         processor.realProcess();
-        
+
         // then
         assertThat(visitorMock.getProperties()).isEqualTo(properties);
     }

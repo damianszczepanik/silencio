@@ -13,26 +13,29 @@ import pl.szczepanik.silencio.core.ProcessorStateMachine;
 
 /**
  * Provides basic implementations of methods used by processors.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public abstract class AbstractProcessor implements Processor {
 
-    /** Format used by this type of processor. */
+    /**
+     * Format used by this type of processor.
+     */
     protected final Format format;
 
-    /** Configuration used by current processor. */
+    /**
+     * Configuration used by current processor.
+     */
     protected Configuration configuration;
 
     private final ProcessorStateMachine stateMachine = new ProcessorStateMachine();
 
     /**
      * Creates new instance.
-     * 
-     * @param format
-     *            format that will be supported by this processor.
+     *
+     * @param format format that will be supported by this processor.
      */
-    public AbstractProcessor(Format format) {
+    protected AbstractProcessor(Format format) {
         validateFormat(format);
         this.format = format;
     }
@@ -60,6 +63,7 @@ public abstract class AbstractProcessor implements Processor {
 
     /**
      * Method implemented by processors which is responsible only for loading content from reader.
+     *
      * @param reader reader with the content to read
      */
     protected abstract void realLoad(Reader reader);
@@ -95,6 +99,7 @@ public abstract class AbstractProcessor implements Processor {
 
     /**
      * Method implemented by processors which is responsible only for writing results into the writer.
+     *
      * @param writer writer to which the content will be written
      */
     protected abstract void realWrite(Writer writer);

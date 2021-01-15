@@ -41,17 +41,17 @@ public class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
-        Decision[] decisions = { new PositiveDecision(), new NegativeDecision() };
+        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
+        Decision[] decisions = {new PositiveDecision(), new NegativeDecision()};
 
         // when
         Builder builder = new Builder(format).with(decisions, converters);
 
         // then
         List<Execution> executions = Whitebox.getInternalState(builder, "executions");
-        assertThat(executions.get(0).getDecisions().length).isEqualTo(decisions.length);
+        assertThat(executions.get(0).getDecisions()).hasSameSizeAs(decisions);
         assertThat(executions.get(0).getDecisions()).isEqualTo(decisions);
-        assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
+        assertThat(executions.get(0).getConverters()).hasSameSizeAs(converters);
         assertThat(executions.get(0).getConverters()).isEqualTo(converters);
     }
 
@@ -60,7 +60,7 @@ public class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
+        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
         Decision decision = new NegativeDecision();
 
         // when
@@ -68,9 +68,9 @@ public class BuilderTest extends GenericTest {
 
         // then
         List<Execution> executions = Whitebox.getInternalState(builder, "executions");
-        assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
+        assertThat(executions.get(0).getDecisions()).hasSize(1);
         assertThat(executions.get(0).getDecisions()[0]).isEqualTo(decision);
-        assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
+        assertThat(executions.get(0).getConverters()).hasSameSizeAs(converters);
         assertThat(executions.get(0).getConverters()).isEqualTo(converters);
     }
 
@@ -91,9 +91,9 @@ public class BuilderTest extends GenericTest {
         assertThat(executions).hasSize(2);
 
         Execution appendExecution = executions.get(1);
-        assertThat(appendExecution.getDecisions().length).isEqualTo(1);
+        assertThat(appendExecution.getDecisions()).hasSize(1);
         assertThat(appendExecution.getDecisions()[0]).isEqualTo(decision);
-        assertThat(appendExecution.getConverters().length).isEqualTo(1);
+        assertThat(appendExecution.getConverters()).hasSize(1);
         assertThat(appendExecution.getConverters()[0]).isEqualTo(converter);
     }
 
@@ -102,7 +102,7 @@ public class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
+        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
         Builder builder = new Builder(format);
 
         // when
@@ -110,9 +110,9 @@ public class BuilderTest extends GenericTest {
 
         // then
         List<Execution> executions = Whitebox.getInternalState(builder, "executions");
-        assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
+        assertThat(executions.get(0).getDecisions()).hasSize(1);
         assertThat(executions.get(0).getDecisions()[0]).isInstanceOf(PositiveDecision.class);
-        assertThat(executions.get(0).getConverters().length).isEqualTo(converters.length);
+        assertThat(executions.get(0).getConverters()).hasSameSizeAs(converters);
         assertThat(executions.get(0).getConverters()).isEqualTo(converters);
     }
 
@@ -129,9 +129,9 @@ public class BuilderTest extends GenericTest {
 
         // then
         List<Execution> executions = Whitebox.getInternalState(builder, "executions");
-        assertThat(executions.get(0).getDecisions().length).isEqualTo(1);
+        assertThat(executions.get(0).getDecisions()).hasSize(1);
         assertThat(executions.get(0).getDecisions()[0]).isInstanceOf(PositiveDecision.class);
-        assertThat(executions.get(0).getConverters().length).isEqualTo(1);
+        assertThat(executions.get(0).getConverters()).hasSize(1);
         assertThat(executions.get(0).getConverters()[0]).isEqualTo(converter);
     }
 
@@ -152,7 +152,7 @@ public class BuilderTest extends GenericTest {
 
     @Test
     public void shouldClearExecutions() {
-        
+
         // given
         Builder builder = new Builder(Format.XML);
         builder.with(new NegativeDecision(), Builder.BLANK);

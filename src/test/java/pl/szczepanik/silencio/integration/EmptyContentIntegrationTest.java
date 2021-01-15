@@ -1,17 +1,16 @@
 package pl.szczepanik.silencio.integration;
 
+import java.io.IOException;
 import java.io.Reader;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.apache.commons.io.IOUtils;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -32,10 +31,10 @@ public class EmptyContentIntegrationTest extends GenericTest {
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-            { Format.XML,        ResourceLoader.loadXmlAsReader("minimal.xml") },
-            { Format.JSON,       ResourceLoader.loadJsonAsReader("empty.json") },
-            { Format.PROPERTIES, ResourceLoader.loadPropertiesAsReader("empty.properties") },
+        return Arrays.asList(new Object[][]{
+                {Format.XML, ResourceLoader.loadXmlAsReader("minimal.xml")},
+                {Format.JSON, ResourceLoader.loadJsonAsReader("empty.json")},
+                {Format.PROPERTIES, ResourceLoader.loadPropertiesAsReader("empty.properties")},
         });
     }
 
@@ -55,7 +54,7 @@ public class EmptyContentIntegrationTest extends GenericTest {
     }
 
     @After
-    public void cleanStream() {
-        IOUtils.closeQuietly(emptyInput);
+    public void cleanStream() throws IOException {
+        emptyInput.close();
     }
 }
