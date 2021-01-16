@@ -117,7 +117,6 @@
                 <configuration>
                     <source>11</source>
                     <target>11</target>
-                    <release>11</release>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
@@ -179,10 +178,6 @@
                         <!-- Integration tests should not be counted by code coverage -->
                         <exclude>${test.integration.pattern}</exclude>
                     </excludes>
-                    <!-- to allow all reflection access for third party libraries -->
-                    <argLine>
-                        --illegal-access=permit
-                    </argLine>
                 </configuration>
             </plugin>
             <plugin>
