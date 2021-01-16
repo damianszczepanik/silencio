@@ -1,9 +1,13 @@
 package pl.szczepanik.silencio.processors;
 
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.hamcrest.core.StringContains.containsString;
+
+import java.io.StringWriter;
+
 import org.junit.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
-import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Builder;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
@@ -11,11 +15,6 @@ import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.WriterCrashOnWrite;
 import pl.szczepanik.silencio.utils.ResourceLoader;
-
-import java.io.StringWriter;
-
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
@@ -26,7 +25,7 @@ public class YAMLProcessorTest extends GenericTest {
     public void shouldReturnPassedFormat() {
 
         // given
-        Processor processor = new YAMLProcessor();
+        YAMLProcessor processor = new YAMLProcessor();
 
         // when
         Format format = processor.getFormat();
@@ -56,7 +55,7 @@ public class YAMLProcessorTest extends GenericTest {
     public void shouldFailWhenLoadingInvalidYAMLFile() {
 
         // given
-        Processor processor = new YAMLProcessor();
+        YAMLProcessor processor = new YAMLProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
         input = ResourceLoader.loadYamlAsReader("corrupted.yaml");
 
