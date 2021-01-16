@@ -13,6 +13,7 @@ import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.processors.PropertiesProcessor;
 import pl.szczepanik.silencio.processors.XMLProcessor;
+import pl.szczepanik.silencio.processors.YAMLProcessor;
 
 /**
  * Default implementation of class that holds processors.
@@ -110,6 +111,8 @@ public final class Builder {
             processor = new XMLProcessor();
         } else if (Format.PROPERTIES.equals(format)) {
             processor = new PropertiesProcessor();
+        } else if (Format.YAML.equals(format)) {
+            processor = new YAMLProcessor();
         } else {
             throw new IntegrityException("Unsupported format: " + format.getName());
         }
