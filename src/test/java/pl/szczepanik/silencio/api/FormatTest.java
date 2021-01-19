@@ -75,11 +75,23 @@ public class FormatTest extends GenericTest {
         // then
         assertThat(one).isEqualTo(one);
         assertThat(one).isNotNull();
-        assertThat(one).isNotEqualTo("one");
     }
 
     @Test
-    public void shouldReeturnHashCodeOfName() {
+    public void shouldNotEqualsWithNull() {
+
+        // when
+        Format one = Format.JSON;
+
+        // when
+        boolean compare = one.equals(null);
+
+        // then
+        assertThat(compare).isFalse();
+    }
+
+    @Test
+    public void shouldReturnHashCodeOfName() {
 
         // given
         String name = "crazyName";

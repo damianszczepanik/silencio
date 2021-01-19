@@ -49,7 +49,8 @@ public final class ProcessorSmokeChecker {
     public static final List<Format> FORMATS = Collections.unmodifiableList(Arrays.asList(
             Format.JSON,
             Format.PROPERTIES,
-            Format.XML));
+            Format.XML,
+            Format.YAML));
 
     private final Processor processor;
 
