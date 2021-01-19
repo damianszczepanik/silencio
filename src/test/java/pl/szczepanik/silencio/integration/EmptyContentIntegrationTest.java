@@ -1,11 +1,11 @@
 package pl.szczepanik.silencio.integration;
 
-import java.io.IOException;
-import java.io.Reader;
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.StringWriter;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -27,14 +27,15 @@ public class EmptyContentIntegrationTest extends GenericTest {
     public Format format;
 
     @Parameter(value = 1)
-    public Reader emptyInput;
+    public String fileName;
 
     @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][]{
-                {Format.XML, ResourceLoader.loadXmlAsReader("minimal.xml")},
-                {Format.JSON, ResourceLoader.loadJsonAsReader("empty.json")},
-                {Format.PROPERTIES, ResourceLoader.loadPropertiesAsReader("empty.properties")},
+                {Format.XML, "minimal.xml"},
+                {Format.JSON, "empty.json"},
+                {Format.PROPERTIES, "empty.properties"},
+                {Format.YAML, "empty.yaml"},
         });
     }
 
@@ -44,17 +45,16 @@ public class EmptyContentIntegrationTest extends GenericTest {
         // given
         Builder builder = new Builder(format).with(Builder.BLANK);
         Processor processor = builder.build();
-        processor.load(emptyInput);
+        input = ResourceLoader.loadAsReader(fileName);
+        processor.load(input);
 
         // then
         processor.process();
 
         // then
-        // no crash
-    }
-
-    @After
-    public void cleanStream() throws IOException {
-        emptyInput.close();
+        output = new StringWriter();
+        processor.write(output);
+        String reference = ResourceLoader.loadAsString(fileName);
+        assertThat(output.toString()).isEqualToNormalizingNewlines(output.toString());
     }
 }

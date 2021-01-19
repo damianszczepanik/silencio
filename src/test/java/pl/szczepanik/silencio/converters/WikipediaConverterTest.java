@@ -45,7 +45,7 @@ public class WikipediaConverterTest extends GenericTest {
 
         // given
         Converter wikipedia = new WikipediaConverter();
-        input = ResourceLoader.loadJsonAsReader("suv.json");
+        input = ResourceLoader.loadAsReader("suv.json");
         Processor processor = new JSONProcessor();
         Execution execution = new Execution(new PositiveDecision(), wikipedia);
         processor.setConfiguration(new Configuration(execution));
@@ -54,7 +54,7 @@ public class WikipediaConverterTest extends GenericTest {
         // when
         mockStatic(IOUtility.class);
         when(IOUtility.urlToString(new URL(URL_ADDRESS)))
-            .thenReturn(INVALID_HTML_PAGE);
+                .thenReturn(INVALID_HTML_PAGE);
 
         // then
         thrown.expect(IntegrityException.class);
@@ -67,7 +67,7 @@ public class WikipediaConverterTest extends GenericTest {
 
         // given
         Converter converter = new WikipediaConverter();
-        input = ResourceLoader.loadJsonAsReader("suv.json");
+        input = ResourceLoader.loadAsReader("suv.json");
         output = new StringWriter();
         Processor processor = new JSONProcessor();
         Execution execution = new Execution(new PositiveDecision(), converter);
@@ -77,29 +77,29 @@ public class WikipediaConverterTest extends GenericTest {
         // when
         mockStatic(IOUtility.class);
         when(IOUtility.urlToString(new URL(URL_ADDRESS)))
-             .thenReturn(toWikiPage("George Washington"))
-             .thenReturn(toWikiPage("John Adams"))
-             .thenReturn(toWikiPage("George Washington"))
-             .thenReturn(toWikiPage("George Washington")) // duplicate to check elimination duplicates
-             .thenReturn(toWikiPage("Thomas Jefferson"))
-             .thenReturn(toWikiPage("James Madison"))
-             .thenReturn(toWikiPageItalics("James Monroe")) // with italics
-             .thenReturn(toWikiPage("John Quincy Adams")) // one more time
-             .thenReturn(toWikiPage("Andrew Jackson"))
-             .thenReturn(toWikiPageItalics("Andrew Jackson")) // with italics
-             .thenReturn(toWikiPage("Martin Van Buren"))
-             .thenReturn(toWikiPage("William Henry Harrison"))
-             .thenReturn(toWikiPage("John Tyler"))
-             .thenReturn(toWikiPage("James Polk"))
-             .thenReturn(toWikiPage("James Polk"))
-             .thenReturn(toWikiPage("Zachary Taylor"))
-             .thenThrow(new IllegalArgumentException("Trying to parse more elements than expected!"));
+                .thenReturn(toWikiPage("George Washington"))
+                .thenReturn(toWikiPage("John Adams"))
+                .thenReturn(toWikiPage("George Washington"))
+                .thenReturn(toWikiPage("George Washington")) // duplicate to check elimination duplicates
+                .thenReturn(toWikiPage("Thomas Jefferson"))
+                .thenReturn(toWikiPage("James Madison"))
+                .thenReturn(toWikiPageItalics("James Monroe")) // with italics
+                .thenReturn(toWikiPage("John Quincy Adams")) // one more time
+                .thenReturn(toWikiPage("Andrew Jackson"))
+                .thenReturn(toWikiPageItalics("Andrew Jackson")) // with italics
+                .thenReturn(toWikiPage("Martin Van Buren"))
+                .thenReturn(toWikiPage("William Henry Harrison"))
+                .thenReturn(toWikiPage("John Tyler"))
+                .thenReturn(toWikiPage("James Polk"))
+                .thenReturn(toWikiPage("James Polk"))
+                .thenReturn(toWikiPage("Zachary Taylor"))
+                .thenThrow(new IllegalArgumentException("Trying to parse more elements than expected!"));
 
         processor.process();
         processor.write(output);
 
         // then
-        String reference = ResourceLoader.loadJsonAsString("suv_Positive_Wikipedia.json");
+        String reference = ResourceLoader.loadAsString("suv_Positive_Wikipedia.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 

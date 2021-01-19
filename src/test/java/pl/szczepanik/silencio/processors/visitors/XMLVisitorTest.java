@@ -26,11 +26,12 @@ import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.ConverterVisitor;
 import pl.szczepanik.silencio.utils.ResourceLoader;
+
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(value = { Node.class })
+@PrepareForTest(value = {Node.class})
 @PowerMockIgnore("jdk.internal.reflect.*")
 public class XMLVisitorTest extends GenericTest {
 
@@ -54,7 +55,7 @@ public class XMLVisitorTest extends GenericTest {
         final int nodeCounter = 14;
 
         // given
-        input = ResourceLoader.loadXmlAsReader("suv.xml");
+        input = ResourceLoader.loadAsReader("suv.xml");
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.parse(new InputSource(input));

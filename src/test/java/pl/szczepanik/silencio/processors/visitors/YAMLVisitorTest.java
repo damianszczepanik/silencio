@@ -1,5 +1,10 @@
 package pl.szczepanik.silencio.processors.visitors;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
+import java.io.IOException;
+import java.util.Map;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
@@ -12,11 +17,6 @@ import pl.szczepanik.silencio.core.ProcessorException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.mocks.ConverterVisitor;
 import pl.szczepanik.silencio.utils.ResourceLoader;
-
-import java.io.IOException;
-import java.util.Map;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
@@ -43,7 +43,7 @@ public class YAMLVisitorTest extends GenericTest {
         final int nodeCounter = 16;
 
         // given
-        input = ResourceLoader.loadYamlAsReader("suv.yaml");
+        input = ResourceLoader.loadAsReader("suv.yaml");
         Map<String, Object> yamlStructure = new ObjectMapper(new YAMLFactory()).readValue(input,
                 new TypeReference<Map<String, Object>>() {
                 });

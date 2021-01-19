@@ -2,12 +2,11 @@ package pl.szczepanik.silencio.api;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
-
 import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
- * Type of the file content.
- * 
+ * Extensible type of the file content.
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class Format {
@@ -28,9 +27,8 @@ public class Format {
 
     /**
      * Creates new format with given name.
-     * 
-     * @param name
-     *            name of the format
+     *
+     * @param name name of the format
      */
     public Format(String name) {
         validateName(name);
@@ -40,13 +38,13 @@ public class Format {
 
     /**
      * Gets name of the format. Usually file format such as XML or JSON.
-     * 
+     *
      * @return name of the format
      */
     public String getName() {
         return name;
     }
-    
+
     @Override
     public int hashCode() {
         return name.hashCode();
@@ -54,7 +52,7 @@ public class Format {
 
     /**
      * Two formats are equal if they have the same name.
-     * 
+     *
      * @see java.lang.Object#equals(java.lang.Object)
      */
     @Override

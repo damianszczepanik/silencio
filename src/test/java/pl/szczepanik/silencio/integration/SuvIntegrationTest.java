@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.junit.runners.Parameterized.Parameter;
 import org.junit.runners.Parameterized.Parameters;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
@@ -31,10 +30,10 @@ public class SuvIntegrationTest extends GenericTest {
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-            { new XMLProcessor(),        ResourceLoader.loadXmlAsString("suv.xml") },
-            { new JSONProcessor(),       ResourceLoader.loadJsonAsString("suv.json") },
-            { new PropertiesProcessor(), ResourceLoader.loadPropertiesAsString("suv.properties") },
+        return Arrays.asList(new Object[][]{
+                {new XMLProcessor(), ResourceLoader.loadAsString("suv.xml")},
+                {new JSONProcessor(), ResourceLoader.loadAsString("suv.json")},
+                {new PropertiesProcessor(), ResourceLoader.loadAsString("suv.properties")},
         });
     }
 

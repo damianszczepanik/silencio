@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.util.Properties;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
@@ -25,7 +24,7 @@ public class PropertiesVisitorTest extends GenericTest {
         final int nodesCounter = 16;
 
         // given
-        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        input = ResourceLoader.loadAsReader("suv.properties");
         Properties properties = new Properties();
         properties.load(input);
 

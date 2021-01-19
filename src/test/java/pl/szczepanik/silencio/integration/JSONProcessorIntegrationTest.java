@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.StringWriter;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -22,7 +21,7 @@ public class JSONProcessorIntegrationTest extends GenericTest {
 
         // given
         Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE).build();
-        input = ResourceLoader.loadJsonAsReader("suv.json");
+        input = ResourceLoader.loadAsReader("suv.json");
         output = new StringWriter();
         processor.load(input);
 
@@ -31,7 +30,7 @@ public class JSONProcessorIntegrationTest extends GenericTest {
 
         // then
         processor.write(output);
-        String reference = ResourceLoader.loadJsonAsString("suv_Positive_NumberSequence.json");
+        String reference = ResourceLoader.loadAsString("suv_Positive_NumberSequence.json");
         assertThat(output.toString()).isEqualTo(reference);
     }
 }

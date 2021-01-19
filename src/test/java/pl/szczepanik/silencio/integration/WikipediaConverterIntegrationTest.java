@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.StringWriter;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -26,7 +25,7 @@ public class WikipediaConverterIntegrationTest extends GenericTest {
 
         // given
         Processor processor = new Builder(Format.JSON).with(new WikipediaConverter()).build();
-        input = ResourceLoader.loadJsonAsReader("suv.json");
+        input = ResourceLoader.loadAsReader("suv.json");
         output = new StringWriter();
 
         // when

@@ -6,7 +6,6 @@ import static org.hamcrest.core.StringContains.containsString;
 import java.io.StringWriter;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -41,8 +40,8 @@ public class JSONProcessorTest extends GenericTest {
 
         // given
         JSONProcessor processor = new JSONProcessor();
-        input = ResourceLoader.loadJsonAsReader("suv.json");
-        String refInput = ResourceLoader.loadJsonAsString("suv.json");
+        input = ResourceLoader.loadAsReader("suv.json");
+        String refInput = ResourceLoader.loadAsString("suv.json");
         output = new StringWriter();
 
         // when
@@ -59,7 +58,7 @@ public class JSONProcessorTest extends GenericTest {
         // given
         Processor processor = new JSONProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
-        input = ResourceLoader.loadJsonAsReader("corrupted.json");
+        input = ResourceLoader.loadAsReader("corrupted.json");
 
         // when
         processor.setConfiguration(new Configuration(execution));
@@ -79,7 +78,7 @@ public class JSONProcessorTest extends GenericTest {
         JSONProcessor processor = new JSONProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
         processor.setConfiguration(new Configuration(execution));
-        input = ResourceLoader.loadJsonAsReader("empty.json");
+        input = ResourceLoader.loadAsReader("empty.json");
         output = new WriterCrashOnWrite(errorMessage);
 
         // when

@@ -5,7 +5,6 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.StringWriter;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -22,7 +21,7 @@ public class XMLProcessorIntegrationTest extends GenericTest {
 
         // given
         Processor processor = new Builder(Format.XML).with(Builder.NUMBER_SEQUENCE).build();
-        input = ResourceLoader.loadXmlAsReader("suv.xml");
+        input = ResourceLoader.loadAsReader("suv.xml");
         output = new StringWriter();
         processor.load(input);
 
@@ -31,7 +30,7 @@ public class XMLProcessorIntegrationTest extends GenericTest {
 
         // then
         processor.write(output);
-        String reference = ResourceLoader.loadXmlAsString("suv_Positive_NumberSequence.xml");
+        String reference = ResourceLoader.loadAsString("suv_Positive_NumberSequence.xml");
         assertThat(output.toString()).isEqualTo(reference);
     }
 }
