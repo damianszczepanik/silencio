@@ -6,7 +6,7 @@ package pl.szczepanik.silencio.utils;
 public class JSONUtility {
 
     public static boolean matchesJsonToPattern(String jsonContent, String patternFile) {
-        String pattern = ResourceLoader.loadJsonAsString(patternFile);
+        String pattern = ResourceLoader.loadAsString(patternFile);
         return jsonContent.matches(pattern);
     }
 }

@@ -6,7 +6,6 @@ import static org.hamcrest.core.StringContains.containsString;
 import java.io.StringWriter;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -41,8 +40,8 @@ public class XMLProcessorTest extends GenericTest {
 
         // given
         XMLProcessor processor = new XMLProcessor();
-        input = ResourceLoader.loadXmlAsReader("suv.xml");
-        String refInput = ResourceLoader.loadXmlAsString("suv_tranformed.xml");
+        input = ResourceLoader.loadAsReader("suv.xml");
+        String refInput = ResourceLoader.loadAsString("suv_tranformed.xml");
         output = new StringWriter();
 
         // when
@@ -59,7 +58,7 @@ public class XMLProcessorTest extends GenericTest {
         // given
         Processor processor = new XMLProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
-        input = ResourceLoader.loadXmlAsReader("corrupted.xml");
+        input = ResourceLoader.loadAsReader("corrupted.xml");
 
         // when
         processor.setConfiguration(new Configuration(execution));
@@ -79,7 +78,7 @@ public class XMLProcessorTest extends GenericTest {
         XMLProcessor processor = new XMLProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
         processor.setConfiguration(new Configuration(execution));
-        input = ResourceLoader.loadXmlAsReader("suv.xml");
+        input = ResourceLoader.loadAsReader("suv.xml");
         output = new WriterCrashOnWrite(errorMessage);
 
         // when

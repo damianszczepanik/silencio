@@ -6,7 +6,6 @@ import java.io.StringWriter;
 import java.util.Properties;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -24,7 +23,7 @@ public class PropertiesProcessorIntegrationTest extends GenericTest {
 
         // given
         Processor processor = new Builder(Format.PROPERTIES).with(Builder.BLANK).build();
-        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        input = ResourceLoader.loadAsReader("suv.properties");
         output = new StringWriter();
         processor.load(input);
 
@@ -35,7 +34,7 @@ public class PropertiesProcessorIntegrationTest extends GenericTest {
         processor.write(output);
 
         Properties reference = new Properties();
-        reference.load(ResourceLoader.loadPropertiesAsReader("suv_Positive_Blank.properties"));
+        reference.load(ResourceLoader.loadAsReader("suv_Positive_Blank.properties"));
         Properties converted = new Properties();
         converted.load(new StringReader(output.toString()));
         PropertiesUtility.assertEqual(reference, converted);

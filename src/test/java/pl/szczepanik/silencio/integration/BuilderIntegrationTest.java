@@ -6,7 +6,6 @@ import java.io.StringWriter;
 import java.util.Properties;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -30,7 +29,7 @@ public class BuilderIntegrationTest extends GenericTest {
                 .with(new MatcherDecision(".*sunroof.*", ".*Optional.*"), new StringConverter("[Standard]"));
         Processor processor = builder.build();
 
-        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        input = ResourceLoader.loadAsReader("suv.properties");
         output = new StringWriter();
 
         // when
@@ -41,7 +40,7 @@ public class BuilderIntegrationTest extends GenericTest {
         processor.write(output);
 
         Properties reference = new Properties();
-        reference.load(new StringReader(ResourceLoader.loadPropertiesAsString("suv_Matcher_Blank+Matcher_String.properties")));
+        reference.load(new StringReader(ResourceLoader.loadAsString("suv_Matcher_Blank+Matcher_String.properties")));
         Properties converted = new Properties();
         converted.load(new StringReader(output.toString()));
         PropertiesUtility.assertEqual(reference, converted);

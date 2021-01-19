@@ -42,7 +42,7 @@ public class JSONVisitorTest extends GenericTest {
         final int nodeCounter = 14;
 
         // given
-        input = ResourceLoader.loadJsonAsReader("suv.json");
+        input = ResourceLoader.loadAsReader("suv.json");
         Map<String, Object> jsonStructure = new ObjectMapper().readValue(input,
                 new TypeReference<Map<String, Object>>() {
                 });

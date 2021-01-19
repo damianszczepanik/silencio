@@ -41,11 +41,11 @@ public class PropertiesProcessorTest extends GenericTest {
     public void shouldLoadPropertiesFileOnRealLoad() throws IOException {
 
         // given
-        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        input = ResourceLoader.loadAsReader("suv.properties");
 
         Properties refProps = new Properties();
         // input once read cannot be read again to need to have two streams to the same file
-        Reader referenceInput = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        Reader referenceInput = ResourceLoader.loadAsReader("suv.properties");
         refProps.load(referenceInput);
 
         // when
@@ -63,7 +63,7 @@ public class PropertiesProcessorTest extends GenericTest {
     public void shouldFailWhenLoadingInvalidPropertiesFile() {
 
         // given
-        input = ResourceLoader.loadPropertiesAsReader("corrupted.properties");
+        input = ResourceLoader.loadAsReader("corrupted.properties");
         PropertiesProcessor processor = new PropertiesProcessor();
 
         // then
@@ -108,7 +108,7 @@ public class PropertiesProcessorTest extends GenericTest {
     public void shouldWritePropertiesIntoWriter() throws IOException {
 
         // given
-        input = ResourceLoader.loadPropertiesAsReader("suv.properties");
+        input = ResourceLoader.loadAsReader("suv.properties");
         output = new StringWriter();
 
         PropertiesProcessor processor = new PropertiesProcessor();

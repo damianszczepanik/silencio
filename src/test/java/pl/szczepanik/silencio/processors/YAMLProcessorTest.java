@@ -39,8 +39,8 @@ public class YAMLProcessorTest extends GenericTest {
 
         // given
         YAMLProcessor processor = new YAMLProcessor();
-        input = ResourceLoader.loadYamlAsReader("suv.yaml");
-        String refInput = ResourceLoader.loadYamlAsString("suv.yaml");
+        input = ResourceLoader.loadAsReader("suv.yaml");
+        String refInput = ResourceLoader.loadAsString("suv.yaml");
         output = new StringWriter();
 
         // when
@@ -57,7 +57,7 @@ public class YAMLProcessorTest extends GenericTest {
         // given
         YAMLProcessor processor = new YAMLProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
-        input = ResourceLoader.loadYamlAsReader("corrupted.yaml");
+        input = ResourceLoader.loadAsReader("corrupted.yaml");
 
         // when
         processor.setConfiguration(new Configuration(execution));
@@ -77,7 +77,7 @@ public class YAMLProcessorTest extends GenericTest {
         YAMLProcessor processor = new YAMLProcessor();
         Execution execution = new Execution(new PositiveDecision(), Builder.BLANK);
         processor.setConfiguration(new Configuration(execution));
-        input = ResourceLoader.loadYamlAsReader("empty.yaml");
+        input = ResourceLoader.loadAsReader("empty.yaml");
         output = new WriterCrashOnWrite(errorMessage);
 
         // when
