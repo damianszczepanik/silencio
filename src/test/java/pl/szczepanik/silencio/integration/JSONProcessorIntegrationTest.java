@@ -31,6 +31,6 @@ public class JSONProcessorIntegrationTest extends GenericTest {
         // then
         processor.write(output);
         String reference = ResourceLoader.loadAsString("suv_Positive_NumberSequence.json");
-        assertThat(output.toString()).isEqualTo(reference);
+        assertThat(output).hasToString(reference);
     }
 }

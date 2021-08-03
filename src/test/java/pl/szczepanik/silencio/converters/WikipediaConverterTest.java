@@ -100,7 +100,7 @@ public class WikipediaConverterTest extends GenericTest {
 
         // then
         String reference = ResourceLoader.loadAsString("suv_Positive_Wikipedia.json");
-        assertThat(output.toString()).isEqualTo(reference);
+        assertThat(output).hasToString(reference);
     }
 
     @Test

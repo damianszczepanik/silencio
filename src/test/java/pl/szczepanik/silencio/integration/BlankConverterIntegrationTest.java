@@ -33,6 +33,6 @@ public class BlankConverterIntegrationTest extends GenericTest {
         processor.write(output);
 
         String reference = ResourceLoader.loadAsString("suv_Positive_Blank.json");
-        assertThat(output.toString()).isEqualTo(reference);
+        assertThat(output).hasToString(reference);
     }
 }
