@@ -43,7 +43,7 @@
     </scm>
     <ciManagement>
         <system>travis</system>
-        <url>https://travis-ci.org/damianszczepanik/silencio</url>
+        <url>https://travis-ci.com/damianszczepanik/silencio</url>
     </ciManagement>
 
     <description>
@@ -75,7 +75,7 @@
             <activation>
                 <property>
                     <!-- will be set by the release plugin upon performing 
-                        mvn clean deploy -Prelease-sign-artifacts -->
+                         mvn release:clean release:prepare release:perform -->
                     <name>performRelease</name>
                     <value>true</value>
                 </property>
