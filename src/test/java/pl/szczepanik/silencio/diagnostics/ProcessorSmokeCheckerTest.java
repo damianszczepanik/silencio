@@ -1,5 +1,7 @@
 package pl.szczepanik.silencio.diagnostics;
 
+import static org.assertj.core.api.Assertions.assertThatNoException;
+
 import org.junit.Test;
 
 import pl.szczepanik.silencio.GenericTest;
@@ -19,24 +21,21 @@ public class ProcessorSmokeCheckerTest extends GenericTest {
     public void shouldPassWithStubProcessor() {
 
         // given
-        StubProcessor processor = new StubProcessor(Format.JSON, new Converter[] { new StubConverter() });
+        StubProcessor processor = new StubProcessor(Format.JSON, new Converter[]{new StubConverter()});
         ProcessorSmokeChecker processorChecker = new ProcessorSmokeChecker(processor);
 
-        // when
-        processorChecker.validateWithAllCombinations("");
-
-        // then
-        // no crash
+        // when & then
+        assertThatNoException().isThrownBy(() -> processorChecker.validateWithAllCombinations(""));
     }
 
     @Test
     public void shouldThrowProcessorExceptionWhenValidationFails() {
-        
+
         final String errorMessage = "Ups, I did it again!";
 
         // given
         AbstractProcessorCrashOnRealProcess processor = new AbstractProcessorCrashOnRealProcess(Format.XML,
-                new Converter[] { new StubConverter() }, errorMessage);
+                new Converter[]{new StubConverter()}, errorMessage);
         ProcessorSmokeChecker processorChecker = new ProcessorSmokeChecker(processor);
 
         // then
