@@ -1,5 +1,7 @@
 package pl.szczepanik.silencio.integration;
 
+import static org.assertj.core.api.Assertions.assertThatNoException;
+
 import java.util.Arrays;
 import java.util.Collection;
 
@@ -43,10 +45,7 @@ public class SuvIntegrationTest extends GenericTest {
         // given
         ProcessorSmokeChecker checker = new ProcessorSmokeChecker(processor);
 
-        // when
-        checker.validateWithAllCombinations(suvInput);
-
-        // then
-        // no exception
+        // when & then
+        assertThatNoException().isThrownBy(() -> checker.validateWithAllCombinations(suvInput));
     }
 }

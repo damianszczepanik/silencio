@@ -1,5 +1,7 @@
 package pl.szczepanik.silencio.core;
 
+import static org.assertj.core.api.Assertions.assertThatNoException;
+
 import org.junit.Test;
 
 import pl.szczepanik.silencio.GenericTest;
@@ -31,8 +33,7 @@ public class ProcessorStateMachineTest extends GenericTest {
         machine.moveToLoaded();
 
         // then
-        machine.validateProcess();
-        // no crash here
+        assertThatNoException().isThrownBy(() -> machine.validateProcess());
     }
 
     @Test
@@ -55,11 +56,8 @@ public class ProcessorStateMachineTest extends GenericTest {
         machine.moveToLoaded();
         machine.moveToProcessed();
 
-        // when
-        machine.validateWrite();
-
-        // then
-        // no crash
+        // when & then
+        assertThatNoException().isThrownBy(() -> machine.validateWrite());
     }
 
     @Test
@@ -70,10 +68,7 @@ public class ProcessorStateMachineTest extends GenericTest {
         machine.moveToLoaded();
         machine.moveToProcessed();
 
-        // when
-        machine.moveToLoaded();
-
-        // then
-        // no crash
+        // when & then
+        assertThatNoException().isThrownBy(() -> machine.moveToLoaded());
     }
 }
