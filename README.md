@@ -11,7 +11,13 @@
 
 # silencio
 
-Silencio is a library for transforming and converting any format such as [XML](https://pl.wikipedia.org/wiki/XML), [JSON](https://pl.wikipedia.org/wiki/JSON) or [Properties](https://en.wikipedia.org/wiki/.properties) files using well defined [API](https://github.com/damianszczepanik/silencio/tree/master/src/main/java/pl/szczepanik/silencio/api). It is applicable for most of operations such as:
+Silencio is a Java library for transforming and converting formats such as
+- [XML](https://pl.wikipedia.org/wiki/XML)
+- [JSON](https://pl.wikipedia.org/wiki/JSON)
+- [Properties](https://en.wikipedia.org/wiki/.properties)
+- [YAML](https://pl.wikipedia.org/wiki/YAML)
+
+using well defined [API](https://github.com/damianszczepanik/silencio/tree/master/src/main/java/pl/szczepanik/silencio/api). It is applicable for most of operations such as:
 - [obfuscation](https://en.wikipedia.org/wiki/Obfuscation_%28software%29)
 - minimisation (eg [anonymization](https://en.wikipedia.org/wiki/Data_anonymization), minifying)
 - transformation (eg [encryption](https://en.wikipedia.org/wiki/Encryption))
