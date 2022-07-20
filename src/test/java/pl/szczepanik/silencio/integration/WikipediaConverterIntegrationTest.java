@@ -2,7 +2,6 @@ package pl.szczepanik.silencio.integration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.io.IOException;
 import java.io.StringWriter;
 
 import org.junit.Test;
@@ -20,8 +19,8 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class WikipediaConverterIntegrationTest extends GenericTest {
 
     @Test
-    public void shouldGetWordsFromWikipediaOrg() throws IOException {
-        // WARNING: this test fail when no Internet connection is available
+    public void shouldGetWordsFromWikipedia() {
+        // WARNING: this test fail when internet connection is not available
 
         // given
         Processor processor = new Builder(Format.JSON).with(new WikipediaConverter()).build();

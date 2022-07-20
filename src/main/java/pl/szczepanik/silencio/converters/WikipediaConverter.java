@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Set;
 
 import org.apache.commons.lang3.StringUtils;
-
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.core.Key;
@@ -17,7 +16,7 @@ import pl.szczepanik.silencio.utils.IOUtility;
 /**
  * Converter that changes each passed value into random words taken from Wikipedia. Internet access required when using
  * this converter. Because this and other reasons this converter should not be used on production.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class WikipediaConverter implements Converter {
@@ -63,7 +62,7 @@ public class WikipediaConverter implements Converter {
     }
 
     private String generateNextString() {
-        final String startPattern = "<h1 id=\"section_0\">";
+        final String startPattern = "<h1 id=\"firstHeading\" class=\"firstHeading mw-first-heading\">";
         final String endPattern = "</h1>";
 
         String page = IOUtility.urlToString(url);
