@@ -1,12 +1,5 @@
 language: java
 
-cache:
-  directories:
-    - ~/.m2
-
-git:
-  depth: false # remove the --depth to support full git blame by Sonarqube
-
 env:
   global:
     # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
@@ -38,19 +31,6 @@ matrix:
         - DESC="static analysis"
       script:
         - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent test install sonar:sonar -Dsonar.projectKey=damianszczepanik_silencio
-
-after_success:
-  # push report to codecov server
-  - curl -Os https://uploader.codecov.io/latest/linux/codecov
-  - chmod +x codecov
-  - ./codecov
-
-addons:
-  sonarcloud:
-    organization: "damianszczepanik"
-    token: $SONAR_TOKEN
-  branches:
-    - master
 
   # this plugin is quite problematic so put it at the end so other plugins run properly
   coverity_scan:
