@@ -127,11 +127,11 @@ public class WikipediaConverterTest extends GenericTest {
     }
 
     private static String toWikiPage(String text) {
-        return String.format("ble bla bla <h1 id=\"section_0\">%s</h1> ble ble ble", text);
+        return String.format("ble bla bla <h1 id=\"firstHeading\" class=\"firstHeading mw-first-heading\">%s</h1> ble ble ble", text);
     }
 
     private static String toWikiPageItalics(String text) {
-        return String.format("<h1 id=\"section_0\"><i>%s</i></h1> something, something", text);
+        return String.format("<h1 id=\"firstHeading\" class=\"firstHeading mw-first-heading\"><i>%s</i></h1> something, something", text);
     }
 
 }
