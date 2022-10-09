@@ -25,16 +25,16 @@ public class JSONParser_isBasicTypeTest extends GenericTest {
 
     @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-            { new String(),    true },
-            { new Integer(55), true },
-            { new Long(32),    true },
-            { BigInteger.ZERO, true },
-            { BigDecimal.TEN,  true },
-            { new Double(-88), true },
-            { Boolean.FALSE,   true },
-            { new Object(),    false },
-            { new Value(null), false },
+        return Arrays.asList(new Object[][]{
+                {new String(), true},
+                {Integer.valueOf(55), true},
+                {Long.valueOf(32), true},
+                {BigInteger.ZERO, true},
+                {BigDecimal.TEN, true},
+                {Double.valueOf(-88), true},
+                {Boolean.FALSE, true},
+                {new Object(), false},
+                {new Value(null), false},
         });
     }
 
