@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-import org.paukov.combinatorics.Factory;
+import org.paukov.combinatorics.CombinatoricsFactory;
 import org.paukov.combinatorics.Generator;
 import org.paukov.combinatorics.ICombinatoricsVector;
 import pl.szczepanik.silencio.api.Converter;
@@ -70,8 +70,8 @@ public final class ProcessorSmokeChecker {
      * @param content content that should be converted
      */
     public void validateWithAllCombinations(String content) {
-        ICombinatoricsVector<Converter> allConverters = Factory.createVector(CONVERTERS);
-        Generator<Converter> subSet = Factory.createSubSetGenerator(allConverters);
+        ICombinatoricsVector<Converter> allConverters = CombinatoricsFactory.createVector(CONVERTERS);
+        Generator<Converter> subSet = CombinatoricsFactory.createSubSetGenerator(allConverters);
 
         for (ICombinatoricsVector<Converter> subConverters : subSet) {
             if (subConverters.getSize() != 0) {
@@ -82,8 +82,8 @@ public final class ProcessorSmokeChecker {
     }
 
     private void validateWithSetsOfDecisions(Converter[] converters, String content) {
-        ICombinatoricsVector<Decision> allDecisions = Factory.createVector(DECISIONS);
-        Generator<Decision> subSet = Factory.createSubSetGenerator(allDecisions);
+        ICombinatoricsVector<Decision> allDecisions = CombinatoricsFactory.createVector(DECISIONS);
+        Generator<Decision> subSet = CombinatoricsFactory.createSubSetGenerator(allDecisions);
 
         for (ICombinatoricsVector<Decision> subDecisions : subSet) {
             if (subDecisions.getSize() != 0) {
