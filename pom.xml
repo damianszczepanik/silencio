@@ -17,6 +17,8 @@
         <commons-io.version>2.12.0</commons-io.version>
 
         <test.integration.pattern>**/*IntegrationTest*.java</test.integration.pattern>
+
+        <gitHubRepo>damianszczepanik/silencio</gitHubRepo>
     </properties>
 
     <parent>
@@ -37,14 +39,11 @@
     </distributionManagement>
 
     <scm>
-        <connection>scm:git:git@github.com:damianszczepanik/silencio.git</connection>
-        <developerConnection>scm:git:git@github.com:damianszczepanik/silencio.git</developerConnection>
-        <url>https://github.com/damianszczepanik/silencio</url>
+        <connection>scm:git:https://github.com/${gitHubRepo}.git</connection>
+        <developerConnection>scm:git:git@github.com:${gitHubRepo}.git</developerConnection>
+        <url>https://github.com/${gitHubRepo}</url>
+        <tag>${scmTag}</tag>
     </scm>
-    <ciManagement>
-        <system>travis</system>
-        <url>https://travis-ci.com/damianszczepanik/silencio</url>
-    </ciManagement>
 
     <description>
         Silencio is a Java library for transforming and converting XML, JSON, Properties, YAML and other formats. It
