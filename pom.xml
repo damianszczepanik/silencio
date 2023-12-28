@@ -44,6 +44,10 @@
         <url>https://github.com/${gitHubRepo}</url>
         <tag>${scmTag}</tag>
     </scm>
+    <ciManagement>
+        <system>GitHub Actions</system>
+        <url>https://github.com/damianszczepanik/silencio/actions</url>
+    </ciManagement>
 
     <description>
         Silencio is a Java library for transforming and converting XML, JSON, Properties, YAML and other formats. It
