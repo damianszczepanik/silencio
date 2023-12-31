@@ -1,7 +1,8 @@
 package pl.szczepanik.silencio.processors.visitors;
 
-import org.junit.Test;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
+import org.junit.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
@@ -21,8 +22,8 @@ public class AbstractVisitorTest extends GenericTest {
         AbstractVisitor visitor = new StubAbstractVisitor();
 
         // then
-        thrown.expect(IllegalArgumentException.class);
-        thrown.expectMessage(AbstractVisitor.EXCEPTION_MESSAGE_INVALID_VALUE_TYPE);
-        visitor.processValue(key, value);
+        assertThatThrownBy(() -> visitor.processValue(key, value))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage(AbstractVisitor.EXCEPTION_MESSAGE_INVALID_VALUE_TYPE);
     }
 }

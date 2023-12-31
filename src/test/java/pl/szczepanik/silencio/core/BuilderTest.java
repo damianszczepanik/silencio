@@ -2,6 +2,7 @@ package pl.szczepanik.silencio.core;
 
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 
@@ -145,9 +146,9 @@ public class BuilderTest extends GenericTest {
         Builder builder = new Builder(format);
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Unsupported format: " + format.getName());
-        builder.build();
+        assertThatThrownBy(() -> builder.build())
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Unsupported format: " + format.getName());
     }
 
     @Test

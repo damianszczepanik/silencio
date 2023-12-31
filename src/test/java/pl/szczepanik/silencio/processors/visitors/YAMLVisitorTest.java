@@ -1,6 +1,7 @@
 package pl.szczepanik.silencio.processors.visitors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.IOException;
 import java.util.Map;
@@ -32,9 +33,9 @@ public class YAMLVisitorTest extends GenericTest {
         YAMLVisitor parser = new YAMLVisitor();
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        Whitebox.invokeMethod(parser, "processComplex", key, value);
+        assertThatThrownBy(() -> Whitebox.invokeMethod(parser, "processComplex", key, value))
+                .isInstanceOf(ProcessorException.class)
+                .hasMessage("Unknown type of the key: " + value.getClass().getName());
     }
 
     @Test

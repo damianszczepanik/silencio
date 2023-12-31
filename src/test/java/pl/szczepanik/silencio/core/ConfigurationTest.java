@@ -1,9 +1,9 @@
 package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
 import pl.szczepanik.silencio.stubs.StubConverter;
@@ -17,7 +17,7 @@ public class ConfigurationTest extends GenericTest {
     public void shouldReturnPassedExecutions() {
 
         // given
-        Execution[] executions = { new Execution(new PositiveDecision(), new StubConverter()) };
+        Execution[] executions = {new Execution(new PositiveDecision(), new StubConverter())};
 
         // when
         Configuration configuration = new Configuration(executions);
@@ -33,8 +33,8 @@ public class ConfigurationTest extends GenericTest {
         Execution[] executors = {};
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Executions must not be empty!");
-        new Configuration(executors);
+        assertThatThrownBy(() -> new Configuration(executors))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Executions must not be empty!");
     }
 }

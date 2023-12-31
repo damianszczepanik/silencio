@@ -1,9 +1,9 @@
 package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThatNoException;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 
 /**
@@ -18,9 +18,9 @@ public class ProcessorStateMachineTest extends GenericTest {
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage("This operation is not allowed for this state: CREATED");
-        machine.validateProcess();
+        assertThatThrownBy(() -> machine.validateProcess())
+                .isInstanceOf(ProcessorException.class)
+                .hasMessage("This operation is not allowed for this state: CREATED");
     }
 
     @Test
@@ -43,9 +43,9 @@ public class ProcessorStateMachineTest extends GenericTest {
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage("This operation is not allowed for this state: CREATED");
-        machine.validateWrite();
+        assertThatThrownBy(() -> machine.validateWrite())
+                .isInstanceOf(ProcessorException.class)
+                .hasMessage("This operation is not allowed for this state: CREATED");
     }
 
     @Test

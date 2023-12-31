@@ -1,6 +1,7 @@
 package pl.szczepanik.silencio.api;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
@@ -33,9 +34,9 @@ public class FormatTest extends GenericTest {
         String emptyName = StringUtils.EMPTY;
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Name of the format must not be empty!");
-        new StubFormat(emptyName);
+        assertThatThrownBy(() -> new StubFormat(emptyName))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Name of the format must not be empty!");
     }
 
     @Test

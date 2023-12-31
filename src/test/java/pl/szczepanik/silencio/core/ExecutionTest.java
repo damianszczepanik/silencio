@@ -1,9 +1,9 @@
 package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
@@ -39,9 +39,9 @@ public class ExecutionTest extends GenericTest {
         Converter[] converters = { new BlankConverter() };
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Array with Decisions must not be empty!");
-        new Execution(decisions, converters);
+        assertThatThrownBy(() -> new Execution(decisions, converters))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Array with Decisions must not be empty!");
     }
 
     @Test
@@ -52,9 +52,9 @@ public class ExecutionTest extends GenericTest {
         Converter[] converters = { new BlankConverter() };
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("None of passed Decision can be null!");
-        new Execution(decisions, converters);
+        assertThatThrownBy(() -> new Execution(decisions, converters))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("None of passed Decision can be null!");
     }
 
     @Test
@@ -65,9 +65,9 @@ public class ExecutionTest extends GenericTest {
         Converter[] converters = {};
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Array with Converters must not be empty!");
-        new Execution(decisions, converters);
+        assertThatThrownBy(() -> new Execution(decisions, converters))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Array with Converters must not be empty!");
     }
 
     @Test
@@ -78,8 +78,8 @@ public class ExecutionTest extends GenericTest {
         Converter[] converters = { null };
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("None of passed Converter can be null!");
-        new Execution(decisions, converters);
+        assertThatThrownBy(() -> new Execution(decisions, converters))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("None of passed Converter can be null!");
     }
 }

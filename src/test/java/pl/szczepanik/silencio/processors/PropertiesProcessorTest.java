@@ -1,7 +1,7 @@
 package pl.szczepanik.silencio.processors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -67,9 +67,9 @@ public class PropertiesProcessorTest extends GenericTest {
         PropertiesProcessor processor = new PropertiesProcessor();
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage(containsString("Malformed \\uxxxx encoding."));
-        processor.realLoad(input);
+        assertThatThrownBy(() -> processor.realLoad(input))
+                .isInstanceOf(ProcessorException.class)
+                .hasMessageContaining("Malformed \\uxxxx encoding.");
     }
 
     @Test
@@ -99,9 +99,9 @@ public class PropertiesProcessorTest extends GenericTest {
         Writer writer = new WriterCrashOnWrite(errorMessage);
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage(errorMessage);
-        processor.realWrite(writer);
+        assertThatThrownBy(() -> processor.realWrite(writer))
+                .isInstanceOf(ProcessorException.class)
+                .hasMessageContaining(errorMessage);
     }
 
     @Test

@@ -1,6 +1,7 @@
 package pl.szczepanik.silencio.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.when;
 
@@ -57,9 +58,9 @@ public class WikipediaConverterTest extends GenericTest {
                 .thenReturn(INVALID_HTML_PAGE);
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Could not find header pattern for page: " + INVALID_HTML_PAGE);
-        processor.process();
+        assertThatThrownBy(() -> processor.process())
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Could not find header pattern for page: " + INVALID_HTML_PAGE);
     }
 
     @Test
