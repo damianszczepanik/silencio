@@ -1,6 +1,7 @@
 package pl.szczepanik.silencio.utils;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.powermock.api.mockito.PowerMockito.mockStatic;
 import static org.powermock.api.mockito.PowerMockito.when;
 
@@ -34,7 +35,7 @@ public class IOUtilityTest extends GenericTest {
         // given
         mockStatic(IOUtils.class);
         when(IOUtils.toString(new URL(URL_ADDRESS), StandardCharsets.UTF_8))
-            .thenReturn(INVALID_HTML_PAGE);
+                .thenReturn(INVALID_HTML_PAGE);
 
         // then
         String page = IOUtility.urlToString(new URL(URL_ADDRESS));
@@ -50,12 +51,12 @@ public class IOUtilityTest extends GenericTest {
         // when
         mockStatic(IOUtils.class);
         when(IOUtils.toString(new URL(URL_ADDRESS), StandardCharsets.UTF_8))
-            .thenThrow(new IOException(errorMessage));
+                .thenThrow(new IOException(errorMessage));
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage(errorMessage);
-        IOUtility.urlToString(new URL(URL_ADDRESS));
+        assertThatThrownBy(() -> IOUtility.urlToString(new URL(URL_ADDRESS)))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage(errorMessage);
     }
 
     @Test
@@ -65,8 +66,8 @@ public class IOUtilityTest extends GenericTest {
         String invalidURL = "wwww.my@funpage";
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("no protocol: " + invalidURL);
-        IOUtility.createURL(invalidURL);
+        assertThatThrownBy(() -> IOUtility.createURL(invalidURL))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessageContaining("no protocol: " + invalidURL);
     }
 }

@@ -1,7 +1,7 @@
 package pl.szczepanik.silencio.processors;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.hamcrest.core.StringContains.containsString;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.io.StringWriter;
 
@@ -64,9 +64,9 @@ public class JSONProcessorTest extends GenericTest {
         processor.setConfiguration(new Configuration(execution));
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage(containsString("Unexpected character"));
-        processor.load(input);
+        assertThatThrownBy(() -> processor.load(input))
+                .isInstanceOf(ProcessorException.class)
+                .hasMessageContaining("Unexpected character");
     }
 
     @Test
@@ -86,8 +86,8 @@ public class JSONProcessorTest extends GenericTest {
         processor.realProcess();
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage(errorMessage);
-        processor.realWrite(output);
+        assertThatThrownBy(() -> processor.realWrite(output))
+                .isInstanceOf(ProcessorException.class)
+                .hasMessageContaining(errorMessage);
     }
 }

@@ -1,6 +1,7 @@
 package pl.szczepanik.silencio.processors.visitors;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.powermock.api.mockito.PowerMockito.mock;
 import static org.powermock.api.mockito.PowerMockito.when;
 
@@ -31,7 +32,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 @RunWith(PowerMockRunner.class)
-@PrepareForTest(value = {Node.class})
+@PrepareForTest(value = { Node.class })
 @PowerMockIgnore("jdk.internal.reflect.*")
 public class XMLVisitorTest extends GenericTest {
 
@@ -44,9 +45,9 @@ public class XMLVisitorTest extends GenericTest {
         JSONVisitor parserr = new JSONVisitor();
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage("Unknown type of the key: " + value.getClass().getName());
-        Whitebox.invokeMethod(parserr, "processComplex", key, value);
+        assertThatThrownBy(() -> Whitebox.invokeMethod(parserr, "processComplex", key, value))
+                .isInstanceOf(ProcessorException.class)
+                .hasMessage("Unknown type of the key: " + value.getClass().getName());
     }
 
     @Test
@@ -88,9 +89,9 @@ public class XMLVisitorTest extends GenericTest {
         when(node.getNodeValue()).thenReturn(nodeValue);
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage(String.format(XMLVisitor.EXCEPTION_MESSAGE_NODE_TYPE_UNSUPPORTED, invalidNodeType,
-                nodeName, nodeValue));
-        Whitebox.invokeMethod(visitor, "processNode", node);
+        assertThatThrownBy(() -> Whitebox.invokeMethod(visitor, "processNode", node))
+                .isInstanceOf(ProcessorException.class)
+                .hasMessage((String.format(XMLVisitor.EXCEPTION_MESSAGE_NODE_TYPE_UNSUPPORTED, invalidNodeType,
+                        nodeName, nodeValue)));
     }
 }

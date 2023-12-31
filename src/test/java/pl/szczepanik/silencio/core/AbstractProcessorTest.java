@@ -1,9 +1,9 @@
 package pl.szczepanik.silencio.core;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.junit.Test;
-
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
@@ -20,7 +20,7 @@ public class AbstractProcessorTest extends GenericTest {
     public void shouldReturnPassedFormat() {
 
         // given
-        Converter[] converters = { new StubConverter() };
+        Converter[] converters = {new StubConverter()};
         Format format = Format.PROPERTIES;
 
         // when
@@ -34,15 +34,15 @@ public class AbstractProcessorTest extends GenericTest {
     public void shouldFailWhenBuildFromEmptyFormat() {
 
         // given
-        Converter[] converters = { new StubConverter() };
+        Converter[] converters = {new StubConverter()};
 
         // when
         Format format = null;
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Format must not be null!");
-        new StubProcessor(format, converters);
+        assertThatThrownBy(() -> new StubProcessor(format, converters))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Format must not be null!");
     }
 
     @Test
@@ -53,9 +53,9 @@ public class AbstractProcessorTest extends GenericTest {
         AbstractProcessor processor = new StubProcessor(format);
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Configuration must not be null!");
-        processor.setConfiguration(null);
+        assertThatThrownBy(() -> processor.setConfiguration(null))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Configuration must not be null!");
     }
 
     @Test
@@ -66,9 +66,9 @@ public class AbstractProcessorTest extends GenericTest {
         Converter[] converter = {};
 
         // then
-        thrown.expect(IntegrityException.class);
-        thrown.expectMessage("Array with Converters must not be empty!");
-        new StubProcessor(format, converter);
+        assertThatThrownBy(() -> new StubProcessor(format, converter))
+                .isInstanceOf(IntegrityException.class)
+                .hasMessage("Array with Converters must not be empty!");
     }
 
     @Test
@@ -81,8 +81,8 @@ public class AbstractProcessorTest extends GenericTest {
         AbstractProcessor processor = new StubProcessor(format);
 
         // then
-        thrown.expect(ProcessorException.class);
-        thrown.expectMessage("This operation is not allowed for this state: CREATED");
-        processor.process();
+        assertThatThrownBy(() -> processor.process())
+                .isInstanceOf(ProcessorException.class)
+                .hasMessage("This operation is not allowed for this state: CREATED");
     }
 }
