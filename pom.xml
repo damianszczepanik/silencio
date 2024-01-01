@@ -170,6 +170,10 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.2.2</version>
                 <configuration>
+                    <!-- Allow JUnit to access the test classes -->
+                    <argLine>
+                        --add-opens java.base/java.lang=ALL-UNNAMED
+                    </argLine>
                     <systemPropertyVariables>
                         <!-- JaCoCo runtime must know where to dump coverage: -->
                         <jacoco-agent.destfile>target/jacoco.exec</jacoco-agent.destfile>
