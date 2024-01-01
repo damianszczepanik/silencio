@@ -17,7 +17,7 @@ import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class JSONParser_isBasicTypeTest extends GenericTest {
+class JSONParser_isBasicTypeTest extends GenericTest {
 
     public Object type;
 

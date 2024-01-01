@@ -27,7 +27,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class XMLVisitorTest extends GenericTest {
+class XMLVisitorTest extends GenericTest {
 
     @Test
     void shouldReportExceptionOnUnsupportedModel() throws Exception {

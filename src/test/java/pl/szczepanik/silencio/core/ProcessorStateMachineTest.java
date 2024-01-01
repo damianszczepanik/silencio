@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.GenericTest;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ProcessorStateMachineTest extends GenericTest {
+class ProcessorStateMachineTest extends GenericTest {
 
     @Test
     void shouldNotAllowToValidateProcessInCreatedState() {

@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.stubs.StubConverter;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ConfigurationTest extends GenericTest {
+class ConfigurationTest extends GenericTest {
 
     @Test
     void shouldReturnPassedExecutions() {

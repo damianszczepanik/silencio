@@ -31,7 +31,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class WikipediaConverterTest extends GenericTest {
+class WikipediaConverterTest extends GenericTest {
 
     private static final String URL_ADDRESS = "https://en.m.wikipedia.org/wiki/Special:Random";
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";

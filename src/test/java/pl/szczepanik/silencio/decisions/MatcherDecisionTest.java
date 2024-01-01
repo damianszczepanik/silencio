@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class MatcherDecisionTest extends GenericTest {
+class MatcherDecisionTest extends GenericTest {
 
     @Test
     void shouldAcceptValuesAsWords() {

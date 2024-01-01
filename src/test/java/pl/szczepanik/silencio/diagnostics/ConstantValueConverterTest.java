@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
-public class ConstantValueConverterTest extends GenericTest {
+class ConstantValueConverterTest extends GenericTest {
 
     @Test
     void shouldReturnConstantValue() {

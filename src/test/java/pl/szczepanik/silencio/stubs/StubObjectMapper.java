@@ -10,10 +10,10 @@ import org.apache.commons.lang3.ArrayUtils;
 
 /**
  * Stub of @link {@link ObjectMapper} that has only stub methods.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class StubObjectMapper extends ObjectMapper {
+class StubObjectMapper extends ObjectMapper {
 
     private Iterator<String> jsons;
 
@@ -29,7 +29,7 @@ public class StubObjectMapper extends ObjectMapper {
         }
     }
 
-    public <T> T readValue(String content, Class<T> valueType)throws JsonProcessingException, JsonMappingException {
+    public <T> T readValue(String content, Class<T> valueType) throws JsonProcessingException, JsonMappingException {
         if (exception != null) {
             throw exception;
         } else if (jsons == null) {

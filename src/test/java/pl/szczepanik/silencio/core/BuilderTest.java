@@ -21,7 +21,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BuilderTest extends GenericTest {
+class BuilderTest extends GenericTest {
 
     @Test
     void shouldHoldPassedFormat() {

@@ -12,7 +12,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class FormatTest extends GenericTest {
+class FormatTest extends GenericTest {
 
     @Test
     void shouldReturnFormatName() {

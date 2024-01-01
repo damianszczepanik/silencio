@@ -19,7 +19,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class YAMLProcessorTest extends GenericTest {
+class YAMLProcessorTest extends GenericTest {
 
     @Test
     void shouldReturnPassedFormat() {

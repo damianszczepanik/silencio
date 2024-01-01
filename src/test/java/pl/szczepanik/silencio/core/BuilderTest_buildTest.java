@@ -17,7 +17,7 @@ import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BuilderTest_buildTest extends GenericTest {
+class BuilderTest_buildTest extends GenericTest {
 
     public Format format;
 

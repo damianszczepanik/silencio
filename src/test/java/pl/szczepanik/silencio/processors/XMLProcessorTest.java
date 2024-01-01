@@ -20,7 +20,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class XMLProcessorTest extends GenericTest {
+class XMLProcessorTest extends GenericTest {
 
     @Test
     void shouldReturnPassedFormat() {

@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BlankConverterIntegrationTest extends GenericTest {
+class BlankConverterIntegrationTest extends GenericTest {
 
     @Test
     void shoulClearValuesWhenBlankIsExecutedAsLast() throws IOException {

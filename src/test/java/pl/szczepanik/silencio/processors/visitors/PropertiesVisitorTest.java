@@ -16,7 +16,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class PropertiesVisitorTest extends GenericTest {
+class PropertiesVisitorTest extends GenericTest {
 
     @Test
     void shouldVisitAllJsonNodes() throws IOException {

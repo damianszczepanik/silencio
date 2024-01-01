@@ -5,7 +5,7 @@ import java.io.Writer;
 
 /**
  * Writer that throws exception when {@link #write(char[], int, int)}} method is invoked.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class WriterCrashOnWrite extends Writer {

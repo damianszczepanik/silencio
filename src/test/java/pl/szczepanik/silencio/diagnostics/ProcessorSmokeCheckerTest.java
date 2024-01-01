@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.stubs.StubProcessor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ProcessorSmokeCheckerTest extends GenericTest {
+class ProcessorSmokeCheckerTest extends GenericTest {
 
     @Test
     void shouldPassWithStubProcessor() {

@@ -12,7 +12,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class StringConverterTest extends GenericTest {
+class StringConverterTest extends GenericTest {
 
     @Test
     void shouldReturnEmptyValue() {

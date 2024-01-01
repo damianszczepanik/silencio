@@ -22,7 +22,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class PropertiesProcessorTest extends GenericTest {
+class PropertiesProcessorTest extends GenericTest {
 
     @Test
     void shouldReturnPassedFormat() {

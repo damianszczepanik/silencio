@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.GenericTest;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ValueTest extends GenericTest {
+class ValueTest extends GenericTest {
 
     @Test
     void shouldReturnValue() {

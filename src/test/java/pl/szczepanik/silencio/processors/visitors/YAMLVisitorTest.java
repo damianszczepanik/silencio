@@ -22,7 +22,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class YAMLVisitorTest extends GenericTest {
+class YAMLVisitorTest extends GenericTest {
 
     @Test
     void shouldReportExceptionOnUnsupportedModel() throws Exception {

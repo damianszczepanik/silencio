@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class NumberSequenceConverterTest extends GenericTest {
+class NumberSequenceConverterTest extends GenericTest {
 
     @Test
     void shouldReturnValueWhenPassingNull() {
