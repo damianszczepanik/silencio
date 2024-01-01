@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class XMLProcessorIntegrationTest extends GenericTest {
+class XMLProcessorIntegrationTest extends GenericTest {
 
     @Test
     void shouldProcessXMLFile() {

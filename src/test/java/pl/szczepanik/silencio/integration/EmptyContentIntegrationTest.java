@@ -17,7 +17,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class EmptyContentIntegrationTest extends GenericTest {
+class EmptyContentIntegrationTest extends GenericTest {
 
     public Format format;
 

@@ -12,7 +12,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BlankTest extends GenericTest {
+class BlankTest extends GenericTest {
 
     @Test
     void shouldReturnEmptyValue() {

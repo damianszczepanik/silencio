@@ -9,7 +9,7 @@ import pl.szczepanik.silencio.stubs.StubProcessor;
 /**
  * Mock for {@link AbstractProcessor} that crashes when {@link AbstractProcessorCrashOnRealProcess#realProcess()} method
  * is invoked.
- * 
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public class AbstractProcessorCrashOnRealProcess extends StubProcessor {

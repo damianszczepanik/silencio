@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.GenericTest;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class ProcessorExceptionTest extends GenericTest {
+class ProcessorExceptionTest extends GenericTest {
 
     @Test
     void constructorWithMessageReturnsPassedMessage() {

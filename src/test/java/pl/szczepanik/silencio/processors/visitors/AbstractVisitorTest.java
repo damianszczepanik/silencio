@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.stubs.StubAbstractVisitor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class AbstractVisitorTest extends GenericTest {
+class AbstractVisitorTest extends GenericTest {
 
     @Test
     void shouldFailWhenPassingValueToProcessValue() {

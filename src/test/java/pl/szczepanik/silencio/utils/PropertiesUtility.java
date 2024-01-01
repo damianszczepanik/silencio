@@ -11,11 +11,9 @@ public class PropertiesUtility {
 
     /**
      * Assert two properties files according to keys and values are equal (comments are skipped).
-     * 
-     * @param prop1
-     *            first properties to compare
-     * @param prop2
-     *            second properties to compare
+     *
+     * @param prop1 first properties to compare
+     * @param prop2 second properties to compare
      */
     public static void assertEqual(Properties prop1, Properties prop2) {
         boolean keysEqual = prop1.keySet().equals(prop2.keySet());

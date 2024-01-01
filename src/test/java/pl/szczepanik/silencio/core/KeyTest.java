@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.GenericTest;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class KeyTest extends GenericTest {
+class KeyTest extends GenericTest {
 
     @Test
     void shouldReturnKey() {

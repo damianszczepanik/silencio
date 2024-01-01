@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class JSONProcessorIntegrationTest extends GenericTest {
+class JSONProcessorIntegrationTest extends GenericTest {
 
     @Test
     void shouldProcessJSONFile() {

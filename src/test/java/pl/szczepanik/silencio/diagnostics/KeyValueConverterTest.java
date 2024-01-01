@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;
 
-public class KeyValueConverterTest extends GenericTest {
+class KeyValueConverterTest extends GenericTest {
 
     @Test
     void shouldReturnCorrectValue() {

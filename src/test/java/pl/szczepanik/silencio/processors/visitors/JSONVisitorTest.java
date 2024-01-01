@@ -21,7 +21,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class JSONVisitorTest extends GenericTest {
+class JSONVisitorTest extends GenericTest {
 
     @Test
     void shouldReportExceptionOnUnsupportedModel() throws Exception {

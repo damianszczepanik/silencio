@@ -20,7 +20,7 @@ import pl.szczepanik.silencio.core.IntegrityException;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class IOUtilityTest extends GenericTest {
+class IOUtilityTest extends GenericTest {
 
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
     private static final String URL_ADDRESS = "http://www.fancy.page";

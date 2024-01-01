@@ -23,7 +23,7 @@ import pl.szczepanik.silencio.stubs.StubAbstractVisitor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class AbstractVisitor_processValueTest extends GenericTest {
+class AbstractVisitor_processValueTest extends GenericTest {
 
     private static final Key key = new Key("myKey");
     private static final Object value = "yourValue";

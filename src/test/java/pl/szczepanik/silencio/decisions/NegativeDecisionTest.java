@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.core.Value;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class NegativeDecisionTest extends GenericTest {
+class NegativeDecisionTest extends GenericTest {
 
     @Test
     void shouldNotAllowForConversion() {

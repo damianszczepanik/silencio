@@ -18,7 +18,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class BuilderIntegrationTest extends GenericTest {
+class BuilderIntegrationTest extends GenericTest {
 
     @Test
     void shouldProcessPropertiesFile() throws IOException {

@@ -20,7 +20,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class JSONProcessorTest extends GenericTest {
+class JSONProcessorTest extends GenericTest {
 
     @Test
     void shouldReturnPassedFormat() {

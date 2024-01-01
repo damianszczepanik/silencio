@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.stubs.StubProcessor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class AbstractProcessorTest extends GenericTest {
+class AbstractProcessorTest extends GenericTest {
 
     @Test
     void shouldReturnPassedFormat() {

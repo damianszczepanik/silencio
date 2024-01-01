@@ -8,7 +8,7 @@ import pl.szczepanik.silencio.GenericTest;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-public class IntegrityExceptionTest extends GenericTest {
+class IntegrityExceptionTest extends GenericTest {
 
     @Test
     void constructorWithMessageReturnsPassedMessage() {
