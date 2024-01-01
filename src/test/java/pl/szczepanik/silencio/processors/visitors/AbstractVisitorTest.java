@@ -2,7 +2,7 @@ package pl.szczepanik.silencio.processors.visitors;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Key;
 import pl.szczepanik.silencio.core.Value;

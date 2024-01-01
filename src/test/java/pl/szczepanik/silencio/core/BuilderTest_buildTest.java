@@ -5,10 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Collection;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
@@ -19,20 +17,19 @@ import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-@RunWith(Parameterized.class)
 public class BuilderTest_buildTest extends GenericTest {
 
-    @Parameter(value = 0)
     public Format format;
 
-    @Parameterized.Parameters
-    public static Collection<Format> formats() {
+    public static Collection<Format> data() {
         return ProcessorSmokeChecker.FORMATS;
     }
 
-    @Test
-    public void buildSupportsAllFormats() {
+    @MethodSource("data")
+    @ParameterizedTest(name = "\"{0}\"")
+    public void buildSupportsAllFormats(Format format) {
 
+        initDataWithNameTest(format);
         // given
         Builder builder = new Builder(format);
         builder.with(new PositiveDecision(), new BlankConverter());
@@ -44,5 +41,9 @@ public class BuilderTest_buildTest extends GenericTest {
         assertThat(processor.getFormat()).isEqualTo(format);
         // just make sure that processor is created
         assertThat(processor).isNotNull();
+    }
+
+    private void initDataWithNameTest(Format format) {
+        this.format = format;
     }
 }

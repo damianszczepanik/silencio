@@ -2,19 +2,15 @@ package pl.szczepanik.silencio.processors.visitors;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.powermock.api.mockito.PowerMockito.mock;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.junit.jupiter.api.Test;
 import org.powermock.reflect.Whitebox;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
@@ -31,9 +27,6 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(value = { Node.class })
-@PowerMockIgnore("jdk.internal.reflect.*")
 public class XMLVisitorTest extends GenericTest {
 
     @Test

@@ -3,7 +3,7 @@ package pl.szczepanik.silencio.core;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Format;
@@ -20,7 +20,7 @@ public class AbstractProcessorTest extends GenericTest {
     public void shouldReturnPassedFormat() {
 
         // given
-        Converter[] converters = {new StubConverter()};
+        Converter[] converters = { new StubConverter() };
         Format format = Format.PROPERTIES;
 
         // when
@@ -34,7 +34,7 @@ public class AbstractProcessorTest extends GenericTest {
     public void shouldFailWhenBuildFromEmptyFormat() {
 
         // given
-        Converter[] converters = {new StubConverter()};
+        Converter[] converters = { new StubConverter() };
 
         // when
         Format format = null;

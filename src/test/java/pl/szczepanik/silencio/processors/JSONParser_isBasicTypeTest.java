@@ -7,11 +7,8 @@ import java.math.BigInteger;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.Value;
@@ -20,33 +17,31 @@ import pl.szczepanik.silencio.processors.visitors.JSONVisitor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-@RunWith(Parameterized.class)
 public class JSONParser_isBasicTypeTest extends GenericTest {
 
-    @Parameters
+    public Object type;
+
+    public boolean isBasic;
+
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                {new String(), true},
-                {Integer.valueOf(55), true},
-                {Long.valueOf(32), true},
-                {BigInteger.ZERO, true},
-                {BigDecimal.TEN, true},
-                {Double.valueOf(-88), true},
-                {Boolean.FALSE, true},
-                {new Object(), false},
-                {new Value(null), false},
+        return Arrays.asList(new Object[][] {
+                { new String(), true },
+                { Integer.valueOf(55), true },
+                { Long.valueOf(32), true },
+                { BigInteger.ZERO, true },
+                { BigDecimal.TEN, true },
+                { Double.valueOf(-88), true },
+                { Boolean.FALSE, true },
+                { new Object(), false },
+                { new Value(null), false },
         });
     }
 
-    @Parameter(value = 0)
-    public Object type;
+    @MethodSource("data")
+    @ParameterizedTest(name = "\"{0}\" with \"{1}\"")
+    public void shouldValidateBasicObject(Object type, boolean isBasic) throws Exception {
 
-    @Parameter(value = 1)
-    public boolean isBasic;
-
-    @Test
-    public void shouldValidateBasicObject() throws Exception {
-
+        initDataWithNameTest(type, isBasic);
         // given
         JSONVisitor parser = new JSONVisitor();
 
@@ -55,5 +50,10 @@ public class JSONParser_isBasicTypeTest extends GenericTest {
 
         // then
         assertThat(isType).isEqualTo(isBasic);
+    }
+
+    private void initDataWithNameTest(Object type, boolean isBasic) {
+        this.type = type;
+        this.isBasic = isBasic;
     }
 }
