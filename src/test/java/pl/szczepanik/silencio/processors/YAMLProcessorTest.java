@@ -22,7 +22,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class YAMLProcessorTest extends GenericTest {
 
     @Test
-    public void shouldReturnPassedFormat() {
+    void shouldReturnPassedFormat() {
 
         // given
         YAMLProcessor processor = new YAMLProcessor();
@@ -35,7 +35,7 @@ public class YAMLProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldLoadYAMLFileOnRealLoad() {
+    void shouldLoadYAMLFileOnRealLoad() {
 
         // given
         YAMLProcessor processor = new YAMLProcessor();
@@ -52,7 +52,7 @@ public class YAMLProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenLoadingInvalidYAMLFile() {
+    void shouldFailWhenLoadingInvalidYAMLFile() {
 
         // given
         YAMLProcessor processor = new YAMLProcessor();
@@ -69,7 +69,7 @@ public class YAMLProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenWritingToInvalidWriter() {
+    void shouldFailWhenWritingToInvalidWriter() {
 
         final String errorMessage = "Don't write into this writer!";
 

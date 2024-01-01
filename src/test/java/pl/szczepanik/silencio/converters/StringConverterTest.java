@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 public class StringConverterTest extends GenericTest {
 
     @Test
-    public void shouldReturnEmptyValue() {
+    void shouldReturnEmptyValue() {
 
         // given
         String pattern = "constant";

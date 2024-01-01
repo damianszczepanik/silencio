@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.stubs.StubAbstractVisitor;
 public class AbstractVisitorTest extends GenericTest {
 
     @Test
-    public void shouldFailWhenPassingValueToProcessValue() {
+    void shouldFailWhenPassingValueToProcessValue() {
 
         // given
         Key key = new Key("123");

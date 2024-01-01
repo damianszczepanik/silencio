@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.GenericTest;
 public class ProcessorExceptionTest extends GenericTest {
 
     @Test
-    public void constructorWithMessageReturnsPassedMessage() {
+    void constructorWithMessageReturnsPassedMessage() {
 
         // given
         final String message = " brrrr";
@@ -24,7 +24,7 @@ public class ProcessorExceptionTest extends GenericTest {
     }
 
     @Test
-    public void constructorWithMessageAndCauseReturnsPassedMessageAndCause() {
+    void constructorWithMessageAndCauseReturnsPassedMessageAndCause() {
 
         // given
         final Exception cause = new RuntimeException("maybe, maybe");

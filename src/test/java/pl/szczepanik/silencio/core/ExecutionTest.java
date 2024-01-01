@@ -17,7 +17,7 @@ import pl.szczepanik.silencio.stubs.StubConverter;
 public class ExecutionTest extends GenericTest {
 
     @Test
-    public void shouldReturnPassedValues() {
+    void shouldReturnPassedValues() {
 
         // given
         Decision[] decisions = { new PositiveDecision() };
@@ -32,7 +32,7 @@ public class ExecutionTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenPassingEmtptyDecisions() {
+    void shouldFailWhenPassingEmtptyDecisions() {
 
         // given
         Decision[] decisions = {};
@@ -45,7 +45,7 @@ public class ExecutionTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenPassingNullDecisions() {
+    void shouldFailWhenPassingNullDecisions() {
 
         // given
         Decision[] decisions = { null };
@@ -58,7 +58,7 @@ public class ExecutionTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenPassingEmtptyConverter() {
+    void shouldFailWhenPassingEmtptyConverter() {
 
         // given
         Decision[] decisions = { new PositiveDecision() };
@@ -71,7 +71,7 @@ public class ExecutionTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenPassingNullConverter() {
+    void shouldFailWhenPassingNullConverter() {
 
         // given
         Decision[] decisions = { new PositiveDecision() };

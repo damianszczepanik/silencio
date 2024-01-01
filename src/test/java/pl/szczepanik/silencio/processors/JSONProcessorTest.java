@@ -23,7 +23,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class JSONProcessorTest extends GenericTest {
 
     @Test
-    public void shouldReturnPassedFormat() {
+    void shouldReturnPassedFormat() {
 
         // given
         Processor processor = new JSONProcessor();
@@ -36,7 +36,7 @@ public class JSONProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldLoadJSONFileOnRealLoad() {
+    void shouldLoadJSONFileOnRealLoad() {
 
         // given
         JSONProcessor processor = new JSONProcessor();
@@ -53,7 +53,7 @@ public class JSONProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenLoadingInvalidJSONFile() {
+    void shouldFailWhenLoadingInvalidJSONFile() {
 
         // given
         Processor processor = new JSONProcessor();
@@ -70,7 +70,7 @@ public class JSONProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenWritingToInvalidWriter() {
+    void shouldFailWhenWritingToInvalidWriter() {
 
         final String errorMessage = "Don't write into this writer!";
 

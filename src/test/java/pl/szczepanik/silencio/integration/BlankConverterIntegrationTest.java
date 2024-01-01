@@ -5,7 +5,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.io.IOException;
 import java.io.StringWriter;
 
-import org.junit.jupiter.api.Test;import pl.szczepanik.silencio.GenericTest;
+import org.junit.jupiter.api.Test;
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Builder;
@@ -17,7 +18,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class BlankConverterIntegrationTest extends GenericTest {
 
     @Test
-    public void shoulClearValuesWhenBlankIsExecutedAsLast() throws IOException {
+    void shoulClearValuesWhenBlankIsExecutedAsLast() throws IOException {
 
         // given
         Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE, Builder.BLANK).build();

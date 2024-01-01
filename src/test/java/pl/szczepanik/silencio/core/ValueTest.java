@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.GenericTest;
 public class ValueTest extends GenericTest {
 
     @Test
-    public void shouldReturnValue() {
+    void shouldReturnValue() {
 
         // given
         String value = "secondValue";
@@ -24,7 +24,7 @@ public class ValueTest extends GenericTest {
     }
 
     @Test
-    public void shouldReturnValidFormat() {
+    void shouldReturnValidFormat() {
 
         // given
         String valueName = "go, go go!";

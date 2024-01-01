@@ -12,7 +12,7 @@ import pl.szczepanik.silencio.GenericTest;
 public class ProcessorStateMachineTest extends GenericTest {
 
     @Test
-    public void shouldNotAllowToValidateProcessInCreatedState() {
+    void shouldNotAllowToValidateProcessInCreatedState() {
 
         // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
@@ -24,7 +24,7 @@ public class ProcessorStateMachineTest extends GenericTest {
     }
 
     @Test
-    public void shouldAllowForValidateProcess() {
+    void shouldAllowForValidateProcess() {
 
         // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
@@ -37,7 +37,7 @@ public class ProcessorStateMachineTest extends GenericTest {
     }
 
     @Test
-    public void shouldNotAllowToValidateWriteInCreatedState() {
+    void shouldNotAllowToValidateWriteInCreatedState() {
 
         // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
@@ -49,7 +49,7 @@ public class ProcessorStateMachineTest extends GenericTest {
     }
 
     @Test
-    public void shouldAllowForValidateWrite() {
+    void shouldAllowForValidateWrite() {
 
         // given
         ProcessorStateMachine machine = new ProcessorStateMachine();
@@ -61,7 +61,7 @@ public class ProcessorStateMachineTest extends GenericTest {
     }
 
     @Test
-    public void shouldAllowForReLoad() {
+    void shouldAllowForReLoad() {
 
         // given
         ProcessorStateMachine machine = new ProcessorStateMachine();

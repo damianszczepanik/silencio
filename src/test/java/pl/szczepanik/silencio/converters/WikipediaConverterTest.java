@@ -37,7 +37,7 @@ public class WikipediaConverterTest extends GenericTest {
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
 
     @Test
-    public void shouldFailWhenServerReturnsInvalidPage() throws IOException {
+    void shouldFailWhenServerReturnsInvalidPage() throws IOException {
 
         // given
         Converter wikipedia = new WikipediaConverter();
@@ -62,7 +62,7 @@ public class WikipediaConverterTest extends GenericTest {
     }
 
     @Test
-    public void shouldConvertWholeFile() throws IOException {
+    void shouldConvertWholeFile() throws IOException {
 
         // given
         Converter converter = new WikipediaConverter();
@@ -106,7 +106,7 @@ public class WikipediaConverterTest extends GenericTest {
     }
 
     @Test
-    public void shouldClearHistoryOnInit() {
+    void shouldClearHistoryOnInit() {
 
         // given
         Converter blank = new WikipediaConverter();

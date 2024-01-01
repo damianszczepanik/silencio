@@ -18,7 +18,7 @@ import pl.szczepanik.silencio.stubs.StubProcessor;
 public class ProcessorSmokeCheckerTest extends GenericTest {
 
     @Test
-    public void shouldPassWithStubProcessor() {
+    void shouldPassWithStubProcessor() {
 
         // given
         StubProcessor processor = new StubProcessor(Format.JSON, new Converter[] { new StubConverter() });
@@ -30,7 +30,7 @@ public class ProcessorSmokeCheckerTest extends GenericTest {
     }
 
     @Test
-    public void shouldThrowProcessorExceptionWhenValidationFails() {
+    void shouldThrowProcessorExceptionWhenValidationFails() {
 
         final String errorMessage = "Ups, I did it again!";
 

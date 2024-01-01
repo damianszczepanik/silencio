@@ -24,7 +24,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 public class BuilderTest extends GenericTest {
 
     @Test
-    public void shouldHoldPassedFormat() {
+    void shouldHoldPassedFormat() {
 
         // given
         Format format = new StubFormat("builderFormat");
@@ -38,7 +38,7 @@ public class BuilderTest extends GenericTest {
     }
 
     @Test
-    public void shouldAppendPassedValues_NxN() {
+    void shouldAppendPassedValues_NxN() {
 
         // given
         Format format = Format.JSON;
@@ -57,7 +57,7 @@ public class BuilderTest extends GenericTest {
     }
 
     @Test
-    public void shouldAppendPassedValues_1xN() {
+    void shouldAppendPassedValues_1xN() {
 
         // given
         Format format = Format.JSON;
@@ -76,7 +76,7 @@ public class BuilderTest extends GenericTest {
     }
 
     @Test
-    public void shouldAppendPassedValues_1x1() {
+    void shouldAppendPassedValues_1x1() {
 
         // given
         Format format = Format.JSON;
@@ -99,7 +99,7 @@ public class BuilderTest extends GenericTest {
     }
 
     @Test
-    public void shouldAppendPassedValues_0xN() {
+    void shouldAppendPassedValues_0xN() {
 
         // given
         Format format = Format.JSON;
@@ -118,7 +118,7 @@ public class BuilderTest extends GenericTest {
     }
 
     @Test
-    public void shouldAppendPassedValues_0x1() {
+    void shouldAppendPassedValues_0x1() {
 
         // given
         Format format = Format.JSON;
@@ -137,7 +137,7 @@ public class BuilderTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenPassingInvalidFormat() {
+    void shouldFailWhenPassingInvalidFormat() {
 
         // when
         Format format = new StubFormat("tr!cky");
@@ -152,7 +152,7 @@ public class BuilderTest extends GenericTest {
     }
 
     @Test
-    public void shouldClearExecutions() {
+    void shouldClearExecutions() {
 
         // given
         Builder builder = new Builder(Format.XML);

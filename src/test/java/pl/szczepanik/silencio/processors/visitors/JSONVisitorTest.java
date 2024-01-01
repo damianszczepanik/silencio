@@ -24,7 +24,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class JSONVisitorTest extends GenericTest {
 
     @Test
-    public void shouldReportExceptionOnUnsupportedModel() throws Exception {
+    void shouldReportExceptionOnUnsupportedModel() throws Exception {
 
         // when
         final String key = "myKey";
@@ -38,7 +38,7 @@ public class JSONVisitorTest extends GenericTest {
     }
 
     @Test
-    public void shouldVisitAllJsonNodes() throws IOException {
+    void shouldVisitAllJsonNodes() throws IOException {
 
         final int nodeCounter = 14;
 

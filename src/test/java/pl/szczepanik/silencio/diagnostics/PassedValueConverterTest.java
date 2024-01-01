@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.core.Value;
 public class PassedValueConverterTest extends GenericTest {
 
     @Test
-    public void shouldReturnCorrectValue() {
+    void shouldReturnCorrectValue() {
 
         // given
         Value value = new Value("someValue");

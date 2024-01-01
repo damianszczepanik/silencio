@@ -18,7 +18,7 @@ import pl.szczepanik.silencio.core.Value;
 public class NumberSequenceConverterTest extends GenericTest {
 
     @Test
-    public void shouldReturnValueWhenPassingNull() {
+    void shouldReturnValueWhenPassingNull() {
 
         // given
         Converter blank = new NumberSequenceConverter();
@@ -33,7 +33,7 @@ public class NumberSequenceConverterTest extends GenericTest {
     }
 
     @Test
-    public void shouldReturnSameNumbersWhenPassingEqualsValues() {
+    void shouldReturnSameNumbersWhenPassingEqualsValues() {
 
         // given having 2 values with the same value (compareTo returns true) but different reference
         Converter blank = new NumberSequenceConverter();
@@ -53,7 +53,7 @@ public class NumberSequenceConverterTest extends GenericTest {
     }
 
     @Test
-    public void shouldReturnDifferentNumberWhenPassingDifferentValue() {
+    void shouldReturnDifferentNumberWhenPassingDifferentValue() {
 
         Converter blank = new NumberSequenceConverter();
         Key key = new Key("funnyKey");
@@ -72,7 +72,7 @@ public class NumberSequenceConverterTest extends GenericTest {
     }
 
     @Test
-    public void shouldReturnSameNumberWhenPassingSameReference() {
+    void shouldReturnSameNumberWhenPassingSameReference() {
 
         // given
         Converter blank = new NumberSequenceConverter();
@@ -90,7 +90,7 @@ public class NumberSequenceConverterTest extends GenericTest {
     }
 
     @Test
-    public void shouldClearHistoryOnInit() {
+    void shouldClearHistoryOnInit() {
 
         // given
         Converter blank = new NumberSequenceConverter();

@@ -25,7 +25,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class YAMLVisitorTest extends GenericTest {
 
     @Test
-    public void shouldReportExceptionOnUnsupportedModel() throws Exception {
+    void shouldReportExceptionOnUnsupportedModel() throws Exception {
 
         // when
         final String key = "myKey";
@@ -39,7 +39,7 @@ public class YAMLVisitorTest extends GenericTest {
     }
 
     @Test
-    public void shouldVisitAllYamlNodes() throws IOException {
+    void shouldVisitAllYamlNodes() throws IOException {
 
         final int nodeCounter = 16;
 
