@@ -4,8 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.StringWriter;
 
-import org.junit.Test;
-import pl.szczepanik.silencio.GenericTest;
+import org.junit.jupiter.api.Test;import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Builder;

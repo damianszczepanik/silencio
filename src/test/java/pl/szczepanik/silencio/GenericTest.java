@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.io.Writer;
 
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
@@ -14,7 +14,7 @@ public abstract class GenericTest {
     protected Writer output;
     protected Reader input;
 
-    @After
+    @AfterEach
     public void closeStreams() throws IOException {
         if (input != null) {
             input.close();

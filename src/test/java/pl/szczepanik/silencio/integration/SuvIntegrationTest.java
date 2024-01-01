@@ -5,11 +5,8 @@ import static org.assertj.core.api.Assertions.assertThatNoException;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.diagnostics.ProcessorSmokeChecker;
@@ -21,31 +18,35 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-@RunWith(Parameterized.class)
 public class SuvIntegrationTest extends GenericTest {
 
-    @Parameter(value = 0)
     public Processor processor;
 
-    @Parameter(value = 1)
     public String suvInput;
 
-    @Parameters
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][]{
-                {new XMLProcessor(), ResourceLoader.loadAsString("suv.xml")},
-                {new JSONProcessor(), ResourceLoader.loadAsString("suv.json")},
-                {new PropertiesProcessor(), ResourceLoader.loadAsString("suv.properties")},
+        return Arrays.asList(new Object[][] {
+                { new XMLProcessor(), ResourceLoader.loadAsString("suv.xml") },
+                { new JSONProcessor(), ResourceLoader.loadAsString("suv.json") },
+                { new PropertiesProcessor(), ResourceLoader.loadAsString("suv.properties") },
         });
     }
 
-    @Test
-    public void shouldNotCrashOnDiagnosticTests() {
+    @MethodSource("data")
+    @ParameterizedTest(name = "\"{0}\" with \"{1}\"")
+    public void shouldNotCrashOnDiagnosticTests(Processor processor, String suvInput) {
+
+        initDataWithNameTest(processor, suvInput);
 
         // given
         ProcessorSmokeChecker checker = new ProcessorSmokeChecker(processor);
 
         // when & then
         assertThatNoException().isThrownBy(() -> checker.validateWithAllCombinations(suvInput));
+    }
+
+    private void initDataWithNameTest(Processor processor, String suvInput) {
+        this.processor = processor;
+        this.suvInput = suvInput;
     }
 }

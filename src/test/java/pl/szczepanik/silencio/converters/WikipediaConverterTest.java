@@ -2,8 +2,8 @@ package pl.szczepanik.silencio.converters;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.powermock.api.mockito.PowerMockito.mockStatic;
-import static org.powermock.api.mockito.PowerMockito.when;
+import static org.mockito.Mockito.mockStatic;
+import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 import java.io.StringWriter;
@@ -13,11 +13,9 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.powermock.core.classloader.annotations.PowerMockIgnore;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.apache.commons.io.IOUtils;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
 import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
@@ -33,9 +31,6 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(IOUtility.class)
-@PowerMockIgnore("jdk.internal.reflect.*")
 public class WikipediaConverterTest extends GenericTest {
 
     private static final String URL_ADDRESS = "https://en.m.wikipedia.org/wiki/Special:Random";
@@ -53,7 +48,8 @@ public class WikipediaConverterTest extends GenericTest {
         processor.load(input);
 
         // when
-        mockStatic(IOUtility.class);
+        MockedStatic<IOUtils> mockedStatic = mockStatic(IOUtils.class);
+
         when(IOUtility.urlToString(new URL(URL_ADDRESS)))
                 .thenReturn(INVALID_HTML_PAGE);
 
@@ -61,6 +57,8 @@ public class WikipediaConverterTest extends GenericTest {
         assertThatThrownBy(() -> processor.process())
                 .isInstanceOf(IntegrityException.class)
                 .hasMessage("Could not find header pattern for page: " + INVALID_HTML_PAGE);
+
+        mockedStatic.close();
     }
 
     @Test
@@ -76,7 +74,8 @@ public class WikipediaConverterTest extends GenericTest {
         processor.load(input);
 
         // when
-        mockStatic(IOUtility.class);
+        MockedStatic<IOUtils> mockedStatic = mockStatic(IOUtils.class);
+
         when(IOUtility.urlToString(new URL(URL_ADDRESS)))
                 .thenReturn(toWikiPage("George Washington"))
                 .thenReturn(toWikiPage("John Adams"))
@@ -98,6 +97,8 @@ public class WikipediaConverterTest extends GenericTest {
 
         processor.process();
         processor.write(output);
+
+        mockedStatic.close();
 
         // then
         String reference = ResourceLoader.loadAsString("suv_Positive_Wikipedia.json");

@@ -6,7 +6,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import java.util.List;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
@@ -42,8 +42,8 @@ public class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
-        Decision[] decisions = {new PositiveDecision(), new NegativeDecision()};
+        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
+        Decision[] decisions = { new PositiveDecision(), new NegativeDecision() };
 
         // when
         Builder builder = new Builder(format).with(decisions, converters);
@@ -61,7 +61,7 @@ public class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
+        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
         Decision decision = new NegativeDecision();
 
         // when
@@ -103,7 +103,7 @@ public class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
+        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
         Builder builder = new Builder(format);
 
         // when

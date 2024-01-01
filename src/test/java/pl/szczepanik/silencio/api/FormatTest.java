@@ -4,7 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 import org.apache.commons.lang3.StringUtils;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.stubs.StubFormat;

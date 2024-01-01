@@ -5,13 +5,9 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.Arrays;
 import java.util.Collection;
 
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.junit.runners.Parameterized;
-import org.junit.runners.Parameterized.Parameter;
-import org.junit.runners.Parameterized.Parameters;
-
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Converter;
 import pl.szczepanik.silencio.api.Decision;
@@ -27,40 +23,33 @@ import pl.szczepanik.silencio.stubs.StubAbstractVisitor;
 /**
  * @author Damian Szczepanik (damianszczepanik@github)
  */
-@RunWith(Parameterized.class)
 public class AbstractVisitor_processValueTest extends GenericTest {
 
     private static final Key key = new Key("myKey");
     private static final Object value = "yourValue";
     private static final ConverterVisitor visitCounter = new ConverterVisitor();
 
-    @Parameter(value = 0)
     public Decision[] decisions;
 
-    @Parameter(value = 1)
     public Converter[] processors;
 
-    @Parameter(value = 2)
     public Key expectedKey;
 
-    @Parameter(value = 3)
     public Object expectedValue;
 
-    @Parameter(value = 4)
     public Object expectVisitCounter;
 
-    @Parameters
     public static Collection<Object[]> data() {
         return Arrays.asList(new Object[][] {
                 {
-                        new Decision[] {new PositiveDecision()},
+                        new Decision[] { new PositiveDecision() },
                         new Converter[] { visitCounter, visitCounter },
                         key,
                         value,
                         2
                 },
                 {
-                        new Decision[] {new PositiveDecision(), new NegativeDecision()},
+                        new Decision[] { new PositiveDecision(), new NegativeDecision() },
                         new Converter[] { visitCounter, visitCounter },
                         null,
                         value,
@@ -70,8 +59,17 @@ public class AbstractVisitor_processValueTest extends GenericTest {
     }
 
 
-    @Test
-    public void shouldProcessAllConvertersForPositiveDecision() {
+    @MethodSource("data")
+    @ParameterizedTest(name = "\"{0}\" with \"{1}\"")
+    public void shouldProcessAllConvertersForPositiveDecision(
+            Decision[] decisions,
+            Converter[] processors,
+            Key expectedKey,
+            Object expectedValue,
+            Object expectVisitCounter) {
+
+        initDataWithNameTest(decisions, processors, expectedKey, expectedValue, expectVisitCounter);
+
         // given
         StubAbstractVisitor visitor = new StubAbstractVisitor();
         Execution execution = new Execution(decisions, processors);
@@ -86,8 +84,21 @@ public class AbstractVisitor_processValueTest extends GenericTest {
         assertThat(visitCounter.getVisitCounter()).isEqualTo(expectVisitCounter);
     }
 
-    @After
+    @AfterEach
     public void reset() {
         visitCounter.reset();
+    }
+
+    private void initDataWithNameTest(
+            Decision[] decisions,
+            Converter[] processors,
+            Key expectedKey,
+            Object expectedValue,
+            Object expectVisitCounter) {
+        this.decisions = decisions;
+        this.processors = processors;
+        this.expectedKey = expectedKey;
+        this.expectedValue = expectedValue;
+        this.expectVisitCounter = expectVisitCounter;
     }
 }

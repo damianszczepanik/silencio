@@ -10,7 +10,7 @@ import java.io.StringWriter;
 import java.io.Writer;
 import java.util.Properties;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.powermock.reflect.Whitebox;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
