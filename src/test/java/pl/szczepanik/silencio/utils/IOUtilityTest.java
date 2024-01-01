@@ -56,12 +56,15 @@ public class IOUtilityTest extends GenericTest {
 
         String errorMessage = "Something is wrong!";
 
+        // given
+        URL url = new URL(URL_ADDRESS);
+
         // when
-        when(IOUtils.toString(new URL(URL_ADDRESS), StandardCharsets.UTF_8))
+        when(IOUtils.toString(url, StandardCharsets.UTF_8))
                 .thenThrow(new IOException(errorMessage));
 
         // then
-        assertThatThrownBy(() -> IOUtility.urlToString(new URL(URL_ADDRESS)))
+        assertThatThrownBy(() -> IOUtility.urlToString(url))
                 .isInstanceOf(IntegrityException.class)
                 .hasMessage(errorMessage);
     }
