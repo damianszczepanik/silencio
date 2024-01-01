@@ -39,7 +39,7 @@ public class JSONParser_isBasicTypeTest extends GenericTest {
 
     @MethodSource("data")
     @ParameterizedTest(name = "\"{0}\" with \"{1}\"")
-    public void shouldValidateBasicObject(Object type, boolean isBasic) throws Exception {
+    void shouldValidateBasicObject(Object type, boolean isBasic) throws Exception {
 
         initDataWithNameTest(type, isBasic);
         // given

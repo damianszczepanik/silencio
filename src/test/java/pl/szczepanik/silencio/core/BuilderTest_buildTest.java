@@ -27,7 +27,7 @@ public class BuilderTest_buildTest extends GenericTest {
 
     @MethodSource("data")
     @ParameterizedTest(name = "\"{0}\"")
-    public void buildSupportsAllFormats(Format format) {
+    void buildSupportsAllFormats(Format format) {
 
         initDataWithNameTest(format);
         // given

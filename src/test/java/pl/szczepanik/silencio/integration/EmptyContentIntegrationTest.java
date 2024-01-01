@@ -34,7 +34,7 @@ public class EmptyContentIntegrationTest extends GenericTest {
 
     @MethodSource("data")
     @ParameterizedTest(name = "\"{0}\" with \"{1}\"")
-    public void shouldNotFailOnEmptyContent(Format format, String fileName) {
+    void shouldNotFailOnEmptyContent(Format format, String fileName) {
 
         initDataWithNameTest(format, fileName);
 

@@ -19,7 +19,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class PropertiesVisitorTest extends GenericTest {
 
     @Test
-    public void shouldVisitAllJsonNodes() throws IOException {
+    void shouldVisitAllJsonNodes() throws IOException {
 
         final int nodesCounter = 16;
 

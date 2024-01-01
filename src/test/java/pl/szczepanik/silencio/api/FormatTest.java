@@ -15,7 +15,7 @@ import pl.szczepanik.silencio.stubs.StubFormat;
 public class FormatTest extends GenericTest {
 
     @Test
-    public void shouldReturnFormatName() {
+    void shouldReturnFormatName() {
 
         // given
         String formatName = "sunnyFormat";
@@ -28,7 +28,7 @@ public class FormatTest extends GenericTest {
     }
 
     @Test
-    public void shouldNotAllowForEmptyName() {
+    void shouldNotAllowForEmptyName() {
 
         // when
         String emptyName = StringUtils.EMPTY;
@@ -40,7 +40,7 @@ public class FormatTest extends GenericTest {
     }
 
     @Test
-    public void shouldEqualsWhenNameIsEqual() {
+    void shouldEqualsWhenNameIsEqual() {
 
         // given
         Format one = new StubFormat("one");
@@ -54,7 +54,7 @@ public class FormatTest extends GenericTest {
     }
 
     @Test
-    public void shouldNotEqualsWhenNameIsNotEqual() {
+    void shouldNotEqualsWhenNameIsNotEqual() {
 
         // given
         Format one = new StubFormat("one");
@@ -68,7 +68,7 @@ public class FormatTest extends GenericTest {
     }
 
     @Test
-    public void shouldEqualsWithAnyObject() {
+    void shouldEqualsWithAnyObject() {
 
         // when
         Format one = Format.JSON;
@@ -79,7 +79,7 @@ public class FormatTest extends GenericTest {
     }
 
     @Test
-    public void shouldNotEqualsWithNull() {
+    void shouldNotEqualsWithNull() {
 
         // when
         Format one = Format.JSON;
@@ -92,7 +92,7 @@ public class FormatTest extends GenericTest {
     }
 
     @Test
-    public void shouldReturnHashCodeOfName() {
+    void shouldReturnHashCodeOfName() {
 
         // given
         String name = "crazyName";
@@ -105,7 +105,7 @@ public class FormatTest extends GenericTest {
     }
 
     @Test
-    public void shouldReturnValidFormat() {
+    void shouldReturnValidFormat() {
 
         // given
         String formatName = "some, some, some";

@@ -5,7 +5,8 @@ import java.io.StringReader;
 import java.io.StringWriter;
 import java.util.Properties;
 
-import org.junit.jupiter.api.Test;import pl.szczepanik.silencio.GenericTest;
+import org.junit.jupiter.api.Test;
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Builder;
@@ -18,7 +19,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class PropertiesProcessorIntegrationTest extends GenericTest {
 
     @Test
-    public void shouldProcessPropertiesFile() throws IOException {
+    void shouldProcessPropertiesFile() throws IOException {
 
         // given
         Processor processor = new Builder(Format.PROPERTIES).with(Builder.BLANK).build();

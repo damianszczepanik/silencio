@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.core.Value;
 public class NegativeDecisionTest extends GenericTest {
 
     @Test
-    public void shouldNotAllowForConversion() {
+    void shouldNotAllowForConversion() {
 
         // given
         Decision d = new NegativeDecision();

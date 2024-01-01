@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.core.Value;
 public class ConstantValueConverterTest extends GenericTest {
 
     @Test
-    public void shouldReturnConstantValue() {
+    void shouldReturnConstantValue() {
 
         // given
         Converter converter = new ConstantValueConverter();

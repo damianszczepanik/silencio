@@ -23,7 +23,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class XMLProcessorTest extends GenericTest {
 
     @Test
-    public void shouldReturnPassedFormat() {
+    void shouldReturnPassedFormat() {
 
         // given
         XMLProcessor processor = new XMLProcessor();
@@ -36,7 +36,7 @@ public class XMLProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldLoadXMLFileOnRealLoad() {
+    void shouldLoadXMLFileOnRealLoad() {
 
         // given
         XMLProcessor processor = new XMLProcessor();
@@ -53,7 +53,7 @@ public class XMLProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenLoadingInvalidJSONFile() {
+    void shouldFailWhenLoadingInvalidJSONFile() {
 
         // given
         Processor processor = new XMLProcessor();
@@ -70,7 +70,7 @@ public class XMLProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenWritingToInvalidWriter() {
+    void shouldFailWhenWritingToInvalidWriter() {
 
         final String errorMessage = "Don't write into this writer!";
 

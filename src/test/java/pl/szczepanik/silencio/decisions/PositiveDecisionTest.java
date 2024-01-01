@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.core.Value;
 public class PositiveDecisionTest extends GenericTest {
 
     @Test
-    public void shouldAllowForConversion() {
+    void shouldAllowForConversion() {
 
         // given
         Decision d = new PositiveDecision();

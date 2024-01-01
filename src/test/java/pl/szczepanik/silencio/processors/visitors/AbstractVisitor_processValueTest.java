@@ -61,7 +61,7 @@ public class AbstractVisitor_processValueTest extends GenericTest {
 
     @MethodSource("data")
     @ParameterizedTest(name = "\"{0}\" with \"{1}\"")
-    public void shouldProcessAllConvertersForPositiveDecision(
+    void shouldProcessAllConvertersForPositiveDecision(
             Decision[] decisions,
             Converter[] processors,
             Key expectedKey,
@@ -85,7 +85,7 @@ public class AbstractVisitor_processValueTest extends GenericTest {
     }
 
     @AfterEach
-    public void reset() {
+    void reset() {
         visitCounter.reset();
     }
 

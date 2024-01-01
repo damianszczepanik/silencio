@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.core.Value;
 public class MatcherDecisionTest extends GenericTest {
 
     @Test
-    public void shouldAcceptValuesAsWords() {
+    void shouldAcceptValuesAsWords() {
 
         // given
         Decision d = new MatcherDecision("\\w+");
@@ -28,7 +28,7 @@ public class MatcherDecisionTest extends GenericTest {
     }
 
     @Test
-    public void shouldNotAcceptKeysAsDigits() {
+    void shouldNotAcceptKeysAsDigits() {
 
         // given
         Decision d = new MatcherDecision("[^\\d]", "foo");
@@ -42,7 +42,7 @@ public class MatcherDecisionTest extends GenericTest {
     }
 
     @Test
-    public void shouldAcceptNullValues() {
+    void shouldAcceptNullValues() {
 
         // given
         Decision d = new MatcherDecision(null, null);

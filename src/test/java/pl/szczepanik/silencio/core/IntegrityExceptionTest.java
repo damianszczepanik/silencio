@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.GenericTest;
 public class IntegrityExceptionTest extends GenericTest {
 
     @Test
-    public void constructorWithMessageReturnsPassedMessage() {
+    void constructorWithMessageReturnsPassedMessage() {
 
         // given
         final String message = " brrrr";
@@ -24,7 +24,7 @@ public class IntegrityExceptionTest extends GenericTest {
     }
 
     @Test
-    public void constructorWithMessageAndCauseReturnsPassedMessageAndCause() {
+    void constructorWithMessageAndCauseReturnsPassedMessageAndCause() {
 
         // given
         final String message = " brrrr";

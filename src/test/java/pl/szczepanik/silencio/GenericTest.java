@@ -15,7 +15,7 @@ public abstract class GenericTest {
     protected Reader input;
 
     @AfterEach
-    public void closeStreams() throws IOException {
+    void closeStreams() throws IOException {
         if (input != null) {
             input.close();
         }

@@ -4,7 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.StringWriter;
 
-import org.junit.jupiter.api.Test;import pl.szczepanik.silencio.GenericTest;
+import org.junit.jupiter.api.Test;
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Builder;
@@ -16,7 +17,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class JSONProcessorIntegrationTest extends GenericTest {
 
     @Test
-    public void shouldProcessJSONFile() {
+    void shouldProcessJSONFile() {
 
         // given
         Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE).build();

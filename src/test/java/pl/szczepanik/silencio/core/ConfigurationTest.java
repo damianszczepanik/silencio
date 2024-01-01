@@ -14,7 +14,7 @@ import pl.szczepanik.silencio.stubs.StubConverter;
 public class ConfigurationTest extends GenericTest {
 
     @Test
-    public void shouldReturnPassedExecutions() {
+    void shouldReturnPassedExecutions() {
 
         // given
         Execution[] executions = { new Execution(new PositiveDecision(), new StubConverter()) };
@@ -27,7 +27,7 @@ public class ConfigurationTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenPassingEmtptyExecution() {
+    void shouldFailWhenPassingEmtptyExecution() {
 
         // given
         Execution[] executors = {};

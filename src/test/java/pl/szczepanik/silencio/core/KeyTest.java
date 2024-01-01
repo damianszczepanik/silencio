@@ -11,7 +11,7 @@ import pl.szczepanik.silencio.GenericTest;
 public class KeyTest extends GenericTest {
 
     @Test
-    public void shouldReturnKey() {
+    void shouldReturnKey() {
 
         // given
         String keyString = "oneKey";
@@ -24,7 +24,7 @@ public class KeyTest extends GenericTest {
     }
 
     @Test
-    public void shouldReturnValidFormat() {
+    void shouldReturnValidFormat() {
 
         // given
         String keyName = "golden key";

@@ -17,7 +17,7 @@ import pl.szczepanik.silencio.stubs.StubProcessor;
 public class AbstractProcessorTest extends GenericTest {
 
     @Test
-    public void shouldReturnPassedFormat() {
+    void shouldReturnPassedFormat() {
 
         // given
         Converter[] converters = { new StubConverter() };
@@ -31,7 +31,7 @@ public class AbstractProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenBuildFromEmptyFormat() {
+    void shouldFailWhenBuildFromEmptyFormat() {
 
         // given
         Converter[] converters = { new StubConverter() };
@@ -46,7 +46,7 @@ public class AbstractProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenBuildFromNullConfiguration() {
+    void shouldFailWhenBuildFromNullConfiguration() {
 
         // given
         Format format = Format.PROPERTIES;
@@ -59,7 +59,7 @@ public class AbstractProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenBuildFromEmptyConverter() {
+    void shouldFailWhenBuildFromEmptyConverter() {
 
         // given
         Format format = Format.PROPERTIES;
@@ -72,7 +72,7 @@ public class AbstractProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailOnProcessWhenConvertersAreNotSet() {
+    void shouldFailOnProcessWhenConvertersAreNotSet() {
 
         // given
         Format format = Format.PROPERTIES;

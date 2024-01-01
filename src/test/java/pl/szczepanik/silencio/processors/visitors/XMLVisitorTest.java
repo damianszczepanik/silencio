@@ -30,7 +30,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class XMLVisitorTest extends GenericTest {
 
     @Test
-    public void shouldReportExceptionOnUnsupportedModel() throws Exception {
+    void shouldReportExceptionOnUnsupportedModel() throws Exception {
 
         // when
         final String key = "myKey";
@@ -44,7 +44,7 @@ public class XMLVisitorTest extends GenericTest {
     }
 
     @Test
-    public void shouldVisitAllXMLNodes() throws ParserConfigurationException, SAXException, IOException {
+    void shouldVisitAllXMLNodes() throws ParserConfigurationException, SAXException, IOException {
 
         final int nodeCounter = 14;
 
@@ -67,7 +67,7 @@ public class XMLVisitorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailOnInvalidNodeType() throws Exception {
+    void shouldFailOnInvalidNodeType() throws Exception {
 
         // given
         XMLVisitor visitor = new XMLVisitor();

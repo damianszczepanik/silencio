@@ -25,7 +25,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class PropertiesProcessorTest extends GenericTest {
 
     @Test
-    public void shouldReturnPassedFormat() {
+    void shouldReturnPassedFormat() {
 
         // given
         PropertiesProcessor processor = new PropertiesProcessor();
@@ -38,7 +38,7 @@ public class PropertiesProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldLoadPropertiesFileOnRealLoad() throws IOException {
+    void shouldLoadPropertiesFileOnRealLoad() throws IOException {
 
         // given
         input = ResourceLoader.loadAsReader("suv.properties");
@@ -60,7 +60,7 @@ public class PropertiesProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenLoadingInvalidPropertiesFile() {
+    void shouldFailWhenLoadingInvalidPropertiesFile() {
 
         // given
         input = ResourceLoader.loadAsReader("corrupted.properties");
@@ -73,7 +73,7 @@ public class PropertiesProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldInvokeProcessByRealProcess() {
+    void shouldInvokeProcessByRealProcess() {
 
         // given
         PropertiesProcessor processor = new PropertiesProcessor();
@@ -91,7 +91,7 @@ public class PropertiesProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailOnRealWrite() {
+    void shouldFailOnRealWrite() {
 
         // given
         final String errorMessage = "Don't write into this writer any more!";
@@ -105,7 +105,7 @@ public class PropertiesProcessorTest extends GenericTest {
     }
 
     @Test
-    public void shouldWritePropertiesIntoWriter() throws IOException {
+    void shouldWritePropertiesIntoWriter() throws IOException {
 
         // given
         input = ResourceLoader.loadAsReader("suv.properties");

@@ -4,7 +4,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.StringWriter;
 
-import org.junit.jupiter.api.Test;import pl.szczepanik.silencio.GenericTest;
+import org.junit.jupiter.api.Test;
+import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
 import pl.szczepanik.silencio.core.Builder;
@@ -16,7 +17,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 public class XMLProcessorIntegrationTest extends GenericTest {
 
     @Test
-    public void shouldProcessXMLFile() {
+    void shouldProcessXMLFile() {
 
         // given
         Processor processor = new Builder(Format.XML).with(Builder.NUMBER_SEQUENCE).build();

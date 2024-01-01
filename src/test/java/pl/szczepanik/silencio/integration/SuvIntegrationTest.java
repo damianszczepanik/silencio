@@ -34,7 +34,7 @@ public class SuvIntegrationTest extends GenericTest {
 
     @MethodSource("data")
     @ParameterizedTest(name = "\"{0}\" with \"{1}\"")
-    public void shouldNotCrashOnDiagnosticTests(Processor processor, String suvInput) {
+    void shouldNotCrashOnDiagnosticTests(Processor processor, String suvInput) {
 
         initDataWithNameTest(processor, suvInput);
 

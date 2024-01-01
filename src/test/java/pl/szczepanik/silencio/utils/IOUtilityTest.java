@@ -24,21 +24,21 @@ public class IOUtilityTest extends GenericTest {
 
     private static final String INVALID_HTML_PAGE = "This does not look like valid HTML page";
     private static final String URL_ADDRESS = "http://www.fancy.page";
-    
+
     private MockedStatic<IOUtils> mockedStatic;
 
     @BeforeEach
-    public void mockBefore() {
+    void mockBefore() {
         mockedStatic = mockStatic(IOUtils.class);
     }
 
     @AfterEach
-    public void closeAfter() {
+    void closeAfter() {
         mockedStatic.close();
     }
 
     @Test
-    public void shouldReturnWholeHtmlPage() throws Exception {
+    void shouldReturnWholeHtmlPage() throws Exception {
 
         // given
         when(IOUtils.toString(new URL(URL_ADDRESS), StandardCharsets.UTF_8))
@@ -52,7 +52,7 @@ public class IOUtilityTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailOnIOException() throws Exception {
+    void shouldFailOnIOException() throws Exception {
 
         String errorMessage = "Something is wrong!";
 
@@ -67,7 +67,7 @@ public class IOUtilityTest extends GenericTest {
     }
 
     @Test
-    public void shouldFailWhenUrlIsNotValid() {
+    void shouldFailWhenUrlIsNotValid() {
 
         // given
         String invalidURL = "wwww.my@funpage";
