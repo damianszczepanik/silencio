@@ -39,7 +39,7 @@
         <property name="basedir" value="${basedir}"/>
     -->
 
-    <property name="fileExtensions" value="java" />
+    <property name="fileExtensions" value="java"/>
 
     <!-- Checks whether files end with a new line.                        -->
     <!-- See http://checkstyle.sf.net/config_misc.html#NewlineAtEndOfFile -->
@@ -67,18 +67,18 @@
     <module name="TreeWalker">
 
         <!-- Checks for Javadoc comments.                     -->
-        <!-- See http://checkstyle.sf.net/config_javadoc.html -->
+        <!-- See https://checkstyle.sourceforge.io/checks/javadoc/javadocmethod.html -->
         <module name="JavadocMethod">
-        <property name="scope" value="protected"/>
+            <property name="accessModifiers" value="protected"/>
         </module>
         <module name="JavadocType">
-        <property name="scope" value="protected"/>
+            <property name="scope" value="protected"/>
         </module>
         <module name="JavadocVariable">
-        <property name="scope" value="protected"/>
+            <property name="scope" value="protected"/>
         </module>
         <module name="JavadocStyle">
-        <property name="scope" value="protected"/>
+            <property name="scope" value="protected"/>
         </module>
 
         <!-- Checks for Naming Conventions.                  -->
