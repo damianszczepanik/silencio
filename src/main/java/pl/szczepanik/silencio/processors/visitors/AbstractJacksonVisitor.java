@@ -14,8 +14,13 @@ import pl.szczepanik.silencio.core.ProcessorException;
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public abstract class AbstractJacksonVisitor extends AbstractVisitor {
-    
-    @SuppressWarnings("unchecked")
+
+    /**
+     * Process map or array/list objects.
+     *
+     * @param key   key
+     * @param value value that should be converted
+     */
     protected void processComplex(String key, Object value) {
         if (isMap(value)) {
             processMap((Map<String, Object>) value);
@@ -26,6 +31,11 @@ public abstract class AbstractJacksonVisitor extends AbstractVisitor {
         }
     }
 
+    /**
+     * Process map object.
+     *
+     * @param map value that should be converted
+     */
     protected void processMap(Map<String, Object> map) {
         for (Map.Entry<String, Object> keyMap : map.entrySet()) {
             String key = keyMap.getKey();
@@ -39,6 +49,11 @@ public abstract class AbstractJacksonVisitor extends AbstractVisitor {
         }
     }
 
+    /**
+     * Process array/list object.
+     *
+     * @param list value that should be converted
+     */
     private void processArray(String key, List<Object> list) {
         for (int i = 0; i < list.size(); i++) {
             Object value = list.get(i);
