@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
 import pl.szczepanik.silencio.api.Processor;
-import pl.szczepanik.silencio.converters.WikipediaConverter;
 import pl.szczepanik.silencio.core.Builder;
 import pl.szczepanik.silencio.utils.JSONUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;

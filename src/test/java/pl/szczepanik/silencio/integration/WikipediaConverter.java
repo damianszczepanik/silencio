@@ -1,4 +1,4 @@
-package pl.szczepanik.silencio.converters;
+package pl.szczepanik.silencio.integration;
 
 import java.net.URL;
 import java.util.HashMap;
