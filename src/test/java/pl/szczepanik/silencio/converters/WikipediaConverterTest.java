@@ -24,6 +24,7 @@ import pl.szczepanik.silencio.core.Configuration;
 import pl.szczepanik.silencio.core.Execution;
 import pl.szczepanik.silencio.core.IntegrityException;
 import pl.szczepanik.silencio.decisions.PositiveDecision;
+import pl.szczepanik.silencio.integration.WikipediaConverter;
 import pl.szczepanik.silencio.processors.JSONProcessor;
 import pl.szczepanik.silencio.utils.IOUtility;
 import pl.szczepanik.silencio.utils.ResourceLoader;
