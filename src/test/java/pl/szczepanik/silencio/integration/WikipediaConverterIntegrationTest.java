@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import java.io.StringWriter;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import pl.szczepanik.silencio.GenericTest;
 import pl.szczepanik.silencio.api.Format;
@@ -18,6 +19,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 class WikipediaConverterIntegrationTest extends GenericTest {
 
     @Test
+    @Disabled("Sometimes Wikipedia refuses connection when many requests are started one by one")
     void shouldGetWordsFromWikipedia() {
         // WARNING: this test fail when internet connection is not available
 
