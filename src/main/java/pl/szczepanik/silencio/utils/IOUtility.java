@@ -6,10 +6,11 @@ import java.net.URL;
 import java.nio.charset.StandardCharsets;
 
 import org.apache.commons.io.IOUtils;
-
 import pl.szczepanik.silencio.core.IntegrityException;
 
 /**
+ * Class with utility methods.
+ *
  * @author Damian Szczepanik (damianszczepanik@github)
  */
 public final class IOUtility {

@@ -41,7 +41,7 @@ class XMLProcessorTest extends GenericTest {
         // given
         XMLProcessor processor = new XMLProcessor();
         input = ResourceLoader.loadAsReader("suv.xml");
-        String refInput = ResourceLoader.loadAsString("suv_tranformed.xml");
+        String refInput = ResourceLoader.loadAsString("suv_transformed.xml");
         output = new StringWriter();
 
         // when
