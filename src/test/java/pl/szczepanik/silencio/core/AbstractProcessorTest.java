@@ -20,7 +20,7 @@ class AbstractProcessorTest extends GenericTest {
     void shouldReturnPassedFormat() {
 
         // given
-        Converter[] converters = { new StubConverter() };
+        Converter[] converters = {new StubConverter()};
         Format format = Format.PROPERTIES;
 
         // when
@@ -34,7 +34,7 @@ class AbstractProcessorTest extends GenericTest {
     void shouldFailWhenBuildFromEmptyFormat() {
 
         // given
-        Converter[] converters = { new StubConverter() };
+        Converter[] converters = {new StubConverter()};
 
         // when
         Format format = null;
@@ -81,7 +81,7 @@ class AbstractProcessorTest extends GenericTest {
         AbstractProcessor processor = new StubProcessor(format);
 
         // then
-        assertThatThrownBy(() -> processor.process())
+        assertThatThrownBy(processor::process)
                 .isInstanceOf(ProcessorException.class)
                 .hasMessage("This operation is not allowed for this state: CREATED");
     }

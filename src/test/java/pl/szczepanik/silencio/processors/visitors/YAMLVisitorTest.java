@@ -25,7 +25,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 class YAMLVisitorTest extends GenericTest {
 
     @Test
-    void shouldReportExceptionOnUnsupportedModel() throws Exception {
+    void shouldReportExceptionOnUnsupportedModel() {
 
         // when
         final String key = "myKey";

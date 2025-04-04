@@ -18,7 +18,7 @@ import pl.szczepanik.silencio.utils.ResourceLoader;
 class BlankConverterIntegrationTest extends GenericTest {
 
     @Test
-    void shoulClearValuesWhenBlankIsExecutedAsLast() throws IOException {
+    void shoulClearValuesWhenBlankIsExecutedAsLast() {
 
         // given
         Processor processor = new Builder(Format.JSON).with(Builder.NUMBER_SEQUENCE, Builder.BLANK).build();

@@ -42,8 +42,8 @@ class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
-        Decision[] decisions = { new PositiveDecision(), new NegativeDecision() };
+        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
+        Decision[] decisions = {new PositiveDecision(), new NegativeDecision()};
 
         // when
         Builder builder = new Builder(format).with(decisions, converters);
@@ -61,7 +61,7 @@ class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
+        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
         Decision decision = new NegativeDecision();
 
         // when
@@ -103,7 +103,7 @@ class BuilderTest extends GenericTest {
 
         // given
         Format format = Format.JSON;
-        Converter[] converters = { Builder.NUMBER_SEQUENCE, new StubConverter() };
+        Converter[] converters = {Builder.NUMBER_SEQUENCE, new StubConverter()};
         Builder builder = new Builder(format);
 
         // when
@@ -146,7 +146,7 @@ class BuilderTest extends GenericTest {
         Builder builder = new Builder(format);
 
         // then
-        assertThatThrownBy(() -> builder.build())
+        assertThatThrownBy(builder::build)
                 .isInstanceOf(IntegrityException.class)
                 .hasMessage("Unsupported format: " + format.getName());
     }

@@ -29,7 +29,8 @@ class StubObjectMapper extends ObjectMapper {
         }
     }
 
-    public <T> T readValue(String content, Class<T> valueType) throws JsonProcessingException, JsonMappingException {
+    @Override
+    public <T> T readValue(String content, Class<T> valueType) throws JsonProcessingException {
         if (exception != null) {
             throw exception;
         } else if (jsons == null) {
