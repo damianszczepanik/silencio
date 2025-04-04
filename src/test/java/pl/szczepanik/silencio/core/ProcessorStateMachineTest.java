@@ -18,7 +18,7 @@ class ProcessorStateMachineTest extends GenericTest {
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
-        assertThatThrownBy(() -> machine.validateProcess())
+        assertThatThrownBy(machine::validateProcess)
                 .isInstanceOf(ProcessorException.class)
                 .hasMessage("This operation is not allowed for this state: CREATED");
     }
@@ -33,7 +33,7 @@ class ProcessorStateMachineTest extends GenericTest {
         machine.moveToLoaded();
 
         // then
-        assertThatNoException().isThrownBy(() -> machine.validateProcess());
+        assertThatNoException().isThrownBy(machine::validateProcess);
     }
 
     @Test
@@ -43,7 +43,7 @@ class ProcessorStateMachineTest extends GenericTest {
         ProcessorStateMachine machine = new ProcessorStateMachine();
 
         // then
-        assertThatThrownBy(() -> machine.validateWrite())
+        assertThatThrownBy(machine::validateWrite)
                 .isInstanceOf(ProcessorException.class)
                 .hasMessage("This operation is not allowed for this state: CREATED");
     }
@@ -57,7 +57,7 @@ class ProcessorStateMachineTest extends GenericTest {
         machine.moveToProcessed();
 
         // when & then
-        assertThatNoException().isThrownBy(() -> machine.validateWrite());
+        assertThatNoException().isThrownBy(machine::validateWrite);
     }
 
     @Test
@@ -69,6 +69,6 @@ class ProcessorStateMachineTest extends GenericTest {
         machine.moveToProcessed();
 
         // when & then
-        assertThatNoException().isThrownBy(() -> machine.moveToLoaded());
+        assertThatNoException().isThrownBy(machine::moveToLoaded);
     }
 }

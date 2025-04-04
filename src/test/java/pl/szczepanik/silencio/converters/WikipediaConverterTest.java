@@ -55,7 +55,7 @@ class WikipediaConverterTest extends GenericTest {
                 .thenReturn(INVALID_HTML_PAGE);
 
         // then
-        assertThatThrownBy(() -> processor.process())
+        assertThatThrownBy(processor::process)
                 .isInstanceOf(IntegrityException.class)
                 .hasMessage("Could not find header pattern for page: " + INVALID_HTML_PAGE);
 
