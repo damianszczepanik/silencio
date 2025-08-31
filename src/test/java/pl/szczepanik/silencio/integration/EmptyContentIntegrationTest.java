@@ -24,11 +24,11 @@ class EmptyContentIntegrationTest extends GenericTest {
     public String fileName;
 
     public static Collection<Object[]> data() {
-        return Arrays.asList(new Object[][] {
-                { Format.XML, "minimal.xml" },
-                { Format.JSON, "empty.json" },
-                { Format.PROPERTIES, "empty.properties" },
-                { Format.YAML, "empty.yaml" },
+        return Arrays.asList(new Object[][]{
+                {Format.XML, "minimal.xml"},
+                {Format.JSON, "empty.json"},
+                {Format.PROPERTIES, "empty.properties"},
+                {Format.YAML, "empty.yaml"},
         });
     }
 
@@ -50,7 +50,6 @@ class EmptyContentIntegrationTest extends GenericTest {
         // then
         output = new StringWriter();
         processor.write(output);
-        String reference = ResourceLoader.loadAsString(fileName);
         assertThat(output.toString()).isEqualToNormalizingNewlines(output.toString());
     }
 
