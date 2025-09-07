@@ -4,7 +4,6 @@
 [![Coverage Status](https://codecov.io/gh/damianszczepanik/silencio/branch/master/graph/badge.svg)](https://codecov.io/github/damianszczepanik/silencio)
 [![Sonarqube Status](https://sonarcloud.io/api/project_badges/measure?project=damianszczepanik_silencio&metric=alert_status)](https://sonarcloud.io/dashboard?id=damianszczepanik_silencio)
 [![Codacy](https://api.codacy.com/project/badge/grade/7d8811903fda44a39bb0f7c5e142a965)](https://app.codacy.com/gh/damianszczepanik/silencio/dashboard)
-[![Codebeat](https://codebeat.co/badges/d53d81f6-f812-43d0-9fdc-4662ccec1e86)](https://codebeat.co/projects/github-com-damianszczepanik-silencio-master)
 [![Vulnerabilities](https://snyk.io/test/github/damianszczepanik/silencio/badge.svg)](https://app.snyk.io/org/damianszczepanik/project/aa636d8e-3d8b-49cd-84d5-5a5aa1e845fd)
 
 [![Maven Central](https://img.shields.io/maven-central/v/pl.damianszczepanik/silencio.svg)](http://search.maven.org/#search|gav|1|g%3A%22pl.damianszczepanik%22%20AND%20a%3A%22silencio%22)
